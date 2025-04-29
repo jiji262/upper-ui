@@ -1,253 +1,205 @@
-# Upper-UI
+# Upper UI
 
-Upper-UI 是一个基于 React 和 Tailwind CSS 构建的现代化组件库，提供了一系列美观、可复用的 UI 组件。
+A modern React component library with a playful and unique design style. Built with TypeScript, Tailwind CSS, and Radix UI primitives.
 
-## 特性
-
-- 🎨 基于 Tailwind CSS 的样式系统
-- ⚡️ 高性能的 React 组件
-- 🎯 完全类型安全的 TypeScript 支持
-- 🌙 内置暗色模式支持
-- 📱 响应式设计
-- 🎭 可定制的主题
-
-## 安装
+## Installation
 
 ```bash
 npm install upper-ui
-# 或
+# or
 yarn add upper-ui
+# or
+pnpm add upper-ui
 ```
 
-## 快速开始
+## Components
 
-1. 首先，确保你的项目已经安装了必要的依赖：
+### Layout Components
 
-```bash
-npm install react react-dom tailwindcss postcss autoprefixer
-```
-
-2. 在你的项目的 `tailwind.config.js` 中添加 upper-ui 的配置：
-
-```js
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./node_modules/upper-ui/**/*.{js,jsx,ts,tsx}"
-  ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-```
-
-3. 在你的 React 应用中导入并使用组件：
+#### Flex
+A flexible box layout component that makes it easy to create responsive layouts.
 
 ```tsx
-import { Button, Card, Input } from 'upper-ui';
-
-function App() {
-  return (
-    <div>
-      <Button>Click me</Button>
-      <Card>
-        <Card.Header>
-          <Card.Title>Welcome</Card.Title>
-        </Card.Header>
-        <Card.Content>
-          <Input placeholder="Enter your name" />
-        </Card.Content>
-      </Card>
-    </div>
-  );
-}
+<Flex direction="row" justify="between" align="center" gap={4}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+</Flex>
 ```
 
-## 组件列表
+Props:
+- `direction`: 'row' | 'column'
+- `justify`: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+- `align`: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+- `wrap`: 'nowrap' | 'wrap' | 'wrap-reverse'
+- `gap`: number
 
-### Button 按钮
+### Data Entry Components
 
-提供多种样式和尺寸的按钮组件。
+#### Button
+A versatile button component with multiple variants and sizes.
 
 ```tsx
-import { Button } from 'upper-ui';
-
-// 基本用法
-<Button>Default Button</Button>
-
-// 不同变体
-<Button variant="outline">Outline Button</Button>
-<Button variant="secondary">Secondary Button</Button>
-<Button variant="destructive">Destructive Button</Button>
-<Button variant="ghost">Ghost Button</Button>
-<Button variant="link">Link Button</Button>
-
-// 不同尺寸
-<Button size="sm">Small Button</Button>
-<Button size="lg">Large Button</Button>
-
-// 禁用状态
-<Button disabled>Disabled Button</Button>
+<Button variant="default">Click me</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
 ```
 
-### Card 卡片
+Props:
+- `variant`: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
+- `size`: 'default' | 'sm' | 'lg' | 'icon'
+- `asChild`: boolean
 
-用于展示内容区块的卡片组件。
+#### Input
+A text input component.
 
 ```tsx
-import { Card } from 'upper-ui';
+<Input placeholder="Type here..." />
+```
 
+#### Textarea
+A multiline text input component.
+
+```tsx
+<Textarea placeholder="Enter long text..." />
+```
+
+#### Switch
+A toggle switch component.
+
+```tsx
+<Switch checked={value} onChange={setValue} />
+```
+
+#### Checkbox
+A checkbox component with an optional label.
+
+```tsx
+<Checkbox label="Remember me" checked={value} onChange={setValue} />
+```
+
+### Data Display Components
+
+#### Avatar
+A component for displaying user avatars.
+
+```tsx
+<Avatar src="path/to/image.jpg" alt="User name" />
+```
+
+#### Badge
+A component for displaying status indicators or counts.
+
+```tsx
+<Badge variant="secondary">New</Badge>
+```
+
+Props:
+- `variant`: 'default' | 'secondary' | 'destructive' | 'outline'
+- `size`: 'sm' | 'md' | 'lg'
+
+#### Card
+A container component for displaying content in a box.
+
+```tsx
 <Card>
-  <Card.Header>
-    <Card.Title>Card Title</Card.Title>
-    <Card.Description>Card Description</Card.Description>
-  </Card.Header>
-  <Card.Content>
-    <p>Card content goes here</p>
-  </Card.Content>
-  <Card.Footer>
-    <Button>Action</Button>
-  </Card.Footer>
+  <h3>Card Title</h3>
+  <p>Card content</p>
 </Card>
 ```
 
-### Dialog 对话框
-
-用于展示模态对话框的组件。
+#### List
+A component for displaying lists of items.
 
 ```tsx
-import { Dialog } from 'upper-ui';
+<List bordered>
+  <List.Item>Item 1</List.Item>
+  <List.Item>Item 2</List.Item>
+</List>
+```
 
+Props:
+- `bordered`: boolean
+
+### Navigation Components
+
+#### Tabs
+A component for switching between different views.
+
+```tsx
+<Tabs defaultValue="tab1">
+  <TabsList>
+    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+  </TabsList>
+  <TabsContent value="tab1">Content 1</TabsContent>
+  <TabsContent value="tab2">Content 2</TabsContent>
+</Tabs>
+```
+
+#### Select
+A dropdown select component.
+
+```tsx
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Select option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="1">Option 1</SelectItem>
+    <SelectItem value="2">Option 2</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+### Feedback Components
+
+#### Alert
+A component for displaying important messages.
+
+```tsx
+<Alert variant="default">
+  <AlertTitle>Success</AlertTitle>
+  <AlertDescription>Your changes have been saved.</AlertDescription>
+</Alert>
+```
+
+Props:
+- `variant`: 'default' | 'destructive' | 'success' | 'warning'
+
+#### Dialog
+A modal dialog component.
+
+```tsx
 <Dialog>
-  <Dialog.Trigger>
-    <Button>Open Dialog</Button>
-  </Dialog.Trigger>
-  <Dialog.Content>
-    <Dialog.Header>
-      <Dialog.Title>Dialog Title</Dialog.Title>
-      <Dialog.Description>
-        Dialog description goes here
-      </Dialog.Description>
-    </Dialog.Header>
-    <div className="py-4">
-      <p>Dialog content</p>
-    </div>
-    <Dialog.Footer>
-      <Button variant="outline">Cancel</Button>
-      <Button>Confirm</Button>
-    </Dialog.Footer>
-  </Dialog.Content>
+  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Dialog Title</DialogTitle>
+    </DialogHeader>
+    <p>Dialog content</p>
+  </DialogContent>
 </Dialog>
 ```
 
-### Input 输入框
-
-提供多种类型的输入框组件。
-
-```tsx
-import { Input } from 'upper-ui';
-
-// 基本输入框
-<Input placeholder="Enter text" />
-
-// 不同状态
-<Input disabled placeholder="Disabled input" />
-<Input defaultValue="Default value" />
-
-// 不同类型
-<Input type="password" placeholder="Password" />
-<Input type="email" placeholder="Email" />
-<Input type="number" placeholder="Number" />
-<Input type="search" placeholder="Search" />
-<Input type="tel" placeholder="Phone number" />
-```
-
-### Progress 进度条
-
-用于展示进度的组件。
+#### Progress
+A progress indicator component.
 
 ```tsx
-import { Progress } from 'upper-ui';
-
 <Progress value={75} />
 ```
 
-### Switch 开关
+## Development
 
-用于切换状态的开关组件。
-
-```tsx
-import { Switch } from 'upper-ui';
-
-<Switch />
+1. Clone the repository
+2. Install dependencies:
+```bash
+pnpm install
+```
+3. Start the development server:
+```bash
+pnpm dev
 ```
 
-### Textarea 文本域
-
-用于多行文本输入的组件。
-
-```tsx
-import { Textarea } from 'upper-ui';
-
-<Textarea placeholder="Enter your message" />
-```
-
-### Tooltip 提示框
-
-用于显示提示信息的组件。
-
-```tsx
-import { Tooltip } from 'upper-ui';
-
-<Tooltip content="This is a tooltip">
-  <Button>Hover me</Button>
-</Tooltip>
-```
-
-### Sonner 通知
-
-用于显示通知消息的组件。
-
-```tsx
-import { toast } from 'upper-ui';
-
-// 在组件中使用
-toast.success("Operation successful!");
-toast.error("Something went wrong!");
-toast.warning("Please be careful!");
-toast.info("Here's some information");
-```
-
-## 主题定制
-
-Upper-UI 支持通过 Tailwind CSS 进行主题定制。你可以在 `tailwind.config.js` 中自定义颜色、间距、字体等样式。
-
-```js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          DEFAULT: '#0070f3',
-          dark: '#0061d5',
-        },
-      },
-    },
-  },
-}
-```
-
-## 贡献指南
-
-我们欢迎任何形式的贡献！如果你发现 bug 或有新功能建议，请提交 issue 或 pull request。
-
-1. Fork 项目
-2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 打开一个 Pull Request
-
-## 许可证
+## License
 
 MIT
