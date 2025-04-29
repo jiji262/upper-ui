@@ -1,205 +1,291 @@
-# Upper UI
+# Upper UI Component Library
 
-A modern React component library with a playful and unique design style. Built with TypeScript, Tailwind CSS, and Radix UI primitives.
+A modern, accessible, and customizable component library built with React and Tailwind CSS.
+
+## Features
+
+- 🎨 Modern and clean design
+- ♿️ Fully accessible components
+- 🎯 Built with React and TypeScript
+- 🎨 Styled with Tailwind CSS
+- 📱 Responsive and mobile-friendly
+- 🎨 Customizable theme support
+- 📦 Easy to install and use
 
 ## Installation
 
 ```bash
-npm install upper-ui
+npm install @upper-ui/core
 # or
-yarn add upper-ui
-# or
-pnpm add upper-ui
+yarn add @upper-ui/core
+```
+
+## Quick Start
+
+```tsx
+import { Button } from '@upper-ui/core';
+
+function App() {
+  return <Button>Click me</Button>;
+}
 ```
 
 ## Components
 
-### Layout Components
-
-#### Flex
-A flexible box layout component that makes it easy to create responsive layouts.
-
-```tsx
-<Flex direction="row" justify="between" align="center" gap={4}>
-  <div>Item 1</div>
-  <div>Item 2</div>
-</Flex>
-```
-
-Props:
-- `direction`: 'row' | 'column'
-- `justify`: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
-- `align`: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
-- `wrap`: 'nowrap' | 'wrap' | 'wrap-reverse'
-- `gap`: number
-
-### Data Entry Components
+### Data Entry
 
 #### Button
-A versatile button component with multiple variants and sizes.
 
 ```tsx
-<Button variant="default">Click me</Button>
+import { Button } from '@upper-ui/core';
+
+// Basic usage
+<Button>Default</Button>
+
+// Variants
+<Button variant="default">Default</Button>
 <Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Destructive</Button>
 <Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+// Sizes
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+
+// States
+<Button disabled>Disabled</Button>
 ```
 
-Props:
-- `variant`: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
-- `size`: 'default' | 'sm' | 'lg' | 'icon'
-- `asChild`: boolean
-
 #### Input
-A text input component.
 
 ```tsx
-<Input placeholder="Type here..." />
+import { Input } from '@upper-ui/core';
+
+// Basic usage
+<Input placeholder="Enter text" />
+
+// States
+<Input disabled placeholder="Disabled" />
 ```
 
 #### Textarea
-A multiline text input component.
 
 ```tsx
-<Textarea placeholder="Enter long text..." />
+import { Textarea } from '@upper-ui/core';
+
+// Basic usage
+<Textarea placeholder="Enter message" />
+
+// States
+<Textarea disabled placeholder="Disabled" />
 ```
 
 #### Switch
-A toggle switch component.
 
 ```tsx
-<Switch checked={value} onChange={setValue} />
+import { Switch } from '@upper-ui/core';
+
+// Basic usage
+<Switch checked={isChecked} onCheckedChange={setIsChecked} />
 ```
 
-#### Checkbox
-A checkbox component with an optional label.
-
-```tsx
-<Checkbox label="Remember me" checked={value} onChange={setValue} />
-```
-
-### Data Display Components
-
-#### Avatar
-A component for displaying user avatars.
-
-```tsx
-<Avatar src="path/to/image.jpg" alt="User name" />
-```
-
-#### Badge
-A component for displaying status indicators or counts.
-
-```tsx
-<Badge variant="secondary">New</Badge>
-```
-
-Props:
-- `variant`: 'default' | 'secondary' | 'destructive' | 'outline'
-- `size`: 'sm' | 'md' | 'lg'
+### Data Display
 
 #### Card
-A container component for displaying content in a box.
 
 ```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@upper-ui/core';
+
+// Basic usage
 <Card>
-  <h3>Card Title</h3>
-  <p>Card content</p>
+  <CardHeader>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Card content goes here</p>
+  </CardContent>
+  <CardFooter>
+    <Button>Action</Button>
+  </CardFooter>
+</Card>
+
+// With shadow
+<Card className="shadow-md">
+  {/* ... */}
+</Card>
+
+// With border
+<Card className="border-2 border-gray-200">
+  {/* ... */}
+</Card>
+
+// Flat style
+<Card className="bg-gray-50">
+  {/* ... */}
 </Card>
 ```
 
-#### List
-A component for displaying lists of items.
+#### Avatar
 
 ```tsx
-<List bordered>
-  <List.Item>Item 1</List.Item>
-  <List.Item>Item 2</List.Item>
-</List>
+import { Avatar } from '@upper-ui/core';
+
+// With image
+<Avatar src="https://example.com/avatar.jpg" />
+
+// With initials
+<Avatar>JD</Avatar>
+
+// Sizes
+<Avatar size="sm" src="..." />
+<Avatar size="default" src="..." />
+<Avatar size="lg" src="..." />
 ```
 
-Props:
-- `bordered`: boolean
-
-### Navigation Components
-
-#### Tabs
-A component for switching between different views.
+#### Badge
 
 ```tsx
-<Tabs defaultValue="tab1">
+import { Badge } from '@upper-ui/core';
+
+// Basic usage
+<Badge>Default</Badge>
+
+// Variants
+<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+```
+
+### Feedback
+
+#### Progress
+
+```tsx
+import { Progress } from '@upper-ui/core';
+
+// Basic usage
+<Progress value={75} />
+```
+
+#### Alert
+
+```tsx
+import { Alert } from '@upper-ui/core';
+
+// Basic usage
+<Alert>Default alert</Alert>
+
+// Variants
+<Alert variant="default">Default</Alert>
+<Alert variant="success">Success</Alert>
+<Alert variant="warning">Warning</Alert>
+<Alert variant="destructive">Destructive</Alert>
+```
+
+#### Tooltip
+
+```tsx
+import { Tooltip, TooltipProvider } from '@upper-ui/core';
+
+// Basic usage
+<TooltipProvider>
+  <Tooltip content="Tooltip content">
+    <Button>Hover me</Button>
+  </Tooltip>
+</TooltipProvider>
+```
+
+### Navigation
+
+#### Tabs
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@upper-ui/core';
+
+// Basic usage
+<Tabs defaultValue="account">
   <TabsList>
-    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
-    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
   </TabsList>
-  <TabsContent value="tab1">Content 1</TabsContent>
-  <TabsContent value="tab2">Content 2</TabsContent>
+  <TabsContent value="account">
+    <p>Account content</p>
+  </TabsContent>
+  <TabsContent value="password">
+    <p>Password content</p>
+  </TabsContent>
 </Tabs>
 ```
 
-#### Select
-A dropdown select component.
-
-```tsx
-<Select>
-  <SelectTrigger>
-    <SelectValue placeholder="Select option" />
-  </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="1">Option 1</SelectItem>
-    <SelectItem value="2">Option 2</SelectItem>
-  </SelectContent>
-</Select>
-```
-
-### Feedback Components
-
-#### Alert
-A component for displaying important messages.
-
-```tsx
-<Alert variant="default">
-  <AlertTitle>Success</AlertTitle>
-  <AlertDescription>Your changes have been saved.</AlertDescription>
-</Alert>
-```
-
-Props:
-- `variant`: 'default' | 'destructive' | 'success' | 'warning'
-
 #### Dialog
-A modal dialog component.
 
 ```tsx
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@upper-ui/core';
+
+// Basic usage
 <Dialog>
-  <DialogTrigger>Open Dialog</DialogTrigger>
+  <DialogTrigger asChild>
+    <Button>Open Dialog</Button>
+  </DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Dialog Title</DialogTitle>
+      <DialogDescription>
+        Dialog description goes here.
+      </DialogDescription>
     </DialogHeader>
-    <p>Dialog content</p>
+    <div className="py-4">
+      <p>Dialog content goes here.</p>
+    </div>
+    <DialogFooter>
+      <Button variant="outline">Cancel</Button>
+      <Button>Confirm</Button>
+    </DialogFooter>
   </DialogContent>
 </Dialog>
 ```
 
-#### Progress
-A progress indicator component.
+## Customization
+
+### Theme
+
+You can customize the theme by extending the Tailwind configuration:
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#3B82F6',
+          dark: '#2563EB',
+        },
+      },
+    },
+  },
+}
+```
+
+### Styling
+
+All components can be styled using Tailwind CSS classes:
 
 ```tsx
-<Progress value={75} />
+<Button className="bg-custom-color hover:bg-custom-color-dark">
+  Custom Button
+</Button>
 ```
 
-## Development
+## Contributing
 
-1. Clone the repository
-2. Install dependencies:
-```bash
-pnpm install
-```
-3. Start the development server:
-```bash
-pnpm dev
-```
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
 ## License
 
-MIT
+MIT © [Your Name]

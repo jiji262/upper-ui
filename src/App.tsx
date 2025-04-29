@@ -10,6 +10,7 @@ import { Progress } from './components/ui/feedback/progress';
 import { Tooltip, TooltipProvider } from './components/ui/feedback/tooltip';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './components/ui/feedback/dialog';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/navigation/tabs';
+import { Alert } from './components/ui/feedback/alert';
 
 function App() {
   const [progress, setProgress] = React.useState(13);
@@ -25,216 +26,332 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-7xl mx-auto space-y-12">
-        {/* Header */}
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">UI Components Showcase</h1>
-          <p className="text-lg text-gray-600">A collection of beautiful and functional UI components</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Header */}
+      <header className="bg-white shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <Avatar src="https://i.pravatar.cc/150?img=1" size="lg" />
+              <div>
+                <h1 className="text-2xl font-bold text-gray-900">Component Library</h1>
+                <p className="text-sm text-gray-500">A collection of beautiful UI components</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <Switch 
+                id="dark-mode" 
+                checked={darkModeEnabled} 
+                onCheckedChange={setDarkModeEnabled}
+              />
+              <label htmlFor="dark-mode" className="text-sm text-gray-600">Dark Mode</label>
+            </div>
+          </div>
         </div>
+      </header>
 
-        {/* Data Entry Components */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-semibold border-b pb-2">Data Entry</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Buttons</CardTitle>
-                <CardDescription>Various button styles and states</CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-4">
-                <Button>Default</Button>
-                <Button variant="destructive">Destructive</Button>
-                <Button variant="outline">Outline</Button>
-                <Button variant="secondary">Secondary</Button>
-                <Button variant="ghost">Ghost</Button>
-                <Button variant="link">Link</Button>
-              </CardContent>
-            </Card>
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Hero Section */}
+            <section className="bg-white rounded-xl shadow-sm p-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Our Component Library</h2>
+              <p className="text-lg text-gray-600 mb-6">
+                Explore our collection of carefully crafted UI components designed to help you build beautiful applications.
+              </p>
+              <div className="flex space-x-4">
+                <Button size="lg">Get Started</Button>
+                <Button variant="outline" size="lg">Learn More</Button>
+              </div>
+            </section>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Input Fields</CardTitle>
-                <CardDescription>Text input components</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <Input placeholder="Enter your name" />
-                <Textarea placeholder="Enter your message" />
-                <div className="flex items-center space-x-2">
-                  <Switch checked={notificationsEnabled} onCheckedChange={setNotificationsEnabled} />
-                  <span className="text-sm">Toggle me</span>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Data Display Components */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-semibold border-b pb-2">Data Display</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Avatars & Badges</CardTitle>
-                <CardDescription>User avatars and status indicators</CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-wrap gap-4 items-center">
-                <Avatar src="https://github.com/shadcn.png" alt="User" />
-                <Avatar alt="User" />
-                <Badge>Default</Badge>
-                <Badge variant="secondary">Secondary</Badge>
-                <Badge variant="destructive">Destructive</Badge>
-                <Badge variant="outline">Outline</Badge>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Progress</CardTitle>
-                <CardDescription>Progress indicators</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Progress value={progress} className="w-full" />
-                <p className="text-sm text-gray-500 mt-2">Loading: {progress}%</p>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Feedback Components */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-semibold border-b pb-2">Feedback</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Tooltips</CardTitle>
-                <CardDescription>Information on hover</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <TooltipProvider>
-                  <div className="flex gap-4">
-                    <Tooltip content="This is a tooltip">
-                      <Button>Hover me</Button>
-                    </Tooltip>
-                    <Tooltip content="Another tooltip">
-                      <Button variant="outline">Hover me too</Button>
-                    </Tooltip>
-                  </div>
-                </TooltipProvider>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Dialog</CardTitle>
-                <CardDescription>Modal dialogs</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                  <DialogTrigger asChild>
-                    <Button>Open Dialog</Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>Dialog Title</DialogTitle>
-                      <DialogDescription>
-                        This is a dialog component. You can put any content here.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="py-4">
-                      <p>Dialog content goes here...</p>
+            {/* Components Showcase */}
+            <section className="bg-white rounded-xl shadow-sm p-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Featured Components</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Buttons */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Buttons</CardTitle>
+                    <CardDescription>Various button styles and variants</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        <Button>Default</Button>
+                        <Button variant="secondary">Secondary</Button>
+                        <Button variant="destructive">Destructive</Button>
+                        <Button variant="outline">Outline</Button>
+                        <Button variant="ghost">Ghost</Button>
+                        <Button variant="link">Link</Button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button size="sm">Small</Button>
+                        <Button>Default</Button>
+                        <Button size="lg">Large</Button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button disabled>Disabled</Button>
+                        <Button loading>Loading</Button>
+                      </div>
                     </div>
-                    <DialogFooter>
-                      <Button variant="outline" onClick={() => setDialogOpen(false)}>
-                        Cancel
-                      </Button>
-                      <Button>Confirm</Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+                  </CardContent>
+                </Card>
 
-        {/* Navigation Components */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-semibold border-b pb-2">Navigation</h2>
-          <Card>
-            <CardHeader>
-              <CardTitle>Tabs</CardTitle>
-              <CardDescription>Tabbed navigation</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Tabs defaultValue="account">
-                <TabsList>
-                  <TabsTrigger value="account">Account</TabsTrigger>
-                  <TabsTrigger value="password">Password</TabsTrigger>
-                  <TabsTrigger value="settings">Settings</TabsTrigger>
-                </TabsList>
-                <TabsContent value="account">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Account</CardTitle>
-                      <CardDescription>
-                        Make changes to your account here.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      <Input placeholder="Name" />
-                      <Input placeholder="Email" />
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-                <TabsContent value="password">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Password</CardTitle>
-                      <CardDescription>
-                        Change your password here.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      <Input type="password" placeholder="Current password" />
-                      <Input type="password" placeholder="New password" />
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-                <TabsContent value="settings">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>Settings</CardTitle>
-                      <CardDescription>
-                        Manage your settings here.
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Switch 
-                          id="notifications" 
-                          checked={notificationsEnabled} 
-                          onCheckedChange={setNotificationsEnabled}
-                        />
-                        <label htmlFor="notifications">Enable notifications</label>
+                {/* Inputs */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Inputs</CardTitle>
+                    <CardDescription>Form input components</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <Input placeholder="Enter your name" />
+                      <Input placeholder="With error" error />
+                      <Input placeholder="Disabled" disabled />
+                      <Textarea placeholder="Enter your message" />
+                      <Textarea placeholder="With error" error />
+                      <Textarea placeholder="Disabled" disabled />
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Cards */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Cards</CardTitle>
+                    <CardDescription>Card components with different styles</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <Card className="border-0 shadow-md">
+                        <CardHeader>
+                          <CardTitle>Shadow Card</CardTitle>
+                          <CardDescription>Card with shadow effect</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p>This card has a shadow effect.</p>
+                        </CardContent>
+                        <CardFooter>
+                          <Button>Action</Button>
+                        </CardFooter>
+                      </Card>
+
+                      <Card className="border-2 border-gray-200 shadow-none">
+                        <CardHeader>
+                          <CardTitle>Bordered Card</CardTitle>
+                          <CardDescription>Card with border style</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p>This card has a border and no shadow.</p>
+                        </CardContent>
+                        <CardFooter>
+                          <Button variant="outline">Action</Button>
+                        </CardFooter>
+                      </Card>
+
+                      <Card className="bg-gray-50 border-0 shadow-none">
+                        <CardHeader>
+                          <CardTitle>Flat Card</CardTitle>
+                          <CardDescription>Card with background color</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <p>This card has a light background and no shadow.</p>
+                        </CardContent>
+                        <CardFooter>
+                          <Button variant="ghost">Action</Button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Feedback Components */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Feedback</CardTitle>
+                    <CardDescription>Progress, alerts and badges</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Progress value={progress} className="w-full" />
+                        <Progress value={75} className="w-full" />
+                        <Progress value={100} className="w-full" />
                       </div>
-                      <div className="flex items-center space-x-2">
-                        <Switch 
-                          id="dark-mode" 
-                          checked={darkModeEnabled} 
-                          onCheckedChange={setDarkModeEnabled}
-                        />
-                        <label htmlFor="dark-mode">Dark mode</label>
+                      <div className="space-y-2">
+                        <Alert variant="default">This is a default alert</Alert>
+                        <Alert variant="success">Operation completed successfully!</Alert>
+                        <Alert variant="warning">This is a warning message</Alert>
+                        <Alert variant="destructive">Something went wrong!</Alert>
                       </div>
-                    </CardContent>
-                  </Card>
-                </TabsContent>
-              </Tabs>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge>Default</Badge>
+                        <Badge variant="secondary">Secondary</Badge>
+                        <Badge variant="destructive">Destructive</Badge>
+                        <Badge variant="outline">Outline</Badge>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Navigation Components */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Navigation</CardTitle>
+                    <CardDescription>Tabs and dialogs</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <Tabs defaultValue="preview">
+                        <TabsList>
+                          <TabsTrigger value="preview">Preview</TabsTrigger>
+                          <TabsTrigger value="code">Code</TabsTrigger>
+                          <TabsTrigger value="docs">Docs</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="preview">
+                          <div className="p-4">
+                            <p>Preview content goes here</p>
+                          </div>
+                        </TabsContent>
+                        <TabsContent value="code">
+                          <div className="p-4">
+                            <p>Code content goes here</p>
+                          </div>
+                        </TabsContent>
+                        <TabsContent value="docs">
+                          <div className="p-4">
+                            <p>Documentation content goes here</p>
+                          </div>
+                        </TabsContent>
+                      </Tabs>
+                      <div className="flex justify-center">
+                        <Button onClick={() => setDialogOpen(true)}>Open Dialog</Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Data Display Components */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Data Display</CardTitle>
+                    <CardDescription>Avatar and tooltips</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-4">
+                        <Avatar src="https://i.pravatar.cc/150?img=1" size="sm" />
+                        <Avatar src="https://i.pravatar.cc/150?img=2" />
+                        <Avatar src="https://i.pravatar.cc/150?img=3" size="lg" />
+                        <Avatar>JD</Avatar>
+                      </div>
+                      <div className="flex items-center space-x-4">
+                        <TooltipProvider>
+                          <Tooltip content="This is a tooltip">
+                            <Button>Hover me</Button>
+                          </Tooltip>
+                        </TooltipProvider>
+                        <TooltipProvider>
+                          <Tooltip content="This is a longer tooltip message that spans multiple lines">
+                            <Button>Long tooltip</Button>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </section>
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Quick Stats */}
+            <section className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Components</span>
+                  <Badge>12</Badge>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Categories</span>
+                  <Badge>4</Badge>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Last Updated</span>
+                  <span className="text-sm text-gray-600">Today</span>
+                </div>
+              </div>
+            </section>
+
+            {/* Recent Updates */}
+            <section className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Updates</h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <Badge variant="secondary">New</Badge>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Added new components</p>
+                    <p className="text-xs text-gray-500">2 hours ago</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Badge variant="secondary">Update</Badge>
+                  <div>
+                    <p className="text-sm font-medium text-gray-900">Improved documentation</p>
+                    <p className="text-xs text-gray-500">1 day ago</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Quick Actions */}
+            <section className="bg-white rounded-xl shadow-sm p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
+              <div className="space-y-3">
+                <Button variant="outline" className="w-full justify-start">
+                  <span>View Documentation</span>
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <span>Report an Issue</span>
+                </Button>
+                <Button variant="outline" className="w-full justify-start">
+                  <span>Request a Feature</span>
+                </Button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      {/* Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Component Preview</DialogTitle>
+            <DialogDescription>
+              This is a preview of our dialog component.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-4">
+            <p>You can use this dialog to show important information or gather user input.</p>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={() => setDialogOpen(false)}>
+              Confirm
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
 
-export default App;
+export default App; 
