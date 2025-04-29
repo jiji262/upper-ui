@@ -11,6 +11,7 @@ import { Tooltip, TooltipProvider } from './components/ui/feedback/tooltip';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './components/ui/feedback/dialog';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/navigation/tabs';
 import { Alert } from './components/ui/feedback/alert';
+import { Footer } from './components/ui/layout/footer';
 
 function App() {
   const [progress, setProgress] = React.useState(13);
@@ -350,8 +351,11 @@ function App() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
 
-export default App; 
+export default App;

@@ -250,6 +250,34 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 </Dialog>
 ```
 
+### Layout
+
+#### Footer
+
+```tsx
+import { Footer } from '@upper-ui/core';
+
+// Basic usage
+<Footer />
+
+// With custom class
+<Footer className="bg-gray-50" />
+```
+
+The Footer component provides a responsive, multi-column footer layout with:
+- Company information and social links
+- Product links
+- Resource links
+- Company links
+- Copyright and legal links
+
+Features:
+- Responsive grid layout
+- Social media icons
+- Hover effects on links
+- Copyright notice with current year
+- Legal links section
+
 ## Customization
 
 ### Theme
