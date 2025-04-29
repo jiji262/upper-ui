@@ -12,6 +12,17 @@ A modern, accessible, and customizable component library built with React and Ta
 - 🎨 Customizable theme support
 - 📦 Easy to install and use
 
+## Preview
+
+![Upper UI Component Library](./screenshots/homepage.png)
+
+The screenshot above shows the main interface of the component library, featuring:
+- Modern header with dark mode toggle
+- Hero section with call-to-action buttons
+- Comprehensive component showcase
+- Quick stats and recent updates
+- Clean and professional footer
+
 ## Installation
 
 ```bash
@@ -316,4 +327,4 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## License
 
-MIT © [Your Name]
+MIT © [jiji262]
