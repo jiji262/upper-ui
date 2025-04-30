@@ -26,15 +26,15 @@ The screenshot above shows the main interface of the component library, featurin
 ## Installation
 
 ```bash
-npm install @upper-ui/core
-# or
-yarn add @upper-ui/core
+git clone https://github.com/jiji262/upper-ui.git
+cd upper-ui
+npm install
 ```
 
 ## Quick Start
 
 ```tsx
-import { Button } from '@upper-ui/core';
+import { Button } from './components/ui/data-entry/button';
 
 function App() {
   return <Button>Click me</Button>;
@@ -48,7 +48,7 @@ function App() {
 #### Button
 
 ```tsx
-import { Button } from '@upper-ui/core';
+import { Button } from './components/ui/data-entry/button';
 
 // Basic usage
 <Button>Default</Button>
@@ -73,7 +73,7 @@ import { Button } from '@upper-ui/core';
 #### Input
 
 ```tsx
-import { Input } from '@upper-ui/core';
+import { Input } from './components/ui/data-entry/input';
 
 // Basic usage
 <Input placeholder="Enter text" />
@@ -85,7 +85,7 @@ import { Input } from '@upper-ui/core';
 #### Textarea
 
 ```tsx
-import { Textarea } from '@upper-ui/core';
+import { Textarea } from './components/ui/data-entry/textarea';
 
 // Basic usage
 <Textarea placeholder="Enter message" />
@@ -97,7 +97,7 @@ import { Textarea } from '@upper-ui/core';
 #### Switch
 
 ```tsx
-import { Switch } from '@upper-ui/core';
+import { Switch } from './components/ui/data-entry/switch';
 
 // Basic usage
 <Switch checked={isChecked} onCheckedChange={setIsChecked} />
@@ -108,7 +108,7 @@ import { Switch } from '@upper-ui/core';
 #### Card
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@upper-ui/core';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/ui/data-display/card';
 
 // Basic usage
 <Card>
@@ -143,7 +143,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 #### Avatar
 
 ```tsx
-import { Avatar } from '@upper-ui/core';
+import { Avatar } from './components/ui/data-display/avatar';
 
 // With image
 <Avatar src="https://example.com/avatar.jpg" />
@@ -160,7 +160,7 @@ import { Avatar } from '@upper-ui/core';
 #### Badge
 
 ```tsx
-import { Badge } from '@upper-ui/core';
+import { Badge } from './components/ui/data-display/badge';
 
 // Basic usage
 <Badge>Default</Badge>
@@ -177,7 +177,7 @@ import { Badge } from '@upper-ui/core';
 #### Progress
 
 ```tsx
-import { Progress } from '@upper-ui/core';
+import { Progress } from './components/ui/feedback/progress';
 
 // Basic usage
 <Progress value={75} />
@@ -186,7 +186,7 @@ import { Progress } from '@upper-ui/core';
 #### Alert
 
 ```tsx
-import { Alert } from '@upper-ui/core';
+import { Alert } from './components/ui/feedback/alert';
 
 // Basic usage
 <Alert>Default alert</Alert>
@@ -201,7 +201,7 @@ import { Alert } from '@upper-ui/core';
 #### Tooltip
 
 ```tsx
-import { Tooltip, TooltipProvider } from '@upper-ui/core';
+import { Tooltip, TooltipProvider } from './components/ui/feedback/tooltip';
 
 // Basic usage
 <TooltipProvider>
@@ -216,7 +216,7 @@ import { Tooltip, TooltipProvider } from '@upper-ui/core';
 #### Tabs
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@upper-ui/core';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/navigation/tabs';
 
 // Basic usage
 <Tabs defaultValue="account">
@@ -236,7 +236,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@upper-ui/core';
 #### Dialog
 
 ```tsx
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@upper-ui/core';
+import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './components/ui/feedback/dialog';
 
 // Basic usage
 <Dialog>
@@ -266,7 +266,7 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 #### Footer
 
 ```tsx
-import { Footer } from '@upper-ui/core';
+import { Footer } from './components/ui/layout/footer';
 
 // Basic usage
 <Footer />
