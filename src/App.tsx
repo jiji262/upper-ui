@@ -1,17 +1,48 @@
 import React from 'react';
-import { Button } from './components/ui/data-entry/button';
-import { Input } from './components/ui/data-entry/input';
-import { Textarea } from './components/ui/data-entry/textarea';
-import { Switch } from './components/ui/data-entry/switch';
-import { Avatar } from './components/ui/data-display/avatar';
-import { Badge } from './components/ui/data-display/badge';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/ui/data-display/card';
-import { Progress } from './components/ui/feedback/progress';
-import { Tooltip, TooltipProvider } from './components/ui/feedback/tooltip';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './components/ui/feedback/dialog';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/ui/navigation/tabs';
-import { Alert } from './components/ui/feedback/alert';
+import {
+  Button, 
+  Input, 
+  Textarea, 
+  Switch, 
+  Checkbox, // Assuming Checkbox is used in Form demo
+  Form, 
+  FormField, 
+  FormItem, 
+  FormLabel, 
+  FormControl, 
+  FormDescription, 
+  FormMessage 
+} from './components/ui/data-entry';
+import {
+  Avatar, 
+  Badge, 
+  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, 
+  Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableFooter
+} from './components/ui/data-display';
+import {
+  Progress, 
+  Tooltip, TooltipProvider, 
+  Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, 
+  Alert,
+  Skeleton
+} from './components/ui/feedback';
+import {
+  Tabs, TabsList, TabsTrigger, TabsContent,
+  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuShortcut, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuPortal, DropdownMenuSubContent
+} from './components/ui/navigation';
 import { Footer } from './components/ui/layout/footer';
+import { Title, Text, Paragraph, Link } from './components/ui/general';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod'; // Assuming this will be installed for Form demo
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from "./components/ui/navigation/select"; // Added for Form demo
+import { User, CreditCard, Settings, Keyboard, Users, UserPlus, Mail, MessageSquare, PlusCircle } from "lucide-react"; // Icons for Dropdown
 
 function App() {
   const [progress, setProgress] = React.useState(13);
@@ -169,6 +200,55 @@ function App() {
                   </CardContent>
                 </Card>
 
+                {/* Typography - NEW SECTION */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Typography</CardTitle>
+                    <CardDescription>Text elements and styles. Click titles to see `asChild` in action.</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <Title level={1} onClick={() => alert('Clicked H1')} className="cursor-pointer hover:text-primary">Title H1 (Clickable)</Title>
+                    <Title level={2} className="text-purple-600">Title H2 (Custom Color)</Title>
+                    <Title level={3}>Title H3</Title>
+                    <Title level={4}>Title H4</Title>
+                    <Title level={5}>Title H5</Title>
+                    <Paragraph className="text-slate-700 dark:text-slate-300">
+                      This is a paragraph of text, demonstrating a slightly different color. It can be used to display longer form content,
+                      like describing features or providing detailed information. You can also <Link href="#" className="font-bold hover:text-destructive">include styled links</Link> within your text.
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </Paragraph>
+                    <Paragraph>
+                      <Text asChild strong>
+                        <label htmlFor="demo-input">This strong text is a label (using asChild)</label>
+                      </Text>
+                      <Input id="demo-input" placeholder="Demo input" className="mt-1"/>
+                    </Paragraph>
+                    <Text>This is a general text element.</Text>
+                    <Text strong italic size="lg">Large, strong, and italic text.</Text>
+                    <Text code type="success">Successful code output.</Text>
+                    <Text mark type="warning" size="sm">Small marked warning.</Text>
+                    <Text disabled>This text is disabled.</Text>
+                    <Text type="secondary">This is secondary text, useful for sub-details.</Text>
+                    <Text type="success">This is success text, perhaps for a success message.</Text>
+                    <Text type="warning">This is warning text, for alerts or cautions.</Text>
+                    <Text type="danger" strong>This is strong danger text.</Text>
+                    <Text size="sm">Small text, for fine print.</Text>
+                    <Text size="lg" className="text-blue-500">Large text with custom color.</Text>
+                    <Link href="https://example.com" target="_blank">External Link (opens in new tab)</Link>
+                  </CardContent>
+                </Card>
+
+                {/* Form - NEW SECTION */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Form Example</CardTitle>
+                    <CardDescription>Using new Form components</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <DemoForm />
+                  </CardContent>
+                </Card>
+
                 {/* Feedback Components */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
@@ -193,6 +273,43 @@ function App() {
                         <Badge variant="secondary">Secondary</Badge>
                         <Badge variant="destructive">Destructive</Badge>
                         <Badge variant="outline">Outline</Badge>
+                      </div>
+                      {/* Skeleton Demo */}
+                      <div className="space-y-2 pt-4">
+                        <Title level={4}>Skeleton Loader Examples</Title>
+                        <Paragraph className="text-sm text-muted-foreground">
+                          Skeletons are used to provide a visual placeholder while content is loading.
+                        </Paragraph>
+                        
+                        <Text strong>Basic List Item:</Text>
+                        <div className="flex items-center space-x-4 p-2 border rounded-md">
+                          <Skeleton className="h-12 w-12 rounded-full" />
+                          <div className="space-y-2">
+                            <Skeleton className="h-4 w-[250px]" />
+                            <Skeleton className="h-4 w-[200px]" />
+                          </div>
+                        </div>
+
+                        <Text strong className="pt-2 block">Card Placeholder:</Text>
+                        <Card>
+                          <CardHeader>
+                            <Skeleton className="h-6 w-3/4 mb-2" />
+                            <Skeleton className="h-4 w-1/2" />
+                          </CardHeader>
+                          <CardContent className="space-y-3">
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-full" />
+                            <Skeleton className="h-4 w-5/6" />
+                          </CardContent>
+                          <CardFooter>
+                            <Skeleton className="h-10 w-24" />
+                          </CardFooter>
+                        </Card>
+
+                        <Text strong className="pt-2 block">Full Width Block:</Text>
+                        <Skeleton className="h-8 w-full mt-2" />
+                        <Text strong className="pt-2 block">Custom Shape (Button like):</Text>
+                        <Skeleton className="h-10 w-32 rounded-lg" />
                       </div>
                     </div>
                   </CardContent>
@@ -228,8 +345,82 @@ function App() {
                           </div>
                         </TabsContent>
                       </Tabs>
-                      <div className="flex justify-center">
+                      <div className="flex justify-center space-x-2">
                         <Button onClick={() => setDialogOpen(true)}>Open Dialog</Button>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="outline">Open Menu</Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent className="w-56" align="end">
+                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuGroup>
+                              <DropdownMenuItem>
+                                <User className="mr-2 h-4 w-4" />
+                                <span>Profile</span>
+                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <CreditCard className="mr-2 h-4 w-4" />
+                                <span>Billing</span>
+                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Settings className="mr-2 h-4 w-4" />
+                                <span>Settings</span>
+                                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                              </DropdownMenuItem>
+                              <DropdownMenuItem>
+                                <Keyboard className="mr-2 h-4 w-4" />
+                                <span>Keyboard shortcuts</span>
+                                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                              </DropdownMenuItem>
+                            </DropdownMenuGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuGroup>
+                              <DropdownMenuItem>
+                                <Users className="mr-2 h-4 w-4" />
+                                <span>Team</span>
+                              </DropdownMenuItem>
+                              <DropdownMenuSub>
+                                <DropdownMenuSubTrigger>
+                                  <UserPlus className="mr-2 h-4 w-4" />
+                                  <span>Invite users</span>
+                                </DropdownMenuSubTrigger>
+                                <DropdownMenuPortal>
+                                  <DropdownMenuSubContent>
+                                    <DropdownMenuItem>
+                                      <Mail className="mr-2 h-4 w-4" />
+                                      <span>Email</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                      <MessageSquare className="mr-2 h-4 w-4" />
+                                      <span>Message</span>
+                                    </DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>
+                                      <PlusCircle className="mr-2 h-4 w-4" />
+                                      <span>More...</span>
+                                    </DropdownMenuItem>
+                                  </DropdownMenuSubContent>
+                                </DropdownMenuPortal>
+                              </DropdownMenuSub>
+                            </DropdownMenuGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuCheckboxItem>
+                              Status Bar
+                            </DropdownMenuCheckboxItem>
+                            <DropdownMenuRadioGroup value={"bottom" /* Replace with state */}>
+                              <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+                              <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+                            </DropdownMenuRadioGroup>
+                            <DropdownMenuSeparator />
+                            <DropdownMenuItem disabled>
+                              <span>API (Disabled)</span>
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </div>
                     </div>
                   </CardContent>
@@ -251,16 +442,56 @@ function App() {
                       </div>
                       <div className="flex items-center space-x-4">
                         <TooltipProvider>
-                          <Tooltip content="This is a tooltip">
-                            <Button>Hover me</Button>
-                          </Tooltip>
-                        </TooltipProvider>
-                        <TooltipProvider>
-                          <Tooltip content="This is a longer tooltip message that spans multiple lines">
-                            <Button>Long tooltip</Button>
+                          <Tooltip content="This is a tooltip!">
+                            <Button variant="outline">Hover Me</Button>
                           </Tooltip>
                         </TooltipProvider>
                       </div>
+
+                      {/* Table Demo */}
+                      <div className="pt-4">
+                        <Title level={4} className="mb-2">Enhanced Table</Title>
+                        <div className="max-h-96 overflow-y-auto rounded-md border">
+                          <Table>
+                            <TableCaption>A list of your recent invoices. (Scroll for more)</TableCaption>
+                            <TableHeader>
+                              <TableRow>
+                                <TableHead className="w-[100px]">Invoice</TableHead>
+                                <TableHead>Status</TableHead>
+                                <TableHead>Customer</TableHead>
+                                <TableHead>Method</TableHead>
+                                <TableHead className="text-right">Amount</TableHead>
+                                <TableHead className="text-center">Action</TableHead>
+                              </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                              {[...Array(15)].map((_, i) => (
+                                <TableRow key={`INV00${i + 1}`} className={i % 2 === 0 ? "bg-muted/50" : ""}>
+                                  <TableCell className="font-medium">INV00{i + 1}</TableCell>
+                                  <TableCell>
+                                    <Badge variant={i % 3 === 0 ? "success" : i % 3 === 1 ? "warning" : "default"}>
+                                      {i % 3 === 0 ? "Paid" : i % 3 === 1 ? "Pending" : "Unpaid"}
+                                    </Badge>
+                                  </TableCell>
+                                  <TableCell>Customer {String.fromCharCode(65 + i)}</TableCell>
+                                  <TableCell>{i % 2 === 0 ? "Credit Card" : "PayPal"}</TableCell>
+                                  <TableCell className="text-right">${(Math.random() * 200 + 50).toFixed(2)}</TableCell>
+                                  <TableCell className="text-center">
+                                    <Button variant="outline" size="sm" onClick={() => alert(`Viewing INV00${i+1}`)}>View</Button>
+                                  </TableCell>
+                                </TableRow>
+                              ))}
+                            </TableBody>
+                            <TableFooter>
+                              <TableRow>
+                                <TableCell colSpan={5} className="text-right font-medium">Total Amount (Visible)</TableCell>
+                                <TableCell className="text-right font-bold">$XXXX.XX</TableCell>{/* Replace with actual calculation if needed */}
+                              </TableRow>
+                            </TableFooter>
+                          </Table>
+                        </div>
+                      </div>
+
                     </div>
                   </CardContent>
                 </Card>
@@ -355,6 +586,169 @@ function App() {
       {/* Footer */}
       <Footer />
     </div>
+  );
+}
+
+// Helper for Form Demo
+const formSchema = z.object({
+  username: z.string().min(2, { message: "Username must be at least 2 characters." }).max(50, { message: "Username must be 50 characters or less." }),
+  email: z.string().email({ message: "Invalid email address." }),
+  bio: z.string().max(200, { message: "Bio must be 200 characters or less." }).optional(),
+  preferredFramework: z.enum(["react", "vue", "svelte", "angular"], { errorMap: () => ({ message: "Please select a framework." }) }),
+  agreesToTerms: z.boolean().refine(val => val === true, { message: "You must agree to the terms and conditions." }),
+  notifications: z.boolean().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
+function DemoForm() {
+  const [submittedData, setSubmittedData] = React.useState<FormValues | null>(null);
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      bio: "",
+      preferredFramework: undefined, // Explicitly set undefined for enum if no default is selected
+      agreesToTerms: false,
+      notifications: false,
+    },
+  });
+
+  function onSubmit(values: FormValues) {
+    console.log(values);
+    setSubmittedData(values);
+    alert('Form submitted! Check console and displayed data below.');
+  }
+
+  function handleReset() {
+    form.reset();
+    setSubmittedData(null);
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter your username" {...field} />
+              </FormControl>
+              <FormDescription>
+                This is your public display name (min 2, max 50 chars).
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input type="email" placeholder="Enter your email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="bio"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Bio (Optional)</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Tell us a little about yourself (max 200 chars)" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="preferredFramework"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Preferred Framework</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a framework" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="react">React</SelectItem>
+                  <SelectItem value="vue">Vue.js</SelectItem>
+                  <SelectItem value="svelte">Svelte</SelectItem>
+                  <SelectItem value="angular">Angular</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="notifications"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
+              <div className="space-y-0.5">
+                <FormLabel>Enable Notifications</FormLabel>
+                <FormDescription>
+                  Receive updates about your account.
+                </FormDescription>
+              </div>
+              <FormControl>
+                <Switch
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="agreesToTerms"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>
+                  Agree to terms and conditions
+                </FormLabel>
+                <FormDescription>
+                  You agree to our Terms of Service and Privacy Policy.
+                </FormDescription>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
+        <div className="flex space-x-2">
+          <Button type="submit">Submit</Button>
+          <Button type="button" variant="outline" onClick={handleReset}>Reset Form</Button>
+        </div>
+      </form>
+      {submittedData && (
+        <div className="mt-6 p-4 border rounded-md bg-muted">
+          <Title level={4} className="mb-2">Submitted Data:</Title>
+          <pre className="text-sm whitespace-pre-wrap">{JSON.stringify(submittedData, null, 2)}</pre>
+        </div>
+      )}
+    </Form>
   );
 }
 
