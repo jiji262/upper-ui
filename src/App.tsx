@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button, 
   Input, 
@@ -51,14 +51,20 @@ import { Checkbox as CheckboxAnt } from './components/ui/data-entry/checkbox';
 import SelectAnt from './components/ui/data-entry/Select/Select';
 import TextareaAnt from './components/ui/data-entry/Textarea/Textarea';
 import Icon from './components/ui/general/Icon/Icon';
+import Empty from './components/ui/data-display/Empty/Empty';
+import Descriptions from './components/ui/data-display/Descriptions/Descriptions';
+import Modal from './components/ui/feedback/Modal/Modal';
 
 function App() {
   const [progress, setProgress] = React.useState(13);
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(false);
   const [darkModeEnabled, setDarkModeEnabled] = React.useState(false);
+  const [selectedTab, setSelectedTab] = React.useState<string>("button");
+  const [isSheetOpen, setIsSheetOpen] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [selectValue, setSelectValue] = React.useState<string | number>('');
+  const [modalOpen, setModalOpen] = React.useState(false);
   const [checkboxValue, setCheckboxValue] = React.useState(false);
+  const [selectValue, setSelectValue] = React.useState<string | number | (string | number)[]>('');
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -651,6 +657,68 @@ function App() {
                         <span className="text-sm mt-1">Custom Color</span>
                       </div>
                     </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Empty Component */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Empty</CardTitle>
+                    <CardDescription>Empty state placeholder</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <Empty description="No data available" />
+                      <Empty description="No items found" />
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Descriptions Component */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Descriptions</CardTitle>
+                    <CardDescription>Display detailed information</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Descriptions title="User Information" bordered>
+                      <Descriptions.Item label="Name">John Doe</Descriptions.Item>
+                      <Descriptions.Item label="Email">john.doe@example.com</Descriptions.Item>
+                      <Descriptions.Item label="Address">123 Main St, City</Descriptions.Item>
+                      <Descriptions.Item label="Status">Active</Descriptions.Item>
+                    </Descriptions>
+                  </CardContent>
+                </Card>
+                
+                {/* Modal Component */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Modal</CardTitle>
+                    <CardDescription>Dialog box for important content</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex justify-center">
+                      <Button onClick={() => setModalOpen(true)}>
+                        Open Modal
+                      </Button>
+                    </div>
+                    <Modal 
+                      title="Upper UI Modal"
+                      open={modalOpen}
+                      onOk={() => setModalOpen(false)}
+                      onCancel={() => setModalOpen(false)}
+                      footer={[
+                        <Button key="back" onClick={() => setModalOpen(false)}>
+                          Cancel
+                        </Button>,
+                        <Button key="submit" type="primary" onClick={() => setModalOpen(false)}>
+                          OK
+                        </Button>,
+                      ]}
+                    >
+                      <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
+                      <p>You can add any content here.</p>
+                    </Modal>
                   </CardContent>
                 </Card>
               </div>
