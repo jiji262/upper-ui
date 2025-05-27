@@ -1,6 +1,6 @@
 // src/components/ui/data-display/Descriptions/Descriptions.tsx
 import React, { Children, isValidElement } from 'react';
-import { DescriptionsItemProps } from './DescriptionsItem';
+import DescriptionsItem, { DescriptionsItemProps } from './DescriptionsItem';
 import './Descriptions.css';
 
 type DescriptionsLayout = 'horizontal' | 'vertical';
@@ -80,8 +80,8 @@ const Descriptions: React.FC<DescriptionsProps> = ({
         if (currentColSpan < currentColumnCount && currentRow.length > 0) {
              for (let i = currentColSpan; i < currentColumnCount; i++) {
                 if (layout === 'horizontal') {
-                    currentRow.push(<td key={`empty-label-${rows.length}-${i}`} className="ant-descriptions-item-label"></td>);
-                    currentRow.push(<td key={`empty-content-${rows.length}-${i}`} className="ant-descriptions-item-content"></td>);
+                    currentRow.push(<td key={`empty-label-${rows.length}-${i}`} className="upper-descriptions-item-label"></td>);
+                    currentRow.push(<td key={`empty-content-${rows.length}-${i}`} className="upper-descriptions-item-content"></td>);
                 } else { // vertical
                      currentRow.push(<td key={`empty-vertical-${rows.length}-${i}`} colSpan={1}></td>);
                 }
@@ -101,12 +101,12 @@ const Descriptions: React.FC<DescriptionsProps> = ({
 
       if (layout === 'vertical') {
         currentRow.push(
-          <td key={`v-label-${index}`} colSpan={itemSpan} className="ant-descriptions-item">
-            <div className="ant-descriptions-item-container">
-              <span className="ant-descriptions-item-label" style={itemLabelStyle}>
+          <td key={`v-label-${index}`} colSpan={itemSpan} className="upper-descriptions-item">
+            <div className="upper-descriptions-item-container">
+              <span className="upper-descriptions-item-label" style={itemLabelStyle}>
                 {label}{effectiveColon ? ':' : ''}
               </span>
-              <span className="ant-descriptions-item-content" style={itemContentStyle}>
+              <span className="upper-descriptions-item-content" style={itemContentStyle}>
                 {content}
               </span>
             </div>
@@ -114,12 +114,12 @@ const Descriptions: React.FC<DescriptionsProps> = ({
         );
       } else { // Horizontal layout
         currentRow.push(
-          <th key={`h-label-${index}`} className="ant-descriptions-item-label" style={itemLabelStyle} colSpan={1}>
+          <th key={`h-label-${index}`} className="upper-descriptions-item-label" style={itemLabelStyle} colSpan={1}>
             {label}{effectiveColon ? ':' : ''}
           </th>
         );
         currentRow.push(
-          <td key={`h-content-${index}`} className="ant-descriptions-item-content" style={itemContentStyle} colSpan={Math.max(1, itemSpan * 2 - 1)}>
+          <td key={`h-content-${index}`} className="upper-descriptions-item-content" style={itemContentStyle} colSpan={Math.max(1, itemSpan * 2 - 1)}>
             {content}
           </td>
         );
@@ -133,8 +133,8 @@ const Descriptions: React.FC<DescriptionsProps> = ({
         if (currentColSpan < currentColumnCount) {
             for (let i = currentColSpan; i < currentColumnCount; i++) {
                  if (layout === 'horizontal') {
-                    currentRow.push(<th key={`empty-label-last-${i}`} className="ant-descriptions-item-label"></th>);
-                    currentRow.push(<td key={`empty-content-last-${i}`} className="ant-descriptions-item-content"></td>);
+                    currentRow.push(<th key={`empty-label-last-${i}`} className="upper-descriptions-item-label"></th>);
+                    currentRow.push(<td key={`empty-content-last-${i}`} className="upper-descriptions-item-content"></td>);
                 } else { // vertical
                      currentRow.push(<td key={`empty-vertical-last-${i}`} colSpan={1}></td>);
                 }
@@ -149,7 +149,7 @@ const Descriptions: React.FC<DescriptionsProps> = ({
 
 
     return rows.map((row, rowIndex) => (
-      <tr key={`row-${rowIndex}`} className="ant-descriptions-row">
+      <tr key={`row-${rowIndex}`} className="upper-descriptions-row">
         {row}
       </tr>
     ));
@@ -157,9 +157,9 @@ const Descriptions: React.FC<DescriptionsProps> = ({
 
 
   const containerClasses = [
-    'ant-descriptions',
-    `ant-descriptions-${size}`,
-    bordered ? 'ant-descriptions-bordered' : '',
+    'upper-descriptions',
+    `upper-descriptions-${size}`,
+    bordered ? 'upper-descriptions-bordered' : '',
     // layout class is applied to table or view div
     className,
   ].filter(Boolean).join(' ');
@@ -167,12 +167,12 @@ const Descriptions: React.FC<DescriptionsProps> = ({
   return (
     <div className={containerClasses} style={style}>
       {(title || extra) && (
-        <div className="ant-descriptions-header">
-          {title && <div className="ant-descriptions-title">{title}</div>}
-          {extra && <div className="ant-descriptions-extra">{extra}</div>}
+        <div className="upper-descriptions-header">
+          {title && <div className="upper-descriptions-title">{title}</div>}
+          {extra && <div className="upper-descriptions-extra">{extra}</div>}
         </div>
       )}
-      <div className={`ant-descriptions-view ant-descriptions-layout-${layout}`}>
+      <div className={`upper-descriptions-view upper-descriptions-layout-${layout}`}>
         <table>
           <tbody>
             {renderItems()}

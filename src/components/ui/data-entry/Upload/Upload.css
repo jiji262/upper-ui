@@ -1,7 +1,7 @@
 /* src/components/ui/data-entry/Upload/Upload.css */
 /* Based on antd/es/upload/style/index.css */
 
-.ant-upload {
+.upper-upload {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
@@ -11,19 +11,19 @@
   color: rgba(0,0,0,0.88);
 }
 
-.ant-upload-trigger-wrapper { /* Wrapper for the trigger element if Upload is not the trigger itself */
+.upper-upload-trigger-wrapper { /* Wrapper for the trigger element if Upload is not the trigger itself */
     display: inline-block; /* Or block depending on how children prop is used */
 }
 
 
 /* Default button trigger style (if no children passed) */
-.ant-upload-select { /* This class is often on the trigger wrapper */
+.upper-upload-select { /* This class is often on the trigger wrapper */
   display: inline-block;
   /* Styles for the area that triggers file input, e.g., a button or drag area */
 }
 
 /* For picture-card list type, the trigger is styled like a card */
-.ant-upload-select-picture-card {
+.upper-upload-select-picture-card {
   display: table-cell;
   width: 102px; /* AntD default size */
   height: 102px;
@@ -37,14 +37,14 @@
   cursor: pointer;
   transition: border-color 0.3s;
 }
-.ant-upload-select-picture-card:hover {
+.upper-upload-select-picture-card:hover {
   border-color: #1677ff; /* Primary color */
 }
-.ant-upload-select-picture-card .anticon { /* Icon inside picture-card trigger */
+.upper-upload-select-picture-card .anticon { /* Icon inside picture-card trigger */
   font-size: 24px;
   color: rgba(0,0,0,0.45);
 }
-.ant-upload-select-picture-card div { /* Text like "Upload" */
+.upper-upload-select-picture-card div { /* Text like "Upload" */
   margin-top: 8px;
   color: rgba(0,0,0,0.88);
   font-size: 12px;
@@ -52,12 +52,12 @@
 
 
 /* File List Styles */
-.ant-upload-list {
+.upper-upload-list {
   margin-top: 8px;
   line-height: 1.5714285714285714;
 }
 
-.ant-upload-list-item {
+.upper-upload-list-item {
   position: relative;
   display: flex;
   align-items: center;
@@ -67,33 +67,33 @@
   transition: background-color 0.3s;
   background-color: #fafafa; /* Default item background */
 }
-.ant-upload-list-item:hover {
+.upper-upload-list-item:hover {
   background-color: #f0f0f0; /* Hover background */
 }
 
-.ant-upload-list-item-info {
+.upper-upload-list-item-info {
   display: flex;
   align-items: center;
   flex-grow: 1;
   overflow: hidden; /* For name ellipsis */
 }
 
-.ant-upload-list-item-icon {
+.upper-upload-list-item-icon {
   margin-right: 8px;
   color: rgba(0,0,0,0.45); /* Default icon color */
   font-size: 14px; /* Match text size */
   vertical-align: middle; /* Align with text */
 }
-.ant-upload-list-item-icon .anticon-loading { /* Loading icon */
+.upper-upload-list-item-icon .anticon-loading { /* Loading icon */
     color: #1677ff; /* Primary color for loading */
-    animation: ant-upload-loading-icon-spin 1s infinite linear;
+    animation: upper-upload-loading-icon-spin 1s infinite linear;
 }
-@keyframes ant-upload-loading-icon-spin {
+@keyframes upper-upload-loading-icon-spin {
   100% { transform: rotate(360deg); }
 }
 
 
-.ant-upload-list-item-name {
+.upper-upload-list-item-name {
   display: inline-block;
   flex-grow: 1;
   padding-right: 8px; /* Space before actions */
@@ -104,27 +104,27 @@
   text-overflow: ellipsis;
   transition: color 0.3s;
 }
-.ant-upload-list-item-name:hover {
+.upper-upload-list-item-name:hover {
   color: #1677ff; /* Link hover color */
 }
 
-.ant-upload-list-item-actions {
+.upper-upload-list-item-actions {
   margin-left: auto; /* Push actions to the right */
   white-space: nowrap; /* Prevent actions from wrapping */
 }
-.ant-upload-list-item-actions .anticon {
+.upper-upload-list-item-actions .anticon {
   margin-left: 8px;
   color: rgba(0,0,0,0.45);
   cursor: pointer;
   transition: color 0.3s;
 }
-.ant-upload-list-item-actions .anticon:hover {
+.upper-upload-list-item-actions .anticon:hover {
   color: rgba(0,0,0,0.88); /* Darker on hover */
 }
 
 
 /* Progress Bar */
-.ant-upload-list-item-progress {
+.upper-upload-list-item-progress {
   position: absolute;
   bottom: -6px; /* Position below item text, adjust as needed */
   left: 26px; /* Align with text, after icon */
@@ -136,38 +136,38 @@
   padding: 0;
   line-height: 0; /* Remove line height for progress bar */
 }
-.ant-upload-list-item .ant-progress-outer { /* If using antd progress structure */
+.upper-upload-list-item .upper-progress-outer { /* If using antd progress structure */
     /* position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; */
 }
-.ant-upload-list-item .ant-progress-inner { /* If using antd progress structure */
+.upper-upload-list-item .upper-progress-inner { /* If using antd progress structure */
     /* display: block; width: 0%; height: 100%; background-color: #1677ff; border-radius: 1px; transition: width 0.2s; */
 }
 /* Simplified progress bar directly */
-.ant-upload-progress-outer {
+.upper-upload-progress-outer {
     width: 100%; height: 100%;
 }
-.ant-upload-progress-inner {
+.upper-upload-progress-inner {
     display: block; height: 100%; background-color: #1677ff; border-radius: 1px; transition: width 0.2s;
 }
 
 
 /* Status specific styles */
-.ant-upload-list-item-done .ant-upload-list-item-name {
+.upper-upload-list-item-done .upper-upload-list-item-name {
   /* color: #52c41a; /* Green for success, or just default */
 }
-.ant-upload-list-item-error {
+.upper-upload-list-item-error {
   background-color: #fff1f0; /* Light red background for error */
   border: 1px solid #ffccc7; /* Reddish border */
 }
-.ant-upload-list-item-error .ant-upload-list-item-name,
-.ant-upload-list-item-error .ant-upload-list-item-icon .anticon,
-.ant-upload-list-item-error .ant-upload-list-item-actions .anticon {
+.upper-upload-list-item-error .upper-upload-list-item-name,
+.upper-upload-list-item-error .upper-upload-list-item-icon .anticon,
+.upper-upload-list-item-error .upper-upload-list-item-actions .anticon {
   color: #ff4d4f; /* Red color for error text/icons */
 }
-.ant-upload-list-item-error .ant-upload-list-item-progress .ant-progress-inner {
+.upper-upload-list-item-error .upper-upload-list-item-progress .upper-progress-inner {
     background-color: #ff4d4f; /* Red progress bar for error */
 }
-.ant-upload-list-item-error-message {
+.upper-upload-list-item-error-message {
     color: #ff4d4f;
     font-size: 12px;
     margin-top: 2px;
@@ -176,32 +176,32 @@
 
 
 /* Picture list type */
-.ant-upload-list-picture .ant-upload-list-item {
+.upper-upload-list-picture .upper-upload-list-item {
   border: 1px solid #d9d9d9;
   /* height: 66px; /* AntD default height for picture items */
 }
-.ant-upload-list-picture .ant-upload-list-item-info {
+.upper-upload-list-picture .upper-upload-list-item-info {
   padding: 4px; /* Padding around icon and name */
 }
-.ant-upload-list-picture .ant-upload-list-item-image {
+.upper-upload-list-picture .upper-upload-list-item-image {
   max-width: 48px; /* AntD default image size */
   max-height: 48px;
   object-fit: contain; /* Ensure image fits without cropping */
   border-radius: 4px;
 }
-.ant-upload-list-picture .ant-upload-list-item-thumbnail .anticon { /* For non-image file icon */
+.upper-upload-list-picture .upper-upload-list-item-thumbnail .anticon { /* For non-image file icon */
   font-size: 28px;
   color: #8c8c8c;
 }
 
 
 /* Picture-card list type */
-.ant-upload-list-picture-card {
+.upper-upload-list-picture-card {
   display: flex;
   flex-wrap: wrap;
   gap: 8px; /* Gap between cards */
 }
-.ant-upload-list-picture-card .ant-upload-list-item {
+.upper-upload-list-picture-card .upper-upload-list-item {
   display: table; /* AntD uses table for picture-card item layout */
   width: 102px; /* AntD default card size */
   height: 102px;
@@ -212,7 +212,7 @@
   margin: 0; /* No margin, use gap */
   position: relative; /* For progress and actions overlay */
 }
-.ant-upload-list-picture-card .ant-upload-list-item-info {
+.upper-upload-list-picture-card .upper-upload-list-item-info {
   display: table-cell;
   width: 100%;
   height: 100%;
@@ -220,18 +220,18 @@
   vertical-align: middle;
   position: relative; /* For image/icon centering or overlay */
 }
-.ant-upload-list-picture-card .ant-upload-list-item-image {
+.upper-upload-list-picture-card .upper-upload-list-item-image {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
 }
-.ant-upload-list-picture-card .ant-upload-list-item-icon .anticon { /* Icon for non-image files */
+.upper-upload-list-picture-card .upper-upload-list-item-icon .anticon { /* Icon for non-image files */
     font-size: 32px; color: #8c8c8c;
 }
-.ant-upload-list-picture-card .ant-upload-list-item-name {
+.upper-upload-list-picture-card .upper-upload-list-item-name {
   display: none; /* Name is usually not shown directly on card, but in tooltip */
 }
-.ant-upload-list-picture-card .ant-upload-list-item-actions {
+.upper-upload-list-picture-card .upper-upload-list-item-actions {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -247,15 +247,15 @@
   opacity: 0; /* Hidden by default, show on hover */
   transition: opacity 0.3s;
 }
-.ant-upload-list-picture-card .ant-upload-list-item:hover .ant-upload-list-item-actions {
+.upper-upload-list-picture-card .upper-upload-list-item:hover .upper-upload-list-item-actions {
   opacity: 1;
 }
-.ant-upload-list-picture-card .ant-upload-list-item-actions .anticon {
+.upper-upload-list-picture-card .upper-upload-list-item-actions .anticon {
   color: #fff;
   font-size: 16px;
   margin: 0 4px; /* Space between action icons */
 }
-.ant-upload-list-picture-card .ant-upload-list-item-progress {
+.upper-upload-list-picture-card .upper-upload-list-item-progress {
     position: absolute;
     bottom: 8px; /* Progress at bottom of card */
     left: 8px;
@@ -263,30 +263,30 @@
     height: 4px;
     padding: 0;
 }
-.ant-upload-list-picture-card .ant-upload-list-item-error-message {
+.upper-upload-list-picture-card .upper-upload-list-item-error-message {
     display: none; /* Error message not typically shown on card, status indicated by border/icon */
 }
-.ant-upload-list-picture-card .ant-upload-list-item-error {
+.upper-upload-list-picture-card .upper-upload-list-item-error {
     border-color: #ff4d4f;
 }
 
 
 /* Disabled state for the trigger */
-.ant-upload-disabled {
+.upper-upload-disabled {
   cursor: not-allowed;
 }
-.ant-upload-disabled .ant-btn { /* If Button is used as trigger */
+.upper-upload-disabled .ant-btn { /* If Button is used as trigger */
   /* Disabled styles handled by Button component */
 }
-.ant-upload-disabled .ant-upload-select-picture-card {
+.upper-upload-disabled .upper-upload-select-picture-card {
   cursor: not-allowed;
   background-color: rgba(0,0,0,0.02);
 }
-.ant-upload-disabled .ant-upload-select-picture-card:hover {
+.upper-upload-disabled .upper-upload-select-picture-card:hover {
     border-color: #d9d9d9; /* No hover border change */
 }
-.ant-upload-disabled .ant-upload-select-picture-card .anticon,
-.ant-upload-disabled .ant-upload-select-picture-card div {
+.upper-upload-disabled .upper-upload-select-picture-card .anticon,
+.upper-upload-disabled .upper-upload-select-picture-card div {
     color: rgba(0,0,0,0.25);
 }
 

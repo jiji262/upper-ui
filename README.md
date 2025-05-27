@@ -43,7 +43,16 @@ function App() {
 
 ## Components
 
-### General
+### Component Styles
+
+This library provides two distinct styles of components:
+
+1. **Tailwind CSS Components** - Modern style components built with Tailwind CSS
+2. **Upper UI Style Components** - Components that follow Upper UI guidelines
+
+You can use either style or mix them in your project, depending on your design requirements.
+
+### Tailwind Style Components
 
 #### Typography
 
@@ -91,8 +100,6 @@ import { Title, Text, Paragraph, Link, Input } from './components/ui/general';
 <Link href="#example">Internal Link</Link>
 <Link href="https://example.com" target="_blank">External Link (new tab)</Link>
 ```
-
-### Data Entry
 
 #### Button
 
@@ -364,8 +371,6 @@ import { Input } from './components/ui/data-entry/input';
 </div>
 ```
 
-### Data Display
-
 #### Card
 
 ```tsx
@@ -511,8 +516,6 @@ function InvoiceTable() {
 }
 ```
 
-### Feedback
-
 #### Progress
 
 ```tsx
@@ -587,8 +590,6 @@ import { Card, CardHeader, CardContent, CardFooter } from './components/ui/data-
 <Skeleton className="h-8 w-full mt-4" />
 <Skeleton className="h-10 w-32 rounded-lg mt-2" /> {/* Button-like */} 
 ```
-
-### Navigation
 
 #### Tabs
 
@@ -747,8 +748,6 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 </Dialog>
 ```
 
-### Layout
-
 #### Footer
 
 ```tsx
@@ -774,6 +773,156 @@ Features:
 - Hover effects on links
 - Copyright notice with current year
 - Legal links section
+
+### Upper UI Style Components
+
+These components follow the Upper UI style system with black borders, box shadows, and purple accents, and can be imported directly.
+
+#### Button
+
+```tsx
+import { Button } from './components/ui/general';
+
+// Basic usage
+<Button>Default</Button>
+
+// Variants
+<Button variant="outline">Default</Button>
+<Button>Primary</Button>
+<Button variant="outline" className="border-dashed">Dashed</Button>
+<Button variant="ghost">Text</Button>
+<Button variant="link">Link</Button>
+
+// Sizes
+<Button size="sm">Small</Button>
+<Button>Default</Button>
+<Button size="lg">Large</Button>
+
+// States
+<Button disabled>Disabled</Button>
+<Button loading>Loading</Button>
+<Button variant="destructive">Danger</Button>
+```
+
+#### Input
+
+```tsx
+import { Input } from './components/ui/data-entry/input';
+
+// Basic usage
+<Input placeholder="Basic usage" />
+
+// Sizes
+<Input size="large" placeholder="Large size" />
+<Input placeholder="Default size" />
+<Input size="small" placeholder="Small size" />
+
+// Status
+<Input error={true} placeholder="Error" />
+<Input error={true} placeholder="Warning" />
+
+// With addon elements
+<div className="flex items-center">
+  <span className="mr-2">http://</span>
+  <Input placeholder="Website" />
+  <span className="ml-2">.com</span>
+</div>
+
+// Disabled
+<Input placeholder="Disabled" disabled />
+```
+
+#### Checkbox
+
+```tsx
+import { Checkbox } from './components/ui/data-entry/checkbox';
+
+// Basic usage
+<Checkbox label="Checkbox" />
+
+// Controlled checkbox
+<Checkbox 
+  label="Controlled Checkbox"
+  checked={checked} 
+  onChange={(e) => setChecked(e.target.checked)}
+/>
+
+// Disabled
+<Checkbox label="Disabled" disabled />
+
+// Indeterminate state
+<Checkbox label="Indeterminate" indeterminate />
+```
+
+#### Select
+
+```tsx
+import SelectAnt from './components/ui/data-entry/Select/Select';
+
+// Basic usage
+<SelectAnt
+  options={[
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+    { label: 'Option 3', value: '3' },
+  ]}
+  placeholder="Please select"
+  value={selectValue}
+  onChange={(value) => setSelectValue(value)}
+/>
+
+// Disabled
+<SelectAnt
+  disabled
+  options={[
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+  ]}
+  placeholder="Disabled"
+/>
+
+// Multiple selection
+<SelectAnt
+  mode="multiple"
+  options={[
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+    { label: 'Option 3', value: '3' },
+  ]}
+  placeholder="Select multiple"
+/>
+```
+
+#### Textarea
+
+```tsx
+import TextareaAnt from './components/ui/data-entry/Textarea/Textarea';
+
+// Basic usage
+<TextareaAnt placeholder="Basic usage" />
+
+// Show count
+<TextareaAnt showCount maxLength={100} placeholder="With character count" />
+
+// Status
+<TextareaAnt status="error" placeholder="Error" />
+```
+
+#### Icon
+
+```tsx
+import Icon from './components/ui/general/Icon/Icon';
+
+// Basic usage
+<Icon name="UploadOutlined" />
+<Icon name="LeftOutlined" />
+<Icon name="RightOutlined" />
+
+// With custom styling
+<Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
+```
+
+For more components and detailed documentation, please refer to the code examples in the `/src/components/ui` directory.
 
 ## Customization
 

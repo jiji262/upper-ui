@@ -1,62 +1,33 @@
 // src/components/ui/general/Icon/Icon.tsx
 import React from 'react';
-import * as AntDesignIcons from '@ant-design/icons';
 import './Icon.css';
 
-interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
-  name: keyof typeof AntDesignIcons;
-  size?: string | number;
-  color?: string;
-  spin?: boolean;
-  rotate?: number;
-  twoToneColor?: string; // For two-tone icons
+// 简单的图标组件，可以根据需要扩展
+export interface IconProps {
+  name: string;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-const Icon: React.FC<IconProps> = ({
-  name,
-  size,
-  color,
-  spin,
-  rotate,
-  twoToneColor,
-  style,
-  ...rest
-}) => {
-  const AntIconComponent = AntDesignIcons[name] as React.ComponentType<any>;
-
-  if (!AntIconComponent) {
-    console.warn(`Icon "${name}" not found in @ant-design/icons. Rendering a default icon.`);
-    // Fallback to a default icon or null if preferred
-    const DefaultIcon = AntDesignIcons['QuestionCircleOutlined'];
-    return (
-        <span
-            role="img"
-            aria-label={name}
-            className="ant-icon"
-            style={{ fontSize: size, color, transform: rotate ? `rotate(${rotate}deg)` : undefined, ...style }}
-            {...rest}
-        >
-            <DefaultIcon spin={spin} twoToneColor={twoToneColor} />
-        </span>
-    );
-  }
-
-  const iconStyle: React.CSSProperties = {
-    fontSize: size,
-    color: color,
-    ...(rotate && { transform: `rotate(${rotate}deg)` }),
-    ...style,
+const Icon: React.FC<IconProps> = ({ name, className = '', style }) => {
+  // 这里可以实现基于 name 的图标渲染
+  // 简化实现，仅为了展示
+  const renderIcon = () => {
+    switch (name) {
+      case 'UploadOutlined':
+        return <span>↑</span>;
+      case 'LeftOutlined':
+        return <span>←</span>;
+      case 'RightOutlined':
+        return <span>→</span>;
+      default:
+        return <span>{name}</span>;
+    }
   };
 
   return (
-    <span
-      role="img"
-      aria-label={name.replace(/([A-Z])/g, ' $1').trim().replace('Outlined', '').replace('Filled', '').replace('Two Tone', '')}
-      className="ant-icon"
-      style={iconStyle}
-      {...rest}
-    >
-      <AntIconComponent spin={spin} twoToneColor={twoToneColor} />
+    <span className={`upper-icon ${className}`} style={style}>
+      {renderIcon()}
     </span>
   );
 };

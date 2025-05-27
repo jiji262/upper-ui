@@ -4,8 +4,8 @@ import Icon from '../../general/Icon/Icon'; // Assuming Icon is available for de
 import './Empty.css';
 
 // Default SVG for Empty component (simplified version of AntD's default)
-const DefaultEmptyImage: React.FC = () => (
-  <svg width="184" height="152" viewBox="0 0 184 152" xmlns="http://www.w3.org/2000/svg" className="ant-empty-img-default">
+export const DefaultEmptyImage: React.FC = () => (
+  <svg width="184" height="152" viewBox="0 0 184 152" xmlns="http://www.w3.org/2000/svg" className="upper-empty-img-default">
     <g fill="none" fillRule="evenodd">
       <g transform="translate(24 31.67)">
         <ellipse fillOpacity=".8" fill="#F5F5F7" cx="67.797" cy="106.89" rx="67.797" ry="12.668"/>
@@ -31,7 +31,7 @@ const DefaultEmptyImage: React.FC = () => (
 
 // For AntD's "simple" empty image (e.g. used in Select, Transfer)
 export const SimpleEmptyImage: React.FC = () => (
-    <svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg" className="ant-empty-img-simple">
+    <svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg" className="upper-empty-img-simple">
         <g transform="translate(0 1)" fill="none" fillRule="evenodd">
             <ellipse fill="#F5F5F7" cx="32" cy="33" rx="32" ry="7" />
             <g fillRule="nonzero" stroke="#D9D9D9">
@@ -77,15 +77,15 @@ const Empty: React.FC<EmptyProps> = ({
     return <DefaultEmptyImage />; // Fallback to default if image prop is unrecognized
   };
 
-  const emptyClasses = ['ant-empty', className].filter(Boolean).join(' ');
+  const emptyClasses = ['upper-empty', className].filter(Boolean).join(' ');
 
   return (
     <div className={emptyClasses} style={style}>
-      <div className="ant-empty-image" style={imageStyle}>
+      <div className="upper-empty-image" style={imageStyle}>
         {renderImage()}
       </div>
-      {description && <div className="ant-empty-description">{description}</div>}
-      {children && <div className="ant-empty-footer">{children}</div>}
+      {description && <div className="upper-empty-description">{description}</div>}
+      {children && <div className="upper-empty-footer">{children}</div>}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 // src/components/ui/data-entry/Transfer/Transfer.tsx
 import React, { useState, useEffect } from 'react';
 import TransferList from './TransferList';
-import Button from '../Button/Button'; // Assuming Button is available
+import Button from '../../general/Button/Button'; // Changed path to use Button from general directory
 import Icon from '../../general/Icon'; // Assuming Icon is available
 import './Transfer.css';
 

@@ -28,7 +28,7 @@ const UploadList: React.FC<UploadListProps> = ({
   // showPreviewIcon = true, // Not implemented
   // previewFile, // Not implemented
   locale = { removeFile: 'Remove file', uploadError: 'Upload error', uploading: 'Uploading...' },
-  prefixCls = 'ant-upload',
+  prefixCls = 'upper-upload',
 }) => {
   if (!items || items.length === 0) {
     return null;

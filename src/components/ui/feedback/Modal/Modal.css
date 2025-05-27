@@ -1,12 +1,12 @@
 /* src/components/ui/feedback/Modal/Modal.css */
 /* Based on antd/es/modal/style/index.css */
 
-.ant-modal-root {
+.upper-modal-root {
   /* This is the root element where the portal is attached */
   /* Usually takes no direct style unless for global overrides or specific portal needs */
 }
 
-.ant-modal-mask {
+.upper-modal-mask {
   position: fixed;
   top: 0;
   right: 0;
@@ -20,18 +20,18 @@
   transition: opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   pointer-events: auto; /* Mask is interactive */
 }
-.ant-modal-wrap.ant-modal-wrap-open .ant-modal-mask, /* If mask is part of wrap and wrap controls open state */
-.ant-modal-root .ant-modal-mask { /* If mask is direct child of portal root */
+.upper-modal-wrap.upper-modal-wrap-open .upper-modal-mask, /* If mask is part of wrap and wrap controls open state */
+.upper-modal-root .upper-modal-mask { /* If mask is direct child of portal root */
     /* This CSS assumes mask is part of the same container as modal-wrap for open transition */
-    /* In current Modal.tsx, mask is sibling of modal-wrap, so transition should be on mask itself when parent .ant-modal-root is added/removed or gets an open class */
+    /* In current Modal.tsx, mask is sibling of modal-wrap, so transition should be on mask itself when parent .upper-modal-root is added/removed or gets an open class */
 }
 /* When modal (and thus mask) is open */
-.ant-modal-root:has(.ant-modal-wrap) .ant-modal-mask { /* Simplified selector for when modal is present */
+.upper-modal-root:has(.upper-modal-wrap) .upper-modal-mask { /* Simplified selector for when modal is present */
     opacity: 1;
 }
 
 
-.ant-modal-wrap {
+.upper-modal-wrap {
   position: fixed;
   top: 0;
   right: 0;
@@ -47,7 +47,7 @@
   /* transform: scale(0.5); */
   /* transition: opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86); */
 }
-.ant-modal-wrap-centered .ant-modal { /* For vertically centered modal */
+.upper-modal-wrap-centered .upper-modal { /* For vertically centered modal */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,12 +55,12 @@
   top: 0; /* Reset top position for centered */
   /* transform: none; /* Reset transform if different animation for centered */
 }
-.ant-modal-wrap-centered .ant-modal-content {
+.upper-modal-wrap-centered .upper-modal-content {
     text-align: left; /* Reset text-align for content inside centered modal */
 }
 
 
-.ant-modal {
+.upper-modal {
   box-sizing: border-box;
   margin: 0 auto; /* Horizontal centering if not using flex on wrap */
   position: relative; /* Relative for header/footer/close button absolute positioning */
@@ -74,13 +74,13 @@
   transition: opacity 0.2s cubic-bezier(0.78,0.14,0.15,0.86), transform 0.2s cubic-bezier(0.78,0.14,0.15,0.86);
 }
 /* When modal is open and part of an open wrap/root */
-.ant-modal-root:has(.ant-modal-wrap) .ant-modal {
+.upper-modal-root:has(.upper-modal-wrap) .upper-modal {
     opacity: 1;
     transform: scale(1);
 }
 
 
-.ant-modal-content {
+.upper-modal-content {
   position: relative;
   background-color: #fff;
   background-clip: padding-box;
@@ -90,7 +90,7 @@
   pointer-events: auto;
 }
 
-.ant-modal-close {
+.upper-modal-close {
   position: absolute;
   top: 0;
   right: 0;
@@ -111,23 +111,23 @@
   align-items: center;
   justify-content: center;
 }
-.ant-modal-close:hover {
+.upper-modal-close:hover {
   color: rgba(0,0,0,0.88); /* Darker on hover */
 }
-.ant-modal-close-x { /* The span containing the icon */
+.upper-modal-close-x { /* The span containing the icon */
   display: inline-block;
   font-size: 16px; /* Icon size */
   line-height: 1;
 }
 
-.ant-modal-header {
+.upper-modal-header {
   padding: 16px 24px; /* AntD default header padding */
   color: rgba(0,0,0,0.88);
   background: #fff;
   border-bottom: 1px solid #f0f0f0; /* Separator line */
   border-radius: 8px 8px 0 0; /* Match content radius */
 }
-.ant-modal-title {
+.upper-modal-title {
   margin: 0;
   color: rgba(0,0,0,0.88);
   font-weight: 600; /* AntD default title weight */
@@ -136,7 +136,7 @@
   word-wrap: break-word;
 }
 
-.ant-modal-body {
+.upper-modal-body {
   padding: 24px; /* AntD default body padding */
   font-size: 14px;
   line-height: 1.5714285714285714;
@@ -144,44 +144,44 @@
   max-height: calc(100vh - 100px - 57px - 53px - 48px); /* Example calc: vh - top - header - footer - bottom_padding */
   overflow-y: auto; /* Scrollable body if content is too long */
 }
-.ant-modal-centered .ant-modal-body {
+.upper-modal-centered .upper-modal-body {
     /* max-height might need adjustment for centered modals if header/footer are present */
     /* max-height: calc(60vh); /* Example max height for centered content */
 }
 
 
-.ant-modal-footer {
+.upper-modal-footer {
   padding: 10px 16px; /* AntD default footer padding (for compact buttons) */
   text-align: right; /* Default button alignment */
   background: transparent; /* Footer background usually transparent */
   border-top: 1px solid #f0f0f0;
   border-radius: 0 0 8px 8px; /* Match content radius */
 }
-.ant-modal-footer > .ant-btn + .ant-btn { /* Assuming Button renders .ant-btn */
+.upper-modal-footer > .upper-btn + .upper-btn { /* Assuming Button renders .upper-btn */
   margin-left: 8px; /* Space between footer buttons */
 }
-.ant-modal-footer > .ant-btn:last-child {
+.upper-modal-footer > .upper-btn:last-child {
   /* margin-right: 0; /* No margin for the last button if using text-align: right */
 }
 
 /* RTL support would involve flipping horizontal positioning, text-align, margins, shadows, transforms */
-/* .ant-modal-wrap-rtl { direction: rtl; } */
-/* .ant-modal-rtl .ant-modal-close { left: 0; right: auto; } */
-/* .ant-modal-rtl .ant-modal-header { text-align: right; } */
-/* .ant-modal-rtl .ant-modal-footer { text-align: left; } */
-/* .ant-modal-rtl .ant-modal-footer > .ant-btn + .ant-btn { margin-right: 8px; margin-left: 0; } */
+/* .upper-modal-wrap-rtl { direction: rtl; } */
+/* .upper-modal-rtl .upper-modal-close { left: 0; right: auto; } */
+/* .upper-modal-rtl .upper-modal-header { text-align: right; } */
+/* .upper-modal-rtl .upper-modal-footer { text-align: left; } */
+/* .upper-modal-rtl .upper-modal-footer > .upper-btn + .upper-btn { margin-right: 8px; margin-left: 0; } */
 
 /* Animation for modal dialog (if not handled by wrap) */
-/* .ant-zoom-enter, .ant-zoom-appear { opacity: 0; transform: scale(0.2); } */
-/* .ant-zoom-enter-active, .ant-zoom-appear-active { opacity: 1; transform: scale(1); transition: opacity 0.3s, transform 0.3s; } */
-/* .ant-zoom-leave { opacity: 1; transform: scale(1); } */
-/* .ant-zoom-leave-active { opacity: 0; transform: scale(0.2); transition: opacity 0.3s, transform 0.3s; } */
+/* .upper-zoom-enter, .upper-zoom-appear { opacity: 0; transform: scale(0.2); } */
+/* .upper-zoom-enter-active, .upper-zoom-appear-active { opacity: 1; transform: scale(1); transition: opacity 0.3s, transform 0.3s; } */
+/* .upper-zoom-leave { opacity: 1; transform: scale(1); } */
+/* .upper-zoom-leave-active { opacity: 0; transform: scale(0.2); transition: opacity 0.3s, transform 0.3s; } */
 
 /* Ensure modal is above mask if they are siblings in portal */
-.ant-modal-root > .ant-modal-wrap {
+.upper-modal-root > .upper-modal-wrap {
     z-index: 1000; /* Same as mask */
 }
-.ant-modal-root > .ant-modal-wrap > .ant-modal {
+.upper-modal-root > .upper-modal-wrap > .upper-modal {
     /* Dialog itself doesn't need higher z-index if wrap handles it, */
     /* but if mask is separate, dialog needs to be above mask. */
     /* For simplicity, assuming DOM order or wrap z-index handles this. */

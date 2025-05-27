@@ -1,7 +1,7 @@
 // src/components/ui/feedback/Modal/Modal.tsx
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom'; // For Portal
-import Button, { ButtonProps } from '../../general/Button/Button'; // Assuming Button is available
+import { Button } from '../../data-entry/button'; // Changed to use Tailwind Button
 import Icon from '../../general/Icon/Icon';   // Assuming Icon is available
 import './Modal.css';
 
@@ -20,10 +20,10 @@ interface ModalProps {
   footer?: React.ReactNode | null; // null to hide footer, undefined for default
   
   okText?: React.ReactNode; // Default 'OK'
-  okType?: ButtonProps['type']; // Default 'primary'
-  okButtonProps?: ButtonProps;
+  okType?: 'default' | 'primary' | 'dashed' | 'text' | 'link'; // Changed to match Button variants
+  okButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>; // Changed to match Button props
   cancelText?: React.ReactNode; // Default 'Cancel'
-  cancelButtonProps?: ButtonProps;
+  cancelButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>; // Changed to match Button props
   
   width?: string | number; // Default 520
   centered?: boolean; // Vertically center modal
@@ -124,26 +124,26 @@ const Modal: React.FC<ModalProps> /* & ModalStaticFunctions */ = ({ // Static fu
 
   const defaultFooter = (
     <>
-      <Button onClick={onCancel} {...cancelButtonProps}>{cancelText}</Button>
-      <Button type={okType} onClick={onOk} {...okButtonProps}>{okText}</Button>
+      <Button variant="outline" onClick={onCancel} {...cancelButtonProps}>{cancelText}</Button>
+      <Button variant={okType === 'primary' ? 'default' : 'outline'} onClick={onOk} {...okButtonProps}>{okText}</Button>
     </>
   );
   const footerNode = footer === undefined ? defaultFooter : footer; // If footer is null, it's hidden
 
   const modalRootClasses = [
-    'ant-modal-root', // For portal root if needed
+    'upper-modal-root', // For portal root if needed
     className, // User class on the very root
   ].filter(Boolean).join(' ');
 
   const modalWrapClasses = [
-    'ant-modal-wrap',
-    centered ? 'ant-modal-wrap-centered' : '',
+    'upper-modal-wrap',
+    centered ? 'upper-modal-wrap-centered' : '',
     wrapClassName,
   ].filter(Boolean).join(' ');
   
   const modalClasses = [
-    'ant-modal',
-    // className, // AntD applies className to .ant-modal, not the root. Let's follow that if possible.
+    'upper-modal',
+    // className, // AntD applies className to .upper-modal, not the root. Let's follow that if possible.
   ].filter(Boolean).join(' ');
 
 
@@ -165,26 +165,26 @@ const Modal: React.FC<ModalProps> /* & ModalStaticFunctions */ = ({ // Static fu
         style={dialogStyle}
         role="dialog"
         aria-modal="true"
-        aria-labelledby={title ? 'ant-modal-title' : undefined}
+        aria-labelledby={title ? 'upper-modal-title' : undefined}
         // onKeyDown={handleKeyDown} // If keydown listener is on modal dialog itself
         // tabIndex={-1} // Make it focusable
       >
-        <div className="ant-modal-content">
+        <div className="upper-modal-content">
           {closable && (
-            <button type="button" className="ant-modal-close" onClick={onCancel} aria-label="Close">
-              <span className="ant-modal-close-x">{closeIcon}</span>
+            <button type="button" className="upper-modal-close" onClick={onCancel} aria-label="Close">
+              <span className="upper-modal-close-x">{closeIcon}</span>
             </button>
           )}
           {title && (
-            <div className="ant-modal-header">
-              <div className="ant-modal-title" id="ant-modal-title">{title}</div>
+            <div className="upper-modal-header">
+              <div className="upper-modal-title" id="upper-modal-title">{title}</div>
             </div>
           )}
-          <div className="ant-modal-body">
+          <div className="upper-modal-body">
             {children}
           </div>
           {footerNode && (
-            <div className="ant-modal-footer">
+            <div className="upper-modal-footer">
               {footerNode}
             </div>
           )}
@@ -195,7 +195,7 @@ const Modal: React.FC<ModalProps> /* & ModalStaticFunctions */ = ({ // Static fu
 
   return open ? ReactDOM.createPortal(
     <div className={modalRootClasses}> {/* This outer div is for portal and potential global class */}
-        {mask && <div className="ant-modal-mask" />}
+        {mask && <div className="upper-modal-mask" />}
         {modalContent}
     </div>,
     portalContainer

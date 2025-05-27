@@ -1,7 +1,7 @@
 /* src/components/ui/data-display/Tree/Tree.css */
 /* Based on antd/es/tree/style/index.css */
 
-.ant-tree {
+.upper-tree {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -17,9 +17,9 @@
   border-radius: 8px; /* AntD default */
   /* transition: background-color 0.3s; */
 }
-/* .ant-tree-focused:not(:hover) { ... } /* Focus styles */
+/* .upper-tree-focused:not(:hover) { ... } /* Focus styles */
 
-.ant-tree-treenode {
+.upper-tree-treenode {
   display: flex;
   align-items: flex-start; /* Align items to start for multi-line titles */
   padding: 4px 0; /* Default padding, AntD might have 0 and rely on title padding */
@@ -27,36 +27,36 @@
   cursor: pointer; /* Default cursor for node */
   /* transition: background-color 0.3s; */
 }
-.ant-tree-treenode:hover:not(.ant-tree-treenode-selected):not(.ant-tree-treenode-disabled) {
+.upper-tree-treenode:hover:not(.upper-tree-treenode-selected):not(.upper-tree-treenode-disabled) {
   background-color: rgba(0,0,0,0.04); /* Hover background */
 }
-.ant-tree-treenode-disabled {
+.upper-tree-treenode-disabled {
   cursor: not-allowed;
   opacity: 0.5; /* Or specific color changes */
 }
-.ant-tree-treenode-disabled:hover {
+.upper-tree-treenode-disabled:hover {
     background-color: transparent; /* No hover for disabled */
 }
-.ant-tree-treenode-selected {
+.upper-tree-treenode-selected {
   background-color: #e6f4ff; /* Light blue for selected node */
 }
-.ant-tree-treenode-selected:hover {
+.upper-tree-treenode-selected:hover {
     background-color: #e6f4ff; /* Keep selected color on hover */
 }
 
 
-.ant-tree-indent {
+.upper-tree-indent {
   align-self: stretch; /* Make indent part take full height of node */
   white-space: nowrap; /* Prevent wrapping of indent units */
   /* padding-left is set by JS in TreeNodeInternal */
 }
-.ant-tree-indent-unit { /* If using spans for indent units */
+.upper-tree-indent-unit { /* If using spans for indent units */
   display: inline-block;
   width: 18px; /* Width of each indent level */
 }
 
 
-.ant-tree-switcher {
+.upper-tree-switcher {
   position: relative;
   flex-shrink: 0; /* Prevent switcher from shrinking */
   display: inline-flex;
@@ -69,34 +69,34 @@
   user-select: none; /* Prevent text selection of icon */
   /* transition: transform 0.3s; */ /* For icon rotation if done via CSS */
 }
-.ant-tree-switcher-icon, /* If switcher icon is a child span/icon */
-.ant-tree-switcher .anticon {
+.upper-tree-switcher-icon, /* If switcher icon is a child span/icon */
+.upper-tree-switcher .anticon {
   font-size: 12px; /* AntD default switcher icon size */
   /* transition: transform 0.3s; */
 }
-.ant-tree-switcher-noop { /* When switcher does nothing (e.g. leaf with no icon) */
+.upper-tree-switcher-noop { /* When switcher does nothing (e.g. leaf with no icon) */
     cursor: default;
 }
-/* .ant-tree-switcher-open .ant-tree-switcher-icon { transform: rotate(90deg); } */
+/* .upper-tree-switcher-open .upper-tree-switcher-icon { transform: rotate(90deg); } */
 /* Rotation is handled by specific icon in current implementation (CaretDown/Right) */
 
-.ant-tree-switcher-leaf {
+.upper-tree-switcher-leaf {
   /* No icon for leaf node switcher by default, or specific leaf icon */
 }
-.ant-tree-switcher-leaf .ant-tree-switcher-icon { /* Hide default arrow for leaf */
+.upper-tree-switcher-leaf .upper-tree-switcher-icon { /* Hide default arrow for leaf */
     /* display: none; */ /* Or specific leaf icon */
 }
 
 
 /* Checkbox (not implemented in this simplified version) */
-.ant-tree-checkbox {
+.upper-tree-checkbox {
   /* margin: 0 4px 0 0; */
   /* vertical-align: middle; */
 }
 
 
 /* Node Icon (folder, file, custom) */
-.ant-tree-node-icon {
+.upper-tree-node-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,15 +105,15 @@
   margin-right: 2px; /* Space between icon and title */
   vertical-align: top; /* Align with switcher and title */
 }
-.ant-tree-node-icon .anticon {
+.upper-tree-node-icon .anticon {
   font-size: 14px; /* Default icon size */
 }
-.ant-tree-treenode-disabled .ant-tree-node-icon .anticon {
+.upper-tree-treenode-disabled .upper-tree-node-icon .anticon {
     color: rgba(0,0,0,0.25); /* Disabled icon color */
 }
 
 
-.ant-tree-title {
+.upper-tree-title {
   display: inline-block; /* Or flex-grow: 1 if icon/switcher are fixed width */
   flex-grow: 1; /* Title takes remaining space */
   padding: 0 4px; /* Padding around title text */
@@ -127,77 +127,76 @@
 
 
 /* Show Line styles */
-.ant-tree-show-line .ant-tree-indent {
+.upper-tree-show-line .upper-tree-indent {
   /* Indent units will have lines via pseudo-elements */
 }
-.ant-tree-show-line .ant-tree-switcher {
+.upper-tree-show-line .upper-tree-switcher {
   background: #fff; /* Ensure switcher background covers lines */
   color: rgba(0,0,0,0.65); /* Default line color for icons */
 }
-.ant-tree-show-line .ant-tree-switcher-leaf .ant-tree-switcher-icon {
+.upper-tree-show-line .upper-tree-switcher-leaf .upper-tree-switcher-icon {
     /* Specific leaf icon for showLine mode (e.g., file icon) */
     /* AntD uses specific SVG icons for lines and leaf nodes */
     /* For simplicity, if using FontAwesome, it might be <Icon name="FileOutlined" /> */
 }
 /* Line connection visuals (complex, usually done with ::before/::after on indent units or switcher) */
 /* This is a very simplified placeholder for where line styles would go. */
-/* .ant-tree-show-line .ant-tree-treenode::before { ... } */
-/* .ant-tree-show-line .ant-tree-treenode::after { ... } */
+/* .upper-tree-show-line .upper-tree-treenode::before { ... } */
+/* .upper-tree-show-line .upper-tree-treenode::after { ... } */
 
 
 /* Draggable styles */
-.ant-tree-draggable .ant-tree-treenode {
+.upper-tree-draggable .upper-tree-treenode {
   /* cursor: grab; /* Indicate draggable */
 }
-.ant-tree-draggable .ant-tree-treenode:active { /* While dragging */
+.upper-tree-draggable .upper-tree-treenode:active { /* While dragging */
   /* cursor: grabbing; */
 }
-.ant-tree-treenode-drag-over .ant-tree-title { /* Highlight node being dragged over */
+.upper-tree-treenode-drag-over .upper-tree-title { /* Highlight node being dragged over */
   background-color: #bae0ff; /* Light blue highlight */
   border-radius: 2px;
 }
-.ant-tree-treenode-drag-over-gap-top .ant-tree-title {
+.upper-tree-treenode-drag-over-gap-top .upper-tree-title {
     /* border-top: 2px solid #1677ff; /* Highlight top gap for drop */
 }
-.ant-tree-treenode-drag-over-gap-bottom .ant-tree-title {
+.upper-tree-treenode-drag-over-gap-bottom .upper-tree-title {
     /* border-bottom: 2px solid #1677ff; /* Highlight bottom gap for drop */
 }
 
 
 /* Child tree (nested list) */
-.ant-tree-child-tree {
+.upper-tree-child-tree {
   /* padding-left: 18px; /* Indent child tree (if not handled by node indent) */
   /* No specific styling needed if nodes handle their own indentation */
 }
 
 
 /* Block Node (nodes take full width) */
-.ant-tree-block-node .ant-tree-treenode {
+.upper-tree-block-node .upper-tree-treenode {
   /* display: flex; /* Ensure it takes full width */
 }
-.ant-tree-block-node .ant-tree-title {
+.upper-tree-block-node .upper-tree-title {
   /* flex-grow: 1; /* Title takes remaining space */
 }
 
 
 /* RTL specific adjustments */
-/* .ant-tree-rtl { ... } */
-/* .ant-tree-rtl .ant-tree-indent { padding-right: ...; padding-left: 0; } */
-/* .ant-tree-rtl .ant-tree-switcher { /* transform: scaleX(-1); if icon needs flipping */ } */
-/* .ant-tree-rtl .ant-tree-node-icon { margin-left: 2px; margin-right: 0; } */
+/* .upper-tree-rtl { ... } */
+/* .upper-tree-rtl .upper-tree-indent { padding-right: ...; padding-left: 0; } */
+/* .upper-tree-rtl .upper-tree-switcher { /* transform: scaleX(-1); if icon needs flipping */ /* } */
 
 /* Default AntD icons used for switcher (if not custom) */
-.ant-tree-switcher-icon .anticon-caret-down,
-.ant-tree-switcher-icon .anticon-caret-right {
+.upper-tree-switcher-icon .anticon-caret-down,
+.upper-tree-switcher-icon .anticon-caret-right {
     transition: transform 0.3s;
 }
-.ant-tree-switcher-open > .ant-tree-switcher-icon .anticon-caret-right {
+.upper-tree-switcher-open > .upper-tree-switcher-icon .anticon-caret-right {
     transform: rotate(90deg);
 }
 
 /* Default folder/file icons if showIcon and no custom icon provided */
-.ant-tree-node-icon .anticon-folder,
-.ant-tree-node-icon .anticon-folder-open,
-.ant-tree-node-icon .anticon-file {
+.upper-tree-node-icon .anticon-folder,
+.upper-tree-node-icon .anticon-folder-open,
+.upper-tree-node-icon .anticon-file {
     /* Styles for default icons */
 }

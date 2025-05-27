@@ -1,6 +1,6 @@
 // src/components/ui/data-entry/Mentions/Mentions.tsx
 import React, { useState, useEffect, useRef, KeyboardEvent, ChangeEvent } from 'react';
-import Textarea, { TextAreaProps } from '../Textarea/Textarea'; // Assuming Textarea is available
+import Textarea, { TextareaProps } from '../Textarea/Textarea'; // Corrected type name
 import './Mentions.css';
 
 export interface MentionOption {
@@ -9,7 +9,7 @@ export interface MentionOption {
   [key: string]: any; // Allow other properties
 }
 
-interface MentionsProps extends Omit<TextAreaProps, 'onChange' | 'value'> {
+interface MentionsProps extends Omit<TextareaProps, 'onChange' | 'value'> {
   value?: string; // Controlled value of the textarea
   defaultValue?: string;
   onChange?: (text: string) => void; // Callback when text changes
@@ -23,7 +23,7 @@ interface MentionsProps extends Omit<TextAreaProps, 'onChange' | 'value'> {
   validateSearch?: (text: string, props: MentionsProps) => boolean; // Customize search validation
   // status?: 'error' | 'warning'; // from TextAreaProps
   autoFocus?: boolean;
-  autoSize?: boolean | { minRows?: number; maxRows?: number }; // from TextAreaProps
+  autoSize?: boolean | { minRows?: number; maxRows?: number }; // from TextareaProps
   getPopupContainer?: () => HTMLElement; // Defaults to document.body
 }
 
@@ -205,8 +205,8 @@ const Mentions: React.FC<MentionsProps> = ({
   }, [showSuggestions]);
 
 
-  const containerCls = ['ant-mentions', className].filter(Boolean).join(' ');
-  const popupCls = ['ant-mentions-dropdown', `ant-mentions-dropdown-placement-${placement}`].filter(Boolean).join(' ');
+  const containerCls = ['upper-mentions', className].filter(Boolean).join(' ');
+  const popupCls = ['upper-mentions-dropdown', `upper-mentions-dropdown-placement-${placement}`].filter(Boolean).join(' ');
   
   // Calculate popup position (very simplified)
   // A proper solution would use a library like Popper.js or calculate based on caret position
@@ -231,7 +231,6 @@ const Mentions: React.FC<MentionsProps> = ({
   return (
     <div className={containerCls} style={style}>
       <Textarea
-        ref={textareaRef}
         {...restTextAreaProps}
         value={text}
         onChange={handleTextChange}
@@ -244,12 +243,12 @@ const Mentions: React.FC<MentionsProps> = ({
       />
       {showSuggestions && (
         <div className={popupCls} style={popupStyle}>
-          <ul ref={suggestionsRef} className="ant-mentions-dropdown-menu">
+          <ul ref={suggestionsRef} className="upper-mentions-dropdown-menu">
             {suggestions.length > 0 ? (
               suggestions.map((opt, index) => (
                 <li
                   key={opt.value}
-                  className={`ant-mentions-dropdown-menu-item ${index === activeSuggestionIndex ? 'ant-mentions-dropdown-menu-item-active' : ''}`}
+                  className={`upper-mentions-dropdown-menu-item ${index === activeSuggestionIndex ? 'upper-mentions-dropdown-menu-item-active' : ''}`}
                   onClick={() => selectMention(opt)}
                   onMouseEnter={() => setActiveSuggestionIndex(index)}
                 >
@@ -257,7 +256,7 @@ const Mentions: React.FC<MentionsProps> = ({
                 </li>
               ))
             ) : (
-              <li className="ant-mentions-dropdown-menu-item ant-mentions-dropdown-menu-item-disabled">
+              <li className="upper-mentions-dropdown-menu-item upper-mentions-dropdown-menu-item-disabled">
                 {notFoundContent}
               </li>
             )}

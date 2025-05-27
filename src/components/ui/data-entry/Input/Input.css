@@ -1,0 +1,162 @@
+.upper-input {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 4px 11px;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  background-color: #ffffff;
+  background-image: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 6px;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.upper-input:focus,
+.upper-input:hover {
+  border-color: #000;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(2px);
+  outline: 0;
+}
+
+.upper-input-large {
+  padding: 7px 11px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.upper-input-small {
+  padding: 0px 7px;
+  border-radius: 4px;
+}
+
+.upper-input[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: #000;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.upper-input-error {
+  border-color: #ff4d4f;
+}
+
+.upper-input-error:focus,
+.upper-input-error:hover {
+  border-color: #ff4d4f;
+  box-shadow: 2px 2px 0px 0px rgba(255, 77, 79, 1);
+}
+
+.upper-input-warning {
+  border-color: #faad14;
+}
+
+.upper-input-warning:focus,
+.upper-input-warning:hover {
+  border-color: #faad14;
+  box-shadow: 2px 2px 0px 0px rgba(250, 173, 20, 1);
+}
+
+.upper-input-wrapper {
+  display: inline-flex;
+  width: 100%;
+}
+
+.upper-input-group-wrapper {
+  display: inline-block;
+  width: 100%;
+}
+
+.upper-input-group {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.upper-input-group-addon {
+  position: relative;
+  padding: 0 11px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: normal;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  border: 2px solid #000;
+  border-radius: 6px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.upper-input-group > .upper-input:first-child,
+.upper-input-group-addon:first-child {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.upper-input-group > .upper-input:last-child,
+.upper-input-group-addon:last-child {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.upper-input-affix-wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  background-color: #ffffff;
+  background-image: none;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 6px;
+  transition: all 0.2s;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.upper-input-prefix,
+.upper-input-suffix {
+  display: flex;
+  flex: none;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.upper-input-prefix {
+  margin-right: 4px;
+}
+
+.upper-input-suffix {
+  margin-left: 4px;
+}
+
+.upper-input-clear-icon {
+  margin-left: 4px;
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.upper-input-clear-icon:hover {
+  color: rgba(0, 0, 0, 0.45);
+} 

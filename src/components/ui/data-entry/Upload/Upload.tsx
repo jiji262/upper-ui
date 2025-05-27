@@ -1,6 +1,6 @@
 // src/components/ui/data-entry/Upload/Upload.tsx
 import React, { useState, useRef, ChangeEvent } from 'react';
-import Button from '../Button/Button'; // Assuming Button is available for trigger
+import { Button } from '../../data-entry/button'; // Changed to use Tailwind Button
 import Icon from '../../general/Icon'; // Assuming Icon is available
 import UploadList from './UploadList';
 import './Upload.css';
@@ -53,7 +53,7 @@ interface UploadProps {
   children?: React.ReactNode; // Custom trigger
   className?: string;
   style?: React.CSSProperties;
-  prefixCls?: string; // Default 'ant-upload'
+  prefixCls?: string; // Default 'upper-upload'
   // `customRequest` for overriding upload behavior is advanced, not implemented here
   // `withCredentials`, `directory` also not implemented
 }
@@ -78,7 +78,7 @@ const Upload: React.FC<UploadProps> = ({
   children,
   className,
   style,
-  prefixCls = 'ant-upload',
+  prefixCls = 'upper-upload',
 }) => {
   const [internalFileList, setInternalFileList] = useState<UploadFile[]>(defaultFileList.map(f => ({...f, uid: f.uid || String(fileUid++)})));
   const inputRef = useRef<HTMLInputElement>(null);
@@ -193,7 +193,8 @@ const Upload: React.FC<UploadProps> = ({
   const uploadButton = children ? (
     React.cloneElement(children as React.ReactElement, { onClick: triggerUpload, disabled })
   ) : (
-    <Button onClick={triggerUpload} disabled={disabled} icon={<Icon name="UploadOutlined"/>}>
+    <Button onClick={triggerUpload} disabled={disabled}>
+      <span className="mr-2"><Icon name="UploadOutlined"/></span>
       Click to Upload
     </Button>
   );

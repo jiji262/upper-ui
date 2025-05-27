@@ -44,11 +44,21 @@ import {
 } from "./components/ui/navigation/select"; // Added for Form demo
 import { User, CreditCard, Settings, Keyboard, Users, UserPlus, Mail, MessageSquare, PlusCircle } from "lucide-react"; // Icons for Dropdown
 
+// Import Ant Design style components
+// import ButtonAnt from './components/ui/general/Button'; // Removing this import
+import { Input as InputAnt } from './components/ui/data-entry/input';
+import { Checkbox as CheckboxAnt } from './components/ui/data-entry/checkbox';
+import SelectAnt from './components/ui/data-entry/Select/Select';
+import TextareaAnt from './components/ui/data-entry/Textarea/Textarea';
+import Icon from './components/ui/general/Icon/Icon';
+
 function App() {
   const [progress, setProgress] = React.useState(13);
   const [notificationsEnabled, setNotificationsEnabled] = React.useState(false);
   const [darkModeEnabled, setDarkModeEnabled] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [selectValue, setSelectValue] = React.useState<string | number>('');
+  const [checkboxValue, setCheckboxValue] = React.useState(false);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -102,7 +112,10 @@ function App() {
             {/* Components Showcase */}
             <section className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Featured Components</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              {/* Tailwind Components */}
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Tailwind Style Components</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 {/* Buttons */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
@@ -496,6 +509,151 @@ function App() {
                   </CardContent>
                 </Card>
               </div>
+              
+              {/* Ant Design Components */}
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Upper UI Style Components</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Buttons */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Buttons</CardTitle>
+                    <CardDescription>Various button styles and variants</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        <Button variant="outline">Default</Button>
+                        <Button>Primary</Button>
+                        <Button variant="outline" className="border-dashed">Dashed</Button>
+                        <Button variant="ghost">Text</Button>
+                        <Button variant="link">Link</Button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button size="sm">Small</Button>
+                        <Button>Default</Button>
+                        <Button size="lg">Large</Button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        <Button disabled>Disabled</Button>
+                        <Button loading>Loading</Button>
+                        <Button variant="destructive">Danger</Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Inputs */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Inputs</CardTitle>
+                    <CardDescription>Form input components</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <InputAnt placeholder="Basic usage" />
+                      <InputAnt size="large" placeholder="Large size" error={false} />
+                      <InputAnt placeholder="Error" error={true} />
+                      <InputAnt placeholder="Warning" error={true} />
+                      <div className="flex items-center">
+                        <span className="mr-2">http://</span>
+                        <InputAnt placeholder="Website" />
+                        <span className="ml-2">.com</span>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="mr-2">￥</span>
+                        <InputAnt placeholder="Price" />
+                        <span className="ml-2">RMB</span>
+                      </div>
+                      <InputAnt placeholder="Clearable input" />
+                      <InputAnt placeholder="Disabled" disabled />
+                      
+                      <TextareaAnt placeholder="Basic usage" />
+                      <TextareaAnt showCount maxLength={100} placeholder="With character count" />
+                      <TextareaAnt status="error" placeholder="Error" />
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Checkbox & Select */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Form Controls</CardTitle>
+                    <CardDescription>Checkboxes and Selects</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <CheckboxAnt label="Checkbox" />
+                        <CheckboxAnt 
+                          label="Controlled Checkbox"
+                          checked={checkboxValue} 
+                          onChange={(e) => setCheckboxValue(e.target.checked)}
+                        />
+                        <CheckboxAnt label="Disabled" disabled />
+                        <CheckboxAnt label="Indeterminate" indeterminate />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <SelectAnt
+                          options={[
+                            { label: 'Option 1', value: '1' },
+                            { label: 'Option 2', value: '2' },
+                            { label: 'Option 3', value: '3' },
+                          ]}
+                          placeholder="Please select"
+                          value={selectValue}
+                          onChange={(value) => setSelectValue(typeof value === 'string' || typeof value === 'number' ? value : value[0])}
+                        />
+                        <SelectAnt
+                          mode="multiple"
+                          options={[
+                            { label: 'Option 1', value: '1' },
+                            { label: 'Option 2', value: '2' },
+                            { label: 'Option 3', value: '3' },
+                          ]}
+                          placeholder="Select multiple"
+                        />
+                        <SelectAnt
+                          disabled
+                          options={[
+                            { label: 'Option 1', value: '1' },
+                            { label: 'Option 2', value: '2' },
+                          ]}
+                          placeholder="Disabled"
+                        />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Icons */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Upper UI Icons</CardTitle>
+                    <CardDescription>Simple icon components</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-4">
+                      <div className="flex flex-col items-center">
+                        <Icon name="UploadOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-1">Upload</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Icon name="LeftOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-1">Left</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Icon name="RightOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-1">Right</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
+                        <span className="text-sm mt-1">Custom Color</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             </section>
           </div>
 
@@ -722,7 +880,7 @@ function DemoForm() {
               <FormControl>
                 <Checkbox
                   checked={field.value}
-                  onCheckedChange={field.onChange}
+                  onChange={field.onChange}
                 />
               </FormControl>
               <div className="space-y-1 leading-none">

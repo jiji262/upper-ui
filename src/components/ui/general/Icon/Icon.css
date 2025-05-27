@@ -4,15 +4,18 @@
    but Ant Design icons are typically SVGs and styled via props or inline styles.
    This file can be used for additional custom styling or container styles.
 */
-.ant-icon {
-  display: inline-block;
-  vertical-align: middle; /* Aligns icons nicely with text */
-  line-height: 1; /* Ensures the span itself doesn't add extra height */
+.upper-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  line-height: 1;
+  color: inherit;
 }
 
 /* Example of how you might add a hover effect if not using antd's built-in ones */
 /*
-.ant-icon:hover {
+.upper-icon:hover {
   opacity: 0.8;
 }
 */

@@ -1,148 +1,146 @@
 /* src/components/ui/data-entry/DatePicker/DatePicker.css */
 /* Based on antd/es/date-picker/style/index.css and picker/style/index.css */
 
-.ant-picker {
+.upper-picker {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
-  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
   line-height: 1.5714285714285714;
   list-style: none;
-  font-family: var(--upper-ui-font-family, var(--ant-font-family));
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
   position: relative;
   display: inline-flex; 
   align-items: center;
-  background: var(--upper-ui-component-background-color, #fff);
-  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
-  border-radius: var(--ant-border-radius-base, 6px); 
-  transition: border 0.3s, box-shadow 0.3s;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s;
 }
-.ant-picker:hover,
-.ant-picker-focused { 
-  border-color: var(--ant-primary-color, #1677ff); 
-}
-.ant-picker.ant-picker-focused {
-  box-shadow: 0 0 0 2px var(--ant-primary-color-outline, rgba(22, 119, 255, 0.2)); 
-}
-
-.ant-picker-input > input { 
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    min-width: 0;
-    padding: 4px 11px; 
-    color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0,0,0,0.88)));
-    font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
-    line-height: 1.5714285714285714;
-    background-color: var(--upper-ui-component-background-color, #ffffff);
-    background-image: none;
-    border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9)); /* Should be transparent if picker has border */
-    border-radius: var(--ant-border-radius-base, 6px);
-    transition: all 0.3s;
-    flex: 1; 
-    height: 30px; /* var(--upper-ui-control-height-base) - 2*border? */
-    border: none; 
-    outline: none;
-}
-.ant-picker-input > input::placeholder {
-    color: var(--upper-ui-placeholder-color, var(--ant-placeholder-color, rgba(0,0,0,0.25)));
-}
-.ant-picker-input > input[readonly] {
-    cursor: pointer; 
+.upper-picker:hover,
+.upper-picker-focused { 
+  border-color: #000;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(2px);
 }
 
+.upper-picker-input > input { 
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  padding: 4px 11px; 
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  background-color: #fff;
+  background-image: none;
+  border: none;
+  border-radius: 6px;
+  transition: all 0.3s;
+  flex: 1; 
+  height: 30px;
+  outline: none;
+}
+.upper-picker-input > input::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+.upper-picker-input > input[readonly] {
+  cursor: pointer; 
+}
 
 /* Suffix icons (calendar, clear) */
-.ant-picker-suffix {
+.upper-picker-suffix {
   display: flex;
   flex: none;
   align-self: center;
   margin-left: 4px; 
-  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+  color: rgba(0, 0, 0, 0.25);
   line-height: 1;
   pointer-events: none; 
   padding-right: 11px; 
 }
-.ant-picker-clear {
+.upper-picker-clear {
   position: absolute; 
   top: 50%;
   right: 28px; 
   transform: translateY(-50%);
-  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
-  font-size: var(--upper-ui-font-size-xs, 12px);
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
   cursor: pointer;
   transition: color 0.3s;
   z-index: 1; 
-  background: var(--upper-ui-component-background-color, #fff); 
+  background: #fff; 
   padding: 2px; 
 }
-.ant-picker-clear:hover {
-  color: var(--upper-ui-text-color-secondary, var(--ant-text-color-secondary, rgba(0,0,0,0.45)));
+.upper-picker-clear:hover {
+  color: rgba(0, 0, 0, 0.45);
 }
-.ant-picker-clear:only-child {
-    right: 11px;
+.upper-picker-clear:only-child {
+  right: 11px;
 }
-
 
 /* Disabled state */
-.ant-picker-disabled {
-  background: var(--upper-ui-disabled-bg-color, var(--ant-disabled-bg, rgba(0,0,0,0.04)));
-  border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+.upper-picker-disabled {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: #000;
+  box-shadow: none;
   cursor: not-allowed;
+  opacity: 0.6;
 }
-.ant-picker-disabled .ant-picker-input > input {
+.upper-picker-disabled .upper-picker-input > input {
   cursor: not-allowed;
   background: transparent; 
-  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+  color: rgba(0, 0, 0, 0.25);
 }
-.ant-picker-disabled .ant-picker-suffix {
-  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+.upper-picker-disabled .upper-picker-suffix {
+  color: rgba(0, 0, 0, 0.25);
 }
-.ant-picker-disabled .ant-picker-clear {
+.upper-picker-disabled .upper-picker-clear {
   display: none; 
 }
 
-
 /* Status styling */
-.ant-picker-status-error {
-  border-color: var(--upper-ui-error-color-strong, var(--ant-error-color, #ff4d4f)) !important; 
+.upper-picker-status-error {
+  border-color: #ff4d4f !important; 
 }
-.ant-picker-status-error.ant-picker-focused {
-  box-shadow: 0 0 0 2px var(--ant-error-color-outline, rgba(255, 77, 79, 0.2));
+.upper-picker-status-error:hover,
+.upper-picker-status-error.upper-picker-focused {
+  box-shadow: 2px 2px 0px 0px rgba(255, 77, 79, 1);
 }
-.ant-picker-status-warning {
-  border-color: var(--ant-warning-color, #faad14) !important; 
+.upper-picker-status-warning {
+  border-color: #faad14 !important; 
 }
-.ant-picker-status-warning.ant-picker-focused {
-  box-shadow: 0 0 0 2px var(--ant-warning-color-outline, rgba(250, 173, 20, 0.2));
+.upper-picker-status-warning:hover,
+.upper-picker-status-warning.upper-picker-focused {
+  box-shadow: 2px 2px 0px 0px rgba(250, 173, 20, 1);
 }
-
 
 /* Size variants */
-.ant-picker-large .ant-picker-input > input {
+.upper-picker-large .upper-picker-input > input {
   padding: 7px 11px; 
-  height: var(--upper-ui-control-height-lg, 38px); 
-  font-size: var(--upper-ui-font-size-base, var(--ant-font-size-base, 16px));
+  height: 38px;
+  font-size: 16px;
 }
-.ant-picker-large .ant-picker-suffix {
-    padding-right: 11px;
+.upper-picker-large .upper-picker-suffix {
+  padding-right: 11px;
 }
 
-.ant-picker-small .ant-picker-input > input {
+.upper-picker-small .upper-picker-input > input {
   padding: 0px 7px; 
-  height: var(--upper-ui-control-height-sm, 22px); 
+  height: 22px;
 }
-.ant-picker-small .ant-picker-suffix {
-    padding-right: 7px;
+.upper-picker-small .upper-picker-suffix {
+  padding-right: 7px;
 }
-.ant-picker-small .ant-picker-clear {
-    font-size: var(--upper-ui-font-size-xs, 10px); 
+.upper-picker-small .upper-picker-clear {
+  font-size: 10px;
 }
-
 
 /* Dropdown panel styles */
-.ant-picker-dropdown {
+.upper-picker-dropdown {
   position: absolute;
   z-index: 1050; 
   top: calc(100% + 4px);
@@ -150,110 +148,126 @@
   transform-origin: center top; 
 }
 
-.ant-picker-panel-container { 
-  background-color: var(--upper-ui-component-background-color, #fff);
-  border-radius: var(--upper-ui-border-radius-base, var(--ant-border-radius-base, 8px)); 
-  box-shadow: var(--upper-ui-box-shadow-base, var(--ant-box-shadow-base)); 
+.upper-picker-panel-container { 
+  background-color: #fff;
+  border-radius: 6px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
 }
 
-.ant-picker-panel { 
+.upper-picker-panel { 
   display: inline-block;
   vertical-align: top;
-  background-color: var(--upper-ui-component-background-color, #fff);
-  border-radius: var(--upper-ui-border-radius-base, var(--ant-border-radius-base, 8px));
+  background-color: #fff;
+  border-radius: 6px;
   outline: none;
 }
 
-.ant-picker-header {
+.upper-picker-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 8px;
-  border-bottom: 1px solid var(--upper-ui-border-color-split, var(--ant-border-color-split, rgba(5,5,5,0.06)));
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
   height: 40px; 
 }
-.ant-picker-header-view {
+.upper-picker-header-view {
   flex: auto;
-  font-weight: var(--upper-ui-font-weight-medium, 500);
+  font-weight: 500;
   text-align: center;
 }
-.ant-picker-header-view button { 
-    color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0,0,0,0.88)));
-    font-weight: var(--upper-ui-font-weight-medium, 500);
-    padding: 0 4px;
-    border: none; background: none; cursor: pointer;
-}
-.ant-picker-header-view button:hover {
-    color: var(--ant-primary-color, #1677ff);
-}
-.ant-picker-header-prev-btn,
-.ant-picker-header-next-btn,
-.ant-picker-header-super-prev-btn,
-.ant-picker-header-super-next-btn {
-    min-width: 1.6em;
-    font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
-    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
-    border: none; background: none; cursor: pointer;
-    padding: 0 4px;
-}
-.ant-picker-header-prev-btn:hover,
-.ant-picker-header-next-btn:hover,
-.ant-picker-header-super-prev-btn:hover,
-.ant-picker-header-super-next-btn:hover {
-    color: var(--ant-primary-color, #1677ff);
-}
-
-
-.ant-picker-body {
-  padding: 8px 12px; 
-}
-
-.ant-picker-date-panel td div:hover { background: var(--upper-ui-item-hover-bg, var(--ant-item-hover-bg, #f0f0f0)); }
-.ant-picker-date-panel .ant-picker-cell-selected div { background: var(--ant-primary-color, #1677ff); color: var(--upper-ui-text-color-inverse, #fff); }
-.ant-picker-date-panel .ant-picker-cell-today div { border: 1px solid var(--ant-primary-color, #1677ff); }
-.ant-picker-date-panel .ant-picker-cell-disabled div { 
-    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25))); 
-    background: var(--ant-disabled-input-bg, #f5f5f5); 
-    cursor: not-allowed; 
-}
-
-
-.ant-picker-footer {
-  padding: 0 12px;
-  line-height: 38px; 
-  border-top: 1px solid var(--upper-ui-border-color-split, var(--ant-border-color-split, rgba(5,5,5,0.06)));
-  text-align: center; 
-}
-.ant-picker-today-btn {
-  color: var(--ant-primary-color, #1677ff);
+.upper-picker-header-view button { 
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 500;
+  padding: 0 4px;
+  border: none; 
+  background: none; 
   cursor: pointer;
 }
-.ant-picker-today-btn:hover {
-  color: var(--ant-primary-color-hover, #40a9ff); 
+.upper-picker-header-view button:hover {
+  color: #e6d5ff;
 }
-.ant-picker-today-btn-disabled {
-    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
-    cursor: not-allowed;
+.upper-picker-header-prev-btn,
+.upper-picker-header-next-btn,
+.upper-picker-header-super-prev-btn,
+.upper-picker-header-super-next-btn {
+  min-width: 1.6em;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.25);
+  border: none; 
+  background: none; 
+  cursor: pointer;
+  padding: 0 4px;
+}
+.upper-picker-header-prev-btn:hover,
+.upper-picker-header-next-btn:hover,
+.upper-picker-header-super-prev-btn:hover,
+.upper-picker-header-super-next-btn:hover {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.upper-picker-body {
+  padding: 8px 12px;
+}
+
+.upper-picker-date-panel td div:hover { 
+  background: #f9f5ff;
+}
+
+.upper-picker-date-panel .upper-picker-cell-selected div { 
+  background: #e6d5ff;
+  color: #000;
+}
+
+.upper-picker-date-panel .upper-picker-cell-today div { 
+  border: 1px solid #000;
+}
+
+.upper-picker-date-panel .upper-picker-cell-disabled div { 
+  color: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.04);
+  cursor: not-allowed;
+}
+
+.upper-picker-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(5, 5, 5, 0.06);
+}
+
+.upper-picker-today-btn {
+  color: #000;
+  cursor: pointer;
+}
+
+.upper-picker-today-btn:hover {
+  color: #e6d5ff;
+}
+
+.upper-picker-today-btn-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
 }
 
 /* Other structural CSS from original file is kept as is */
-.ant-picker-input { /* Class for the internal input element if Input component is used */
+.upper-picker-input { /* Class for the internal input element if Input component is used */
 }
-.ant-picker-content { /* For table or list inside body */
+.upper-picker-content { /* For table or list inside body */
 }
-.ant-picker-panel .ant-picker-body button {
+.upper-picker-panel .upper-picker-body button {
 }
-.ant-picker-date-panel .ant-picker-content table,
-.ant-picker-month-panel .ant-picker-content table,
-.ant-picker-year-panel .ant-picker-content table {
+.upper-picker-date-panel .upper-picker-content table,
+.upper-picker-month-panel .upper-picker-content table,
+.upper-picker-year-panel .upper-picker-content table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
 }
-.ant-picker-date-panel th, .ant-picker-date-panel td {
+.upper-picker-date-panel th, .upper-picker-date-panel td {
     text-align: center;
     padding: 4px 0;
 }
-.ant-picker-date-panel td div { /* Cell content wrapper */
+.upper-picker-date-panel td div { /* Cell content wrapper */
     width: 24px; height: 24px; line-height: 24px; margin: auto; border-radius: var(--upper-ui-border-radius-sm, 4px); cursor: pointer;
 }

@@ -1,7 +1,7 @@
 /* src/components/ui/data-display/Empty/Empty.css */
 /* Based on antd/es/empty/style/index.css */
 
-.ant-empty {
+.upper-empty {
   margin: 32px 0; /* Default margin around Empty component */
   padding: 0;
   color: rgba(0, 0, 0, 0.88);
@@ -13,60 +13,60 @@
     'Noto Color Emoji';
 }
 
-.ant-empty-image {
+.upper-empty-image {
   height: 100px; /* Default height for image container */
   margin-bottom: 8px;
   opacity: 1; /* Default opacity, can be changed for themes */
 }
-.ant-empty-image svg {
+.upper-empty-image svg {
   width: 100%; /* Make SVG responsive within its container */
   height: 100%;
   max-width: 184px; /* Max width for default image */
   max-height: 152px; /* Max height for default image */
 }
 /* Specific styles for default and simple images if needed */
-.ant-empty-img-default {
+.upper-empty-img-default {
   /* Default SVG styles if any */
 }
-.ant-empty-img-simple {
+.upper-empty-img-simple {
   max-width: 64px; /* Max width for simple image */
   max-height: 41px; /* Max height for simple image */
 }
 /* If image is a custom ReactNode or URL, imageStyle prop handles it */
-.ant-empty-image img { /* If image is a URL rendered as <img> */
+.upper-empty-image img { /* If image is a URL rendered as <img> */
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
 }
 
 
-.ant-empty-description {
+.upper-empty-description {
   color: rgba(0,0,0,0.45); /* Default description color */
   font-size: 14px;
 }
-.ant-empty-description p { /* If description is a paragraph */
+.upper-empty-description p { /* If description is a paragraph */
     margin: 0;
 }
 
-.ant-empty-footer {
+.upper-empty-footer {
   margin-top: 16px; /* Space above footer content */
 }
-.ant-empty-footer > *:not(:last-child) {
+.upper-empty-footer > *:not(:last-child) {
   margin-right: 8px; /* Space between multiple footer buttons/elements */
 }
 
 
 /* Small Empty variant (not a standard AntD prop, but common customization) */
 /* Could be controlled by a size prop or specific class */
-.ant-empty-small {
+.upper-empty-small {
   margin: 16px 0;
 }
-.ant-empty-small .ant-empty-image {
+.upper-empty-small .upper-empty-image {
   height: 60px; /* Smaller image for small empty state */
 }
-.ant-empty-small .ant-empty-description {
+.upper-empty-small .upper-empty-description {
   font-size: 12px; /* Smaller description */
 }
-.ant-empty-small .ant-empty-footer {
+.upper-empty-small .upper-empty-footer {
   margin-top: 12px;
 }
