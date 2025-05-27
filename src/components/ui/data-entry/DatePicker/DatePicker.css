@@ -27,28 +27,28 @@
 }
 
 .upper-picker-input > input { 
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  min-width: 0;
-  padding: 4px 11px; 
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px; 
   color: rgba(0, 0, 0, 0.88);
   font-size: 14px;
-  line-height: 1.5714285714285714;
+    line-height: 1.5714285714285714;
   background-color: #fff;
-  background-image: none;
+    background-image: none;
   border: none;
   border-radius: 6px;
-  transition: all 0.3s;
-  flex: 1; 
+    transition: all 0.3s;
+    flex: 1; 
   height: 30px;
-  outline: none;
+    outline: none;
 }
 .upper-picker-input > input::placeholder {
   color: rgba(0, 0, 0, 0.25);
 }
 .upper-picker-input > input[readonly] {
-  cursor: pointer; 
+    cursor: pointer; 
 }
 
 /* Suffix icons (calendar, clear) */
@@ -79,7 +79,7 @@
   color: rgba(0, 0, 0, 0.45);
 }
 .upper-picker-clear:only-child {
-  right: 11px;
+    right: 11px;
 }
 
 /* Disabled state */
@@ -125,7 +125,7 @@
   font-size: 16px;
 }
 .upper-picker-large .upper-picker-suffix {
-  padding-right: 11px;
+    padding-right: 11px;
 }
 
 .upper-picker-small .upper-picker-input > input {
@@ -133,7 +133,7 @@
   height: 22px;
 }
 .upper-picker-small .upper-picker-suffix {
-  padding-right: 7px;
+    padding-right: 7px;
 }
 .upper-picker-small .upper-picker-clear {
   font-size: 10px;
@@ -179,7 +179,7 @@
 .upper-picker-header-view button { 
   color: rgba(0, 0, 0, 0.88);
   font-weight: 500;
-  padding: 0 4px;
+    padding: 0 4px;
   border: none; 
   background: none; 
   cursor: pointer;
@@ -191,13 +191,13 @@
 .upper-picker-header-next-btn,
 .upper-picker-header-super-prev-btn,
 .upper-picker-header-super-next-btn {
-  min-width: 1.6em;
+    min-width: 1.6em;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.25);
   border: none; 
   background: none; 
   cursor: pointer;
-  padding: 0 4px;
+    padding: 0 4px;
 }
 .upper-picker-header-prev-btn:hover,
 .upper-picker-header-next-btn:hover,
@@ -207,7 +207,7 @@
 }
 
 .upper-picker-body {
-  padding: 8px 12px;
+  padding: 8px 12px; 
 }
 
 .upper-picker-date-panel td div:hover { 
@@ -226,7 +226,7 @@
 .upper-picker-date-panel .upper-picker-cell-disabled div { 
   color: rgba(0, 0, 0, 0.25);
   background: rgba(0, 0, 0, 0.04);
-  cursor: not-allowed;
+    cursor: not-allowed; 
 }
 
 .upper-picker-footer {
@@ -247,7 +247,7 @@
 
 .upper-picker-today-btn-disabled {
   color: rgba(0, 0, 0, 0.25);
-  cursor: not-allowed;
+    cursor: not-allowed;
 }
 
 /* Other structural CSS from original file is kept as is */

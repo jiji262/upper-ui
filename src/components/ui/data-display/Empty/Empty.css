@@ -2,22 +2,18 @@
 /* Based on antd/es/empty/style/index.css */
 
 .upper-empty {
-  margin: 32px 0; /* Default margin around Empty component */
-  padding: 0;
-  color: rgba(0, 0, 0, 0.88);
-  font-size: 14px;
-  line-height: 1.5714285714285714;
+  margin: 0 auto;
+  padding: 32px 0;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
-    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
 }
 
 .upper-empty-image {
-  height: 100px; /* Default height for image container */
+  height: 40px;
   margin-bottom: 8px;
-  opacity: 1; /* Default opacity, can be changed for themes */
+  display: flex;
+  justify-content: center;
 }
+
 .upper-empty-image svg {
   width: 100%; /* Make SVG responsive within its container */
   height: 100%;
@@ -39,22 +35,36 @@
     object-fit: contain;
 }
 
-
 .upper-empty-description {
-  color: rgba(0,0,0,0.45); /* Default description color */
+  margin: 8px 0;
+  color: rgba(0, 0, 0, 0.45);
   font-size: 14px;
+  line-height: 1.5;
 }
 .upper-empty-description p { /* If description is a paragraph */
     margin: 0;
 }
 
 .upper-empty-footer {
-  margin-top: 16px; /* Space above footer content */
+  margin-top: 16px;
 }
 .upper-empty-footer > *:not(:last-child) {
   margin-right: 8px; /* Space between multiple footer buttons/elements */
 }
 
+/* Add animation for SVG on hover */
+.upper-empty:hover svg {
+  animation: upper-empty-float 2s ease-in-out infinite;
+}
+
+@keyframes upper-empty-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
 
 /* Small Empty variant (not a standard AntD prop, but common customization) */
 /* Could be controlled by a size prop or specific class */

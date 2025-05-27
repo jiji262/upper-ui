@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './Select.css';
 
 export interface SelectOption {
@@ -8,112 +8,140 @@ export interface SelectOption {
 }
 
 export interface SelectProps {
-  options?: SelectOption[];
-  defaultValue?: string | number | (string | number)[];
+  options: SelectOption[];
   value?: string | number | (string | number)[];
+  defaultValue?: string | number | (string | number)[];
   placeholder?: string;
   disabled?: boolean;
-  loading?: boolean;
   mode?: 'multiple' | 'tags';
-  showSearch?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
   onChange?: (value: string | number | (string | number)[]) => void;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const Select: React.FC<SelectProps> = ({
-  options = [],
-  defaultValue,
+  options,
   value,
+  defaultValue,
   placeholder = 'Please select',
   disabled = false,
-  loading = false,
   mode,
-  showSearch = false,
-  style,
-  className,
   onChange,
+  className = '',
+  style,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<string | number | (string | number)[]>(
-    value || defaultValue || (mode ? [] : '')
+  const [internalValue, setInternalValue] = useState<string | number | (string | number)[]>(
+    value !== undefined ? value : defaultValue !== undefined ? defaultValue : mode ? [] : ''
   );
+  const selectRef = useRef<HTMLDivElement>(null);
 
-  const handleSelectClick = () => {
-    if (!disabled && !loading) {
-      setIsOpen(!isOpen);
+  // Update internal value when controlled value changes
+  useEffect(() => {
+    if (value !== undefined) {
+      setInternalValue(value);
     }
-  };
+  }, [value]);
 
-  const handleOptionClick = (optionValue: string | number) => {
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleSelect = (option: SelectOption) => {
+    if (option.disabled) return;
+
     let newValue: string | number | (string | number)[];
-    
+
     if (mode === 'multiple' || mode === 'tags') {
-      // For multiple selection
-      const valueArray = Array.isArray(selectedValue) ? selectedValue : [];
-      if (valueArray.includes(optionValue)) {
-        newValue = valueArray.filter(v => v !== optionValue);
+      const valueArray = Array.isArray(internalValue) ? internalValue : [];
+      const optionIndex = valueArray.indexOf(option.value);
+      
+      if (optionIndex > -1) {
+        // Remove option if already selected (in multiple mode)
+        newValue = [...valueArray.slice(0, optionIndex), ...valueArray.slice(optionIndex + 1)];
       } else {
-        newValue = [...valueArray, optionValue];
+        // Add option
+        newValue = [...valueArray, option.value];
       }
     } else {
-      // For single selection
-      newValue = optionValue;
-      setIsOpen(false);
+      // Single selection mode
+      newValue = option.value;
+      setIsOpen(false); // Close dropdown in single mode
     }
-    
-    setSelectedValue(newValue);
-    onChange?.(newValue);
+
+    setInternalValue(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
   const getSelectedLabel = () => {
     if (mode === 'multiple' || mode === 'tags') {
-      if (Array.isArray(selectedValue) && selectedValue.length > 0) {
-        return selectedValue.map(v => {
-          const option = options.find(o => o.value === v);
-          return option?.label || v;
-        }).join(', ');
+      if (!Array.isArray(internalValue) || internalValue.length === 0) {
+        return placeholder;
       }
-      return placeholder;
-    } else {
-      const option = options.find(o => o.value === selectedValue);
-      return option?.label || placeholder;
+
+      return `${internalValue.length} selected`;
     }
+
+    const selectedOption = options.find(opt => opt.value === internalValue);
+    return selectedOption ? selectedOption.label : placeholder;
   };
 
-  const selectClassName = [
-    'upper-select',
-    isOpen ? 'upper-select-open' : '',
-    disabled ? 'upper-select-disabled' : '',
-    loading ? 'upper-select-loading' : '',
-    className || '',
-  ].filter(Boolean).join(' ');
+  const isOptionSelected = (optionValue: string | number) => {
+    if (mode === 'multiple' || mode === 'tags') {
+      return Array.isArray(internalValue) && internalValue.includes(optionValue);
+    }
+    return internalValue === optionValue;
+  };
 
   return (
-    <div className={selectClassName} style={style}>
-      <div className="upper-select-selector" onClick={handleSelectClick}>
-        <span className="upper-select-selection-item">{getSelectedLabel()}</span>
-        <span className="upper-select-arrow"></span>
+    <div 
+      ref={selectRef} 
+      className={`upper-select ${isOpen ? 'upper-select-open' : ''} ${disabled ? 'upper-select-disabled' : ''} ${className}`}
+      style={style}
+    >
+      <div 
+        className="upper-select-selector"
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+      >
+        <span className="upper-select-selection-item">
+          {getSelectedLabel()}
+        </span>
+        <span className="upper-select-arrow">▼</span>
       </div>
-      
+
       {isOpen && (
         <div className="upper-select-dropdown">
           <div className="upper-select-dropdown-content">
-            {options.map((option) => {
-              const isSelected = mode === 'multiple' || mode === 'tags' 
-                ? Array.isArray(selectedValue) && selectedValue.includes(option.value)
-                : selectedValue === option.value;
-                
-              return (
-                <div
-                  key={option.value}
-                  className={`upper-select-item ${isSelected ? 'upper-select-item-selected' : ''} ${option.disabled ? 'upper-select-item-disabled' : ''}`}
-                  onClick={() => !option.disabled && handleOptionClick(option.value)}
-                >
-                  {option.label}
-                </div>
-              );
-            })}
+            {options.map((option, index) => (
+              <div
+                key={index}
+                className={`upper-select-item ${isOptionSelected(option.value) ? 'upper-select-item-selected' : ''} ${option.disabled ? 'upper-select-item-disabled' : ''}`}
+                onClick={() => handleSelect(option)}
+              >
+                {option.label}
+                {isOptionSelected(option.value) && mode !== 'multiple' && (
+                  <span className="upper-select-item-selected-icon">✓</span>
+                )}
+                {isOptionSelected(option.value) && (mode === 'multiple' || mode === 'tags') && (
+                  <span className="upper-select-item-selected-icon">✓</span>
+                )}
+              </div>
+            ))}
+            {options.length === 0 && (
+              <div className="upper-select-empty">No options</div>
+            )}
           </div>
         </div>
       )}

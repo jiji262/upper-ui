@@ -8,9 +8,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: inherit;
-  line-height: 1;
-  color: inherit;
+  height: 1em;
+  width: 1em;
+  font-size: 16px;
+  line-height: 0;
+  vertical-align: -0.125em;
+  text-align: center;
+  transition: all 0.3s;
 }
 
 /* Example of how you might add a hover effect if not using antd's built-in ones */

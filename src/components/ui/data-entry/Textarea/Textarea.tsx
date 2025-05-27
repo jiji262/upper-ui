@@ -1,55 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Textarea.css';
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  autoSize?: boolean | { minRows?: number; maxRows?: number };
+export interface TextareaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'> {
   showCount?: boolean;
+  maxLength?: number;
   status?: 'error' | 'warning';
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 const Textarea: React.FC<TextareaProps> = ({
-  autoSize,
-  showCount,
-  status,
-  className,
+  className = '',
+  showCount = false,
   maxLength,
-  value,
+  status,
   onChange,
-  ...rest
+  value,
+  defaultValue,
+  ...props
 }) => {
-  const [textValue, setTextValue] = React.useState<string>(value as string || '');
+  const [internalValue, setInternalValue] = useState<string>(
+    (value !== undefined ? String(value) : defaultValue !== undefined ? String(defaultValue) : '')
+  );
 
-  React.useEffect(() => {
+  // Update internal value when controlled value changes
+  useEffect(() => {
     if (value !== undefined) {
-      setTextValue(value as string);
+      setInternalValue(String(value));
     }
   }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextValue(e.target.value);
-    onChange?.(e);
+    const val = e.target.value;
+    
+    if (maxLength !== undefined && val.length > maxLength) {
+      // If we exceed maxLength, trim the value
+      e.target.value = val.slice(0, maxLength);
+      setInternalValue(e.target.value);
+    } else {
+      setInternalValue(val);
+    }
+    
+    if (onChange) {
+      onChange(e);
+    }
   };
 
-  const classNames = [
-    'upper-textarea',
-    status ? `upper-textarea-${status}` : '',
-    autoSize ? 'upper-textarea-autosize' : '',
-    className || '',
-  ].filter(Boolean).join(' ');
+  const getCount = () => {
+    const textLength = internalValue.length;
+    if (maxLength !== undefined) {
+      return `${textLength}/${maxLength}`;
+    }
+    return textLength;
+  };
+
+  const statusClass = status ? `upper-textarea-${status}` : '';
 
   return (
-    <div className="upper-textarea-wrapper">
+    <div className={`upper-textarea-wrapper ${className}`}>
       <textarea
-        className={classNames}
-        value={textValue}
+        className={`upper-textarea ${statusClass}`}
+        value={value !== undefined ? value : undefined}
+        defaultValue={defaultValue !== undefined ? defaultValue : undefined}
         onChange={handleChange}
         maxLength={maxLength}
-        {...rest}
+        {...props}
       />
       {showCount && (
-        <div className="upper-textarea-count">
-          {textValue.length}{maxLength ? `/${maxLength}` : ''}
-        </div>
+        <span className="upper-textarea-count">{getCount()}</span>
       )}
     </div>
   );
