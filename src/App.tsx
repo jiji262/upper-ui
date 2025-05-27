@@ -117,320 +117,369 @@ function App() {
             </section>
 
             {/* Components Showcase */}
-            <section className="bg-white rounded-xl shadow-sm p-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Featured Components</h2>
-              
-              {/* Upper UI Components */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Upper UI Style Components</h3>
-              
-              {/* General Components */}
-              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">General Components</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Buttons */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Buttons</CardTitle>
-                    <CardDescription>Various button styles and variants</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Button Variants</h5>
-                        <div className="flex flex-wrap gap-2">
-                          <Button variant="outline">Default</Button>
-                          <Button>Primary</Button>
-                          <Button variant="outline" className="border-dashed">Dashed</Button>
-                          <Button variant="ghost">Text</Button>
-                          <Button variant="link">Link</Button>
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Button Sizes</h5>
-                        <div className="flex flex-wrap gap-2">
-                          <Button size="sm">Small</Button>
-                          <Button>Default</Button>
-                          <Button size="lg">Large</Button>
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Button States</h5>
-                        <div className="flex flex-wrap gap-2">
-                          <Button disabled>Disabled</Button>
-                          <Button loading>Loading</Button>
-                          <Button variant="destructive">Danger</Button>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+            <section id="components" className="py-16 bg-white">
+              <div className="container mx-auto px-4 max-w-6xl">
+                <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Upper UI Component Library</h2>
+                
+                {/* Navigation Tabs for Component Categories */}
+                <div className="mb-10">
+                  <div className="flex flex-wrap justify-center gap-2 mb-6">
+                    <Button 
+                      variant={selectedTab === "general" ? "default" : "outline"}
+                      onClick={() => setSelectedTab("general")}
+                      className="min-w-24"
+                    >
+                      General
+                    </Button>
+                    <Button 
+                      variant={selectedTab === "data-entry" ? "default" : "outline"}
+                      onClick={() => setSelectedTab("data-entry")}
+                      className="min-w-24"
+                    >
+                      Data Entry
+                    </Button>
+                    <Button 
+                      variant={selectedTab === "data-display" ? "default" : "outline"}
+                      onClick={() => setSelectedTab("data-display")}
+                      className="min-w-24"
+                    >
+                      Data Display
+                    </Button>
+                    <Button 
+                      variant={selectedTab === "feedback" ? "default" : "outline"}
+                      onClick={() => setSelectedTab("feedback")}
+                      className="min-w-24"
+                    >
+                      Feedback
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* General Components */}
+                {selectedTab === "general" && (
+                  <div>
+                    <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">General Components</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Buttons */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Buttons</CardTitle>
+                          <CardDescription>Various button styles and variants</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Button Variants</h5>
+                              <div className="flex flex-wrap gap-3">
+                                <Button variant="outline">Default</Button>
+                                <Button>Primary</Button>
+                                <Button variant="outline" className="border-dashed">Dashed</Button>
+                                <Button variant="ghost">Text</Button>
+                                <Button variant="link">Link</Button>
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Button Sizes</h5>
+                              <div className="flex flex-wrap gap-3">
+                                <Button size="sm">Small</Button>
+                                <Button>Default</Button>
+                                <Button size="lg">Large</Button>
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Button States</h5>
+                              <div className="flex flex-wrap gap-3">
+                                <Button disabled>Disabled</Button>
+                                <Button loading>Loading</Button>
+                                <Button variant="destructive">Danger</Button>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
 
-                {/* Icons */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Icons</CardTitle>
-                    <CardDescription>Simple icon components</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
-                        <Icon name="UploadOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-2">Upload</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
-                        <Icon name="LeftOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-2">Left</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
-                        <Icon name="RightOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-2">Right</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
-                        <Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
-                        <span className="text-sm mt-2">Custom Color</span>
-                      </div>
+                      {/* Icons */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Icons</CardTitle>
+                          <CardDescription>Simple icon components</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:border-purple-400 transition-colors">
+                              <Icon name="UploadOutlined" style={{ fontSize: '24px' }} />
+                              <span className="text-sm mt-3">Upload</span>
+                            </div>
+                            <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:border-purple-400 transition-colors">
+                              <Icon name="LeftOutlined" style={{ fontSize: '24px' }} />
+                              <span className="text-sm mt-3">Left</span>
+                            </div>
+                            <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:border-purple-400 transition-colors">
+                              <Icon name="RightOutlined" style={{ fontSize: '24px' }} />
+                              <span className="text-sm mt-3">Right</span>
+                            </div>
+                            <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:border-purple-400 transition-colors">
+                              <Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
+                              <span className="text-sm mt-3">Custom Color</span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              {/* Data Entry Components */}
-              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Data Entry Components</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Inputs */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Inputs</CardTitle>
-                    <CardDescription>Text input components</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Input</h5>
-                        <InputAnt placeholder="Basic usage" />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Input Sizes</h5>
-                        <div className="space-y-2">
-                          <InputAnt size="small" placeholder="Small size" />
-                          <InputAnt placeholder="Default size" />
-                          <InputAnt size="large" placeholder="Large size" />
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Input States</h5>
-                        <div className="space-y-2">
-                          <InputAnt placeholder="Error" error={true} />
-                          <InputAnt placeholder="Disabled" disabled />
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Input with Addons</h5>
-                        <div className="flex items-center">
-                          <span className="mr-2 px-2 py-1 bg-gray-100 border rounded-l">http://</span>
-                          <InputAnt placeholder="Website" className="rounded-l-none" />
-                          <span className="ml-2 px-2 py-1 bg-gray-100 border rounded-r">.com</span>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                )}
                 
-                {/* TextArea */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>TextArea</CardTitle>
-                    <CardDescription>Multi-line text input</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic TextArea</h5>
-                        <TextareaAnt placeholder="Basic usage" />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">With Character Count</h5>
-                        <TextareaAnt showCount maxLength={100} placeholder="With character count" />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Error State</h5>
-                        <TextareaAnt status="error" placeholder="Error" />
-                      </div>
+                {/* Data Entry Components */}
+                {selectedTab === "data-entry" && (
+                  <div>
+                    <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Data Entry Components</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Inputs */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Inputs</CardTitle>
+                          <CardDescription>Text input components</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Input</h5>
+                              <InputAnt placeholder="Basic usage" />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Input Sizes</h5>
+                              <div className="space-y-3">
+                                <InputAnt size="small" placeholder="Small size" />
+                                <InputAnt placeholder="Default size" />
+                                <InputAnt size="large" placeholder="Large size" />
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Input States</h5>
+                              <div className="space-y-3">
+                                <InputAnt placeholder="Error" error={true} />
+                                <InputAnt placeholder="Disabled" disabled />
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Input with Addons</h5>
+                              <div className="flex items-center">
+                                <span className="mr-2 px-2 py-1 bg-gray-100 border rounded-l">http://</span>
+                                <InputAnt placeholder="Website" className="rounded-l-none" />
+                                <span className="ml-2 px-2 py-1 bg-gray-100 border rounded-r">.com</span>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      {/* TextArea */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>TextArea</CardTitle>
+                          <CardDescription>Multi-line text input</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic TextArea</h5>
+                              <TextareaAnt placeholder="Basic usage" />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">With Character Count</h5>
+                              <TextareaAnt showCount maxLength={100} placeholder="With character count" />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Error State</h5>
+                              <TextareaAnt status="error" placeholder="Error" />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      {/* Checkbox & Radio */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Checkbox</CardTitle>
+                          <CardDescription>Selection controls</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Checkbox</h5>
+                              <div className="space-y-3">
+                                <CheckboxAnt label="Basic Checkbox" />
+                                <CheckboxAnt 
+                                  label="Controlled Checkbox"
+                                  checked={checkboxValue} 
+                                  onChange={(e) => setCheckboxValue(e.target.checked)}
+                                />
+                              </div>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Checkbox States</h5>
+                              <div className="space-y-3">
+                                <CheckboxAnt label="Disabled" disabled />
+                                <CheckboxAnt label="Disabled Checked" disabled checked />
+                                <CheckboxAnt label="Indeterminate" indeterminate />
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      {/* Select */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Select</CardTitle>
+                          <CardDescription>Dropdown selection</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Select</h5>
+                              <SelectAnt
+                                options={[
+                                  { label: 'Option 1', value: '1' },
+                                  { label: 'Option 2', value: '2' },
+                                  { label: 'Option 3', value: '3' },
+                                ]}
+                                placeholder="Please select"
+                                value={selectValue}
+                                onChange={(value) => setSelectValue(typeof value === 'string' || typeof value === 'number' ? value : value[0])}
+                              />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Multiple Select</h5>
+                              <SelectAnt
+                                mode="multiple"
+                                options={[
+                                  { label: 'Option 1', value: '1' },
+                                  { label: 'Option 2', value: '2' },
+                                  { label: 'Option 3', value: '3' },
+                                ]}
+                                placeholder="Select multiple"
+                              />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Disabled Select</h5>
+                              <SelectAnt
+                                disabled
+                                options={[
+                                  { label: 'Option 1', value: '1' },
+                                  { label: 'Option 2', value: '2' },
+                                ]}
+                                placeholder="Disabled"
+                              />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                )}
                 
-                {/* Checkbox & Radio */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Checkbox</CardTitle>
-                    <CardDescription>Selection controls</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Checkbox</h5>
-                        <div className="space-y-2">
-                          <CheckboxAnt label="Basic Checkbox" />
-                          <CheckboxAnt 
-                            label="Controlled Checkbox"
-                            checked={checkboxValue} 
-                            onChange={(e) => setCheckboxValue(e.target.checked)}
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Checkbox States</h5>
-                        <div className="space-y-2">
-                          <CheckboxAnt label="Disabled" disabled />
-                          <CheckboxAnt label="Disabled Checked" disabled checked />
-                          <CheckboxAnt label="Indeterminate" indeterminate />
-                        </div>
-                      </div>
+                {/* Data Display Components */}
+                {selectedTab === "data-display" && (
+                  <div>
+                    <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Data Display Components</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Empty Component */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Empty</CardTitle>
+                          <CardDescription>Empty state placeholder</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Empty</h5>
+                              <Empty description="No data available" />
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">With Custom Description</h5>
+                              <Empty description="No items found. Try a different search." />
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                      
+                      {/* Descriptions Component */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Descriptions</CardTitle>
+                          <CardDescription>Display detailed information</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Descriptions</h5>
+                              <Descriptions title="User Information">
+                                <DescriptionsItem label="Name">John Doe</DescriptionsItem>
+                                <DescriptionsItem label="Email">john.doe@example.com</DescriptionsItem>
+                                <DescriptionsItem label="Status">Active</DescriptionsItem>
+                              </Descriptions>
+                            </div>
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Bordered Descriptions</h5>
+                              <Descriptions title="Product Details" bordered>
+                                <DescriptionsItem label="Product">Upper UI Library</DescriptionsItem>
+                                <DescriptionsItem label="Version">1.0.0</DescriptionsItem>
+                                <DescriptionsItem label="License">MIT</DescriptionsItem>
+                                <DescriptionsItem label="Description">A React UI component library</DescriptionsItem>
+                              </Descriptions>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                )}
                 
-                {/* Select */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Select</CardTitle>
-                    <CardDescription>Dropdown selection</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Select</h5>
-                        <SelectAnt
-                          options={[
-                            { label: 'Option 1', value: '1' },
-                            { label: 'Option 2', value: '2' },
-                            { label: 'Option 3', value: '3' },
-                          ]}
-                          placeholder="Please select"
-                          value={selectValue}
-                          onChange={(value) => setSelectValue(typeof value === 'string' || typeof value === 'number' ? value : value[0])}
-                        />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Multiple Select</h5>
-                        <SelectAnt
-                          mode="multiple"
-                          options={[
-                            { label: 'Option 1', value: '1' },
-                            { label: 'Option 2', value: '2' },
-                            { label: 'Option 3', value: '3' },
-                          ]}
-                          placeholder="Select multiple"
-                        />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Disabled Select</h5>
-                        <SelectAnt
-                          disabled
-                          options={[
-                            { label: 'Option 1', value: '1' },
-                            { label: 'Option 2', value: '2' },
-                          ]}
-                          placeholder="Disabled"
-                        />
-                      </div>
+                {/* Feedback Components */}
+                {selectedTab === "feedback" && (
+                  <div>
+                    <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Feedback Components</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {/* Modal Component */}
+                      <Card className="shadow-md hover:shadow-lg transition-shadow">
+                        <CardHeader className="border-b bg-gray-50">
+                          <CardTitle>Modal</CardTitle>
+                          <CardDescription>Dialog box for important content</CardDescription>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-6">
+                            <div>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Modal</h5>
+                              <div className="flex justify-center">
+                                <Button onClick={() => setModalOpen(true)}>
+                                  Open Modal
+                                </Button>
+                              </div>
+                              <Modal 
+                                title="Upper UI Modal"
+                                open={modalOpen}
+                                onOk={() => setModalOpen(false)}
+                                onCancel={() => setModalOpen(false)}
+                                footer={[
+                                  <Button key="back" onClick={() => setModalOpen(false)}>
+                                    Cancel
+                                  </Button>,
+                                  <Button key="submit" onClick={() => setModalOpen(false)}>
+                                    OK
+                                  </Button>,
+                                ]}
+                              >
+                                <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
+                                <p>You can add any content here.</p>
+                              </Modal>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              {/* Data Display Components */}
-              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Data Display Components</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Empty Component */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Empty</CardTitle>
-                    <CardDescription>Empty state placeholder</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Empty</h5>
-                        <Empty description="No data available" />
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">With Custom Description</h5>
-                        <Empty description="No items found. Try a different search." />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                
-                {/* Descriptions Component */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Descriptions</CardTitle>
-                    <CardDescription>Display detailed information</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Descriptions</h5>
-                        <Descriptions title="User Information">
-                          <DescriptionsItem label="Name">John Doe</DescriptionsItem>
-                          <DescriptionsItem label="Email">john.doe@example.com</DescriptionsItem>
-                          <DescriptionsItem label="Status">Active</DescriptionsItem>
-                        </Descriptions>
-                      </div>
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Bordered Descriptions</h5>
-                        <Descriptions title="Product Details" bordered>
-                          <DescriptionsItem label="Product">Upper UI Library</DescriptionsItem>
-                          <DescriptionsItem label="Version">1.0.0</DescriptionsItem>
-                          <DescriptionsItem label="License">MIT</DescriptionsItem>
-                          <DescriptionsItem label="Description">A React UI component library</DescriptionsItem>
-                        </Descriptions>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-              
-              {/* Feedback Components */}
-              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Feedback Components</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Modal Component */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Modal</CardTitle>
-                    <CardDescription>Dialog box for important content</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div>
-                        <h5 className="text-sm font-medium mb-2">Basic Modal</h5>
-                        <div className="flex justify-center">
-                          <Button onClick={() => setModalOpen(true)}>
-                            Open Modal
-                          </Button>
-                        </div>
-                        <Modal 
-                          title="Upper UI Modal"
-                          open={modalOpen}
-                          onOk={() => setModalOpen(false)}
-                          onCancel={() => setModalOpen(false)}
-                          footer={[
-                            <Button key="back" onClick={() => setModalOpen(false)}>
-                              Cancel
-                            </Button>,
-                            <Button key="submit" onClick={() => setModalOpen(false)}>
-                              OK
-                            </Button>,
-                          ]}
-                        >
-                          <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
-                          <p>You can add any content here.</p>
-                        </Modal>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                )}
               </div>
             </section>
           </div>
