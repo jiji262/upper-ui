@@ -1,0 +1,39 @@
+/* src/components/ui/other/App/App.css */
+/* Based on antd/es/app/style/index.css */
+
+.ant-app {
+  /* The App component itself is primarily a context provider and doesn't have much visual styling. */
+  /* It typically wraps the entire application content. */
+  /* Styles here would be for any specific layout or global properties the App wrapper itself might need. */
+  
+  /* For example, if App needed to ensure it takes full height: */
+  /* height: 100%; */
+  /* display: flex; */
+  /* flex-direction: column; */
+
+  /* Ant Design's App component might also inject global styles or reset certain browser defaults, */
+  /* but that's usually handled by a global CSS file (e.g., antd.css or a reset/normalize). */
+
+  /* If the App component itself renders containers for message/notification (when not using document.body), */
+  /* those containers would be styled here or in their respective component CSS. */
+  /* For instance: */
+  /*
+  .ant-app-message-container {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1010; // Ensure it's above most content
+  }
+  .ant-app-notification-container-topRight {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1010;
+  }
+  */
+  /* However, the current simplified Message and Notification components append directly to document.body. */
+
+  /* For the purpose of this simplified implementation, App.css can be minimal. */
+  /* It's more about the context providing functionality. */
+}

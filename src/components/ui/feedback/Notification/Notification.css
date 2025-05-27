@@ -1,0 +1,175 @@
+// src/components/ui/feedback/Notification/Notification.css
+/* Based on antd/es/notification/style/index.css */
+
+.ant-notification-container {
+  position: fixed;
+  z-index: 1010; /* AntD default z-index for notification */
+  width: 384px; /* AntD default width */
+  max-width: calc(100vw - 48px); /* Max width with padding from viewport edges */
+  margin-right: 24px; /* Default for topRight, adjust based on placement */
+  /* pointer-events: none; /* Container itself is not interactive */
+}
+
+/* Placement specific styles for container */
+.ant-notification-container-topLeft {
+  top: 24px;
+  left: 24px;
+}
+.ant-notification-container-topRight { /* Default */
+  top: 24px;
+  right: 24px;
+}
+.ant-notification-container-bottomLeft {
+  bottom: 24px;
+  left: 24px;
+}
+.ant-notification-container-bottomRight {
+  bottom: 24px;
+  right: 24px;
+}
+
+
+.ant-notification-notice {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 16px 24px; /* AntD default padding */
+  background: #fff;
+  border-radius: 8px; /* AntD default */
+  box-shadow: 0 6px 16px -8px rgba(0,0,0,0.08), 0 9px 28px 0 rgba(0,0,0,0.05), 0 12px 48px 16px rgba(0,0,0,0.03); /* AntD default shadow */
+  overflow: hidden; /* For icon positioning and potential custom content */
+  line-height: 1.5714285714285714;
+  pointer-events: auto; /* Individual notices are interactive */
+  /* Animation for enter/leave would be added here */
+  /* Example: transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86); */
+}
+
+.ant-notification-notice-content {
+  display: flex;
+  align-items: flex-start; /* Align icon and text block to top */
+}
+
+.ant-notification-notice-icon {
+  font-size: 20px; /* Default icon size */
+  line-height: 1; /* Ensure icon aligns with text properly */
+  margin-right: 12px; /* Space between icon and message/description block */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+/* Icon colors based on type */
+.ant-notification-notice-icon-info .anticon { color: #1677ff; }
+.ant-notification-notice-icon-success .anticon { color: #52c41a; }
+.ant-notification-notice-icon-error .anticon { color: #ff4d4f; }
+.ant-notification-notice-icon-warning .anticon { color: #faad14; }
+/* Custom icon passed via props will inherit its own color or can be styled by user */
+
+
+.ant-notification-notice-message {
+  margin-bottom: 4px; /* Space between message and description */
+  color: rgba(0,0,0,0.88);
+  font-size: 16px; /* AntD default message font size */
+  font-weight: 600; /* AntD message is bold */
+  line-height: 1.5; /* 24px */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-grow: 1; /* Message/description block takes available space */
+}
+.ant-notification-notice-message-with-only-description {
+    /* If no message (title), description might take its place styling */
+    /* This class indicates description is the main content if message is empty */
+    /* font-size: 14px; font-weight: normal; /* Example if description becomes primary text */
+}
+
+
+.ant-notification-notice-description {
+  color: rgba(0,0,0,0.88);
+  font-size: 14px; /* AntD default description font size */
+  line-height: 1.5714285714285714;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+}
+
+
+.ant-notification-notice-close {
+  position: absolute;
+  top: 16px; /* Adjust based on padding */
+  right: 20px; /* Adjust based on padding */
+  color: rgba(0,0,0,0.45);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px; /* Close icon size */
+  line-height: 1;
+  padding: 2px; /* Hit area */
+  transition: color 0.3s;
+}
+.ant-notification-notice-close:hover {
+  color: rgba(0,0,0,0.88); /* Darker on hover */
+}
+.ant-notification-notice-close .anticon-close { /* If using antd close icon class */
+  /* Specific styling for close icon if needed */
+}
+
+
+.ant-notification-notice-btn {
+  margin-top: 12px; /* Space above action button(s) */
+  text-align: right; /* Align button(s) to the right */
+}
+.ant-notification-notice-btn .ant-btn { /* Assuming Button component renders .ant-btn */
+  margin-left: 8px; /* Space between multiple buttons */
+}
+.ant-notification-notice-btn .ant-btn:first-child {
+  margin-left: 0;
+}
+
+
+/* Specific type styling (mostly for icon color, already handled) */
+/* .ant-notification-notice-success { ... } */
+/* .ant-notification-notice-info { ... } */
+/* .ant-notification-notice-warning { ... } */
+/* .ant-notification-notice-error { ... } */
+
+
+/* RTL support */
+/* .ant-notification-rtl { ... } */
+/* .ant-notification-rtl .ant-notification-notice-icon { margin-left: 12px; margin-right: 0; } */
+/* .ant-notification-rtl .ant-notification-notice-close { left: 20px; right: auto; } */
+/* .ant-notification-rtl .ant-notification-notice-btn { text-align: left; } */
+/* .ant-notification-rtl .ant-notification-notice-btn .ant-btn { margin-right: 8px; margin-left: 0; } */
+/* .ant-notification-rtl .ant-notification-notice-btn .ant-btn:first-child { margin-right: 0; } */
+
+/* Animation classes (example, AntD uses more specific ones and react-motion or similar) */
+/*
+.ant-notification-fade-enter, .ant-notification-fade-appear { opacity: 0; }
+.ant-notification-fade-enter-active, .ant-notification-fade-appear-active { opacity: 1; transition: opacity .3s; }
+.ant-notification-fade-leave { opacity: 1; }
+.ant-notification-fade-leave-active { opacity: 0; transition: opacity .3s; }
+*/
+
+/* For slide-in from placement */
+/* Example for topRight placement */
+/*
+.ant-notification-container-topRight .ant-notification-notice {
+  animation-duration: .3s;
+  animation-timing-function: cubic-bezier(.78,.14,.15,.86);
+  animation-fill-mode: both;
+}
+.ant-notification-container-topRight .ant-notification-notice-enter,
+.ant-notification-container-topRight .ant-notification-notice-appear {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.ant-notification-container-topRight .ant-notification-notice-enter-active,
+.ant-notification-container-topRight .ant-notification-notice-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.ant-notification-container-topRight .ant-notification-notice-leave {
+  opacity: 1;
+  transform: translateX(0) scaleY(1);
+}
+.ant-notification-container-topRight .ant-notification-notice-leave-active {
+  opacity: 0;
+  transform: translateX(100%) scaleY(0.8); // AntD has a slight scale on leave
+}
+*/

@@ -1,0 +1,195 @@
+/* src/components/ui/data-display/Calendar/Calendar.css */
+/* Based on antd/es/calendar/style/index.css and picker/style/index.css for panel parts */
+
+/* General panel styles (shared with DatePicker, TimePicker if common structure) */
+.ant-picker-panel.ant-calendar { /* Specific for Calendar if it's also a picker panel */
+  display: flex;
+  flex-direction: column;
+  /* width: 296px; /* Default width for DatePicker panel, Calendar might be wider or responsive */
+  border-radius: 8px; /* AntD default */
+  border: 1px solid #f0f0f0; /* Border for fullscreen calendar */
+  background: #fff;
+  /* box-shadow: 0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05); */ /* Shadow for card mode */
+}
+
+.ant-calendar-fullscreen {
+  /* Styles for fullscreen calendar (default) */
+}
+.ant-calendar-card {
+  /* Styles for card mode (when fullscreen=false) */
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.15); */ /* Example shadow for card */
+}
+
+.ant-calendar-header { /* Also .ant-picker-header if sharing structure */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px; /* AntD default padding for Calendar header */
+  border-bottom: 1px solid #f0f0f0; /* Separator line */
+}
+.ant-calendar-header .ant-picker-header-view { /* If using DatePicker's header structure */
+  font-size: 16px; /* Larger font for Calendar header */
+  font-weight: 500;
+  flex-grow: 0; /* Don't let month/year part grow too much */
+}
+.ant-calendar-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between control buttons */
+}
+.ant-calendar-header-controls .ant-btn { /* Assuming Button component is used */
+  /* Ensure buttons are appropriately sized for header (e.g., small) */
+}
+
+
+/* Calendar body (table for days) */
+.ant-calendar .ant-picker-body { /* If sharing DatePicker's body structure */
+  padding: 8px 12px; /* AntD default padding */
+}
+
+.ant-calendar .ant-picker-content { /* Table container */
+  width: 100%;
+}
+.ant-calendar .ant-picker-content th {
+  padding: 0 0 8px 0; /* Padding for day name headers (Sun, Mon, etc.) */
+  color: rgba(0,0,0,0.88);
+  font-weight: normal;
+  text-align: center;
+  line-height: 18px; /* AntD specific line height */
+}
+
+.ant-calendar .ant-picker-cell {
+  padding: 4px; /* Padding around each cell */
+  text-align: center;
+  vertical-align: top; /* Align content to top of cell */
+  border-radius: 8px; /* Rounded corners for hover/selection on cell */
+  transition: background 0.3s;
+}
+.ant-calendar .ant-picker-cell:hover:not(.ant-picker-cell-disabled):not(.ant-picker-cell-selected) .ant-calendar-date {
+  background: #f0f0f0; /* Hover background for date cell */
+}
+
+.ant-calendar-date { /* Inner div for date number and content */
+  display: block;
+  width: 100%;
+  height: auto; /* Adjust based on content, AntD uses fixed height for fullscreen */
+  min-height: 24px; /* Minimum height for a date cell number */
+  padding: 4px 8px; /* Padding inside the date cell */
+  border-top: 2px solid transparent; /* For today/selected indicator */
+  border-radius: 6px; /* Rounded corners for date inner part */
+  transition: background 0.3s, border 0.3s;
+  text-align: center; /* Center date number */
+  cursor: pointer;
+}
+
+.ant-calendar-date-value {
+  line-height: 24px; /* Line height for date number */
+  transition: color 0.3s;
+  color: rgba(0,0,0,0.88);
+}
+.ant-calendar-date-content {
+  /* For custom content rendered via dateCellRender */
+  position: relative; /* For absolute positioning of content if needed */
+  /* AntD uses this for events list, etc. */
+  line-height: 1.2; /* Adjust for custom content */
+  font-size: 12px; /* Smaller font for content */
+  margin-top: 2px;
+}
+
+
+/* Cell States */
+.ant-calendar .ant-picker-cell-in-view .ant-calendar-date-value {
+  /* Default style for dates in current month view */
+}
+.ant-calendar .ant-picker-cell-disabled .ant-calendar-date {
+  cursor: not-allowed;
+  color: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.04); /* Disabled cell background */
+  border-top-color: transparent !important; /* No indicator for disabled */
+}
+.ant-calendar .ant-picker-cell-disabled .ant-calendar-date-value {
+    color: rgba(0,0,0,0.25);
+}
+
+
+.ant-calendar .ant-picker-cell-today .ant-calendar-date {
+  border-top: 2px solid #1677ff; /* Primary color indicator for today */
+  /* background-color: #f0f8ff; /* Optional: slight background for today */
+}
+.ant-calendar .ant-picker-cell-today .ant-calendar-date-value {
+    /* color: #1677ff; /* Optional: color today's number */
+}
+
+
+.ant-calendar .ant-picker-cell-selected .ant-calendar-date {
+  background: #e6f4ff; /* Light blue background for selected date */
+  border-top-color: transparent; /* Selected state overrides today's border-top style if they coincide */
+}
+.ant-calendar .ant-picker-cell-selected .ant-calendar-date-value {
+  color: #1677ff; /* Primary color for selected date number */
+}
+
+
+/* Fullscreen specific adjustments (AntD has more detailed styling for this) */
+.ant-calendar-fullscreen .ant-calendar-date {
+  /* height: 116px; /* Example fixed height for fullscreen cells */
+  /* display: flex; flex-direction: column; justify-content: space-between; */
+}
+.ant-calendar-fullscreen .ant-calendar-date-value {
+  /* text-align: right; */ /* Date number might be aligned differently in fullscreen */
+}
+
+/* Month/Year view specific styles (not implemented in component logic) */
+.ant-calendar-month-panel,
+.ant-calendar-year-panel {
+  /* Styles for month/year selection views */
+}
+.ant-calendar-month-panel .ant-picker-cell-inner,
+.ant-calendar-year-panel .ant-picker-cell-inner {
+  padding: 0 8px;
+  height: 24px; line-height: 24px;
+  border-radius: 4px;
+}
+.ant-calendar-month-panel .ant-picker-cell-selected .ant-picker-cell-inner,
+.ant-calendar-year-panel .ant-picker-cell-selected .ant-picker-cell-inner {
+    background: #1677ff; color: #fff;
+}
+
+
+/* Card mode specific styles (when fullscreen=false) */
+.ant-calendar-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px -2px rgba(0,0,0,0.16), 0 3px 6px 0 rgba(0,0,0,0.12), 0 5px 12px 4px rgba(0,0,0,0.09); /* AntD card shadow */
+}
+.ant-calendar-card .ant-calendar-header {
+    padding: 10px 12px; /* Smaller padding for card header */
+    border-bottom: none; /* No border in card header */
+}
+.ant-calendar-card .ant-picker-header-view {
+    font-size: 14px; /* Smaller font for card header */
+}
+.ant-calendar-card .ant-picker-body {
+    padding: 0 8px 8px 8px; /* Adjust padding for card body */
+}
+.ant-calendar-card .ant-picker-content th {
+    padding-bottom: 4px;
+    font-size: 12px;
+}
+.ant-calendar-card .ant-picker-cell {
+    padding: 2px; /* Tighter padding for card cells */
+}
+.ant-calendar-card .ant-calendar-date {
+    padding: 2px 4px;
+    min-height: 20px;
+}
+.ant-calendar-card .ant-calendar-date-value {
+    line-height: 20px;
+    font-size: 12px;
+}
+.ant-calendar-card .ant-calendar-date-content {
+    /* Hide or minimize content in card mode if too verbose */
+    display: none; /* Example: hide custom content in card mode */
+}
+.ant-calendar-card .ant-picker-cell-today .ant-calendar-date {
+    border-top-width: 1px; /* Thinner border for card today */
+}

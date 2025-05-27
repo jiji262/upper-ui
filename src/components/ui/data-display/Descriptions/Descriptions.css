@@ -1,0 +1,157 @@
+/* src/components/ui/data-display/Descriptions/Descriptions.css */
+/* Based on antd/es/descriptions/style/index.css */
+
+.ant-descriptions {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  color: rgba(0,0,0,0.88);
+}
+
+.ant-descriptions-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* AntD default */
+}
+.ant-descriptions-title {
+  flex: auto; /* Grow to take available space */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(0,0,0,0.88);
+  font-weight: 600; /* AntD default title weight */
+  font-size: 16px; /* AntD default title size */
+  line-height: 1.5;
+}
+.ant-descriptions-extra {
+  margin-left: auto; /* Push extra to the right */
+  color: rgba(0,0,0,0.88);
+  font-size: 14px;
+}
+
+.ant-descriptions-view {
+  width: 100%;
+  border-radius: 8px; /* AntD default for bordered */
+  overflow: hidden; /* For border radius on table */
+}
+.ant-descriptions-view > table {
+  width: 100%;
+  table-layout: fixed; /* Important for column spanning */
+  border-collapse: collapse; /* For bordered style */
+}
+
+.ant-descriptions-row {
+  /* Each <tr> in the table */
+}
+
+.ant-descriptions-item-label,
+.ant-descriptions-item-content {
+  padding: 16px 24px; /* Default padding */
+  border-bottom: 1px solid #f0f0f0; /* Default for non-bordered, horizontal */
+  vertical-align: top; /* Align content to top */
+}
+
+.ant-descriptions-item-label {
+  color: rgba(0,0,0,0.88);
+  font-weight: normal;
+  text-align: start; /* Default text align */
+}
+/* Colon style */
+.ant-descriptions-item-label::after {
+  /* Colon is added directly in JSX for simplicity here, or could be via CSS content */
+  /* content: ':'; */
+  /* margin: 0 8px 0 2px; */
+  /* position: relative; */
+  /* top: -0.5px; */
+}
+.ant-descriptions-item-no-label::after { /* If label is empty, no colon */
+    /* content: ''; */
+}
+
+
+.ant-descriptions-item-content {
+  color: rgba(0,0,0,0.88);
+  word-break: break-word; /* Break long words in content */
+  overflow-wrap: break-word;
+}
+
+
+/* Bordered Styles */
+.ant-descriptions-bordered .ant-descriptions-view {
+  border: 1px solid #f0f0f0;
+}
+.ant-descriptions-bordered .ant-descriptions-item-label,
+.ant-descriptions-bordered .ant-descriptions-item-content {
+  border: 1px solid #f0f0f0; /* All cells have border */
+}
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background-color: rgba(0,0,0,0.02); /* Light background for labels in bordered */
+}
+/* Remove double borders by collapsing or specific border application */
+/* For simplicity, this basic CSS might show double borders. AntD handles this carefully. */
+/* Example: .ant-descriptions-bordered tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; } */
+/* .ant-descriptions-bordered td:not(:last-child) { border-right: 1px solid #f0f0f0; } */
+
+
+/* Layout: Vertical */
+.ant-descriptions-layout-vertical .ant-descriptions-item-label {
+  padding-bottom: 8px; /* Space between label and content in vertical */
+  font-weight: 600; /* Labels are bolder in vertical */
+}
+.ant-descriptions-layout-vertical .ant-descriptions-item-container {
+    /* Container for label and content within a single cell */
+}
+.ant-descriptions-layout-vertical .ant-descriptions-item-label::after {
+  /* No colon by default for vertical layout in AntD */
+  /* content: ''; */
+}
+.ant-descriptions-layout-vertical.ant-descriptions-bordered .ant-descriptions-item-label {
+    /* background-color: transparent; /* Label background might be different for vertical bordered */
+}
+.ant-descriptions-layout-vertical .ant-descriptions-item-content {
+    /* Content specific styles for vertical if needed */
+}
+
+
+/* Sizes */
+/* Middle Size */
+.ant-descriptions-middle .ant-descriptions-item-label,
+.ant-descriptions-middle .ant-descriptions-item-content {
+  padding: 12px 24px; /* Middle size padding */
+}
+.ant-descriptions-middle .ant-descriptions-header {
+    margin-bottom: 16px; /* Middle size header margin */
+}
+
+/* Small Size */
+.ant-descriptions-small .ant-descriptions-item-label,
+.ant-descriptions-small .ant-descriptions-item-content {
+  padding: 8px 16px; /* Small size padding */
+}
+.ant-descriptions-small .ant-descriptions-header {
+    margin-bottom: 12px; /* Small size header margin */
+}
+.ant-descriptions-small .ant-descriptions-title {
+    font-size: 14px; /* Smaller title for small size */
+}
+.ant-descriptions-small .ant-descriptions-extra {
+    font-size: 12px; /* Smaller extra for small size */
+}
+
+
+/* Responsive column handling is done by JS by adjusting colSpan on td/th */
+/* CSS only needs to ensure table layout fixed works well. */
+
+/* Ensure last row cells don't have bottom border if table has overall border */
+.ant-descriptions-bordered tr:last-child > .ant-descriptions-item-label,
+.ant-descriptions-bordered tr:last-child > .ant-descriptions-item-content {
+    border-bottom: none;
+}
+
+/* For horizontal layout, ensure label and content are in sync if one is empty */
+.ant-descriptions-layout-horizontal .ant-descriptions-item-label:empty,
+.ant-descriptions-layout-horizontal .ant-descriptions-item-content:empty {
+    /* padding-top: 0; padding-bottom: 0; /* Or specific height to maintain row height */
+}

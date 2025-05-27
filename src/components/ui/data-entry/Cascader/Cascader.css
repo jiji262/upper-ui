@@ -1,0 +1,181 @@
+/* src/components/ui/data-entry/Cascader/Cascader.css */
+/* Based on antd/es/cascader/style/index.css */
+
+.ant-cascader {
+  display: inline-block;
+  position: relative;
+  font-family: var(--upper-ui-font-family, var(--ant-font-family));
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+}
+
+.ant-cascader-input.ant-input { 
+  cursor: pointer;
+  background-color: var(--upper-ui-component-background-color, #fff); 
+}
+.ant-cascader-input.ant-input[readonly] {
+    background-color: var(--upper-ui-component-background-color, #fff); 
+}
+
+.ant-cascader-picker-open .ant-cascader-input.ant-input {
+  /* border-color: var(--ant-primary-color-hover); */ /* Assuming focus/open state uses hover color for border */
+  /* box-shadow: 0 0 0 2px var(--ant-primary-color-outline); */ /* Need a variable for outline/focus shadow */
+}
+
+.ant-cascader-picker-arrow { 
+  transition: transform 0.3s;
+}
+.ant-cascader-picker-open .ant-cascader-picker-arrow {
+  transform: rotate(180deg);
+}
+
+.ant-cascader-clear {
+  position: absolute;
+  top: 50%;
+  right: 12px; 
+  transform: translateY(-50%);
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+  font-size: var(--upper-ui-font-size-xs, 12px);
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 2; 
+}
+.ant-cascader-clear:hover {
+  color: var(--upper-ui-text-color-secondary, var(--ant-text-color-secondary, rgba(0,0,0,0.45)));
+}
+.ant-cascader-disabled .ant-cascader-clear {
+    display: none; 
+}
+
+
+/* Dropdown styles */
+.ant-cascader-dropdown {
+  position: absolute;
+  z-index: 1050; 
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border-radius: var(--upper-ui-border-radius-base, var(--ant-border-radius-base, 8px)); 
+  box-shadow: var(--upper-ui-box-shadow-base, var(--ant-box-shadow-base)); 
+}
+
+.ant-cascader-menus {
+  display: flex;
+  align-items: flex-start; 
+  padding: 4px; 
+}
+
+.ant-cascader-menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 112px; 
+  max-height: 180px; 
+  margin: 0;
+  padding: 4px 0; 
+  list-style: none;
+  overflow-y: auto;
+  border-right: 1px solid var(--upper-ui-border-color-split-light, var(--ant-border-color-split-light, rgba(5,5,5,0.06))); 
+}
+.ant-cascader-menu:last-child {
+  border-right: none;
+}
+
+.ant-cascader-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 12px; 
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
+  font-weight: var(--upper-ui-font-weight-normal, 400);
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+  line-height: 1.5714285714285714;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.ant-cascader-menu-item:hover {
+  background-color: var(--upper-ui-item-hover-bg, var(--ant-item-hover-bg, rgba(0, 0, 0, 0.04))); 
+}
+
+.ant-cascader-menu-item-active { 
+  background-color: var(--ant-primary-color-light-bg, #e6f4ff); 
+  font-weight: var(--upper-ui-font-weight-semibold, 600); 
+}
+.ant-cascader-menu-item-active:hover {
+    background-color: var(--ant-primary-color-light-bg, #e6f4ff); 
+}
+
+
+.ant-cascader-menu-item-disabled {
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0, 0, 0, 0.25)));
+  cursor: not-allowed;
+}
+.ant-cascader-menu-item-disabled:hover {
+  background-color: transparent; 
+}
+
+.ant-cascader-menu-item-label {
+  flex-grow: 1; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-cascader-menu-item-expand-icon {
+  margin-left: 8px; /* var(--upper-ui-spacing-xs) */
+  font-size: 10px; /* Consider var(--upper-ui-font-size-xs) or specific icon size var */
+  color: var(--upper-ui-text-color-secondary, var(--ant-text-color-secondary, rgba(0,0,0,0.45)));
+}
+.ant-cascader-menu-item-loading-icon {
+    margin-left: 8px; /* var(--upper-ui-spacing-xs) */
+    font-size: 10px;
+    color: var(--ant-primary-color, #1677ff); 
+    animation: ant-cascader-loading-icon-spin 1s infinite linear;
+}
+
+@keyframes ant-cascader-loading-icon-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+.ant-cascader-empty {
+  padding: 12px 16px;
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25))); /* Empty text often uses disabled color */
+  text-align: center;
+}
+
+.ant-cascader-dropdown-search {
+  padding: 8px; /* var(--upper-ui-padding-py-base) */
+  border-bottom: 1px solid var(--upper-ui-border-color-split-light, var(--ant-border-color-split-light, rgba(5,5,5,0.06)));
+}
+.ant-cascader-dropdown-search .ant-input { 
+  width: 100%;
+}
+
+/* Status styling */
+.ant-cascader-status-error .ant-cascader-input.ant-input,
+.ant-cascader-status-error .ant-cascader-input.ant-input:hover {
+  border-color: var(--upper-ui-error-color-strong, var(--ant-error-color, #ff4d4f)); 
+}
+.ant-cascader-status-warning .ant-cascader-input.ant-input,
+.ant-cascader-status-warning .ant-cascader-input.ant-input:hover {
+  border-color: var(--ant-warning-color, #faad14); 
+}
+
+/* Size variants for input part - these assume Input component also respects these variables or classes */
+.ant-cascader-lg .ant-cascader-input.ant-input {
+  padding-top: 7px; 
+  padding-bottom: 7px;
+  height: var(--upper-ui-control-height-lg, 40px); 
+  font-size: var(--upper-ui-font-size-base, 16px); /* AntD large often uses base font size */
+}
+.ant-cascader-sm .ant-cascader-input.ant-input {
+  padding-top: 0px; 
+  padding-bottom: 0px;
+  height: var(--upper-ui-control-height-sm, 24px); 
+}
+.ant-cascader-lg .ant-cascader-clear {
+    right: 16px; 
+}
+.ant-cascader-sm .ant-cascader-clear {
+    right: 8px; 
+}

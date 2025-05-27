@@ -1,0 +1,70 @@
+/* src/components/ui/layout/Splitter/Splitter.css */
+.splitter-container {
+  display: flex;
+  overflow: hidden; 
+  height: 100%; 
+  width: 100%;  
+}
+
+.splitter-container.splitter-horizontal {
+  flex-direction: row;
+}
+
+.splitter-container.splitter-vertical {
+  flex-direction: column;
+}
+
+.splitter-pane {
+  overflow: auto; 
+  position: relative; 
+}
+
+.splitter-pane-1 {
+  /* Size is controlled by JavaScript */
+}
+
+.splitter-pane-2 {
+  flex: 1; 
+}
+
+.splitter-bar {
+  flex-shrink: 0; 
+  background-color: var(--upper-ui-background-color-light, var(--ant-background-color-light, #f0f0f0)); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.splitter-bar:hover {
+  background-color: var(--upper-ui-background-color-hover, var(--ant-item-hover-bg, #e0e0e0)); 
+}
+
+.splitter-bar-horizontal {
+  width: 6px; /* Consider theming: var(--upper-ui-splitter-size, 6px) */
+  cursor: col-resize;
+  margin: 0 2px; 
+}
+
+.splitter-bar-vertical {
+  height: 6px; /* Consider theming: var(--upper-ui-splitter-size, 6px) */
+  cursor: row-resize;
+  margin: 2px 0; 
+}
+
+.splitter-bar-handle {
+  width: 4px; /* Consider theming */
+  height: 30px; 
+  background-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #c0c0c0));
+  border-radius: var(--upper-ui-border-radius-xs, 2px);
+}
+
+.splitter-bar-vertical .splitter-bar-handle {
+  width: 30px;
+  height: 4px; 
+}
+
+.splitter-bar.dragging,
+.splitter-bar:active {
+  background-color: var(--upper-ui-border-color-dark, var(--ant-border-color-dark, #d0d0d0)); 
+}

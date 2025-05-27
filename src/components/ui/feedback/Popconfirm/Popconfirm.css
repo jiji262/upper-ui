@@ -1,0 +1,82 @@
+/* src/components/ui/feedback/Popconfirm/Popconfirm.css */
+/* Based on antd/es/popconfirm/style/index.css and popover/style/index.css */
+
+/* Popconfirm reuses many styles from Popover for the main bubble/arrow */
+/* .ant-popover, .ant-popover-placement-*, .ant-popover-arrow, .ant-popover-inner are assumed to be available */
+
+.ant-popconfirm .ant-popover-inner-content {
+  padding: 12px 16px; /* AntD default for Popconfirm content area */
+}
+
+.ant-popconfirm-message {
+  display: flex;
+  align-items: flex-start; /* Align icon and text block to top */
+  padding: 4px 0 12px 0; /* Space around message, and before buttons */
+  font-size: 14px;
+  color: rgba(0,0,0,0.88);
+}
+.ant-popconfirm-message-icon {
+  margin-right: 8px;
+  color: #faad14; /* Default warning icon color (yellow) */
+  font-size: 16px; /* Icon size */
+  line-height: 1.5714285714285714; /* Align with text */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+.ant-popconfirm-message-icon .anticon { /* If Icon component renders .anticon */
+  /* vertical-align: text-bottom; /* Or adjust as needed */
+}
+
+.ant-popconfirm-message-title {
+  flex-grow: 1; /* Title takes available space */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5714285714285714;
+}
+
+.ant-popconfirm-description {
+  margin-top: 4px; /* Space between title and description */
+  margin-left: calc(16px + 8px); /* Align with title, after icon and its margin */
+  font-size: 12px; /* Smaller font for description */
+  color: rgba(0,0,0,0.65); /* Slightly lighter text for description */
+}
+/* If no icon, description aligns with title */
+.ant-popconfirm-message:not(:has(.ant-popconfirm-message-icon)) + .ant-popconfirm-description {
+    margin-left: 0;
+}
+
+
+.ant-popconfirm-buttons {
+  text-align: right; /* Align buttons to the right */
+  margin-top: 8px; /* Space above buttons if there's no description */
+}
+.ant-popconfirm-description + .ant-popconfirm-buttons {
+    margin-top: 12px; /* More space if description is present */
+}
+
+.ant-popconfirm-buttons .ant-btn { /* Assuming Button component renders .ant-btn */
+  margin-left: 8px;
+  /* font-size: 14px; /* Default button font size */
+  /* height: 24px; /* AntD small button height often used in Popconfirm */
+  /* padding: 0 7px; */
+}
+.ant-popconfirm-buttons .ant-btn:first-child {
+  margin-left: 0; /* No margin for the very first button */
+}
+
+
+/* Disabled state for Popconfirm trigger (handled by trigger element's disabled state) */
+/* If Popconfirm itself has a disabled prop that makes the popover not show: */
+/* .ant-popconfirm-disabled > * { cursor: not-allowed !important; } */
+
+
+/* RTL support would involve flipping horizontal positioning, text-align, margins */
+/* .ant-popconfirm-rtl .ant-popconfirm-message-icon { margin-left: 8px; margin-right: 0; } */
+/* .ant-popconfirm-rtl .ant-popconfirm-description { margin-right: calc(16px + 8px); margin-left: 0; } */
+/* .ant-popconfirm-rtl .ant-popconfirm-buttons { text-align: left; } */
+/* .ant-popconfirm-rtl .ant-popconfirm-buttons .ant-btn { margin-right: 8px; margin-left: 0; } */
+/* .ant-popconfirm-rtl .ant-popconfirm-buttons .ant-btn:first-child { margin-right: 0; } */
+
+/* Ensure popconfirm doesn't inherit title styles if popover has them globally */
+.ant-popconfirm .ant-popover-title {
+    display: none; /* Popconfirm uses its own message area, not popover's title */
+}

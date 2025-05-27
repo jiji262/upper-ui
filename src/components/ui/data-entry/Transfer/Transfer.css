@@ -1,0 +1,191 @@
+/* src/components/ui/data-entry/Transfer/Transfer.css */
+/* Based on antd/es/transfer/style/index.css */
+
+.ant-transfer {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center; /* Align lists and operations block vertically */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+}
+
+.ant-transfer-list {
+  display: flex;
+  flex-direction: column;
+  width: 180px; /* AntD default width */
+  height: 200px; /* AntD default height */
+  border: 1px solid #d9d9d9;
+  border-radius: 6px; /* AntD default */
+  background: #fff;
+}
+.ant-transfer-list-with-footer {
+  /* Adjust height if footer is present */
+}
+
+.ant-transfer-list-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px; /* AntD default header padding */
+  background: #fafafa; /* Header background */
+  border-bottom: 1px solid #f0f0f0;
+  border-radius: 6px 6px 0 0; /* Match parent radius */
+  min-height: 40px; /* Consistent header height */
+}
+.ant-transfer-list-header .ant-checkbox-wrapper { /* Assuming Checkbox has this wrapper */
+  margin-right: 8px;
+}
+.ant-transfer-list-header-title {
+  flex-grow: 1; /* Title takes available space */
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ant-transfer-list-header-selected {
+  color: rgba(0,0,0,0.45); /* Color for selected count */
+  font-size: 12px;
+}
+
+
+/* Search Input in List */
+.ant-transfer-list-search {
+  padding: 8px 12px;
+}
+.ant-transfer-list-search-input.ant-input-affix-wrapper { /* Assuming Input uses this structure */
+  /* Specific styles if Input component has wrapper */
+}
+.ant-transfer-list-search-action { /* For search/clear icon */
+  color: rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.ant-transfer-list-search-action:hover {
+  color: rgba(0,0,0,0.45);
+}
+
+
+.ant-transfer-list-body {
+  flex-grow: 1;
+  padding: 4px 0; /* Padding above/below list items */
+  overflow-y: auto; /* Scroll for list items */
+  position: relative; /* For not-found message positioning */
+}
+.ant-transfer-list-body-with-search {
+  /* Adjust body height or padding if search is visible */
+}
+
+.ant-transfer-list-content {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ant-transfer-list-content-item {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px; /* Item padding */
+  color: rgba(0,0,0,0.88);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  overflow: hidden; /* For text ellipsis on item text */
+}
+.ant-transfer-list-content-item:hover {
+  background-color: rgba(0,0,0,0.04); /* Hover background */
+}
+.ant-transfer-list-content-item-checked {
+  background-color: #e6f4ff; /* Selected item background (light blue) */
+}
+.ant-transfer-list-content-item-checked:hover {
+    background-color: #e6f4ff; /* Keep selected color on hover */
+}
+.ant-transfer-list-content-item-disabled {
+  color: rgba(0,0,0,0.25);
+  background-color: transparent; /* No background for disabled */
+  cursor: not-allowed;
+}
+.ant-transfer-list-content-item-disabled:hover {
+  background-color: transparent; /* No hover effect */
+}
+.ant-transfer-list-content-item-disabled.ant-transfer-list-content-item-checked {
+    /* If a disabled item can somehow be checked (e.g. programmatically) */
+    background-color: rgba(0,0,0,0.04); /* Faded selected color */
+}
+
+
+.ant-transfer-list-content-item .ant-checkbox-wrapper {
+  margin-right: 8px;
+}
+.ant-transfer-list-content-item-text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.ant-transfer-list-body-not-found {
+  padding-top: 16px; /* Space above not-found message */
+  color: rgba(0,0,0,0.25);
+  text-align: center;
+  position: absolute; /* Center it if body is scrollable */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-transfer-list-footer {
+  padding: 8px 12px;
+  border-top: 1px solid #f0f0f0;
+  border-radius: 0 0 6px 6px;
+}
+
+
+/* Operations Block */
+.ant-transfer-operation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 8px; /* Space around operations block */
+}
+.ant-transfer-operation .ant-btn { /* Assuming Button component renders .ant-btn */
+  display: block; /* Stack buttons vertically */
+}
+.ant-transfer-operation .ant-btn:first-child {
+  margin-bottom: 4px; /* Space between operation buttons */
+}
+.ant-transfer-operation .ant-btn .anticon { /* Icon inside button */
+  /* font-size: 12px; /* AntD operation icons are usually small */
+}
+
+/* Disabled state for the whole Transfer component */
+.ant-transfer-disabled .ant-transfer-list {
+  background-color: rgba(0,0,0,0.04); /* Disabled list background */
+  border-color: #d9d9d9;
+}
+.ant-transfer-disabled .ant-transfer-list-header {
+  background: rgba(0,0,0,0.02); /* Slightly different header for disabled */
+}
+.ant-transfer-disabled .ant-transfer-list-header-title,
+.ant-transfer-disabled .ant-transfer-list-header-selected {
+  color: rgba(0,0,0,0.25);
+}
+.ant-transfer-disabled .ant-transfer-list-content-item,
+.ant-transfer-disabled .ant-transfer-list-content-item:hover {
+  color: rgba(0,0,0,0.25);
+  background-color: transparent;
+  cursor: not-allowed;
+}
+.ant-transfer-disabled .ant-transfer-list-search .ant-input { /* Assuming Input search */
+    background-color: #f5f5f5; /* Match input disabled background */
+}
+.ant-transfer-disabled .ant-transfer-operation .ant-btn {
+  /* Disabled styles for operation buttons are handled by Button component's disabled state */
+}
+
+/* RTL support would require flipping margins, paddings, borders, and icon directions */
+/* .ant-transfer-rtl { ... } */

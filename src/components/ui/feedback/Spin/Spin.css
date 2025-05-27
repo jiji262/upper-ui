@@ -1,0 +1,152 @@
+/* src/components/ui/feedback/Spin/Spin.css */
+/* Based on antd/es/spin/style/index.css */
+
+.ant-spin {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #1677ff; /* Default spinning color (AntD primary) */
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  position: absolute; /* Default for when wrapping content, can be overridden */
+  display: none; /* Hidden by default, shown when spinning */
+  text-align: center;
+  vertical-align: middle;
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86); /* For potential scale animations */
+}
+
+.ant-spin-spinning {
+  display: inline-block; /* Show when spinning */
+  opacity: 1;
+  position: static; /* Reset position if not nested */
+}
+
+/* Default spinner (dot animation) */
+.ant-spin-dot {
+  position: relative;
+  display: inline-block;
+  font-size: 20px; /* Default dot size */
+  width: 1em; /* Based on font-size */
+  height: 1em;
+  transform: rotate(45deg); /* Initial rotation for dot items */
+  animation: ant-spin-rotate 1.2s infinite linear; /* If dot itself rotates */
+}
+/* If indicator is an Icon component, it might have its own spin animation (like LoadingOutlined) */
+/* So, .ant-spin-dot-spin might not need its own animation if indicator handles it. */
+/* If indicator is custom and doesn't spin, then .ant-spin-dot-spin can apply a spin. */
+.ant-spin-dot-spin .anticon-loading { /* If using antd loading icon */
+  /* Animation is usually part of the icon itself */
+}
+/* AntD default spinner uses 4 <i> elements absolutely positioned */
+/* This simplified version assumes indicator prop provides the visual spinner. */
+/* If no indicator, it might render the <i> elements or a simpler CSS spinner. */
+/* For the provided Spin.tsx that uses an Icon as default indicator, this part is less critical. */
+/*
+.ant-spin-dot i {
+  width: 9px; height: 9px;
+  border-radius: 100%;
+  background-color: currentColor; // Inherit color from .ant-spin
+  position: absolute;
+  display: block;
+  opacity: 0.3;
+  animation: ant-spin-move 1s infinite linear alternate;
+  transform-origin: 50% 50%;
+}
+.ant-spin-dot i:nth-child(1) { top: 0; left: 0; }
+.ant-spin-dot i:nth-child(2) { top: 0; right: 0; animation-delay: 0.4s; }
+.ant-spin-dot i:nth-child(3) { right: 0; bottom: 0; animation-delay: 0.8s; }
+.ant-spin-dot i:nth-child(4) { bottom: 0; left: 0; animation-delay: 1.2s; }
+
+@keyframes ant-spin-move {
+  to { opacity: 1; }
+}
+@keyframes ant-spin-rotate {
+  to { transform: rotate(405deg); } // 360 + 45
+}
+*/
+
+
+/* Tip text */
+.ant-spin-tip {
+  margin-top: 8px; /* Space between spinner and tip */
+  color: #1677ff; /* Same as spinner color by default */
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  text-align: center;
+}
+
+
+/* Sizes */
+.ant-spin-sm .ant-spin-dot {
+  font-size: 14px; /* Smaller dot size */
+}
+.ant-spin-sm .ant-spin-tip {
+  font-size: 12px; /* Smaller tip text */
+}
+.ant-spin-lg .ant-spin-dot {
+  font-size: 32px; /* Larger dot size */
+}
+.ant-spin-lg .ant-spin-tip {
+  font-size: 16px; /* Larger tip text */
+}
+
+
+/* Nested loading (when Spin wraps content) */
+.ant-spin-nested-loading {
+  position: relative; /* Container for spinner and content */
+}
+
+.ant-spin-container-mask { /* Mask for the content area */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4; /* Above content, below potential modal/drawer masks */
+    display: flex; /* To center the spinElement */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255,255,255,0.5); /* Optional: slight dimming of content */
+    /* transition: all 0.3s; */ /* For smooth appearance of spinner */
+}
+.ant-spin-container-mask > .ant-spin { /* Spinner itself when masking */
+    position: static; /* Reset absolute positioning if it had one */
+    /* display: inline-block; /* Ensure it's visible */
+    /* opacity: 1; */
+}
+
+
+.ant-spin-container {
+  position: relative; /* Ensure content stays in flow */
+  transition: opacity 0.3s; /* For blur effect */
+}
+.ant-spin-blur {
+  clear: both;
+  opacity: 0.5; /* Dim content when spinning */
+  user-select: none; /* Prevent interaction with content when blurred */
+  pointer-events: none; /* Further prevent interaction */
+  /* filter: blur(2px); /* Optional: blur effect, can be performance intensive */
+}
+
+/* Fullscreen spin (not a specific prop, but a common use case) */
+/* Usually achieved by applying Spin to a container that is fullscreen */
+/*
+.ant-spin-fullscreen {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(255,255,255,0.7); // Example fullscreen overlay
+  z-index: 2000; // High z-index
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ant-spin-fullscreen .ant-spin { // The spinner itself within fullscreen
+  position: static; // No longer absolute within its small trigger
+}
+*/

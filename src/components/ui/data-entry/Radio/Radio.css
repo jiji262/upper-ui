@@ -1,0 +1,236 @@
+/* src/components/ui/data-entry/Radio/Radio.css */
+/* Based on antd/es/radio/style/index.css */
+
+.ant-radio-wrapper {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  display: inline-flex; /* Align radio and label */
+  align-items: baseline; /* Align baseline of radio and text */
+  cursor: pointer;
+  margin-right: 8px; /* Default margin between radio items */
+}
+.ant-radio-wrapper:last-child {
+  margin-right: 0;
+}
+
+.ant-radio {
+  box-sizing: border-box;
+  position: relative;
+  top: 0.2em; /* Align radio button nicely with text */
+  display: inline-block;
+  white-space: nowrap;
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle; /* if not using flex on wrapper */
+}
+
+.ant-radio-input {
+  position: absolute;
+  inset: 0; /* Cover the entire area */
+  z-index: 1;
+  opacity: 0; /* Hide native input */
+  cursor: pointer;
+}
+
+.ant-radio-inner {
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+.ant-radio-inner::after { /* The dot inside */
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 10px; /* Size of the dot */
+  height: 10px;
+  margin-top: -5px; /* Center dot */
+  margin-left: -5px;
+  background-color: #1677ff; /* AntD primary color */
+  border-radius: 50%;
+  transform: scale(0); /* Hidden by default */
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+}
+
+.ant-radio-label {
+  padding-inline-start: 8px;
+  padding-inline-end: 0;
+  vertical-align: middle; /* if not using flex on wrapper */
+}
+
+/* Checked state */
+.ant-radio-checked .ant-radio-inner {
+  border-color: #1677ff; /* Primary color border when checked */
+}
+.ant-radio-checked .ant-radio-inner::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Hover state (only when not disabled) */
+.ant-radio-wrapper:hover .ant-radio:not(.ant-radio-disabled) .ant-radio-inner {
+  border-color: #1677ff;
+}
+
+/* Disabled state */
+.ant-radio-disabled .ant-radio-inner {
+  background-color: rgba(0,0,0,0.04); /* Disabled background */
+  border-color: #d9d9d9 !important; /* Important to override hover */
+  cursor: not-allowed;
+}
+.ant-radio-disabled .ant-radio-inner::after {
+  background-color: rgba(0,0,0,0.25); /* Disabled dot color */
+}
+.ant-radio-wrapper-disabled {
+  color: rgba(0,0,0,0.25);
+  cursor: not-allowed;
+}
+.ant-radio-disabled .ant-radio-input {
+  cursor: not-allowed;
+}
+
+
+/* Radio Group */
+.ant-radio-group {
+  display: inline-block;
+  font-size: 14px;
+  line-height: unset; /* Reset line-height for group */
+}
+
+/* Radio Button Style (when optionType is 'button') */
+.ant-radio-group-button .ant-radio-wrapper {
+  margin: 0; /* No margin between buttons */
+  height: 32px; /* Default button height */
+  line-height: 30px; /* Adjust for border */
+  color: rgba(0,0,0,0.88);
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-left-width: 0; /* Adjacent borders handled by :first-child */
+  padding: 0 15px; /* Button padding */
+  transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.ant-radio-group-button .ant-radio-wrapper:first-child {
+  border-left-width: 1px;
+  border-radius: 6px 0 0 6px; /* AntD default */
+}
+.ant-radio-group-button .ant-radio-wrapper:last-child {
+  border-radius: 0 6px 6px 0;
+}
+.ant-radio-group-button .ant-radio-wrapper:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+/* Hide traditional radio dot for button style */
+.ant-radio-group-button .ant-radio-inner,
+.ant-radio-group-button .ant-radio-input {
+  display: none;
+}
+
+.ant-radio-group-button .ant-radio-label {
+  padding-inline-start: 0; /* No extra padding for label in button */
+}
+
+
+/* Button states */
+.ant-radio-group-button .ant-radio-wrapper:hover {
+  position: relative; /* To allow z-index to work for hover border */
+  color: #1677ff;
+  /* border-color: #1677ff; /* Hover border color - handled by antd logic with z-index */
+}
+.ant-radio-group-button .ant-radio-wrapper-checked {
+  color: #1677ff; /* Primary color for selected button text */
+  background: #e6f4ff; /* Light blue background for selected button */
+  border-color: #1677ff;
+  z-index: 1; /* Ensure selected button's border overlaps adjacent */
+}
+.ant-radio-group-button .ant-radio-wrapper-checked:hover {
+  color: #1677ff;
+  background: #e6f4ff; /* Keep selected style on hover */
+  border-color: #1677ff;
+}
+
+/* Solid button style */
+.ant-radio-group-button-solid .ant-radio-wrapper-checked {
+  color: #fff;
+  background: #1677ff; /* Primary color background for solid selected button */
+  border-color: #1677ff;
+}
+.ant-radio-group-button-solid .ant-radio-wrapper-checked:hover {
+  color: #fff;
+  background: #4096ff; /* Lighter primary on hover for solid selected */
+  border-color: #4096ff;
+}
+.ant-radio-group-button-solid .ant-radio-wrapper-checked.ant-radio-wrapper-disabled {
+    color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.04);
+    border-color: #d9d9d9;
+}
+
+
+/* Disabled button style */
+.ant-radio-group-button .ant-radio-wrapper-disabled {
+  color: rgba(0,0,0,0.25);
+  background-color: rgba(0,0,0,0.04);
+  border-color: #d9d9d9;
+  cursor: not-allowed;
+}
+.ant-radio-group-button .ant-radio-wrapper-disabled:hover {
+  color: rgba(0,0,0,0.25); /* No color change on hover for disabled */
+}
+.ant-radio-group-button .ant-radio-wrapper-disabled.ant-radio-wrapper-checked {
+  /* Specific style for disabled but checked button */
+  color: rgba(0,0,0,0.25);
+  background-color: rgba(0,0,0,0.04); /* Or a slightly different disabled checked color */
+  border-color: #d9d9d9;
+}
+
+
+/* Button Sizes */
+/* Large */
+.ant-radio-group-large.ant-radio-group-button .ant-radio-wrapper {
+  height: 40px; /* AntD large size */
+  line-height: 38px;
+  font-size: 16px;
+  padding: 0 15px; /* Padding might be same, font size changes */
+}
+/* Small */
+.ant-radio-group-small.ant-radio-group-button .ant-radio-wrapper {
+  height: 24px; /* AntD small size */
+  line-height: 22px;
+  font-size: 14px; /* Font size might be same, padding changes */
+  padding: 0 7px;
+}
+
+/* Focus style for accessibility (applies to the hidden input, visible on wrapper via :focus-within) */
+.ant-radio-wrapper:focus-within .ant-radio-inner, /* For default radio */
+.ant-radio-group-button .ant-radio-wrapper:focus-within /* For button style */
+{
+  box-shadow: 0 0 0 3px rgba(22, 119, 255, 0.2); /* AntD focus shadow */
+  /* Ensure border is also primary color on focus if not already hovered/checked */
+  /* border-color: #1677ff; */ /* This might conflict with checked styles if not handled carefully */
+}
+.ant-radio-wrapper:focus-within .ant-radio:not(.ant-radio-disabled) .ant-radio-inner {
+    border-color: #1677ff;
+}
+.ant-radio-group-button .ant-radio-wrapper:focus-within:not(.ant-radio-wrapper-checked):not(.ant-radio-wrapper-disabled) {
+    border-color: #1677ff; /* Highlight border on focus for non-checked, non-disabled buttons */
+    z-index: 1; /* Ensure focused border is on top */
+}

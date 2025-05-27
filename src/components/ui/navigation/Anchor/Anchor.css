@@ -1,0 +1,121 @@
+/* src/components/ui/navigation/Anchor/Anchor.css */
+/* Based on antd/es/anchor/style/index.css */
+
+.ant-anchor {
+  position: relative;
+  padding-inline-start: 2px; /* Space for the ink */
+  font-family: var(--upper-ui-font-family, var(--ant-font-family));
+}
+
+.ant-anchor-wrapper {
+  margin-block-start: -7px; 
+  margin-inline-start: -4px;
+  padding-block-start: 7px;
+  overflow: auto;
+  background-color: transparent; 
+}
+
+.ant-anchor-ink-ball {
+  position: absolute;
+  left: 0;
+  top: 0; 
+  width: 2px;
+  height: 0; 
+  background-color: var(--ant-primary-color, #1677ff); 
+  transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
+  display: none; 
+}
+
+.ant-anchor-link-item {
+    /* Styles for the container of a link, if needed for spacing or structure */
+}
+
+.ant-anchor-link {
+  display: block;
+  position: relative;
+  padding: 7px 0 7px 16px; 
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
+  text-decoration: none;
+  transition: color 0.3s;
+  line-height: 1.1428571428571428; 
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+}
+
+.ant-anchor-link:hover {
+  color: var(--ant-primary-color, #1677ff);
+}
+
+.ant-anchor-link-active > .ant-anchor-link, 
+.ant-anchor-link.ant-anchor-link-active 
+{
+  color: var(--ant-primary-color, #1677ff);
+  font-weight: var(--upper-ui-font-weight-semibold, 600); 
+}
+
+
+.ant-anchor-link-title {
+  /* If title is wrapped in a specific span, style here */
+}
+
+.ant-anchor-link-children {
+  padding-left: 16px; /* Indent nested links. Consider var(--upper-ui-spacing-md) */
+}
+
+/* Fixed state */
+.ant-anchor-fixed .ant-anchor-ink-ball {
+  /* Behavior might change if fixed, but basic ink should still work */
+}
+
+.ant-anchor-fixed {
+    position: fixed; 
+    overflow-y: auto;
+}
+
+/* Horizontal Anchor specific styles */
+.ant-anchor-horizontal {
+    display: flex; 
+    border-bottom: 1px solid var(--upper-ui-border-color-split, var(--ant-border-color-split, #f0f0f0)); 
+    padding-inline-start: 0; 
+}
+
+.ant-anchor-horizontal .ant-anchor-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    padding-block-start: 0;
+    overflow: visible; 
+    width: 100%;
+}
+
+.ant-anchor-horizontal .ant-anchor-link-item {
+    /* No specific item styling needed unless for margins/padding between items */
+}
+
+.ant-anchor-horizontal .ant-anchor-link {
+    padding: 8px 12px; /* Consider --upper-ui-padding-sm, --upper-ui-padding-xs */
+    border-bottom: 2px solid transparent; 
+    margin-bottom: -1px; 
+    transition: border-color 0.3s, color 0.3s;
+}
+.ant-anchor-horizontal .ant-anchor-link:hover {
+    border-bottom-color: var(--ant-primary-color, #1677ff); 
+}
+
+.ant-anchor-horizontal .ant-anchor-link.ant-anchor-link-active {
+    border-bottom-color: var(--ant-primary-color, #1677ff); 
+    color: var(--ant-primary-color, #1677ff);
+}
+
+.ant-anchor-horizontal .ant-anchor-ink-ball {
+    bottom: 0; 
+    left: auto; 
+    top: auto;
+    width: 0; 
+    height: 2px; 
+    transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.ant-anchor-horizontal .ant-anchor-link-children {
+    display: none; 
+}

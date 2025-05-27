@@ -1,0 +1,134 @@
+/* src/components/ui/data-display/Image/Image.css */
+/* Based on antd/es/image/style/index.css */
+
+.ant-image {
+  position: relative; /* For placeholder, mask, and preview wrapper positioning */
+  display: inline-block; /* Default display */
+  overflow: hidden; /* Clip contents like placeholder or if image is larger than wrapper */
+  /* Ensure wrapper has a background if image is transparent or placeholder is used */
+  /* background-color: #f5f5f5; /* Example placeholder background */
+}
+
+.ant-image img {
+  max-width: 100%; /* Ensure image is responsive within its container */
+  height: auto; /* Maintain aspect ratio by default */
+  vertical-align: middle; /* Common practice for images */
+  /* object-fit is set by style prop in component */
+}
+.ant-image-img-placeholder { /* If using a specific class for the img itself when placeholder is active */
+    /* display: none; /* Hide actual img tag if placeholder is shown */
+}
+
+
+.ant-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(0,0,0,0.45);
+  background-color: rgba(0,0,0,0.02); /* Light background for placeholder */
+  border: 1px dashed #d9d9d9; /* Optional: border for placeholder area */
+  border-radius: inherit; /* Inherit border-radius from wrapper */
+}
+.ant-image-placeholder-default .anticon { /* Default icon in placeholder */
+  font-size: 32px; /* Example size */
+  margin-bottom: 8px;
+}
+.ant-image-placeholder-default span { /* Default text in placeholder */
+  font-size: 14px;
+}
+
+
+/* Preview Mask (shown on hover over image if preview is enabled) */
+.ant-image-preview-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5); /* Dark overlay */
+  color: #fff;
+  font-size: 16px; /* Size for mask content (e.g., Eye icon) */
+  cursor: pointer;
+  opacity: 0; /* Hidden by default, shown on hover (handled by JS or :hover on .ant-image) */
+  transition: opacity 0.3s;
+  border-radius: inherit; /* Inherit border-radius from wrapper */
+}
+.ant-image:hover .ant-image-preview-mask {
+  /* opacity: 1; /* Show mask on hover - better handled by JS for controlled preview */
+}
+.ant-image-preview-mask .anticon { /* If using Icon component for mask content */
+  font-size: 24px; /* Example size for Eye icon */
+}
+
+
+/* Preview Modal/Wrap (Simplified) */
+.ant-image-preview-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8); /* Dark overlay for modal background */
+  z-index: 1070; /* High z-index for modal */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Animations for open/close would be added here */
+}
+
+.ant-image-preview-img-wrapper {
+  position: relative; /* For positioning operations toolbar if needed */
+  /* max-width: 80vw; /* Limit image preview size */
+  /* max-height: 80vh; */
+  display: flex; /* For centering image if smaller than wrapper */
+  align-items: center;
+  justify-content: center;
+}
+.ant-image-preview-img {
+  max-width: calc(100vw - 80px); /* Max width with some padding */
+  max-height: calc(100vh - 80px); /* Max height with some padding */
+  object-fit: contain; /* Ensure image fits without cropping */
+  user-select: none; /* Prevent text selection of image */
+  /* transform-origin: center center; /* For zoom/rotate transforms */
+  /* transition: transform 0.3s; */
+}
+
+.ant-image-preview-operations {
+  position: absolute;
+  bottom: 20px; /* Position for operations toolbar */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.5);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: flex;
+  gap: 16px; /* Space between operation buttons */
+}
+.ant-image-preview-operations .ant-btn { /* Assuming Button component usage */
+  /* color: #fff; */ /* Ensure icons/text are visible on dark background */
+  /* background: transparent; */
+  /* border: none; */
+}
+.ant-image-preview-operations .anticon {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* Error state specific styling */
+.ant-image-error .ant-image-placeholder {
+    /* Styles if placeholder needs to look different for error state */
+}
+.ant-image-error img {
+    /* visibility: hidden; /* Hide broken image icon if placeholder is shown */
+}
+
+/* Fallback image styling */
+.ant-image-fallback {
+    /* If specific styles are needed when fallback is active */
+}

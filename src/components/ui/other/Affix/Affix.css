@@ -1,0 +1,28 @@
+/* src/components/ui/other/Affix/Affix.css */
+/* Based on antd/es/affix/style/index.css */
+
+.ant-affix {
+  /* This class is applied to the content div when it becomes fixed. */
+  /* Position (fixed), top, bottom, left, width, height are set by inline styles in Affix.tsx */
+  z-index: 10; /* Default AntD z-index for affixed elements */
+  /* No other default visual styles are typically applied directly by .ant-affix itself, */
+  /* as it relies on the child's appearance. */
+}
+
+.ant-affix-fixed {
+    /* This is a custom class added in the simplified Affix.tsx to indicate when it's fixed. */
+    /* It can be used for additional styling if needed, beyond the inline styles. */
+    /* For example, if a specific box-shadow should appear only when fixed: */
+    /* box-shadow: 0 2px 8px rgba(0,0,0,0.1); */
+}
+
+/* The placeholder div (referenced by placeholderRef in Affix.tsx) */
+/* doesn't have a specific AntD class, but its style (width, height) */
+/* is set inline by JS to match the content when the content becomes affixed. */
+/* If a wrapperClassName is provided to Affix, it's applied to this placeholder. */
+
+/* Example if wrapperClassName="my-affix-placeholder" was used:
+.my-affix-placeholder {
+  transition: width 0.3s, height 0.3s; // Smooth transition if dimensions change
+}
+*/

@@ -1,0 +1,192 @@
+/* src/components/ui/feedback/Drawer/Drawer.css */
+/* Based on antd/es/drawer/style/index.css */
+
+.ant-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000; /* AntD default z-index for Drawer */
+  pointer-events: none; /* Wrapper itself should not block interactions if mask is false */
+  /* Transition for the whole drawer appearance (mask + content) */
+  /* opacity: 0; */
+  /* transition: opacity 0.3s linear; */
+}
+.ant-drawer.ant-drawer-open {
+  pointer-events: auto; /* Allow interaction when open */
+  /* opacity: 1; */
+}
+
+.ant-drawer-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.45); /* AntD default mask color */
+  opacity: 0;
+  transition: opacity 0.3s linear;
+  pointer-events: auto; /* Mask is always interactive when present */
+}
+.ant-drawer-open .ant-drawer-mask {
+  opacity: 1;
+}
+
+.ant-drawer-content-wrapper {
+  position: absolute;
+  background-color: #fff; /* Drawer content background */
+  box-shadow: -6px 0 16px -8px rgba(0,0,0,0.08), -9px 0 28px 0 rgba(0,0,0,0.05), -12px 0 48px 16px rgba(0,0,0,0.03); /* AntD default shadow */
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1); /* Default transition */
+  pointer-events: auto; /* Content wrapper is interactive */
+}
+
+/* Placement specific styles for wrapper */
+.ant-drawer-content-wrapper-left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+.ant-drawer-open .ant-drawer-content-wrapper-left {
+  transform: translateX(0);
+}
+
+.ant-drawer-content-wrapper-right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  transform: translateX(100%);
+  box-shadow: 6px 0 16px -8px rgba(0,0,0,0.08), 9px 0 28px 0 rgba(0,0,0,0.05), 12px 0 48px 16px rgba(0,0,0,0.03); /* Shadow on the other side */
+}
+.ant-drawer-open .ant-drawer-content-wrapper-right {
+  transform: translateX(0);
+}
+
+.ant-drawer-content-wrapper-top {
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+   box-shadow: 0 6px 16px -8px rgba(0,0,0,0.08), 0 9px 28px 0 rgba(0,0,0,0.05), 0 12px 48px 16px rgba(0,0,0,0.03);
+}
+.ant-drawer-open .ant-drawer-content-wrapper-top {
+  transform: translateY(0);
+}
+
+.ant-drawer-content-wrapper-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  box-shadow: 0 -6px 16px -8px rgba(0,0,0,0.08), 0 -9px 28px 0 rgba(0,0,0,0.05), 0 -12px 48px 16px rgba(0,0,0,0.03);
+}
+.ant-drawer-open .ant-drawer-content-wrapper-bottom {
+  transform: translateY(0);
+}
+
+
+.ant-drawer-content {
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* For scrollable content within drawer */
+  position: relative; /* For header/footer absolute positioning if needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-drawer-wrapper-body { /* Inner container for header, body, footer */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.ant-drawer-header {
+  padding: 16px 24px; /* AntD default header padding */
+  color: rgba(0,0,0,0.88);
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0; /* Separator line */
+  border-radius: 8px 8px 0 0; /* If drawer has rounded corners */
+  flex-shrink: 0; /* Header should not shrink */
+}
+.ant-drawer-header-title {
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* AntD default title size */
+  font-weight: 600;
+  line-height: 1.5;
+}
+.ant-drawer-header-title .ant-drawer-close {
+  margin-right: 12px; /* Space between close button and title text */
+}
+
+.ant-drawer-close {
+  display: inline-block;
+  color: rgba(0,0,0,0.45);
+  font-weight: 600;
+  font-size: 16px; /* Close icon size */
+  line-height: 1;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0; /* Remove default button padding */
+}
+.ant-drawer-close:hover {
+  color: rgba(0,0,0,0.88); /* Darker on hover */
+}
+.ant-drawer-close-no-title { /* If close button is present without a title */
+    position: absolute;
+    top: 16px; /* Adjust based on desired position */
+    right: 24px;
+    z-index: 10; /* Ensure it's above body content */
+}
+
+
+.ant-drawer-body {
+  padding: 24px; /* AntD default body padding */
+  flex-grow: 1; /* Body takes available space */
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  word-wrap: break-word;
+  overflow: auto; /* Scrollable body content */
+}
+
+.ant-drawer-footer {
+  padding: 10px 16px; /* AntD default footer padding (for compact buttons) */
+  border-top: 1px solid #f0f0f0;
+  flex-shrink: 0; /* Footer should not shrink */
+  background: #fff; /* Ensure footer has background if content scrolls under */
+  border-radius: 0 0 8px 8px; /* If drawer has rounded corners */
+}
+.ant-drawer-footer > * { /* Spacing for multiple buttons in footer */
+  margin-right: 8px;
+}
+.ant-drawer-footer > *:last-child {
+  margin-right: 0;
+}
+
+/* No mask styles */
+.ant-drawer:not(.ant-drawer-open) .ant-drawer-content-wrapper { /* If not open and no mask, ensure it's off-screen */
+    /* transform might already handle this */
+}
+/* If has no mask, the root .ant-drawer might need pointer-events: none when closed */
+/* and its direct child .ant-drawer-content-wrapper needs pointer-events: auto always. */
+/* This is slightly complex and current setup assumes mask or JS handles visibility blocking. */
+
+/* Focus trap (not implemented in JS, but CSS can help with outline) */
+.ant-drawer-content-wrapper:focus {
+  /* outline: none; /* Remove default browser outline if custom focus is handled */
+}
+
+/* RTL support would involve flipping placements, transforms, shadows, paddings, margins */
+/* .ant-drawer-rtl { ... } */
+/* .ant-drawer-rtl.ant-drawer-left .ant-drawer-content-wrapper { transform: translateX(100%); box-shadow: ...; } */
+/* .ant-drawer-rtl.ant-drawer-right .ant-drawer-content-wrapper { transform: translateX(-100%); box-shadow: ...; } */
+/* .ant-drawer-rtl .ant-drawer-header-title .ant-drawer-close { margin-left: 12px; margin-right: 0; } */
+/* .ant-drawer-rtl .ant-drawer-close-no-title { left: 24px; right: auto; } */
+/* .ant-drawer-rtl .ant-drawer-footer > * { margin-left: 8px; margin-right: 0; } */
+/* .ant-drawer-rtl .ant-drawer-footer > *:last-child { margin-left: 0; } */

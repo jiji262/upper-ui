@@ -1,0 +1,175 @@
+/* src/components/ui/data-display/Tour/Tour.css */
+/* Based on antd/es/tour/style/index.css */
+
+/* Mask for the Tour */
+.ant-tour-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.25); /* AntD default mask color, can be customized */
+  z-index: 1050; /* Below popover, above most other content */
+  pointer-events: auto; /* Mask itself can be interactive if needed, or none */
+}
+
+/* Placeholder for target highlighting (very simplified) */
+.ant-tour-target-highlight {
+  /* This class is added to the target element itself by JS in the simplified Tour.tsx */
+  /* A more robust solution uses an SVG overlay or multiple div overlays for the cutout effect. */
+  /* Example simple highlight: */
+  /* outline: 2px solid #1677ff; */
+  /* box-shadow: 0 0 0 4px rgba(22, 119, 255, 0.3); */
+  /* transition: outline 0.3s, box-shadow 0.3s; */
+  /* Or, if using the separate .ant-tour-target-placeholder div: */
+}
+.ant-tour-target-placeholder {
+    /* border: 2px dashed #1677ff; */ /* Example for the placeholder div */
+    /* background: rgba(22, 119, 255, 0.1); */
+    /* transition: all 0.3s; */
+    /* Note: The current Tour.tsx example uses a placeholder div with potential border/box-shadow.
+       AntD's real tour uses a more complex SVG mask or div cutouts.
+       The class `ant-tour-target-highlight` on the actual target is more in line with some guide libraries.
+       For now, this CSS assumes the placeholder div is used for visual effect.
+    */
+}
+
+
+/* Popover/Card for Tour Step */
+.ant-tour {
+  position: fixed; /* Popover is fixed positioned based on target or screen center */
+  z-index: 1060; /* Above mask and target highlight */
+  min-width: 280px; /* Minimum width for the popover */
+  max-width: 320px; /* Maximum width */
+  border-radius: 8px; /* AntD default */
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05); /* AntD default shadow */
+  /* transition for appearance/disappearance if needed */
+  /* visibility: hidden; opacity: 0; transition: visibility 0s 0.3s, opacity 0.3s; */
+}
+.ant-tour.ant-tour-open { /* If using a class to control visibility */
+    /* visibility: visible; opacity: 1; transition-delay: 0s; */
+}
+
+.ant-tour-arrow {
+  position: absolute;
+  width: 16px; /* Arrow base width */
+  height: 8px; /* Arrow height */
+  overflow: hidden;
+  pointer-events: none; /* Arrow should not be interactive */
+}
+.ant-tour-arrow::before { /* The visible part of the arrow */
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #fff; /* Match popover background */
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  box-shadow: -1px -1px 3px rgba(0,0,0,0.05); /* Subtle shadow for arrow */
+  /* Positioned by JS or more specific placement classes */
+}
+
+/* Arrow placement (simplified) */
+.ant-tour-placement-top .ant-tour-arrow { bottom: -7px; left: 50%; transform: translateX(-50%); }
+.ant-tour-placement-top .ant-tour-arrow::before { top: 0; left: 50%; }
+
+.ant-tour-placement-bottom .ant-tour-arrow { top: -7px; left: 50%; transform: translateX(-50%) rotate(180deg); }
+.ant-tour-placement-bottom .ant-tour-arrow::before { top: 0; left: 50%; } /* Arrow points up */
+
+.ant-tour-placement-left .ant-tour-arrow { right: -7px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+.ant-tour-placement-left .ant-tour-arrow::before { top: 50%; left: 0; transform: translateX(-25%) translateY(-50%) rotate(45deg); } /* Adjust for side arrow */
+
+.ant-tour-placement-right .ant-tour-arrow { left: -7px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+.ant-tour-placement-right .ant-tour-arrow::before { top: 50%; right: 0; transform: translateX(25%) translateY(-50%) rotate(45deg); } /* Adjust for side arrow */
+
+
+.ant-tour-inner {
+  padding: 16px; /* Default padding for popover content */
+  background-color: #fff;
+  border-radius: 8px; /* Match outer radius */
+  position: relative; /* For close button */
+}
+
+.ant-tour-close {
+  position: absolute;
+  top: 16px; /* Adjust based on padding */
+  right: 16px;
+  color: rgba(0,0,0,0.45);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* Close icon size */
+  line-height: 1;
+  padding: 2px; /* Hit area */
+}
+.ant-tour-close:hover {
+  color: rgba(0,0,0,0.88);
+}
+
+.ant-tour-header {
+  margin-bottom: 12px;
+}
+.ant-tour-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(0,0,0,0.88);
+}
+
+.ant-tour-description {
+  font-size: 14px;
+  color: rgba(0,0,0,0.88);
+  line-height: 1.5714285714285714;
+  margin-bottom: 16px;
+}
+
+.ant-tour-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.ant-tour-steps-progress {
+  font-size: 12px;
+  color: rgba(0,0,0,0.45);
+}
+
+.ant-tour-buttons .ant-btn { /* Assuming Button component renders .ant-btn */
+  margin-left: 8px;
+}
+.ant-tour-buttons .ant-btn:first-child {
+  margin-left: 0; /* No margin for the very first button if only one (e.g. "Finish") */
+}
+/* If Prev button is present, it's usually not the first child in the button group */
+.ant-tour-buttons .ant-btn + .ant-btn { /* Space between Prev and Next/Finish */
+    /* margin-left: 8px; */
+}
+
+
+/* Type 'primary' (for popover styling, not fully implemented) */
+/* .ant-tour-primary .ant-tour-inner { background-color: #1677ff; color: #fff; } */
+/* .ant-tour-primary .ant-tour-title,
+.ant-tour-primary .ant-tour-description,
+.ant-tour-primary .ant-tour-close,
+.ant-tour-primary .ant-tour-steps-progress { color: #fff; } */
+/* .ant-tour-primary .ant-tour-arrow::before { background-color: #1677ff; } */
+/* .ant-tour-primary .ant-tour-buttons .ant-btn-default { border-color: #fff; color: #fff; } */
+/* .ant-tour-primary .ant-tour-buttons .ant-btn-default:hover { background: rgba(255,255,255,0.2); } */
+
+
+/* Cover image/video styles (not implemented in component logic) */
+.ant-tour-cover {
+  margin-bottom: 12px;
+  text-align: center;
+}
+.ant-tour-cover img,
+.ant-tour-cover video {
+  max-width: 100%;
+  max-height: 150px; /* Example max height for cover */
+  border-radius: 4px;
+}
+
+/* Centered tour (no target) */
+.ant-tour-centered {
+    /* Specific styles if needed when popover is centered without a target */
+    /* Positioning is handled by JS, this class is for stylistic overrides. */
+}

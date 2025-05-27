@@ -1,0 +1,254 @@
+/* src/components/ui/navigation/Pagination/Pagination.css */
+/* Based on antd/es/pagination/style/index.css */
+
+.ant-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--upper-ui-font-family, var(--ant-font-family));
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
+}
+
+.ant-pagination li {
+  margin: 0 4px; /* Consider var(--upper-ui-spacing-xxs) */
+  cursor: pointer;
+  outline: none;
+}
+
+.ant-pagination-item,
+.ant-pagination-prev button,
+.ant-pagination-next button,
+.ant-pagination-jump-prev button,
+.ant-pagination-jump-next button {
+  min-width: 32px; /* Consider var(--upper-ui-control-height-sm) or base */
+  height: 32px;
+  line-height: 30px; 
+  text-align: center;
+  list-style: none;
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  border-radius: var(--ant-border-radius-base, 6px); 
+  outline: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s, border-color 0.3s;
+  display: inline-flex; 
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px; 
+}
+.ant-pagination-prev button,
+.ant-pagination-next button,
+.ant-pagination-jump-prev button,
+.ant-pagination-jump-next button {
+    padding: 0; 
+}
+
+
+.ant-pagination-item a {
+  display: block;
+  padding: 0 6px; 
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
+  transition: none;
+  text-decoration: none;
+}
+
+.ant-pagination-item:hover,
+.ant-pagination-prev button:hover,
+.ant-pagination-next button:hover,
+.ant-pagination-jump-prev button:hover,
+.ant-pagination-jump-next button:hover {
+  border-color: var(--ant-primary-color, #1677ff);
+  color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-item:hover a {
+  color: var(--ant-primary-color, #1677ff);
+}
+
+.ant-pagination-item-active {
+  font-weight: var(--upper-ui-font-weight-semibold, 600);
+  background: var(--upper-ui-component-background-color, #fff);
+  border-color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-item-active a {
+  color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-item-active:hover a {
+  color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-item-active:hover {
+  border-color: var(--ant-primary-color, #1677ff);
+}
+
+
+.ant-pagination-disabled,
+.ant-pagination-disabled button,
+.ant-pagination-disabled:hover,
+.ant-pagination-disabled button:hover,
+.ant-pagination-disabled:focus,
+.ant-pagination-disabled button:focus,
+.ant-pagination-disabled .ant-pagination-item,
+.ant-pagination-disabled .ant-pagination-item a,
+.ant-pagination-disabled .ant-pagination-item:hover,
+.ant-pagination-disabled .ant-pagination-item:hover a {
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0, 0, 0, 0.25)));
+  border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  cursor: not-allowed;
+}
+.ant-pagination-disabled .ant-pagination-item-active {
+    background: var(--ant-disabled-input-bg, #f0f0f0); 
+    border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+}
+.ant-pagination-disabled .ant-pagination-item-active a {
+    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+}
+
+
+.ant-pagination-jump-prev .ant-pagination-item-link-icon,
+.ant-pagination-jump-next .ant-pagination-item-link-icon {
+  color: var(--ant-primary-color, #1677ff); 
+}
+
+
+.ant-pagination-prev button,
+.ant-pagination-next button {
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0, 0, 0, 0.88)));
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+}
+.ant-pagination-prev button:disabled, 
+.ant-pagination-next button:disabled {
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0, 0, 0, 0.25)));
+  border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  cursor: not-allowed;
+}
+.ant-pagination-prev.ant-pagination-disabled button, 
+.ant-pagination-next.ant-pagination-disabled button {
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0, 0, 0, 0.25)));
+  border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  cursor: not-allowed;
+}
+
+
+/* Options (Size Changer, Quick Jumper) */
+.ant-pagination-options {
+  display: inline-block;
+  margin-left: 16px; /* Consider var(--upper-ui-spacing-md) */
+  vertical-align: middle;
+}
+.ant-pagination-options-size-changer {
+  margin-right: 8px; /* Consider var(--upper-ui-spacing-xs) */
+  min-width: 80px; 
+}
+.ant-pagination-options-quick-jumper {
+  display: inline-block;
+  height: 32px; /* Control height var */
+  line-height: 32px;
+  vertical-align: top;
+}
+.ant-pagination-options-quick-jumper input {
+  width: 50px;
+  margin: 0 8px; /* Consider var(--upper-ui-spacing-xs) */
+  padding: 4px 11px; 
+  height: 32px; /* Control height var */
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  border-radius: var(--ant-border-radius-base, 6px);
+  background-color: var(--upper-ui-component-background-color, #fff);
+  text-align: center;
+  transition: border-color 0.3s;
+}
+.ant-pagination-options-quick-jumper input:hover {
+  border-color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-disabled .ant-pagination-options-quick-jumper input,
+.ant-pagination-disabled .ant-pagination-options-quick-jumper input:hover {
+    border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+    cursor: not-allowed;
+    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+}
+
+
+/* Simple Mode */
+.ant-pagination-simple .ant-pagination-prev,
+.ant-pagination-simple .ant-pagination-next {
+  height: 24px; 
+  line-height: 22px;
+  vertical-align: top;
+}
+.ant-pagination-simple .ant-pagination-prev button,
+.ant-pagination-simple .ant-pagination-next button {
+    height: 24px;
+    line-height: 22px; 
+    min-width: 24px;
+}
+
+.ant-pagination-simple .ant-pagination-simple-pager {
+  display: inline-block;
+  height: 24px;
+  margin-right: 8px; /* Consider var(--upper-ui-spacing-xs) */
+  vertical-align: top;
+}
+.ant-pagination-simple .ant-pagination-simple-pager input {
+  width: 30px;
+  height: 24px;
+  margin-right: 8px; /* Consider var(--upper-ui-spacing-xs) */
+  padding: 0;
+  text-align: center;
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  border-radius: var(--ant-border-radius-base, 6px);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.ant-pagination-simple .ant-pagination-simple-pager input:hover {
+  border-color: var(--ant-primary-color, #1677ff);
+}
+.ant-pagination-simple .ant-pagination-simple-pager .ant-pagination-slash {
+  margin: 0 10px 0 5px; 
+}
+.ant-pagination-disabled.ant-pagination-simple .ant-pagination-simple-pager input,
+.ant-pagination-disabled.ant-pagination-simple .ant-pagination-simple-pager input:hover {
+    border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+    cursor: not-allowed;
+    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+}
+
+
+/* Total Text */
+.ant-pagination-total-text {
+  display: inline-block;
+  height: 32px; /* Control height var */
+  margin-right: 8px; /* Consider var(--upper-ui-spacing-xs) */
+  line-height: 32px;
+  vertical-align: middle;
+}
+
+/* Ellipsis icon styling */
+.ant-pagination-item-link .anticon-ellipsis {
+    font-size: 12px; /* Could be var(--upper-ui-font-size-xs) */
+    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+}
+.ant-pagination-jump-prev button:hover .anticon-ellipsis,
+.ant-pagination-jump-next button:hover .anticon-ellipsis {
+    color: var(--ant-primary-color, #1677ff);
+}
+
+/* Ensure buttons inside li items fill the space if needed, or style direct li for click */
+.ant-pagination-item,
+.ant-pagination-prev,
+.ant-pagination-next,
+.ant-pagination-jump-prev,
+.ant-pagination-jump-next {
+    /* If li is the clickable element and has padding/border */
+}
+.ant-pagination-item a,
+.ant-pagination-prev .ant-pagination-item-link, 
+.ant-pagination-next .ant-pagination-item-link,
+.ant-pagination-jump-prev .ant-pagination-item-link,
+.ant-pagination-jump-next .ant-pagination-item-link {
+    /* If a/button inside li is the clickable element */
+}

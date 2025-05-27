@@ -1,0 +1,115 @@
+/* src/components/ui/data-entry/Mentions/Mentions.css */
+/* Based on antd/es/mentions/style/index.css */
+
+.ant-mentions {
+  box-sizing: border-box;
+  position: relative;
+  display: block; /* Or inline-block if preferred */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+}
+
+/* Assuming Mentions uses a Textarea component that has .ant-input class */
+.ant-mentions .ant-input { /* Or specific class if Textarea has one */
+  /* Ensure textarea styles are compatible */
+  /* For example, if Textarea has its own border/padding, Mentions wrapper might not need its own. */
+}
+
+/* Dropdown / Suggestions Panel */
+.ant-mentions-dropdown {
+  position: absolute; /* Positioned relative to Mentions wrapper or via getPopupContainer */
+  z-index: 1050; /* AntD default z-index for popups */
+  width: auto; /* Or set by JS to match input width or content width */
+  min-width: 120px; /* Minimum width for the dropdown */
+  margin-top: 4px; /* Small gap from textarea */
+  background-color: #fff;
+  border-radius: 8px; /* AntD default */
+  box-shadow: 0 6px 16px 0 rgba(0,0,0,0.08), 0 3px 6px -4px rgba(0,0,0,0.12), 0 9px 28px 8px rgba(0,0,0,0.05); /* AntD default */
+  overflow: hidden; /* Ensure children (menu) don't overflow rounded corners */
+}
+
+.ant-mentions-dropdown-hidden {
+  display: none;
+}
+
+.ant-mentions-dropdown-menu {
+  max-height: 250px; /* Max height before scrolling */
+  margin: 0;
+  padding: 4px 0; /* Padding around the list of items */
+  list-style: none;
+  overflow-y: auto; /* Scroll if too many items */
+}
+
+.ant-mentions-dropdown-menu-item {
+  padding: 5px 12px; /* AntD default item padding */
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ant-mentions-dropdown-menu-item:hover,
+.ant-mentions-dropdown-menu-item-active { /* Active state for keyboard navigation */
+  background-color: rgba(0, 0, 0, 0.04); /* AntD hover/active color */
+}
+
+.ant-mentions-dropdown-menu-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.ant-mentions-dropdown-menu-item-disabled:hover {
+  background-color: transparent; /* No hover effect for disabled */
+}
+
+.ant-mentions-dropdown-menu-item-divider {
+  height: 1px;
+  margin: 4px 0;
+  overflow: hidden;
+  line-height: 0;
+  background-color: rgba(5,5,5,0.06);
+}
+
+/* Placement specific styles might be needed if not using a Popover utility */
+/* e.g. .ant-mentions-dropdown-placement-top { margin-top: 0; margin-bottom: 4px; } */
+
+
+/* ReadOnly state for Mentions component wrapper if needed */
+.ant-mentions-readonly .ant-input { /* Assuming Textarea gets .ant-input */
+  /* Specific styles for readonly textarea if different from default readonly */
+  /* e.g., no focus ring, different background/border if needed */
+}
+
+/* Disabled state for Mentions component wrapper */
+.ant-mentions-disabled .ant-input {
+  /* Specific styles for disabled textarea if different from default disabled */
+  /* Usually handled by Textarea's own disabled styles */
+}
+
+/* Status styling - if Mentions wrapper needs to reflect status */
+/* Usually, the underlying Textarea component would show status styling (border, etc.) */
+/*
+.ant-mentions-status-error .ant-input {
+  border-color: #ff4d4f;
+}
+.ant-mentions-status-warning .ant-input {
+  border-color: #faad14;
+}
+*/
+
+/* Styles for when Textarea is part of a Form.Item with validation status */
+/* These are typically handled by Form.Item adding classes to its children */
+/*
+.ant-form-item-has-error .ant-mentions .ant-input {
+  border-color: #ff4d4f;
+}
+.ant-form-item-has-warning .ant-mentions .ant-input {
+  border-color: #faad14;
+}
+*/
