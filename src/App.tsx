@@ -53,6 +53,7 @@ import TextareaAnt from './components/ui/data-entry/Textarea/Textarea';
 import Icon from './components/ui/general/Icon/Icon';
 import Empty from './components/ui/data-display/Empty/Empty';
 import Descriptions from './components/ui/data-display/Descriptions/Descriptions';
+import DescriptionsItem from './components/ui/data-display/Descriptions/DescriptionsItem';
 import Modal from './components/ui/feedback/Modal/Modal';
 
 function App() {
@@ -119,9 +120,12 @@ function App() {
             <section className="bg-white rounded-xl shadow-sm p-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-6">Featured Components</h2>
               
-              {/* Tailwind Components */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Tailwind Style Components</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              {/* Upper UI Components */}
+              <h3 className="text-xl font-semibold text-gray-800 mb-4">Upper UI Style Components</h3>
+              
+              {/* General Components */}
+              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">General Components</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Buttons */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
@@ -130,476 +134,172 @@ function App() {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        <Button>Default</Button>
-                        <Button variant="secondary">Secondary</Button>
-                        <Button variant="destructive">Destructive</Button>
-                        <Button variant="outline">Outline</Button>
-                        <Button variant="ghost">Ghost</Button>
-                        <Button variant="link">Link</Button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Button size="sm">Small</Button>
-                        <Button>Default</Button>
-                        <Button size="lg">Large</Button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Button disabled>Disabled</Button>
-                        <Button loading>Loading</Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Inputs */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Inputs</CardTitle>
-                    <CardDescription>Form input components</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <Input placeholder="Enter your name" />
-                      <Input placeholder="With error" error />
-                      <Input placeholder="Disabled" disabled />
-                      <Textarea placeholder="Enter your message" />
-                      <Textarea placeholder="With error" error />
-                      <Textarea placeholder="Disabled" disabled />
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Cards */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Cards</CardTitle>
-                    <CardDescription>Card components with different styles</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <Card className="border-0 shadow-md">
-                        <CardHeader>
-                          <CardTitle>Shadow Card</CardTitle>
-                          <CardDescription>Card with shadow effect</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p>This card has a shadow effect.</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button>Action</Button>
-                        </CardFooter>
-                      </Card>
-
-                      <Card className="border-2 border-gray-200 shadow-none">
-                        <CardHeader>
-                          <CardTitle>Bordered Card</CardTitle>
-                          <CardDescription>Card with border style</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p>This card has a border and no shadow.</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="outline">Action</Button>
-                        </CardFooter>
-                      </Card>
-
-                      <Card className="bg-gray-50 border-0 shadow-none">
-                        <CardHeader>
-                          <CardTitle>Flat Card</CardTitle>
-                          <CardDescription>Card with background color</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <p>This card has a light background and no shadow.</p>
-                        </CardContent>
-                        <CardFooter>
-                          <Button variant="ghost">Action</Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Typography - NEW SECTION */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Typography</CardTitle>
-                    <CardDescription>Text elements and styles. Click titles to see `asChild` in action.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <Title level={1} onClick={() => alert('Clicked H1')} className="cursor-pointer hover:text-primary">Title H1 (Clickable)</Title>
-                    <Title level={2} className="text-purple-600">Title H2 (Custom Color)</Title>
-                    <Title level={3}>Title H3</Title>
-                    <Title level={4}>Title H4</Title>
-                    <Title level={5}>Title H5</Title>
-                    <Paragraph className="text-slate-700 dark:text-slate-300">
-                      This is a paragraph of text, demonstrating a slightly different color. It can be used to display longer form content,
-                      like describing features or providing detailed information. You can also <Link href="#" className="font-bold hover:text-destructive">include styled links</Link> within your text.
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Paragraph>
-                    <Paragraph>
-                      <Text asChild strong>
-                        <label htmlFor="demo-input">This strong text is a label (using asChild)</label>
-                      </Text>
-                      <Input id="demo-input" placeholder="Demo input" className="mt-1"/>
-                    </Paragraph>
-                    <Text>This is a general text element.</Text>
-                    <Text strong italic size="lg">Large, strong, and italic text.</Text>
-                    <Text code type="success">Successful code output.</Text>
-                    <Text mark type="warning" size="sm">Small marked warning.</Text>
-                    <Text disabled>This text is disabled.</Text>
-                    <Text type="secondary">This is secondary text, useful for sub-details.</Text>
-                    <Text type="success">This is success text, perhaps for a success message.</Text>
-                    <Text type="warning">This is warning text, for alerts or cautions.</Text>
-                    <Text type="danger" strong>This is strong danger text.</Text>
-                    <Text size="sm">Small text, for fine print.</Text>
-                    <Text size="lg" className="text-blue-500">Large text with custom color.</Text>
-                    <Link href="https://example.com" target="_blank">External Link (opens in new tab)</Link>
-                  </CardContent>
-                </Card>
-
-                {/* Form - NEW SECTION */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Form Example</CardTitle>
-                    <CardDescription>Using new Form components</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <DemoForm />
-                  </CardContent>
-                </Card>
-
-                {/* Feedback Components */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Feedback</CardTitle>
-                    <CardDescription>Progress, alerts and badges</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <Progress value={progress} className="w-full" />
-                        <Progress value={75} className="w-full" />
-                        <Progress value={100} className="w-full" />
-                      </div>
-                      <div className="space-y-2">
-                        <Alert variant="default">This is a default alert</Alert>
-                        <Alert variant="success">Operation completed successfully!</Alert>
-                        <Alert variant="warning">This is a warning message</Alert>
-                        <Alert variant="destructive">Something went wrong!</Alert>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge>Default</Badge>
-                        <Badge variant="secondary">Secondary</Badge>
-                        <Badge variant="destructive">Destructive</Badge>
-                        <Badge variant="outline">Outline</Badge>
-                      </div>
-                      {/* Skeleton Demo */}
-                      <div className="space-y-2 pt-4">
-                        <Title level={4}>Skeleton Loader Examples</Title>
-                        <Paragraph className="text-sm text-muted-foreground">
-                          Skeletons are used to provide a visual placeholder while content is loading.
-                        </Paragraph>
-                        
-                        <Text strong>Basic List Item:</Text>
-                        <div className="flex items-center space-x-4 p-2 border rounded-md">
-                          <Skeleton className="h-12 w-12 rounded-full" />
-                          <div className="space-y-2">
-                            <Skeleton className="h-4 w-[250px]" />
-                            <Skeleton className="h-4 w-[200px]" />
-                          </div>
-                        </div>
-
-                        <Text strong className="pt-2 block">Card Placeholder:</Text>
-                        <Card>
-                          <CardHeader>
-                            <Skeleton className="h-6 w-3/4 mb-2" />
-                            <Skeleton className="h-4 w-1/2" />
-                          </CardHeader>
-                          <CardContent className="space-y-3">
-                            <Skeleton className="h-4 w-full" />
-                            <Skeleton className="h-4 w-full" />
-                            <Skeleton className="h-4 w-5/6" />
-                          </CardContent>
-                          <CardFooter>
-                            <Skeleton className="h-10 w-24" />
-                          </CardFooter>
-                        </Card>
-
-                        <Text strong className="pt-2 block">Full Width Block:</Text>
-                        <Skeleton className="h-8 w-full mt-2" />
-                        <Text strong className="pt-2 block">Custom Shape (Button like):</Text>
-                        <Skeleton className="h-10 w-32 rounded-lg" />
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Navigation Components */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Navigation</CardTitle>
-                    <CardDescription>Tabs and dialogs</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <Tabs defaultValue="preview">
-                        <TabsList>
-                          <TabsTrigger value="preview">Preview</TabsTrigger>
-                          <TabsTrigger value="code">Code</TabsTrigger>
-                          <TabsTrigger value="docs">Docs</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="preview">
-                          <div className="p-4">
-                            <p>Preview content goes here</p>
-                          </div>
-                        </TabsContent>
-                        <TabsContent value="code">
-                          <div className="p-4">
-                            <p>Code content goes here</p>
-                          </div>
-                        </TabsContent>
-                        <TabsContent value="docs">
-                          <div className="p-4">
-                            <p>Documentation content goes here</p>
-                          </div>
-                        </TabsContent>
-                      </Tabs>
-                      <div className="flex justify-center space-x-2">
-                        <Button onClick={() => setDialogOpen(true)}>Open Dialog</Button>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="outline">Open Menu</Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent className="w-56" align="end">
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuGroup>
-                              <DropdownMenuItem>
-                                <User className="mr-2 h-4 w-4" />
-                                <span>Profile</span>
-                                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem>
-                                <CreditCard className="mr-2 h-4 w-4" />
-                                <span>Billing</span>
-                                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem>
-                                <Settings className="mr-2 h-4 w-4" />
-                                <span>Settings</span>
-                                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                              </DropdownMenuItem>
-                              <DropdownMenuItem>
-                                <Keyboard className="mr-2 h-4 w-4" />
-                                <span>Keyboard shortcuts</span>
-                                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                              </DropdownMenuItem>
-                            </DropdownMenuGroup>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuGroup>
-                              <DropdownMenuItem>
-                                <Users className="mr-2 h-4 w-4" />
-                                <span>Team</span>
-                              </DropdownMenuItem>
-                              <DropdownMenuSub>
-                                <DropdownMenuSubTrigger>
-                                  <UserPlus className="mr-2 h-4 w-4" />
-                                  <span>Invite users</span>
-                                </DropdownMenuSubTrigger>
-                                <DropdownMenuPortal>
-                                  <DropdownMenuSubContent>
-                                    <DropdownMenuItem>
-                                      <Mail className="mr-2 h-4 w-4" />
-                                      <span>Email</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                      <MessageSquare className="mr-2 h-4 w-4" />
-                                      <span>Message</span>
-                                    </DropdownMenuItem>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem>
-                                      <PlusCircle className="mr-2 h-4 w-4" />
-                                      <span>More...</span>
-                                    </DropdownMenuItem>
-                                  </DropdownMenuSubContent>
-                                </DropdownMenuPortal>
-                              </DropdownMenuSub>
-                            </DropdownMenuGroup>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuCheckboxItem>
-                              Status Bar
-                            </DropdownMenuCheckboxItem>
-                            <DropdownMenuRadioGroup value={"bottom" /* Replace with state */}>
-                              <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-                              <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-                              <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-                            </DropdownMenuRadioGroup>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem disabled>
-                              <span>API (Disabled)</span>
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Data Display Components */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Data Display</CardTitle>
-                    <CardDescription>Avatar and tooltips</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-4">
-                        <Avatar src="https://i.pravatar.cc/150?img=1" size="sm" />
-                        <Avatar src="https://i.pravatar.cc/150?img=2" />
-                        <Avatar src="https://i.pravatar.cc/150?img=3" size="lg" />
-                        <Avatar>JD</Avatar>
-                      </div>
-                      <div className="flex items-center space-x-4">
-                        <TooltipProvider>
-                          <Tooltip content="This is a tooltip!">
-                            <Button variant="outline">Hover Me</Button>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </div>
-
-                      {/* Table Demo */}
-                      <div className="pt-4">
-                        <Title level={4} className="mb-2">Enhanced Table</Title>
-                        <div className="max-h-96 overflow-y-auto rounded-md border">
-                          <Table>
-                            <TableCaption>A list of your recent invoices. (Scroll for more)</TableCaption>
-                            <TableHeader>
-                              <TableRow>
-                                <TableHead className="w-[100px]">Invoice</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Customer</TableHead>
-                                <TableHead>Method</TableHead>
-                                <TableHead className="text-right">Amount</TableHead>
-                                <TableHead className="text-center">Action</TableHead>
-                              </TableRow>
-                            </TableHeader>
-                            <TableBody>
-                              {[...Array(15)].map((_, i) => (
-                                <TableRow key={`INV00${i + 1}`} className={i % 2 === 0 ? "bg-muted/50" : ""}>
-                                  <TableCell className="font-medium">INV00{i + 1}</TableCell>
-                                  <TableCell>
-                                    <Badge variant={i % 3 === 0 ? "success" : i % 3 === 1 ? "warning" : "default"}>
-                                      {i % 3 === 0 ? "Paid" : i % 3 === 1 ? "Pending" : "Unpaid"}
-                                    </Badge>
-                                  </TableCell>
-                                  <TableCell>Customer {String.fromCharCode(65 + i)}</TableCell>
-                                  <TableCell>{i % 2 === 0 ? "Credit Card" : "PayPal"}</TableCell>
-                                  <TableCell className="text-right">${(Math.random() * 200 + 50).toFixed(2)}</TableCell>
-                                  <TableCell className="text-center">
-                                    <Button variant="outline" size="sm" onClick={() => alert(`Viewing INV00${i+1}`)}>View</Button>
-                                  </TableCell>
-                                </TableRow>
-                              ))}
-                            </TableBody>
-                            <TableFooter>
-                              <TableRow>
-                                <TableCell colSpan={5} className="text-right font-medium">Total Amount (Visible)</TableCell>
-                                <TableCell className="text-right font-bold">$XXXX.XX</TableCell>{/* Replace with actual calculation if needed */}
-                              </TableRow>
-                            </TableFooter>
-                          </Table>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Button Variants</h5>
+                        <div className="flex flex-wrap gap-2">
+                          <Button variant="outline">Default</Button>
+                          <Button>Primary</Button>
+                          <Button variant="outline" className="border-dashed">Dashed</Button>
+                          <Button variant="ghost">Text</Button>
+                          <Button variant="link">Link</Button>
                         </div>
                       </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Button Sizes</h5>
+                        <div className="flex flex-wrap gap-2">
+                          <Button size="sm">Small</Button>
+                          <Button>Default</Button>
+                          <Button size="lg">Large</Button>
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Button States</h5>
+                        <div className="flex flex-wrap gap-2">
+                          <Button disabled>Disabled</Button>
+                          <Button loading>Loading</Button>
+                          <Button variant="destructive">Danger</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
 
+                {/* Icons */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Icons</CardTitle>
+                    <CardDescription>Simple icon components</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
+                        <Icon name="UploadOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-2">Upload</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
+                        <Icon name="LeftOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-2">Left</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
+                        <Icon name="RightOutlined" style={{ fontSize: '24px' }} />
+                        <span className="text-sm mt-2">Right</span>
+                      </div>
+                      <div className="flex flex-col items-center justify-center p-3 border rounded-lg">
+                        <Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
+                        <span className="text-sm mt-2">Custom Color</span>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
               </div>
               
-              {/* Ant Design Components */}
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Upper UI Style Components</h3>
+              {/* Data Entry Components */}
+              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Data Entry Components</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Buttons */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Upper UI Buttons</CardTitle>
-                    <CardDescription>Various button styles and variants</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2">
-                        <Button variant="outline">Default</Button>
-                        <Button>Primary</Button>
-                        <Button variant="outline" className="border-dashed">Dashed</Button>
-                        <Button variant="ghost">Text</Button>
-                        <Button variant="link">Link</Button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Button size="sm">Small</Button>
-                        <Button>Default</Button>
-                        <Button size="lg">Large</Button>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        <Button disabled>Disabled</Button>
-                        <Button loading>Loading</Button>
-                        <Button variant="destructive">Danger</Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
                 {/* Inputs */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <CardTitle>Upper UI Inputs</CardTitle>
-                    <CardDescription>Form input components</CardDescription>
+                    <CardTitle>Inputs</CardTitle>
+                    <CardDescription>Text input components</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <InputAnt placeholder="Basic usage" />
-                      <InputAnt size="large" placeholder="Large size" error={false} />
-                      <InputAnt placeholder="Error" error={true} />
-                      <InputAnt placeholder="Warning" error={true} />
-                      <div className="flex items-center">
-                        <span className="mr-2">http://</span>
-                        <InputAnt placeholder="Website" />
-                        <span className="ml-2">.com</span>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Input</h5>
+                        <InputAnt placeholder="Basic usage" />
                       </div>
-                      <div className="flex items-center">
-                        <span className="mr-2">￥</span>
-                        <InputAnt placeholder="Price" />
-                        <span className="ml-2">RMB</span>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Input Sizes</h5>
+                        <div className="space-y-2">
+                          <InputAnt size="small" placeholder="Small size" />
+                          <InputAnt placeholder="Default size" />
+                          <InputAnt size="large" placeholder="Large size" />
+                        </div>
                       </div>
-                      <InputAnt placeholder="Clearable input" />
-                      <InputAnt placeholder="Disabled" disabled />
-                      
-                      <TextareaAnt placeholder="Basic usage" />
-                      <TextareaAnt showCount maxLength={100} placeholder="With character count" />
-                      <TextareaAnt status="error" placeholder="Error" />
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Input States</h5>
+                        <div className="space-y-2">
+                          <InputAnt placeholder="Error" error={true} />
+                          <InputAnt placeholder="Disabled" disabled />
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Input with Addons</h5>
+                        <div className="flex items-center">
+                          <span className="mr-2 px-2 py-1 bg-gray-100 border rounded-l">http://</span>
+                          <InputAnt placeholder="Website" className="rounded-l-none" />
+                          <span className="ml-2 px-2 py-1 bg-gray-100 border rounded-r">.com</span>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
                 
-                {/* Checkbox & Select */}
+                {/* TextArea */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <CardTitle>Upper UI Form Controls</CardTitle>
-                    <CardDescription>Checkboxes and Selects</CardDescription>
+                    <CardTitle>TextArea</CardTitle>
+                    <CardDescription>Multi-line text input</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <div className="space-y-2">
-                        <CheckboxAnt label="Checkbox" />
-                        <CheckboxAnt 
-                          label="Controlled Checkbox"
-                          checked={checkboxValue} 
-                          onChange={(e) => setCheckboxValue(e.target.checked)}
-                        />
-                        <CheckboxAnt label="Disabled" disabled />
-                        <CheckboxAnt label="Indeterminate" indeterminate />
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic TextArea</h5>
+                        <TextareaAnt placeholder="Basic usage" />
                       </div>
-                      
-                      <div className="space-y-2">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">With Character Count</h5>
+                        <TextareaAnt showCount maxLength={100} placeholder="With character count" />
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Error State</h5>
+                        <TextareaAnt status="error" placeholder="Error" />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Checkbox & Radio */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Checkbox</CardTitle>
+                    <CardDescription>Selection controls</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Checkbox</h5>
+                        <div className="space-y-2">
+                          <CheckboxAnt label="Basic Checkbox" />
+                          <CheckboxAnt 
+                            label="Controlled Checkbox"
+                            checked={checkboxValue} 
+                            onChange={(e) => setCheckboxValue(e.target.checked)}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Checkbox States</h5>
+                        <div className="space-y-2">
+                          <CheckboxAnt label="Disabled" disabled />
+                          <CheckboxAnt label="Disabled Checked" disabled checked />
+                          <CheckboxAnt label="Indeterminate" indeterminate />
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Select */}
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <CardTitle>Select</CardTitle>
+                    <CardDescription>Dropdown selection</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Select</h5>
                         <SelectAnt
                           options={[
                             { label: 'Option 1', value: '1' },
@@ -610,6 +310,9 @@ function App() {
                           value={selectValue}
                           onChange={(value) => setSelectValue(typeof value === 'string' || typeof value === 'number' ? value : value[0])}
                         />
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Multiple Select</h5>
                         <SelectAnt
                           mode="multiple"
                           options={[
@@ -619,6 +322,9 @@ function App() {
                           ]}
                           placeholder="Select multiple"
                         />
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Disabled Select</h5>
                         <SelectAnt
                           disabled
                           options={[
@@ -631,45 +337,27 @@ function App() {
                     </div>
                   </CardContent>
                 </Card>
-                
-                {/* Icons */}
-                <Card className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle>Upper UI Icons</CardTitle>
-                    <CardDescription>Simple icon components</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-4">
-                      <div className="flex flex-col items-center">
-                        <Icon name="UploadOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-1">Upload</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Icon name="LeftOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-1">Left</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Icon name="RightOutlined" style={{ fontSize: '24px' }} />
-                        <span className="text-sm mt-1">Right</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <Icon name="UploadOutlined" style={{ fontSize: '24px', color: 'purple' }} />
-                        <span className="text-sm mt-1">Custom Color</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-                
+              </div>
+              
+              {/* Data Display Components */}
+              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Data Display Components</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Empty Component */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <CardTitle>Upper UI Empty</CardTitle>
+                    <CardTitle>Empty</CardTitle>
                     <CardDescription>Empty state placeholder</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      <Empty description="No data available" />
-                      <Empty description="No items found" />
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Empty</h5>
+                        <Empty description="No data available" />
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">With Custom Description</h5>
+                        <Empty description="No items found. Try a different search." />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -677,48 +365,70 @@ function App() {
                 {/* Descriptions Component */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <CardTitle>Upper UI Descriptions</CardTitle>
+                    <CardTitle>Descriptions</CardTitle>
                     <CardDescription>Display detailed information</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Descriptions title="User Information" bordered>
-                      <Descriptions.Item label="Name">John Doe</Descriptions.Item>
-                      <Descriptions.Item label="Email">john.doe@example.com</Descriptions.Item>
-                      <Descriptions.Item label="Address">123 Main St, City</Descriptions.Item>
-                      <Descriptions.Item label="Status">Active</Descriptions.Item>
-                    </Descriptions>
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Descriptions</h5>
+                        <Descriptions title="User Information">
+                          <DescriptionsItem label="Name">John Doe</DescriptionsItem>
+                          <DescriptionsItem label="Email">john.doe@example.com</DescriptionsItem>
+                          <DescriptionsItem label="Status">Active</DescriptionsItem>
+                        </Descriptions>
+                      </div>
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Bordered Descriptions</h5>
+                        <Descriptions title="Product Details" bordered>
+                          <DescriptionsItem label="Product">Upper UI Library</DescriptionsItem>
+                          <DescriptionsItem label="Version">1.0.0</DescriptionsItem>
+                          <DescriptionsItem label="License">MIT</DescriptionsItem>
+                          <DescriptionsItem label="Description">A React UI component library</DescriptionsItem>
+                        </Descriptions>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
-                
+              </div>
+              
+              {/* Feedback Components */}
+              <h4 className="text-lg font-medium text-gray-700 mb-3 mt-6">Feedback Components</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Modal Component */}
                 <Card className="hover:shadow-md transition-shadow">
                   <CardHeader>
-                    <CardTitle>Upper UI Modal</CardTitle>
+                    <CardTitle>Modal</CardTitle>
                     <CardDescription>Dialog box for important content</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="flex justify-center">
-                      <Button onClick={() => setModalOpen(true)}>
-                        Open Modal
-                      </Button>
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="text-sm font-medium mb-2">Basic Modal</h5>
+                        <div className="flex justify-center">
+                          <Button onClick={() => setModalOpen(true)}>
+                            Open Modal
+                          </Button>
+                        </div>
+                        <Modal 
+                          title="Upper UI Modal"
+                          open={modalOpen}
+                          onOk={() => setModalOpen(false)}
+                          onCancel={() => setModalOpen(false)}
+                          footer={[
+                            <Button key="back" onClick={() => setModalOpen(false)}>
+                              Cancel
+                            </Button>,
+                            <Button key="submit" onClick={() => setModalOpen(false)}>
+                              OK
+                            </Button>,
+                          ]}
+                        >
+                          <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
+                          <p>You can add any content here.</p>
+                        </Modal>
+                      </div>
                     </div>
-                    <Modal 
-                      title="Upper UI Modal"
-                      open={modalOpen}
-                      onOk={() => setModalOpen(false)}
-                      onCancel={() => setModalOpen(false)}
-                      footer={[
-                        <Button key="back" onClick={() => setModalOpen(false)}>
-                          Cancel
-                        </Button>,
-                        <Button key="submit" type="primary" onClick={() => setModalOpen(false)}>
-                          OK
-                        </Button>,
-                      ]}
-                    >
-                      <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
-                      <p>You can add any content here.</p>
-                    </Modal>
                   </CardContent>
                 </Card>
               </div>
