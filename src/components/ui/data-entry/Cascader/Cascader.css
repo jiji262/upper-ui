@@ -47,7 +47,7 @@
   color: rgba(0, 0, 0, 0.45);
 }
 .upper-cascader-disabled .upper-cascader-clear {
-  display: none; 
+    display: none; 
 }
 
 /* Dropdown styles */
@@ -128,7 +128,7 @@
 }
 .upper-cascader-menu-item-loading-icon {
   margin-left: 8px;
-  font-size: 10px;
+    font-size: 10px;
   color: #e6d5ff;
   animation: upper-cascader-loading-icon-spin 1s infinite linear;
 }
@@ -176,8 +176,8 @@
   height: 24px;
 }
 .upper-cascader-lg .upper-cascader-clear {
-  right: 16px; 
+    right: 16px; 
 }
 .upper-cascader-sm .upper-cascader-clear {
-  right: 8px; 
+    right: 8px; 
 }

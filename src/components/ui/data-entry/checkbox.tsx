@@ -26,7 +26,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 Checkbox.displayName = "Checkbox";
 
 // This is the Ant Design style Checkbox component
-export interface CheckboxAntProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+export interface CheckboxAntProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'indeterminate'> {
   label?: React.ReactNode;
   indeterminate?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -46,20 +46,20 @@ export const CheckboxAnt = React.forwardRef<HTMLInputElement, CheckboxAntProps>(
         inputRef.current.indeterminate = !!indeterminate;
       }
     }, [indeterminate, inputRef]);
-    
-    return (
+
+  return (
       <div className="upper-checkbox-wrapper flex items-center space-x-2">
         <span className="upper-checkbox relative inline-block">
-          <input
-            type="checkbox"
+      <input
+        type="checkbox"
             ref={inputRef as React.RefObject<HTMLInputElement>}
             onChange={onChange}
             className={cn(
               "peer sr-only",
               className
             )}
-            {...props}
-          />
+        {...props}
+      />
           <span 
             className={cn(
               "flex h-4 w-4 items-center justify-center rounded border-2 border-black bg-white transition-all",
@@ -75,13 +75,51 @@ export const CheckboxAnt = React.forwardRef<HTMLInputElement, CheckboxAntProps>(
         {label && (
           <label className="upper-checkbox-label cursor-pointer text-sm select-none">
             {label}
-          </label>
+    </label>
         )}
       </div>
     );
   }
-);
+  );
 
 CheckboxAnt.displayName = "CheckboxAnt";
+
+// Create a simpler IndeterminateCheckbox component without passing the indeterminate prop to DOM
+export const IndeterminateCheckbox = ({ label }: { label: string }) => {
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
+  
+  React.useEffect(() => {
+    if (checkboxRef.current) {
+      checkboxRef.current.indeterminate = true;
+    }
+  }, []);
+  
+  return (
+    <div className="upper-checkbox-wrapper flex items-center space-x-2">
+      <span className="upper-checkbox relative inline-block">
+        <input
+          type="checkbox"
+          ref={checkboxRef}
+          className="peer sr-only"
+        />
+        <span 
+          className={cn(
+            "flex h-4 w-4 items-center justify-center rounded border-2 border-black bg-white transition-all",
+            "peer-checked:bg-purple-500 peer-checked:border-purple-500",
+            "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
+            "after:content-['-'] after:text-white after:text-xs after:opacity-100",
+            "shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]",
+            "bg-purple-500 border-purple-500"
+          )}
+        />
+      </span>
+      {label && (
+        <label className="upper-checkbox-label cursor-pointer text-sm select-none">
+          {label}
+        </label>
+      )}
+    </div>
+  );
+};
 
 export { Checkbox }; 

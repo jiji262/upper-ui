@@ -62,7 +62,7 @@ export const InputAnt = React.forwardRef<HTMLInputElement, InputAntProps>(
 
 InputAnt.displayName = "InputAnt";
 
-export { Input };
+export { Input }; 
 
 // Styles to be added via global CSS or Tailwind
 // .upper-input {

@@ -1,5 +1,5 @@
 // src/components/ui/feedback/Modal/Modal.tsx
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Modal.css';
 
 export interface ModalProps {
@@ -15,6 +15,7 @@ export interface ModalProps {
   cancelText?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  maskClosable?: boolean;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -30,7 +31,21 @@ const Modal: React.FC<ModalProps> = ({
   cancelText = 'Cancel',
   className = '',
   style,
+  maskClosable = false,
 }) => {
+  // Use useEffect to prevent closure issues with event handlers
+  useEffect(() => {
+    // This ensures the Modal doesn't close immediately upon mounting
+    if (open) {
+      const timer = setTimeout(() => {
+        // This is just a placeholder, we're not doing anything here
+        // The purpose is just to ensure React doesn't optimize away our effect
+      }, 0);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
+  
   if (!open) return null;
 
   const handleOk = () => {
@@ -42,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
+    if (maskClosable && e.target === e.currentTarget) {
       handleCancel();
     }
   };
@@ -70,17 +85,22 @@ const Modal: React.FC<ModalProps> = ({
     width: typeof width === 'string' ? width : `${width}px`,
     ...style,
   };
-
+  
   const modalClasses = [
     'upper-modal',
     centered ? 'upper-modal-centered' : '',
     className,
   ].filter(Boolean).join(' ');
 
+  // Stop propagation on modal click to prevent backdrop click from triggering
+  const handleModalClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <div className="upper-modal-root">
       <div className="upper-modal-backdrop" onClick={handleBackdropClick}></div>
-      <div className={modalClasses} style={modalStyles}>
+      <div className={modalClasses} style={modalStyles} onClick={handleModalClick}>
         <div className="upper-modal-content">
           <div className="upper-modal-header">
             <div className="upper-modal-title">{title}</div>

@@ -24,7 +24,8 @@ import {
   Tooltip, TooltipProvider, 
   Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, 
   Alert,
-  Skeleton
+  Skeleton,
+  DialogClose
 } from './components/ui/feedback';
 import {
   Tabs, TabsList, TabsTrigger, TabsContent,
@@ -47,14 +48,13 @@ import { User, CreditCard, Settings, Keyboard, Users, UserPlus, Mail, MessageSqu
 // Import Ant Design style components
 // import ButtonAnt from './components/ui/general/Button'; // Removing this import
 import { Input as InputAnt } from './components/ui/data-entry/input';
-import { Checkbox as CheckboxAnt } from './components/ui/data-entry/checkbox';
+import { Checkbox as CheckboxAnt, IndeterminateCheckbox } from './components/ui/data-entry/checkbox';
 import SelectAnt from './components/ui/data-entry/Select/Select';
 import TextareaAnt from './components/ui/data-entry/Textarea/Textarea';
 import Icon from './components/ui/general/Icon/Icon';
 import Empty from './components/ui/data-display/Empty/Empty';
 import Descriptions from './components/ui/data-display/Descriptions/Descriptions';
 import DescriptionsItem from './components/ui/data-display/Descriptions/DescriptionsItem';
-import Modal from './components/ui/feedback/Modal/Modal';
 
 function App() {
   const [progress, setProgress] = React.useState(13);
@@ -63,7 +63,6 @@ function App() {
   const [selectedTab, setSelectedTab] = React.useState<string>("button");
   const [isSheetOpen, setIsSheetOpen] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [modalOpen, setModalOpen] = React.useState(false);
   const [checkboxValue, setCheckboxValue] = React.useState(false);
   const [selectValue, setSelectValue] = React.useState<string | number | (string | number)[]>('');
 
@@ -321,7 +320,7 @@ function App() {
                               <div className="space-y-3">
                                 <CheckboxAnt label="Disabled" disabled />
                                 <CheckboxAnt label="Disabled Checked" disabled checked />
-                                <CheckboxAnt label="Indeterminate" indeterminate />
+                                <IndeterminateCheckbox label="Indeterminate" />
                               </div>
                             </div>
                           </div>
@@ -441,42 +440,44 @@ function App() {
                   <div>
                     <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Feedback Components</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      {/* Modal Component */}
+                      {/* Dialog Component */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
-                          <CardTitle>Modal</CardTitle>
-                          <CardDescription>Dialog box for important content</CardDescription>
-                  </CardHeader>
+                          <CardTitle>Dialog</CardTitle>
+                          <CardDescription>Lightweight dialog component</CardDescription>
+                        </CardHeader>
                         <CardContent className="p-6">
                           <div className="space-y-6">
                             <div>
-                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Modal</h5>
+                              <h5 className="text-sm font-medium mb-3 text-gray-700">Basic Dialog</h5>
                               <div className="flex justify-center">
-                                <Button onClick={() => setModalOpen(true)}>
-                                  Open Modal
-                                </Button>
+                                <Dialog>
+                                  <DialogTrigger asChild>
+                                    <Button>Open Dialog</Button>
+                                  </DialogTrigger>
+                                  <DialogContent>
+                                    <DialogHeader>
+                                      <DialogTitle>Dialog Title</DialogTitle>
+                                      <DialogDescription>
+                                        This is a dialog component with upper-ui styling.
+                                      </DialogDescription>
+                                    </DialogHeader>
+                                    <div className="py-4">
+                                      <p>Dialog content goes here. You can add any UI elements, forms, or information.</p>
+                                    </div>
+                                    <DialogFooter>
+                                      <DialogClose asChild>
+                                        <Button variant="outline">Cancel</Button>
+                                      </DialogClose>
+                                      <Button>Confirm</Button>
+                                    </DialogFooter>
+                                  </DialogContent>
+                                </Dialog>
+                              </div>
+                            </div>
                           </div>
-                              <Modal 
-                                title="Upper UI Modal"
-                                open={modalOpen}
-                                onOk={() => setModalOpen(false)}
-                                onCancel={() => setModalOpen(false)}
-                                footer={[
-                                  <Button key="back" onClick={() => setModalOpen(false)}>
-                                    Cancel
-                                  </Button>,
-                                  <Button key="submit" onClick={() => setModalOpen(false)}>
-                                    OK
-                                  </Button>,
-                                ]}
-                              >
-                                <p>This is a modal dialog with upper-ui styling. It has black borders, box shadows, and purple accents.</p>
-                                <p>You can add any content here.</p>
-                              </Modal>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
                 )}
@@ -538,6 +539,9 @@ function App() {
                 </Button>
                 <Button variant="outline" className="w-full justify-start">
                   <span>Request a Feature</span>
+                </Button>
+                <Button variant="outline" className="w-full justify-start" onClick={() => setDialogOpen(true)}>
+                  <span>Open Dialog Example</span>
                 </Button>
               </div>
             </section>
