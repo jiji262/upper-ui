@@ -1,0 +1,201 @@
+/* src/components/ui/data-entry/InputNumber/InputNumber.css */
+/* Based on antd/es/input-number/style/index.css */
+
+.ant-input-number {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  color: rgba(0, 0, 0, 0.88);
+  list-style: none;
+  position: relative;
+  display: inline-block;
+  width: 90px; /* AntD default width */
+  padding: 0; /* Reset padding, apply to internal input */
+  border: 1px solid #d9d9d9;
+  border-radius: 6px; /* AntD default */
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: #fff; /* Background for the wrapper */
+}
+.ant-input-number:hover {
+  border-color: #1677ff; /* AntD primary hover */
+}
+.ant-input-number-focused { /* Typically added by JS */
+  border-color: #1677ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2); /* AntD focus shadow */
+}
+
+/* Internal input element styling */
+.ant-input-number-input {
+  width: 100%;
+  height: 30px; /* Default height, adjust with size */
+  padding: 4px 11px; /* Default padding */
+  text-align: left; /* Default text align, antd might be 'left' or 'right' depending on context */
+  background-color: transparent; /* Input itself is transparent, wrapper has background */
+  border: none;
+  border-radius: 6px; /* Inherit or match parent */
+  outline: none;
+  transition: all 0.3s linear;
+  color: rgba(0,0,0,0.88);
+  line-height: 1.5714285714285714;
+}
+.ant-input-number-input::placeholder {
+    color: rgba(0,0,0,0.25);
+}
+
+/* Controls (handler wrap and buttons) */
+.ant-input-number-handler-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px; /* Width of the controls area */
+  height: 100%;
+  background: #fff; /* Background for handler area */
+  border-left: 1px solid #d9d9d9;
+  border-radius: 0 6px 6px 0; /* Match parent border radius on right side */
+  opacity: 0; /* Hidden by default, show on hover/focus */
+  transition: opacity 0.2s linear 0.2s;
+}
+.ant-input-number:hover .ant-input-number-handler-wrap,
+.ant-input-number-focused .ant-input-number-handler-wrap { /* Show on focus as well */
+  opacity: 1;
+}
+
+.ant-input-number-handler {
+  display: block;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  color: rgba(0,0,0,0.45);
+  font-weight: bold;
+  line-height: 0; /* Remove extra space for icon centering */
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  position: relative; /* For icon centering */
+}
+.ant-input-number-handler .anticon { /* Assuming Icon component renders an anticon class */
+  font-size: 10px; /* Small icons for up/down */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-input-number-handler:hover {
+  height: 60%; /* AntD hover effect - slightly expand handler */
+  color: #1677ff;
+}
+.ant-input-number-handler-up:hover {
+    /* Specific hover if needed */
+}
+.ant-input-number-handler-down:hover {
+    /* Specific hover if needed */
+}
+
+.ant-input-number-handler-up-inner, /* If using inner spans for icons */
+.ant-input-number-handler-down-inner {
+  /* Styles for custom span icons if not using an Icon component */
+}
+
+.ant-input-number-handler-down {
+  border-top: 1px solid #d9d9d9;
+}
+
+.ant-input-number-handler-disabled {
+  color: rgba(0,0,0,0.25) !important; /* Important to override hover */
+  cursor: not-allowed;
+}
+.ant-input-number-handler-disabled:hover {
+  height: 50%; /* No expand effect on disabled */
+  /* color: rgba(0,0,0,0.25); /* Keep disabled color */
+}
+
+
+/* When controls are not shown, input takes full width */
+.ant-input-number:not(.ant-input-number-with-controls) .ant-input-number-input {
+  /* No specific style needed if padding is handled correctly */
+}
+.ant-input-number-with-controls .ant-input-number-input {
+    padding-right: calc(22px + 4px); /* Adjust padding to make space for controls area + some gap */
+}
+
+
+/* Disabled state for the whole component */
+.ant-input-number-disabled {
+  background-color: rgba(0,0,0,0.04);
+  border-color: #d9d9d9 !important; /* Override hover/focus */
+  cursor: not-allowed;
+}
+.ant-input-number-disabled .ant-input-number-input {
+  cursor: not-allowed;
+  background-color: transparent; /* Input is transparent */
+  color: rgba(0,0,0,0.25);
+}
+.ant-input-number-disabled .ant-input-number-handler-wrap {
+  display: none; /* Hide controls when disabled */
+}
+
+/* Status styling */
+.ant-input-number-status-error {
+  border-color: #ff4d4f !important; /* AntD error color */
+}
+.ant-input-number-status-error.ant-input-number-focused {
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+}
+.ant-input-number-status-warning {
+  border-color: #faad14 !important; /* AntD warning color */
+}
+.ant-input-number-status-warning.ant-input-number-focused {
+  box-shadow: 0 0 0 2px rgba(250, 173, 20, 0.2);
+}
+
+
+/* Size variants */
+/* Large */
+.ant-input-number-lg {
+  /* width: 120px; /* Example larger width */
+}
+.ant-input-number-lg .ant-input-number-input {
+  height: 38px; /* AntD large input height (40px total with border) */
+  padding: 7px 11px; /* AntD large input padding */
+  font-size: 16px;
+}
+.ant-input-number-lg.ant-input-number-with-controls .ant-input-number-input {
+    padding-right: calc(22px + 7px); /* Adjust for larger padding */
+}
+.ant-input-number-lg .ant-input-number-handler-wrap {
+    /* Handler wrap size might not change, but icon position might need adjustment if icons are larger */
+}
+
+/* Small */
+.ant-input-number-sm {
+  /* width: 70px; /* Example smaller width */
+}
+.ant-input-number-sm .ant-input-number-input {
+  height: 22px; /* AntD small input height (24px total with border) */
+  padding: 0px 7px; /* AntD small input padding */
+}
+.ant-input-number-sm.ant-input-number-with-controls .ant-input-number-input {
+    padding-right: calc(22px + 0px); /* Adjust for smaller padding */
+}
+.ant-input-number-sm .ant-input-number-handler-wrap {
+    /* Handler wrap size might not change */
+}
+.ant-input-number-sm .ant-input-number-handler .anticon {
+    font-size: 8px; /* Smaller icons for small size */
+}
+
+
+/* Input with prefix/suffix or addonBefore/After (from InputProps) */
+/* This assumes InputNumber is composed with an Input that handles these */
+/* If InputNumber itself needs to manage these, more complex structure and CSS needed */
+.ant-input-number-affix-wrapper { /* If Input uses an affix wrapper */
+    /* Ensure this wrapper integrates with InputNumber structure */
+    /* For example, it might need to be the element getting the .ant-input-number class */
+}
+.ant-input-number-group-wrapper { /* If Input uses a group wrapper for addons */
+    /* Ensure this wrapper integrates correctly */
+}

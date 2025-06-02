@@ -1,0 +1,159 @@
+/* src/components/ui/data-display/Descriptions/Descriptions.css */
+/* Based on antd/es/descriptions/style/index.css */
+
+.upper-descriptions {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  color: rgba(0,0,0,0.88);
+}
+
+.upper-descriptions-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* AntD default */
+}
+.upper-descriptions-title {
+  flex: auto; /* Grow to take available space */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(0,0,0,0.88);
+  font-weight: 600; /* AntD default title weight */
+  font-size: 16px; /* AntD default title size */
+  line-height: 1.5;
+}
+.upper-descriptions-extra {
+  margin-left: auto; /* Push extra to the right */
+  color: rgba(0,0,0,0.88);
+  font-size: 14px;
+}
+
+.upper-descriptions-view {
+  width: 100%;
+  border-radius: 8px; /* AntD default for bordered */
+  overflow: hidden; /* For border radius on table */
+}
+.upper-descriptions-view > table {
+  width: 100%;
+  table-layout: fixed; /* Important for column spanning */
+  border-collapse: collapse; /* For bordered style */
+}
+
+.upper-descriptions-row {
+  /* Each <tr> in the table */
+}
+
+.upper-descriptions-item-label,
+.upper-descriptions-item-content {
+  padding: 16px 24px; /* Default padding */
+  border-bottom: 1px solid #f0f0f0; /* Default for non-bordered, horizontal */
+  vertical-align: top; /* Align content to top */
+}
+
+.upper-descriptions-item-label {
+  color: rgba(0,0,0,0.88);
+  font-weight: normal;
+  text-align: start; /* Default text align */
+}
+/* Colon style */
+.upper-descriptions-item-label::after {
+  /* Colon is added directly in JSX for simplicity here, or could be via CSS content */
+  /* content: ':'; */
+  /* margin: 0 8px 0 2px; */
+  /* position: relative; */
+  /* top: -0.5px; */
+}
+.upper-descriptions-item-no-label::after { /* If label is empty, no colon */
+    /* content: ''; */
+}
+
+
+.upper-descriptions-item-content {
+  color: rgba(0,0,0,0.88);
+  word-break: break-word; /* Break long words in content */
+  overflow-wrap: break-word;
+}
+
+
+/* Bordered Styles */
+.upper-descriptions-bordered .upper-descriptions-view {
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+.upper-descriptions-bordered .upper-descriptions-item-label,
+.upper-descriptions-bordered .upper-descriptions-item-content {
+  border: 1px solid #000;
+}
+.upper-descriptions-bordered .upper-descriptions-item-label {
+  background-color: #f9f5ff;
+}
+/* Remove double borders by collapsing or specific border application */
+/* For simplicity, this basic CSS might show double borders. AntD handles this carefully. */
+/* Example: .upper-descriptions-bordered tr:not(:last-child) td { border-bottom: 1px solid #f0f0f0; } */
+/* .upper-descriptions-bordered td:not(:last-child) { border-right: 1px solid #f0f0f0; } */
+
+
+/* Layout: Vertical */
+.upper-descriptions-layout-vertical .upper-descriptions-item-label {
+  padding-bottom: 8px; /* Space between label and content in vertical */
+  font-weight: 600; /* Labels are bolder in vertical */
+}
+.upper-descriptions-layout-vertical .upper-descriptions-item-container {
+    /* Container for label and content within a single cell */
+}
+.upper-descriptions-layout-vertical .upper-descriptions-item-label::after {
+  /* No colon by default for vertical layout in AntD */
+  /* content: ''; */
+}
+.upper-descriptions-layout-vertical.upper-descriptions-bordered .upper-descriptions-item-label {
+    /* background-color: transparent; /* Label background might be different for vertical bordered */
+}
+.upper-descriptions-layout-vertical .upper-descriptions-item-content {
+    /* Content specific styles for vertical if needed */
+}
+
+
+/* Sizes */
+/* Middle Size */
+.upper-descriptions-middle .upper-descriptions-item-label,
+.upper-descriptions-middle .upper-descriptions-item-content {
+  padding: 12px 24px; /* Middle size padding */
+}
+.upper-descriptions-middle .upper-descriptions-header {
+    margin-bottom: 16px; /* Middle size header margin */
+}
+
+/* Small Size */
+.upper-descriptions-small .upper-descriptions-item-label,
+.upper-descriptions-small .upper-descriptions-item-content {
+  padding: 8px 16px; /* Small size padding */
+}
+.upper-descriptions-small .upper-descriptions-header {
+    margin-bottom: 12px; /* Small size header margin */
+}
+.upper-descriptions-small .upper-descriptions-title {
+    font-size: 14px; /* Smaller title for small size */
+}
+.upper-descriptions-small .upper-descriptions-extra {
+    font-size: 12px; /* Smaller extra for small size */
+}
+
+
+/* Responsive column handling is done by JS by adjusting colSpan on td/th */
+/* CSS only needs to ensure table layout fixed works well. */
+
+/* Ensure last row cells don't have bottom border if table has overall border */
+.upper-descriptions-bordered tr:last-child > .upper-descriptions-item-label,
+.upper-descriptions-bordered tr:last-child > .upper-descriptions-item-content {
+    border-bottom: none;
+}
+
+/* For horizontal layout, ensure label and content are in sync if one is empty */
+.upper-descriptions-layout-horizontal .upper-descriptions-item-label:empty,
+.upper-descriptions-layout-horizontal .upper-descriptions-item-content:empty {
+    /* padding-top: 0; padding-bottom: 0; /* Or specific height to maintain row height */
+}

@@ -1,0 +1,116 @@
+/* src/components/ui/data-entry/Mentions/Mentions.css */
+/* Based on antd/es/mentions/style/index.css */
+
+.upper-mentions {
+  box-sizing: border-box;
+  position: relative;
+  display: block; /* Or inline-block if preferred */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+}
+
+/* Assuming Mentions uses a Textarea component that has .upper-textarea class */
+.upper-mentions .upper-textarea { 
+  /* Ensure textarea styles are compatible */
+  /* For example, if Textarea has its own border/padding, Mentions wrapper might not need its own. */
+}
+
+/* Dropdown / Suggestions Panel */
+.upper-mentions-dropdown {
+  position: absolute; /* Positioned relative to Mentions wrapper or via getPopupContainer */
+  z-index: 1050; /* AntD default z-index for popups */
+  width: auto; /* Or set by JS to match input width or content width */
+  min-width: 120px; /* Minimum width for the dropdown */
+  margin-top: 4px; /* Small gap from textarea */
+  background-color: #fff;
+  border-radius: 8px; /* AntD default */
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  overflow: hidden; /* Ensure children (menu) don't overflow rounded corners */
+}
+
+.upper-mentions-dropdown-hidden {
+  display: none;
+}
+
+.upper-mentions-dropdown-menu {
+  max-height: 250px; /* Max height before scrolling */
+  margin: 0;
+  padding: 4px 0; /* Padding around the list of items */
+  list-style: none;
+  overflow-y: auto; /* Scroll if too many items */
+}
+
+.upper-mentions-dropdown-menu-item {
+  padding: 5px 12px; /* AntD default item padding */
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.upper-mentions-dropdown-menu-item:hover,
+.upper-mentions-dropdown-menu-item-active { /* Active state for keyboard navigation */
+  background-color: #e6d5ff; /* Changed to match upper-ui style */
+}
+
+.upper-mentions-dropdown-menu-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.upper-mentions-dropdown-menu-item-disabled:hover {
+  background-color: transparent; /* No hover effect for disabled */
+}
+
+.upper-mentions-dropdown-menu-item-divider {
+  height: 1px;
+  margin: 4px 0;
+  overflow: hidden;
+  line-height: 0;
+  background-color: rgba(5,5,5,0.06);
+}
+
+/* Placement specific styles might be needed if not using a Popover utility */
+/* e.g. .upper-mentions-dropdown-placement-top { margin-top: 0; margin-bottom: 4px; } */
+
+
+/* ReadOnly state for Mentions component wrapper if needed */
+.upper-mentions-readonly .upper-textarea { /* Assuming Textarea gets .upper-textarea */
+  /* Specific styles for readonly textarea if different from default readonly */
+  /* e.g., no focus ring, different background/border if needed */
+}
+
+/* Disabled state for Mentions component wrapper */
+.upper-mentions-disabled .upper-textarea {
+  /* Specific styles for disabled textarea if different from default disabled */
+  /* Usually handled by Textarea's own disabled styles */
+}
+
+/* Status styling - if Mentions wrapper needs to reflect status */
+/* Usually, the underlying Textarea component would show status styling (border, etc.) */
+/*
+.upper-mentions-status-error .upper-textarea {
+  border-color: #ff4d4f;
+}
+.upper-mentions-status-warning .upper-textarea {
+  border-color: #faad14;
+}
+*/
+
+/* Styles for when Textarea is part of a Form.Item with validation status */
+/* These are typically handled by Form.Item adding classes to its children */
+/*
+.upper-form-item-has-error .upper-mentions .upper-textarea {
+  border-color: #ff4d4f;
+}
+.upper-form-item-has-warning .upper-mentions .upper-textarea {
+  border-color: #faad14;
+}
+*/

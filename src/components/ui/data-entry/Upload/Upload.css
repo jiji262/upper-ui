@@ -1,0 +1,298 @@
+/* src/components/ui/data-entry/Upload/Upload.css */
+/* Based on antd/es/upload/style/index.css */
+
+.upper-upload {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  color: rgba(0,0,0,0.88);
+}
+
+.upper-upload-trigger-wrapper { /* Wrapper for the trigger element if Upload is not the trigger itself */
+    display: inline-block; /* Or block depending on how children prop is used */
+}
+
+
+/* Default button trigger style (if no children passed) */
+.upper-upload-select { /* This class is often on the trigger wrapper */
+  display: inline-block;
+  /* Styles for the area that triggers file input, e.g., a button or drag area */
+}
+
+/* For picture-card list type, the trigger is styled like a card */
+.upper-upload-select-picture-card {
+  display: table-cell;
+  width: 102px; /* AntD default size */
+  height: 102px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 8px; /* AntD default */
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.upper-upload-select-picture-card:hover {
+  border-color: #1677ff; /* Primary color */
+}
+.upper-upload-select-picture-card .anticon { /* Icon inside picture-card trigger */
+  font-size: 24px;
+  color: rgba(0,0,0,0.45);
+}
+.upper-upload-select-picture-card div { /* Text like "Upload" */
+  margin-top: 8px;
+  color: rgba(0,0,0,0.88);
+  font-size: 12px;
+}
+
+
+/* File List Styles */
+.upper-upload-list {
+  margin-top: 8px;
+  line-height: 1.5714285714285714;
+}
+
+.upper-upload-list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px; /* AntD default */
+  transition: background-color 0.3s;
+  background-color: #fafafa; /* Default item background */
+}
+.upper-upload-list-item:hover {
+  background-color: #f0f0f0; /* Hover background */
+}
+
+.upper-upload-list-item-info {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden; /* For name ellipsis */
+}
+
+.upper-upload-list-item-icon {
+  margin-right: 8px;
+  color: rgba(0,0,0,0.45); /* Default icon color */
+  font-size: 14px; /* Match text size */
+  vertical-align: middle; /* Align with text */
+}
+.upper-upload-list-item-icon .anticon-loading { /* Loading icon */
+    color: #1677ff; /* Primary color for loading */
+    animation: upper-upload-loading-icon-spin 1s infinite linear;
+}
+@keyframes upper-upload-loading-icon-spin {
+  100% { transform: rotate(360deg); }
+}
+
+
+.upper-upload-list-item-name {
+  display: inline-block;
+  flex-grow: 1;
+  padding-right: 8px; /* Space before actions */
+  color: rgba(0,0,0,0.88);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s;
+}
+.upper-upload-list-item-name:hover {
+  color: #1677ff; /* Link hover color */
+}
+
+.upper-upload-list-item-actions {
+  margin-left: auto; /* Push actions to the right */
+  white-space: nowrap; /* Prevent actions from wrapping */
+}
+.upper-upload-list-item-actions .anticon {
+  margin-left: 8px;
+  color: rgba(0,0,0,0.45);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.upper-upload-list-item-actions .anticon:hover {
+  color: rgba(0,0,0,0.88); /* Darker on hover */
+}
+
+
+/* Progress Bar */
+.upper-upload-list-item-progress {
+  position: absolute;
+  bottom: -6px; /* Position below item text, adjust as needed */
+  left: 26px; /* Align with text, after icon */
+  width: calc(100% - 34px); /* Adjust width considering icon and actions */
+  height: 2px;
+  background-color: #f0f0f0; /* Progress track color */
+  border-radius: 1px;
+  overflow: hidden;
+  padding: 0;
+  line-height: 0; /* Remove line height for progress bar */
+}
+.upper-upload-list-item .upper-progress-outer { /* If using antd progress structure */
+    /* position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; */
+}
+.upper-upload-list-item .upper-progress-inner { /* If using antd progress structure */
+    /* display: block; width: 0%; height: 100%; background-color: #1677ff; border-radius: 1px; transition: width 0.2s; */
+}
+/* Simplified progress bar directly */
+.upper-upload-progress-outer {
+    width: 100%; height: 100%;
+}
+.upper-upload-progress-inner {
+    display: block; height: 100%; background-color: #1677ff; border-radius: 1px; transition: width 0.2s;
+}
+
+
+/* Status specific styles */
+.upper-upload-list-item-done .upper-upload-list-item-name {
+  /* color: #52c41a; /* Green for success, or just default */
+}
+.upper-upload-list-item-error {
+  background-color: #fff1f0; /* Light red background for error */
+  border: 1px solid #ffccc7; /* Reddish border */
+}
+.upper-upload-list-item-error .upper-upload-list-item-name,
+.upper-upload-list-item-error .upper-upload-list-item-icon .anticon,
+.upper-upload-list-item-error .upper-upload-list-item-actions .anticon {
+  color: #ff4d4f; /* Red color for error text/icons */
+}
+.upper-upload-list-item-error .upper-upload-list-item-progress .upper-progress-inner {
+    background-color: #ff4d4f; /* Red progress bar for error */
+}
+.upper-upload-list-item-error-message {
+    color: #ff4d4f;
+    font-size: 12px;
+    margin-top: 2px;
+    padding-left: 26px; /* Align with text */
+}
+
+
+/* Picture list type */
+.upper-upload-list-picture .upper-upload-list-item {
+  border: 1px solid #d9d9d9;
+  /* height: 66px; /* AntD default height for picture items */
+}
+.upper-upload-list-picture .upper-upload-list-item-info {
+  padding: 4px; /* Padding around icon and name */
+}
+.upper-upload-list-picture .upper-upload-list-item-image {
+  max-width: 48px; /* AntD default image size */
+  max-height: 48px;
+  object-fit: contain; /* Ensure image fits without cropping */
+  border-radius: 4px;
+}
+.upper-upload-list-picture .upper-upload-list-item-thumbnail .anticon { /* For non-image file icon */
+  font-size: 28px;
+  color: #8c8c8c;
+}
+
+
+/* Picture-card list type */
+.upper-upload-list-picture-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Gap between cards */
+}
+.upper-upload-list-picture-card .upper-upload-list-item {
+  display: table; /* AntD uses table for picture-card item layout */
+  width: 102px; /* AntD default card size */
+  height: 102px;
+  padding: 8px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 0; /* No margin, use gap */
+  position: relative; /* For progress and actions overlay */
+}
+.upper-upload-list-picture-card .upper-upload-list-item-info {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: middle;
+  position: relative; /* For image/icon centering or overlay */
+}
+.upper-upload-list-picture-card .upper-upload-list-item-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.upper-upload-list-picture-card .upper-upload-list-item-icon .anticon { /* Icon for non-image files */
+    font-size: 32px; color: #8c8c8c;
+}
+.upper-upload-list-picture-card .upper-upload-list-item-name {
+  display: none; /* Name is usually not shown directly on card, but in tooltip */
+}
+.upper-upload-list-picture-card .upper-upload-list-item-actions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* Dark overlay on hover/focus */
+  color: #fff;
+  opacity: 0; /* Hidden by default, show on hover */
+  transition: opacity 0.3s;
+}
+.upper-upload-list-picture-card .upper-upload-list-item:hover .upper-upload-list-item-actions {
+  opacity: 1;
+}
+.upper-upload-list-picture-card .upper-upload-list-item-actions .anticon {
+  color: #fff;
+  font-size: 16px;
+  margin: 0 4px; /* Space between action icons */
+}
+.upper-upload-list-picture-card .upper-upload-list-item-progress {
+    position: absolute;
+    bottom: 8px; /* Progress at bottom of card */
+    left: 8px;
+    width: calc(100% - 16px); /* Full width inside padding */
+    height: 4px;
+    padding: 0;
+}
+.upper-upload-list-picture-card .upper-upload-list-item-error-message {
+    display: none; /* Error message not typically shown on card, status indicated by border/icon */
+}
+.upper-upload-list-picture-card .upper-upload-list-item-error {
+    border-color: #ff4d4f;
+}
+
+
+/* Disabled state for the trigger */
+.upper-upload-disabled {
+  cursor: not-allowed;
+}
+.upper-upload-disabled .ant-btn { /* If Button is used as trigger */
+  /* Disabled styles handled by Button component */
+}
+.upper-upload-disabled .upper-upload-select-picture-card {
+  cursor: not-allowed;
+  background-color: rgba(0,0,0,0.02);
+}
+.upper-upload-disabled .upper-upload-select-picture-card:hover {
+    border-color: #d9d9d9; /* No hover border change */
+}
+.upper-upload-disabled .upper-upload-select-picture-card .anticon,
+.upper-upload-disabled .upper-upload-select-picture-card div {
+    color: rgba(0,0,0,0.25);
+}
+
+/* Drag and Drop (Dragger) styles - not implemented in this simplified version */
+/* .ant-upload-drag { ... } */
+/* .ant-upload-drag-hover { ... } */
+/* .ant-upload-drag-icon { ... } */
+/* .ant-upload-drag-text { ... } */
+/* .ant-upload-drag-hint { ... } */

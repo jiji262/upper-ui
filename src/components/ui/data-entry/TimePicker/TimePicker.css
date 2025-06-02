@@ -1,0 +1,156 @@
+/* src/components/ui/data-entry/TimePicker/TimePicker.css */
+/* Based on antd/es/time-picker/style/index.css and picker/style/index.css */
+
+/* General .ant-picker styles are similar to DatePicker, defined in DatePicker.css */
+/* This file will focus on TimePicker specific parts, especially the panel. */
+
+.ant-picker.ant-picker-time {
+  /* Specific styles for TimePicker wrapper if different from generic .ant-picker */
+  /* Usually, it shares the same wrapper styles as DatePicker for consistency. */
+}
+
+.ant-picker-time .ant-picker-input > input {
+  /* Specific input styles for TimePicker if needed */
+}
+
+/* Time Picker Panel */
+.ant-picker-dropdown .ant-picker-time-panel { /* If panel has this class */
+  /* General panel container if not using .ant-picker-panel directly */
+}
+
+.ant-picker-time-panel-body {
+  display: flex;
+  /* min-width: 168px; /* Adjust based on number of columns (HH, mm, ss) */
+}
+
+.ant-picker-time-panel-column {
+  flex: 1; /* Each column takes equal width */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 224px; /* AntD default height for time columns */
+  overflow-y: auto;
+  text-align: center;
+  border-left: 1px solid rgba(5,5,5,0.06); /* Separator between columns */
+}
+.ant-picker-time-panel-column:first-child {
+  border-left: none;
+}
+
+/* Scrollbar styling (optional, browser-dependent) */
+.ant-picker-time-panel-column::-webkit-scrollbar {
+  width: 6px;
+}
+.ant-picker-time-panel-column::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.ant-picker-time-panel-column::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.05);
+}
+
+
+.ant-picker-time-panel-cell {
+  padding: 0;
+  margin: 0;
+}
+
+.ant-picker-time-panel-cell-inner {
+  display: block;
+  width: 100%;
+  height: 28px; /* AntD default cell height */
+  padding: 0 4px; /* Adjust padding as needed */
+  line-height: 28px;
+  color: rgba(0,0,0,0.88);
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 4px; /* Rounded corners for hover/selected items */
+}
+.ant-picker-time-panel-cell-inner:hover {
+  background: rgba(0,0,0,0.04); /* AntD hover color */
+}
+
+.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background: #e6f4ff; /* AntD selected color (light blue) */
+  font-weight: 600;
+}
+
+.ant-picker-time-panel-cell-disabled .ant-picker-time-panel-cell-inner {
+  color: rgba(0,0,0,0.25);
+  background: transparent; /* No background for disabled */
+  cursor: not-allowed;
+}
+.ant-picker-time-panel-cell-disabled .ant-picker-time-panel-cell-inner:hover {
+  background: transparent; /* No hover effect */
+}
+
+
+/* AM/PM selector styles (if implemented) */
+.ant-picker-time-panel-ampm {
+  /* Styles for AM/PM column or selector */
+}
+
+
+/* Footer for "Now" and "Ok" buttons */
+.ant-picker-ranges, /* AntD class for footer area */
+.ant-picker-footer { /* Alternative class name */
+  display: flex;
+  justify-content: space-between; /* Or specific alignment for buttons */
+  align-items: center;
+  padding: 7px 12px; /* AntD default padding */
+  border-top: 1px solid rgba(5,5,5,0.06);
+  line-height: 1; /* Reset line-height for buttons */
+}
+.ant-picker-now-btn, /* If using specific class for "Now" */
+.ant-picker-ok-btn { /* If using specific class for "Ok" */
+  /* Button styling - can leverage .ant-btn-link or .ant-btn-primary from Button component if available */
+  /* For simplicity, basic button styles: */
+  padding: 4px 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.ant-picker-now-btn {
+  color: #1677ff; /* Primary color for "Now" */
+}
+.ant-picker-now-btn:hover {
+  color: #4096ff; /* Lighter primary on hover */
+}
+.ant-picker-ok-btn {
+  color: #fff;
+  background-color: #1677ff;
+  border-radius: 4px;
+}
+.ant-picker-ok-btn:hover {
+  background-color: #4096ff;
+}
+.ant-picker-ok-btn:disabled {
+    background-color: rgba(0,0,0,0.04);
+    color: rgba(0,0,0,0.25);
+    cursor: not-allowed;
+}
+
+
+/* General .ant-picker-dropdown styles (if not already covered by DatePicker.css or a common picker CSS) */
+.ant-picker-dropdown {
+  /* Ensure it has a width, can be set by JS based on panel content */
+  /* Example: min-width for time picker might be around 150-200px depending on columns */
+}
+.ant-picker-dropdown .ant-picker-panel {
+    /* Panel specific styles if needed */
+}
+.ant-picker-dropdown .ant-picker-header {
+    /* Header styles (e.g., "Select Time") */
+}
+.ant-picker-dropdown .ant-picker-body {
+    /* Body styles (where time columns are) */
+}
+
+/* Ensure consistent focus outline if TimePicker wrapper gets focus */
+.ant-picker-time:focus-within {
+    /* outline: 2px solid #1677ff; /* Example focus outline */
+    /* outline-offset: 1px; */
+    /* This is usually handled by the Input component's focus style if TimePicker wraps Input */
+}

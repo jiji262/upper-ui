@@ -1,0 +1,43 @@
+/* src/components/ui/feedback/Watermark/Watermark.css */
+/* Based on antd/es/watermark/style/index.css */
+
+.ant-watermark-wrapper {
+  position: relative; /* Required for the absolute positioned watermark overlay */
+  /* overflow: hidden; /* Ensures watermark doesn't spill if children have specific overflow */
+  /* This might be needed depending on how children are styled */
+}
+
+/* The .ant-watermark-bg class is applied to the dynamically created div by JS */
+/* Its styles (backgroundImage, backgroundRepeat, zIndex, etc.) are set inline in Watermark.tsx */
+/* This CSS file is mostly for the wrapper or any non-dynamic parts if needed. */
+
+/* Example for potential global styling if not all handled by inline styles: */
+/*
+.ant-watermark-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: repeat;
+  pointer-events: none; // Ensure watermark doesn't interfere with content interaction
+  z-index: 9; // Default z-index, can be overridden by prop
+}
+*/
+
+/* If there were specific styles for the content being watermarked, they could go here, */
+/* but usually, the content is just the children passed to the Watermark component. */
+/* For instance, if Watermark had a specific content div: */
+/*
+.ant-watermark-content {
+  position: relative; // Ensure content is not covered by watermark if z-index is mismanaged
+  z-index: 1; // Content above watermark background if structure was different
+}
+*/
+
+/* Current implementation in Watermark.tsx dynamically creates a div with class 'ant-watermark-bg'
+   and applies all necessary styles inline for the watermark layer.
+   The .ant-watermark-wrapper is the main container passed `children`.
+   Therefore, this CSS file might be minimal unless specific wrapper styles are needed
+   that are not covered by the inline style prop on the wrapper.
+*/

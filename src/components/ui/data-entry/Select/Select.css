@@ -1,0 +1,145 @@
+.upper-select {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.upper-select-selector {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4px 11px;
+  min-height: 36px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.upper-select-selector:hover {
+  background-color: #f9f5ff;
+}
+
+.upper-select-open .upper-select-selector {
+  border-color: #000;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(2px);
+}
+
+.upper-select-disabled .upper-select-selector {
+  background-color: rgba(0, 0, 0, 0.04);
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+.upper-select-selection-item {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.upper-select-placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.upper-select-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.45);
+  transition: transform 0.2s;
+}
+
+.upper-select-open .upper-select-arrow {
+  transform: rotate(180deg);
+}
+
+.upper-select-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  max-height: 256px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.upper-select-dropdown-content {
+  padding: 4px 0;
+}
+
+.upper-select-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.upper-select-item:hover {
+  background-color: #f9f5ff;
+}
+
+.upper-select-item-selected {
+  background-color: #e6d5ff;
+  font-weight: 500;
+}
+
+.upper-select-item-selected:hover {
+  background-color: #e6d5ff;
+}
+
+.upper-select-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.upper-select-item-disabled:hover {
+  background-color: transparent;
+}
+
+.upper-select-item-selected-icon {
+  color: purple;
+  font-size: 12px;
+}
+
+.upper-select-empty {
+  padding: 8px 12px;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.upper-select-loading .upper-select-arrow::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: upper-select-loading-icon 1s infinite linear;
+}
+
+@keyframes upper-select-loading-icon {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 

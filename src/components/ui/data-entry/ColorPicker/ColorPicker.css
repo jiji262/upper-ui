@@ -1,0 +1,185 @@
+/* src/components/ui/data-entry/ColorPicker/ColorPicker.css */
+/* Based on antd/es/color-picker/style/index.css */
+
+.ant-color-picker {
+  display: inline-block;
+  position: relative;
+  font-family: var(--upper-ui-font-family, var(--ant-font-family));
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+}
+
+.ant-color-picker-trigger {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px; 
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  border-radius: var(--ant-border-radius-base, 6px); 
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: var(--upper-ui-component-background-color, #fff); 
+}
+.ant-color-picker-trigger:hover {
+  border-color: var(--ant-primary-color, #1677ff); 
+}
+.ant-color-picker-disabled .ant-color-picker-trigger {
+  cursor: not-allowed;
+  background-color: var(--upper-ui-disabled-bg-color, var(--ant-disabled-bg, rgba(0,0,0,0.04))); 
+  border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+}
+.ant-color-picker-disabled .ant-color-picker-trigger:hover {
+    border-color: var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9)); 
+}
+
+
+.ant-color-picker-color-block {
+  width: 20px; 
+  height: 20px;
+  border-radius: var(--upper-ui-border-radius-sm, var(--ant-border-radius-sm, 4px)); 
+  border: 1px solid var(--upper-ui-border-color-split-light, rgba(0,0,0,0.1)); 
+  position: relative;
+  overflow: hidden; 
+  background-image: conic-gradient(var(--upper-ui-border-color-split-light, rgba(0,0,0,0.06)) 0 25%, transparent 0 50%, var(--upper-ui-border-color-split-light, rgba(0,0,0,0.06)) 0 75%, transparent 0);
+  background-size: 8px 8px; 
+}
+.ant-color-picker-color-block-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ant-color-picker-text {
+  margin-left: 8px; /* var(--upper-ui-spacing-xs) */
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+  color: var(--upper-ui-text-color-base, var(--ant-text-color-base, rgba(0,0,0,0.88)));
+}
+.ant-color-picker-disabled .ant-color-picker-text {
+    color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+}
+
+
+.ant-color-picker-clear {
+  margin-left: 6px;
+  color: var(--upper-ui-disabled-text-color, var(--ant-disabled-color, rgba(0,0,0,0.25)));
+  font-size: var(--upper-ui-font-size-xs, 12px);
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 2px; 
+}
+.ant-color-picker-clear:hover {
+  color: var(--upper-ui-text-color-secondary, var(--ant-text-color-secondary, rgba(0,0,0,0.45)));
+}
+
+/* Size variants */
+.ant-color-picker-size-small .ant-color-picker-trigger {
+  padding: 2px;
+}
+.ant-color-picker-size-small .ant-color-picker-color-block {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--upper-ui-border-radius-xs, 3px); /* Use xs if available, or sm if 3px is not defined */
+}
+.ant-color-picker-size-small .ant-color-picker-text {
+  font-size: var(--upper-ui-font-size-xs, 12px);
+  margin-left: 6px;
+}
+.ant-color-picker-size-small .ant-color-picker-clear {
+    font-size: 10px; /* Potentially a specific var or keep as is */
+}
+
+
+.ant-color-picker-size-large .ant-color-picker-trigger {
+  padding: 6px;
+  border-radius: var(--upper-ui-border-radius-base, var(--ant-border-radius-base, 8px)); /* Use base for large */
+}
+.ant-color-picker-size-large .ant-color-picker-color-block {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--upper-ui-border-radius-sm, 5px); /* Use sm for slightly rounded inside large trigger */
+}
+.ant-color-picker-size-large .ant-color-picker-text {
+  font-size: var(--upper-ui-font-size-base, var(--ant-font-size-base, 16px));
+  margin-left: 10px;
+}
+.ant-color-picker-size-large .ant-color-picker-clear {
+    font-size: var(--upper-ui-font-size-sm, 14px);
+}
+
+
+/* Panel (Dropdown) */
+.ant-color-picker-panel {
+  position: absolute;
+  z-index: 1050; 
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border-radius: var(--upper-ui-border-radius-base, var(--ant-border-radius-base, 8px));
+  box-shadow: var(--upper-ui-box-shadow-base, var(--ant-box-shadow-base));
+  padding: 12px; /* var(--upper-ui-padding-sm) or specific */
+  width: 280px; 
+}
+
+.ant-color-picker-panel-placement-bottomLeft { top: calc(100% + 4px); left: 0; }
+.ant-color-picker-panel-placement-bottomRight { top: calc(100% + 4px); right: 0; }
+.ant-color-picker-panel-placement-topLeft { bottom: calc(100% + 4px); left: 0; }
+.ant-color-picker-panel-placement-topRight { bottom: calc(100% + 4px); right: 0; }
+
+
+.ant-color-picker-panel-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px; /* var(--upper-ui-spacing-sm) */
+}
+.ant-color-picker-panel-input input[type="text"] {
+  flex-grow: 1;
+  padding: 4px 8px; /* var(--upper-ui-padding-xs) var(--upper-ui-padding-sm) */
+  border: 1px solid var(--upper-ui-border-color-base, var(--ant-border-color-base, #d9d9d9));
+  border-radius: var(--upper-ui-border-radius-sm, var(--ant-border-radius-sm, 4px));
+  font-size: var(--upper-ui-font-size-sm, var(--ant-font-size-sm, 14px));
+  margin-right: 8px; /* var(--upper-ui-spacing-xs) */
+  outline: none;
+}
+.ant-color-picker-panel-input input[type="text"]:focus {
+  border-color: var(--ant-primary-color, #1677ff);
+}
+.ant-color-picker-panel-input button {
+  padding: 4px 12px;
+  border: 1px solid var(--ant-primary-color, #1677ff);
+  background-color: var(--ant-primary-color, #1677ff);
+  color: var(--upper-ui-text-color-inverse, #fff);
+  border-radius: var(--upper-ui-border-radius-sm, var(--ant-border-radius-sm, 4px));
+  cursor: pointer;
+}
+.ant-color-picker-panel-input button:disabled {
+    opacity: 0.6; /* Standard disabled opacity */
+    cursor: not-allowed;
+}
+
+
+.ant-color-picker-presets-group {
+  margin-bottom: 8px; /* var(--upper-ui-spacing-xs) */
+}
+.ant-color-picker-presets-group:last-child {
+  margin-bottom: 0;
+}
+.ant-color-picker-presets-label {
+  font-size: var(--upper-ui-font-size-xs, 12px);
+  color: var(--upper-ui-text-color-secondary, var(--ant-text-color-secondary, rgba(0,0,0,0.45)));
+  margin-bottom: 4px; /* var(--upper-ui-spacing-xxs) */
+}
+.ant-color-picker-presets-colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; 
+}
+.ant-color-picker-presets-color-block {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--upper-ui-border-radius-sm, var(--ant-border-radius-sm, 4px));
+  cursor: pointer;
+  border: 1px solid var(--upper-ui-border-color-split-light, rgba(0,0,0,0.1)); 
+  box-shadow: 0 0 2px rgba(0,0,0,0.1); 
+  transition: transform 0.2s;
+}
+.ant-color-picker-presets-color-block:hover {
+  transform: scale(1.1);
+}

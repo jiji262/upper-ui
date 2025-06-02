@@ -1,0 +1,127 @@
+/* src/components/ui/data-display/Tag/Tag.css */
+/* Based on antd/es/tag/style/index.css */
+
+.ant-tag {
+  box-sizing: border-box;
+  margin: 0 8px 0 0; /* Default margin, AntD has 0 margin and relies on gap in parent */
+  padding: 0 7px; /* Horizontal padding */
+  color: rgba(0,0,0,0.88);
+  font-size: 12px; /* AntD default tag font size */
+  line-height: 20px; /* AntD default tag height is 22px with line-height 20px */
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  display: inline-flex; /* Use inline-flex for icon alignment */
+  align-items: center;
+  height: 22px; /* Default height */
+  white-space: nowrap;
+  background: rgba(0,0,0,0.02); /* Default background */
+  border: 1px solid #d9d9d9; /* Default border */
+  border-radius: 4px; /* AntD default */
+  opacity: 1;
+  transition: all 0.2s; /* For close animation and color changes */
+}
+.ant-tag:last-child {
+    /* margin-right: 0; /* No margin for the last tag if used in a sequence */
+}
+
+/* Borderless Tag */
+.ant-tag-borderless,
+.ant-tag-borderless:hover,
+.ant-tag-borderless:active {
+  border-color: transparent;
+  background: rgba(0,0,0,0.04); /* Slightly different background for borderless */
+}
+.ant-tag-borderless.ant-tag-has-color { /* Custom color borderless */
+    /* Background is set by inline style, border transparent */
+}
+
+
+/* Icon in Tag */
+.ant-tag-icon {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 4px; /* Space between icon and text */
+}
+.ant-tag-icon .anticon { /* If Icon component renders .anticon */
+  /* font-size: 10px; /* AntD icon size in tag can be smaller */
+  vertical-align: middle; /* Ensure icon aligns with text */
+}
+
+/* Closable Tag */
+.ant-tag-close-icon {
+  display: inline-flex; /* For centering icon */
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px; /* Space after text, before close icon */
+  color: rgba(0,0,0,0.45);
+  font-size: 10px; /* Smaller close icon */
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 2px; /* Make it easier to click */
+}
+.ant-tag-close-icon:hover {
+  color: rgba(0,0,0,0.88); /* Darker on hover */
+}
+
+
+/* Preset Colors */
+/* AntD defines specific background, text, and border colors for each preset. */
+/* Example for 'blue' preset (approximating AntD style) */
+.ant-tag-blue {
+  color: #1677ff; /* Text color */
+  background: #e6f4ff; /* Background color */
+  border-color: #91caff; /* Border color */
+}
+.ant-tag-blue .ant-tag-close-icon { color: #1677ff; }
+.ant-tag-blue.ant-tag-borderless { background: #e6f4ff; border-color: transparent; }
+
+
+/* Generate other preset color styles based on AntD's theme variables */
+/* This requires knowing the hex values for each preset color's text, background, and border. */
+/* Simplified: just setting background and a contrasting text for demonstration */
+
+.ant-tag-magenta { color: #c41d7f; background: #fff0f6; border-color: #ffadd2; }
+.ant-tag-red { color: #cf1322; background: #fff1f0; border-color: #ffa39e; }
+.ant-tag-volcano { color: #d4380d; background: #fff2e8; border-color: #ffbb96; }
+.ant-tag-orange { color: #d46b08; background: #fff7e6; border-color: #ffd591; }
+.ant-tag-gold { color: #d48806; background: #fffbe6; border-color: #ffe58f; }
+.ant-tag-lime { color: #7cb305; background: #fcffe6; border-color: #eaff8f; }
+.ant-tag-green { color: #389e0d; background: #f6ffed; border-color: #b7eb8f; }
+.ant-tag-cyan { color: #08979c; background: #e6fffb; border-color: #87e8de; }
+/* .ant-tag-blue is already defined */
+.ant-tag-geekblue { color: #1d39c4; background: #f0f5ff; border-color: #adc6ff; }
+.ant-tag-purple { color: #531dab; background: #f9f0ff; border-color: #d3adf7; }
+
+/* Status colors (success, processing, error, warning, default) */
+/* These often map to green, blue, red, orange, and default gray respectively */
+.ant-tag-success { color: #389e0d; background: #f6ffed; border-color: #b7eb8f; } /* Maps to green */
+.ant-tag-processing { color: #1677ff; background: #e6f4ff; border-color: #91caff; } /* Maps to blue */
+.ant-tag-error { color: #cf1322; background: #fff1f0; border-color: #ffa39e; } /* Maps to red */
+.ant-tag-warning { color: #d46b08; background: #fff7e6; border-color: #ffd591; } /* Maps to orange */
+.ant-tag-default { /* Already styled by .ant-tag default styles */ }
+
+
+/* Custom color tag (when `color` is a hex/rgb string) */
+.ant-tag-has-color {
+  /* Inline style sets background-color and potentially border-color */
+  /* This class can be used for common properties, e.g., ensuring text contrast */
+  /* color: #fff; /* Default text for custom dark backgrounds, might need JS to check contrast */
+}
+.ant-tag-has-color.ant-tag-borderless {
+    /* border-color: transparent !important; /* Ensure borderless for custom colors */
+}
+/* If custom color is used for border, text is the color, background is light shade or transparent */
+/* Example: .ant-tag-has-color[style*="border-color"] { background: #fff; } */
+
+
+/* Animation for closing (if not handled by JS removing element directly) */
+.ant-tag-hidden {
+  display: none; /* Or use animation for fade out */
+}
+
+/* RTL support would involve flipping margins and icon positions */
+/* .ant-tag-rtl { ... } */
+/* .ant-tag-rtl .ant-tag-icon { margin-left: 4px; margin-right: 0; } */
+/* .ant-tag-rtl .ant-tag-close-icon { margin-right: 4px; margin-left: 0; } */

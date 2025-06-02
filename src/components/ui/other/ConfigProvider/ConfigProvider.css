@@ -1,0 +1,18 @@
+/* src/components/ui/other/ConfigProvider/ConfigProvider.css */
+
+.ant-config-provider {
+  /* This div is used by ConfigProvider.tsx to scope the CSS custom properties via inline styles. */
+  /* No additional CSS rules are strictly necessary here for the variables to work, */
+  /* as they are applied directly to this element's style attribute by the component. */
+
+  /* If you wanted to define fallback values or default styles for components *within*
+     a ConfigProvider that *don't* use the CSS variables, you could add them here.
+     However, the goal is for components to use the CSS variables.
+  */
+
+  /* Example of ensuring child components inherit font if not overridden: */
+  /* font-family: var(--upper-ui-font-family, sans-serif); */
+  /* color: var(--upper-ui-text-color, #000); */
+
+  /* These are just examples and might not be needed if components correctly inherit or set their own defaults. */
+}

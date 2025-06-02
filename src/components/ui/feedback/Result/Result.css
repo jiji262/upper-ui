@@ -1,0 +1,117 @@
+/* src/components/ui/feedback/Result/Result.css */
+/* Based on antd/es/result/style/index.css */
+
+.ant-result {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 48px 32px; /* AntD default padding */
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  text-align: center; /* Center all content by default */
+  background-color: #fff; /* Default background if used as a page section */
+}
+
+.ant-result-icon {
+  margin-bottom: 24px; /* Space below icon */
+  font-size: 72px; /* Default icon size */
+  line-height: 1; /* Ensure icon aligns well */
+  text-align: center;
+}
+/* Icon colors based on status */
+.ant-result-success .ant-result-icon > .anticon { color: #52c41a; /* Green */ }
+.ant-result-error .ant-result-icon > .anticon { color: #ff4d4f; /* Red */ }
+.ant-result-info .ant-result-icon > .anticon { color: #1677ff; /* Blue */ }
+.ant-result-warning .ant-result-icon > .anticon { color: #faad14; /* Orange */ }
+/* Specific HTTP status icons might have their own default SVGs in AntD, which are more illustrative */
+.ant-result-403 .ant-result-icon > .anticon { color: #ff4d4f; /* Example: use error color */ }
+.ant-result-404 .ant-result-icon > .anticon { color: #1677ff; /* Example: use info color */ }
+.ant-result-500 .ant-result-icon > .anticon { color: #ff4d4f; /* Example: use error color */ }
+/* If custom icon is a ReactNode (e.g. img or custom SVG), it won't get these colors by default */
+
+
+.ant-result-title {
+  color: rgba(0,0,0,0.88);
+  font-size: 24px; /* AntD default title size */
+  line-height: 1.8;
+  font-weight: 600; /* Title is bold */
+  text-align: center;
+}
+
+.ant-result-subtitle {
+  margin-top: 8px; /* Space above subtitle */
+  color: rgba(0,0,0,0.45); /* Subtitle is lighter */
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  text-align: center;
+}
+
+.ant-result-extra {
+  margin-top: 24px; /* Space above extra content (buttons) */
+  text-align: center;
+}
+.ant-result-extra > *:not(:last-child) {
+  margin-right: 8px; /* Space between multiple buttons */
+}
+.ant-result-extra > .ant-btn { /* Assuming Button component renders .ant-btn */
+  /* Styles for buttons within extra, e.g., ensuring proper alignment if mixed content */
+}
+
+
+/* Compact mode (not a standard AntD prop, but sometimes needed for smaller contexts) */
+/* Example:
+.ant-result-compact {
+  padding: 24px 16px;
+}
+.ant-result-compact .ant-result-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+.ant-result-compact .ant-result-title {
+  font-size: 18px;
+}
+.ant-result-compact .ant-result-subtitle {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.ant-result-compact .ant-result-extra {
+  margin-top: 16px;
+}
+*/
+
+/* No icon variant */
+.ant-result-no-icon .ant-result-icon {
+    display: none;
+}
+.ant-result-no-icon .ant-result-title {
+    /* Adjust margin if icon is not present */
+    /* margin-top: 0; */
+}
+
+/* No title variant */
+.ant-result-no-title .ant-result-title {
+    display: none;
+}
+.ant-result-no-title .ant-result-icon + .ant-result-subtitle { /* If icon present but no title */
+    margin-top: 8px; /* Ensure subtitle has some space from icon */
+}
+
+/* No subtitle variant */
+.ant-result-no-subtitle .ant-result-subtitle {
+    display: none;
+}
+.ant-result-no-subtitle .ant-result-title + .ant-result-extra { /* If title present but no subtitle */
+    margin-top: 24px; /* Default extra margin */
+}
+.ant-result-no-subtitle .ant-result-icon + .ant-result-extra { /* If only icon and extra */
+    margin-top: 24px;
+}
+
+/* Only title, no icon, no subtitle */
+.ant-result-no-icon.ant-result-no-subtitle .ant-result-title + .ant-result-extra {
+    margin-top: 24px;
+}

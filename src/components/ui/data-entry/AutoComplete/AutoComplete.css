@@ -1,0 +1,111 @@
+/* src/components/ui/data-entry/AutoComplete/AutoComplete.css */
+/* Based on antd/es/auto-complete/style/index.css and select/style/index.css for dropdown */
+
+.upper-autocomplete {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  position: relative;
+  display: inline-block; 
+}
+
+/* Dropdown styles (similar to Select dropdown) */
+.upper-autocomplete-dropdown {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  z-index: 1050; 
+  box-sizing: border-box;
+  padding: 4px 0;
+  overflow: hidden;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  max-height: 256px; 
+  overflow-y: auto;
+}
+
+.upper-autocomplete-dropdown-hidden {
+  display: none;
+}
+
+.upper-autocomplete-options-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.upper-autocomplete-option-item {
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  overflow-wrap: break-word; 
+  word-break: break-word; 
+}
+
+.upper-autocomplete-option-item:hover {
+  background-color: #f9f5ff;
+}
+
+.upper-autocomplete-option-item-active {
+  background-color: #e6d5ff;
+}
+
+.upper-autocomplete-option-item-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+.upper-autocomplete-option-item-disabled:hover {
+  background-color: transparent; 
+}
+
+.upper-autocomplete-not-found {
+  padding: 5px 12px;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.upper-autocomplete .upper-input {
+  /* Specific styles for the input within AutoComplete, if needed */
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.upper-autocomplete .upper-input:focus,
+.upper-autocomplete .upper-input:hover {
+  border-color: #000;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(2px);
+  outline: 0;
+}
+
+/* If using a custom clear button, style it here */
+.upper-autocomplete-clear {
+  position: absolute;
+  top: 50%;
+  right: 12px; 
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 2; 
+}
+.upper-autocomplete-clear:hover {
+  color: rgba(0, 0, 0, 0.45);
+}

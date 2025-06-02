@@ -1,0 +1,273 @@
+/* src/components/ui/data-entry/DatePicker/DatePicker.css */
+/* Based on antd/es/date-picker/style/index.css and picker/style/index.css */
+
+.upper-picker {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  position: relative;
+  display: inline-flex; 
+  align-items: center;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  transition: all 0.2s;
+}
+.upper-picker:hover,
+.upper-picker-focused { 
+  border-color: #000;
+  box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 1);
+  transform: translateY(2px);
+}
+
+.upper-picker-input > input { 
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px; 
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+    line-height: 1.5714285714285714;
+  background-color: #fff;
+    background-image: none;
+  border: none;
+  border-radius: 6px;
+    transition: all 0.3s;
+    flex: 1; 
+  height: 30px;
+    outline: none;
+}
+.upper-picker-input > input::placeholder {
+  color: rgba(0, 0, 0, 0.25);
+}
+.upper-picker-input > input[readonly] {
+    cursor: pointer; 
+}
+
+/* Suffix icons (calendar, clear) */
+.upper-picker-suffix {
+  display: flex;
+  flex: none;
+  align-self: center;
+  margin-left: 4px; 
+  color: rgba(0, 0, 0, 0.25);
+  line-height: 1;
+  pointer-events: none; 
+  padding-right: 11px; 
+}
+.upper-picker-clear {
+  position: absolute; 
+  top: 50%;
+  right: 28px; 
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 1; 
+  background: #fff; 
+  padding: 2px; 
+}
+.upper-picker-clear:hover {
+  color: rgba(0, 0, 0, 0.45);
+}
+.upper-picker-clear:only-child {
+    right: 11px;
+}
+
+/* Disabled state */
+.upper-picker-disabled {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: #000;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.upper-picker-disabled .upper-picker-input > input {
+  cursor: not-allowed;
+  background: transparent; 
+  color: rgba(0, 0, 0, 0.25);
+}
+.upper-picker-disabled .upper-picker-suffix {
+  color: rgba(0, 0, 0, 0.25);
+}
+.upper-picker-disabled .upper-picker-clear {
+  display: none; 
+}
+
+/* Status styling */
+.upper-picker-status-error {
+  border-color: #ff4d4f !important; 
+}
+.upper-picker-status-error:hover,
+.upper-picker-status-error.upper-picker-focused {
+  box-shadow: 2px 2px 0px 0px rgba(255, 77, 79, 1);
+}
+.upper-picker-status-warning {
+  border-color: #faad14 !important; 
+}
+.upper-picker-status-warning:hover,
+.upper-picker-status-warning.upper-picker-focused {
+  box-shadow: 2px 2px 0px 0px rgba(250, 173, 20, 1);
+}
+
+/* Size variants */
+.upper-picker-large .upper-picker-input > input {
+  padding: 7px 11px; 
+  height: 38px;
+  font-size: 16px;
+}
+.upper-picker-large .upper-picker-suffix {
+    padding-right: 11px;
+}
+
+.upper-picker-small .upper-picker-input > input {
+  padding: 0px 7px; 
+  height: 22px;
+}
+.upper-picker-small .upper-picker-suffix {
+    padding-right: 7px;
+}
+.upper-picker-small .upper-picker-clear {
+  font-size: 10px;
+}
+
+/* Dropdown panel styles */
+.upper-picker-dropdown {
+  position: absolute;
+  z-index: 1050; 
+  top: calc(100% + 4px);
+  left: 0;
+  transform-origin: center top; 
+}
+
+.upper-picker-panel-container { 
+  background-color: #fff;
+  border-radius: 6px;
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+}
+
+.upper-picker-panel { 
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  border-radius: 6px;
+  outline: none;
+}
+
+.upper-picker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  border-bottom: 1px solid rgba(5, 5, 5, 0.06);
+  height: 40px; 
+}
+.upper-picker-header-view {
+  flex: auto;
+  font-weight: 500;
+  text-align: center;
+}
+.upper-picker-header-view button { 
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 500;
+    padding: 0 4px;
+  border: none; 
+  background: none; 
+  cursor: pointer;
+}
+.upper-picker-header-view button:hover {
+  color: #e6d5ff;
+}
+.upper-picker-header-prev-btn,
+.upper-picker-header-next-btn,
+.upper-picker-header-super-prev-btn,
+.upper-picker-header-super-next-btn {
+    min-width: 1.6em;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.25);
+  border: none; 
+  background: none; 
+  cursor: pointer;
+    padding: 0 4px;
+}
+.upper-picker-header-prev-btn:hover,
+.upper-picker-header-next-btn:hover,
+.upper-picker-header-super-prev-btn:hover,
+.upper-picker-header-super-next-btn:hover {
+  color: rgba(0, 0, 0, 0.88);
+}
+
+.upper-picker-body {
+  padding: 8px 12px; 
+}
+
+.upper-picker-date-panel td div:hover { 
+  background: #f9f5ff;
+}
+
+.upper-picker-date-panel .upper-picker-cell-selected div { 
+  background: #e6d5ff;
+  color: #000;
+}
+
+.upper-picker-date-panel .upper-picker-cell-today div { 
+  border: 1px solid #000;
+}
+
+.upper-picker-date-panel .upper-picker-cell-disabled div { 
+  color: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.04);
+    cursor: not-allowed; 
+}
+
+.upper-picker-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid rgba(5, 5, 5, 0.06);
+}
+
+.upper-picker-today-btn {
+  color: #000;
+  cursor: pointer;
+}
+
+.upper-picker-today-btn:hover {
+  color: #e6d5ff;
+}
+
+.upper-picker-today-btn-disabled {
+  color: rgba(0, 0, 0, 0.25);
+    cursor: not-allowed;
+}
+
+/* Other structural CSS from original file is kept as is */
+.upper-picker-input { /* Class for the internal input element if Input component is used */
+}
+.upper-picker-content { /* For table or list inside body */
+}
+.upper-picker-panel .upper-picker-body button {
+}
+.upper-picker-date-panel .upper-picker-content table,
+.upper-picker-month-panel .upper-picker-content table,
+.upper-picker-year-panel .upper-picker-content table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+.upper-picker-date-panel th, .upper-picker-date-panel td {
+    text-align: center;
+    padding: 4px 0;
+}
+.upper-picker-date-panel td div { /* Cell content wrapper */
+    width: 24px; height: 24px; line-height: 24px; margin: auto; border-radius: var(--upper-ui-border-radius-sm, 4px); cursor: pointer;
+}

@@ -1,0 +1,101 @@
+/* src/components/ui/layout/Layout/Layout.css */
+/* Based on antd/es/layout/style/index.css */
+
+.ant-layout {
+  display: flex;
+  flex-direction: column;
+  flex: auto; 
+  background: var(--ant-layout-body-bg, #f0f2f5); /* Default background for overall layout */
+  min-height: 0; 
+}
+
+.ant-layout,
+.ant-layout * {
+  box-sizing: border-box;
+}
+
+.ant-layout-has-sider {
+  flex-direction: row;
+}
+
+.ant-layout-header,
+.ant-layout-footer {
+  flex: 0 0 auto; 
+  background: var(--ant-layout-header-bg, #001529); 
+  padding: 0 50px; /* Consider theming for padding if needed: var(--upper-ui-padding-lg, 50px) */
+  color: var(--ant-text-color-inverse-secondary, rgba(255, 255, 255, 0.85)); 
+}
+
+.ant-layout-header {
+  height: 64px; /* Consider theming: var(--upper-ui-control-height-xl, 64px) or similar */
+  line-height: 64px;
+}
+
+.ant-layout-footer {
+  padding: 24px 50px; /* Consider theming for padding */
+}
+
+.ant-layout-content {
+  flex: auto; 
+  min-height: 0; 
+  /* background: var(--upper-ui-component-background-color, #fff); /* Content usually has its own bg or is transparent */
+  /* padding: 24px; /* Common padding for content area */
+}
+
+/* Sider Styles */
+.ant-layout-sider {
+  position: relative;
+  background: var(--ant-layout-sider-bg, #001529); 
+  transition: all 0.2s;
+  color: var(--upper-ui-text-color-inverse, white); 
+}
+
+.ant-layout-sider-children {
+  height: 100%;
+  padding-top: 0.1px; 
+  margin-top: -0.1px; 
+}
+
+.ant-layout-sider-trigger {
+  position: fixed; 
+  bottom: 0;
+  left: 0; 
+  z-index: 1; /* Standard z-index, could be themed */
+  height: 48px; /* Consider theming */
+  color: var(--upper-ui-text-color-inverse, #fff);
+  line-height: 48px;
+  text-align: center;
+  background: var(--ant-layout-trigger-bg, #002140); 
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%; 
+}
+
+.ant-layout-sider-zero-width > .ant-layout-sider-trigger {
+    color: var(--upper-ui-text-color-inverse, #fff);
+    background: var(--ant-layout-sider-bg, #001529); 
+}
+
+.ant-layout-sider-light {
+  background: var(--upper-ui-component-background-color, #fff);
+  color: var(--upper-ui-text-color-base, rgba(0, 0, 0, 0.88));
+}
+
+.ant-layout-sider-light .ant-layout-sider-trigger {
+  color: var(--upper-ui-text-color-base, rgba(0, 0, 0, 0.88));
+  background: var(--ant-layout-body-bg, #f0f2f5); /* Lighter trigger for light theme */
+}
+
+.ant-layout-sider-light.ant-layout-sider-zero-width > .ant-layout-sider-trigger {
+    color: var(--upper-ui-text-color-base, rgba(0, 0, 0, 0.88));
+    background: var(--upper-ui-component-background-color, #fff);
+}
+
+
+.ant-layout-sider-collapsed .ant-layout-sider-trigger {
+  /* Styles for when sider is collapsed - trigger might change */
+}
+
+.ant-layout-sider-trigger .anticon {
+  font-size: var(--upper-ui-font-size-lg, 18px);
+}

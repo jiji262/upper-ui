@@ -1,0 +1,119 @@
+/* src/components/ui/general/FloatButton/FloatButton.css */
+.float-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent; /* Default border, might be overridden */
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  position: fixed;
+  z-index: 10; /* Standard z-index for floating elements, might need a variable if themable */
+  box-shadow: var(--upper-ui-box-shadow-base, 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05));
+  min-width: var(--upper-ui-control-height-base, 40px); 
+  height: var(--upper-ui-control-height-base, 40px);
+  padding: 0;
+  font-size: var(--upper-ui-font-size-base, 16px); /* Icon size */
+  line-height: 1; /* For icon vertical centering */
+  bottom: 24px; /* Default Antd position, consider variables if this needs theming */
+  right: 24px;  /* Default Antd position */
+}
+
+.float-button:hover {
+  opacity: 0.85; /* General hover opacity, could be themed */
+}
+
+.float-button-default {
+  background-color: var(--upper-ui-component-background-color, #fff);
+  border-color: var(--upper-ui-border-color-base, #d9d9d9);
+  color: var(--upper-ui-text-color-base, rgba(0, 0, 0, 0.88));
+}
+
+.float-button-default:hover {
+  border-color: var(--ant-primary-color-hover, #4096ff); /* AntD primary hover blue */
+  color: var(--ant-primary-color-hover, #4096ff);
+}
+
+.float-button-primary {
+  background-color: var(--ant-primary-color, #1677ff); /* AntD primary blue */
+  color: var(--upper-ui-text-color-inverse, #fff);
+}
+
+.float-button-primary:hover {
+  background-color: var(--ant-primary-color-hover, #4096ff);
+}
+
+.float-button-circle {
+  border-radius: 50%;
+}
+
+.float-button-square {
+  border-radius: var(--ant-border-radius-base, 6px); /* AntD default border radius */
+}
+
+.float-button-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.float-button-icon + .float-button-description {
+  margin-left: 8px; /* Standard small gap, could be a variable e.g. --upper-ui-spacing-xs */
+}
+
+.float-button-description {
+  display: inline-block;
+  margin-left: 8px; 
+  font-size: var(--upper-ui-font-size-sm, 14px);
+}
+
+.float-button-description:empty {
+  display: none;
+}
+
+/* Styles for when description is present and icon is not */
+.float-button-description:not(:first-child) {
+  margin-left: 0;
+}
+.float-button:not(:has(.float-button-icon)) .float-button-description {
+   padding: 0 var(--upper-ui-padding-py-base, 8px); /* Using py-base for horizontal padding here for consistency */
+}
+
+
+/* Tooltip specific styles */
+.float-button-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.float-button-tooltip {
+  visibility: hidden;
+  background-color: var(--upper-ui-popover-bg, #333); /* Dark background for tooltip */
+  color: var(--upper-ui-text-color-inverse, #fff);
+  text-align: center;
+  border-radius: var(--upper-ui-border-radius-sm, 4px); /* Smaller radius for tooltips often */
+  padding: 5px 8px; /* Standard small padding */
+  position: absolute;
+  z-index: 11; 
+  bottom: 125%; 
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  font-size: var(--upper-ui-font-size-sm, 12px); /* Smaller font for tooltips */
+}
+
+.float-button-tooltip-wrapper:hover .float-button-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Adjustments for when description is present to make button wider */
+.float-button:has(.float-button-description) {
+  min-width: auto; /* Allow button to expand */
+  padding-left: var(--upper-ui-padding-px-base, 16px);
+  padding-right: var(--upper-ui-padding-px-base, 16px);
+}
+
+.float-button-square:has(.float-button-description) {
+    width: auto; 
+}

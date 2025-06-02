@@ -1,0 +1,101 @@
+/* src/components/ui/feedback/Message/Message.css */
+/* Based on antd/es/message/style/index.css */
+
+.ant-message-container {
+  position: fixed;
+  top: 8px; /* Default top position, AntD can configure this */
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto; /* Fit content */
+  max-width: calc(100vw - 32px); /* Max width with some padding from viewport edges */
+  z-index: 1010; /* AntD default z-index for message */
+  pointer-events: none; /* Container itself doesn't block, only messages */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center messages horizontally if container was wider */
+}
+
+.ant-message-notice {
+  margin-bottom: 16px; /* Space between messages */
+  padding: 8px 12px; /* AntD default padding for message content box */
+  text-align: center;
+  pointer-events: auto; /* Individual messages are interactive */
+  /* Animation for enter/leave would be added here */
+  /* For simplicity, basic show/hide, no complex animations */
+  /* transition: opacity 0.3s, transform 0.3s; */
+}
+
+.ant-message-notice-content {
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  padding: 10px 16px; /* AntD default padding for inner content */
+  background: #fff;
+  border-radius: 8px; /* AntD default */
+  box-shadow: 0 6px 16px -8px rgba(0,0,0,0.08), 0 9px 28px 0 rgba(0,0,0,0.05), 0 12px 48px 16px rgba(0,0,0,0.03); /* AntD default shadow */
+  pointer-events: all; /* Ensure content is interactive */
+}
+
+.ant-message-icon {
+  margin-right: 8px;
+  font-size: 16px; /* Icon size */
+  display: inline-flex; /* Align icon if it's an SVG/FontIcon */
+  align-items: center;
+}
+
+/* Icon colors based on type */
+.ant-message-icon-info .anticon, /* Assuming Icon renders .anticon */
+.ant-message-icon .ant-message-custom-icon .anticon-info-circle-filled { /* If custom icon with this class */
+  color: #1677ff; /* Blue for info */
+}
+.ant-message-icon-success .anticon,
+.ant-message-icon .ant-message-custom-icon .anticon-check-circle-filled {
+  color: #52c41a; /* Green for success */
+}
+.ant-message-icon-error .anticon,
+.ant-message-icon .ant-message-custom-icon .anticon-close-circle-filled {
+  color: #ff4d4f; /* Red for error */
+}
+.ant-message-icon-warning .anticon,
+.ant-message-icon .ant-message-custom-icon .anticon-exclamation-circle-filled {
+  color: #faad14; /* Orange for warning */
+}
+.ant-message-icon-loading .anticon,
+.ant-message-icon .ant-message-custom-icon .anticon-loading {
+  color: #1677ff; /* Blue for loading */
+}
+
+
+.ant-message-text {
+  color: rgba(0,0,0,0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+}
+
+/* Optional: Close icon per message (not default AntD behavior) */
+.ant-message-close-icon {
+  margin-left: 8px;
+  color: rgba(0,0,0,0.45);
+  font-size: 10px; /* Smaller close icon */
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.ant-message-close-icon:hover {
+  color: rgba(0,0,0,0.88);
+}
+
+
+/* RTL support would involve flipping horizontal positioning and margins */
+/* .ant-message-container-rtl { ... } */
+/* .ant-message-rtl .ant-message-icon { margin-left: 8px; margin-right: 0; } */
+/* .ant-message-rtl .ant-message-close-icon { margin-right: 8px; margin-left: 0; } */
+
+/* Max count (not implemented in JS, but CSS can hide overflow if container has max-height) */
+/* .ant-message-max-count-reached .ant-message-notice:nth-last-child(n+4) { display: none; } */ /* Example for maxCount=3 */
+
+/* Animation classes (example, AntD uses more specific ones) */
+/*
+.ant-move-up-enter, .ant-move-up-appear { opacity: 0; transform: translateY(100%); }
+.ant-move-up-enter-active, .ant-move-up-appear-active { opacity: 1; transform: translateY(0); transition: all .3s; }
+.ant-move-up-leave { opacity: 1; transform: translateY(0); }
+.ant-move-up-leave-active { opacity: 0; transform: translateY(-100%); transition: all .3s; }
+*/

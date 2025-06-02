@@ -1,0 +1,25 @@
+/* src/components/ui/general/Icon/Icon.css */
+
+/* Basic styling for the icon wrapper if needed, 
+   but Ant Design icons are typically SVGs and styled via props or inline styles.
+   This file can be used for additional custom styling or container styles.
+*/
+.upper-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1em;
+  width: 1em;
+  font-size: 16px;
+  line-height: 0;
+  vertical-align: -0.125em;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+/* Example of how you might add a hover effect if not using antd's built-in ones */
+/*
+.upper-icon:hover {
+  opacity: 0.8;
+}
+*/

@@ -1,0 +1,266 @@
+/* src/components/ui/data-display/Timeline/Timeline.css */
+/* Based on antd/es/timeline/style/index.css */
+
+.ant-timeline {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 14px;
+  line-height: 1.5714285714285714;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+.ant-timeline.ant-timeline-pending .ant-timeline-item:last-of-type {
+  /* When pending item is present, the actual last item is not styled as "last" */
+  /* This is handled by JS not passing isLast to the actual last item */
+}
+.ant-timeline.ant-timeline-rtl { /* RTL specific styles */
+  /* direction: rtl; */
+}
+
+
+.ant-timeline-item {
+  position: relative;
+  margin: 0;
+  padding: 0 0 20px; /* Default padding-bottom for space between items */
+  font-size: 14px;
+  list-style: none;
+}
+
+.ant-timeline-item-tail {
+  position: absolute;
+  top: 10px; /* Align with center of default dot */
+  left: 4px; /* Center of default dot (10px width / 2 - 1px border) */
+  height: calc(100% - 10px); /* Extend from dot to bottom of item */
+  border-left: 2px solid #f0f0f0; /* Default tail color and width */
+}
+.ant-timeline-item-last > .ant-timeline-item-tail {
+  display: none; /* No tail for the last item */
+}
+
+.ant-timeline-item-pending > .ant-timeline-item-tail {
+  display: block; /* Ensure pending item tail is visible */
+  height: calc(100% - 0px); /* Extend from dot to bottom of item, adjust if pending dot is different size */
+  /* border-left-style: dotted; /* AntD uses dotted line for pending tail */
+}
+.ant-timeline.ant-timeline-reverse .ant-timeline-item-pending > .ant-timeline-item-tail {
+    top: 0; bottom: 10px; height: auto; /* Adjust for reverse */
+}
+
+
+.ant-timeline-item-head {
+  position: absolute;
+  width: 10px; /* Default dot width */
+  height: 10px; /* Default dot height */
+  background-color: #fff; /* Default background to cover tail line */
+  border: 2px solid transparent; /* Default border style */
+  border-radius: 50%;
+  /* left: 0; top: 0; /* Positioned by specific color/custom dot styles */
+}
+/* Default dot color (blue) */
+.ant-timeline-item-head-blue {
+  border-color: #1677ff;
+  color: #1677ff;
+}
+.ant-timeline-item-head-red {
+  border-color: #ff4d4f;
+  color: #ff4d4f;
+}
+.ant-timeline-item-head-green {
+  border-color: #52c41a;
+  color: #52c41a;
+}
+.ant-timeline-item-head-yellow { /* AntD uses gold/yellow */
+    border-color: #faad14;
+    color: #faad14;
+}
+.ant-timeline-item-head-gray { /* For less important items */
+    border-color: rgba(0,0,0,0.25);
+    color: rgba(0,0,0,0.25);
+}
+/* Custom color dot (if not using custom ReactNode for dot) */
+/* Inline style will set border-color and background-color if needed */
+
+
+.ant-timeline-item-head-custom {
+  position: absolute;
+  /* top: 5px; /* Align custom dot center with default dot center */
+  /* left: 5px; */
+  /* transform: translate(-50%, -50%); */
+  width: auto; /* Custom dot takes its own size */
+  height: auto;
+  padding: 2px 0; /* Vertical padding to align with line */
+  line-height: 1;
+  text-align: center;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent; /* Custom dot has its own background */
+}
+.ant-timeline-item-head-custom .anticon { /* If custom dot is an Icon */
+  font-size: 16px; /* Example size for custom icon dot */
+  /* vertical-align: top; */
+}
+.ant-timeline-item-pending .ant-timeline-item-head-custom .anticon-loading {
+    /* Specific style for loading icon as pending dot */
+    font-size: 14px;
+    padding: 1px; /* Adjust if needed */
+}
+
+
+.ant-timeline-item-content {
+  position: relative;
+  top: -6px; /* Adjust content position relative to dot */
+  margin: 0 0 0 24px; /* Space from dot/tail line */
+  word-break: break-word;
+}
+
+
+/* Label (for alternate or right/left mode with labels) */
+.ant-timeline-item-label {
+    position: absolute;
+    top: -6px; /* Align with content */
+    width: calc(50% - 12px); /* Default width for label column */
+    text-align: right; /* Default for labels on left */
+    /* white-space: nowrap; /* Optional */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+
+/* Modes: Alternate */
+.ant-timeline-alternate .ant-timeline-item-tail,
+.ant-timeline-alternate .ant-timeline-item-head,
+.ant-timeline-alternate .ant-timeline-item-head-custom {
+  left: 50%;
+  margin-left: -1px; /* Center tail/dot (dot width/2 + border width) */
+}
+.ant-timeline-alternate .ant-timeline-item-head { margin-left: -4px; } /* (10px width / 2 - 1px border) */
+.ant-timeline-alternate .ant-timeline-item-head-custom { margin-left: 0; transform: translateX(-50%); }
+
+
+.ant-timeline-alternate .ant-timeline-item-left .ant-timeline-item-content {
+  left: calc(50% - 12px); /* (dot margin-left) + (dot width/2) + (content margin-left) */
+  width: calc(50% - 14px); /* Adjust width */
+  text-align: left;
+  margin-left: 0; /* Reset default margin */
+  transform: translateX(-100%); /* Position content to the left of center line */
+  padding-right: 18px; /* Space from center line */
+}
+.ant-timeline-alternate .ant-timeline-item-right .ant-timeline-item-content {
+  left: calc(50% + 12px);
+  width: calc(50% - 14px);
+  text-align: left;
+  margin-left: 0;
+  padding-left: 18px;
+}
+
+.ant-timeline-alternate .ant-timeline-item-left .ant-timeline-item-label {
+    left: calc(50% + 12px); /* Label on the right for left item */
+    width: calc(50% - 14px);
+    text-align: left;
+    padding-left: 18px;
+}
+.ant-timeline-alternate .ant-timeline-item-right .ant-timeline-item-label {
+    left: calc(50% - 12px); /* Label on the left for right item */
+    width: calc(50% - 14px);
+    text-align: right;
+    transform: translateX(-100%);
+    padding-right: 18px;
+}
+
+
+/* Mode: Right (content on left, dot/tail on right) */
+.ant-timeline-right .ant-timeline-item-tail,
+.ant-timeline-right .ant-timeline-item-head,
+.ant-timeline-right .ant-timeline-item-head-custom {
+  left: calc(100% - 5px); /* (dot width/2 + border width) from right */
+}
+.ant-timeline-right .ant-timeline-item-head { margin-left: -4px; }
+.ant-timeline-right .ant-timeline-item-head-custom { margin-left: 0; transform: translateX(-50%); }
+
+.ant-timeline-right .ant-timeline-item-content {
+  width: calc(100% - 24px - 10px); /* Full width minus space for dot and margins */
+  text-align: right;
+  margin-left: 0; /* Reset default margin */
+}
+.ant-timeline-right .ant-timeline-item-label {
+    /* Labels would typically not be used in 'right' mode, or would be on the far left */
+    width: auto; /* Or specific layout if needed */
+    text-align: left;
+    left: 0; /* Example if labels are on far left */
+    padding-right: 18px; /* Space from content area */
+}
+
+
+/* Mode: Left (default, content on right, dot/tail on left) */
+/* Default styles already cover this mode for content and dot/tail. */
+/* Labels in 'left' mode are positioned to the left of the timeline line. */
+.ant-timeline-left .ant-timeline-item-label {
+    /* position: absolute; left: - (label_width + some_margin); */
+    /* This requires JS to calculate label width or fixed width for label column */
+    /* For simplicity, if label is used with mode=left, it's placed before the dot */
+    width: auto; /* Adjust as needed, might need fixed width for alignment */
+    text-align: right;
+    /* Example positioning if labels are distinct from content block */
+    /* left: -100px; width: 80px; */
+    /* This current CSS for label assumes it's part of the flow or positioned by JS in 'left' mode */
+    /* The simplified component structure places label within the li, so CSS needs to adjust it */
+    /* For now, label in 'left' mode will appear to the left of the content if `position` is not set. */
+    /* AntD's actual 'left' mode with labels might use a two-column approach internally. */
+    /* If we treat label as a separate column: */
+    margin-left: 0; /* Reset margin */
+    padding-right: 18px; /* Space to the timeline line */
+    /* This needs more complex HTML structure or absolute positioning based on calculations */
+}
+
+
+/* Reverse mode */
+.ant-timeline-reverse .ant-timeline-item-last > .ant-timeline-item-tail {
+    display: block; /* Show tail for visual "last" item (which is now first) */
+}
+.ant-timeline-reverse .ant-timeline-item:first-of-type { /* Actual first item (rendered last) */
+    /* No specific style needed unless to hide its (now top) tail */
+}
+.ant-timeline-reverse .ant-timeline-item:first-of-type > .ant-timeline-item-tail {
+     /* display: none; /* Hide tail of the visually first item if it shouldn't connect upwards */
+}
+
+
+/* Pending item specific styles for dot (if not custom) */
+.ant-timeline-item-pending .ant-timeline-item-head:not(.ant-timeline-item-head-custom) {
+    border-color: #1677ff; /* Default pending dot color (like blue) */
+    background-color: #fff;
+    /* font-size: 14px; /* For loading icon if it's text based */
+}
+.ant-timeline-item-pending .ant-timeline-item-tail {
+    border-left-style: dotted; /* Dotted line for pending item's tail */
+}
+
+/* When timeline has labels and is not alternate mode */
+.ant-timeline-label .ant-timeline-item-label {
+    /* Common styles for labels when `ant-timeline-label` class is active */
+    /* This class might be added by JS if labels are present and mode is not 'alternate' */
+}
+
+/* Ensure proper spacing when labels are present */
+.ant-timeline-label .ant-timeline-item-content {
+    /* margin-left: (label_width + dot_area_width + content_margin); */
+    /* This is complex and usually handled by flex/grid or calculated positions */
+}
+.ant-timeline-alternate.ant-timeline-label .ant-timeline-item-left .ant-timeline-item-content,
+.ant-timeline-alternate.ant-timeline-label .ant-timeline-item-right .ant-timeline-item-label {
+    /* Adjustments for alternate mode when labels are present */
+    /* width: calc(50% - (label_width_or_offset_for_label_column) - gap_to_center_line); */
+}
+.ant-timeline-alternate.ant-timeline-label .ant-timeline-item-right .ant-timeline-item-content,
+.ant-timeline-alternate.ant-timeline-label .ant-timeline-item-left .ant-timeline-item-label {
+    /* Similar adjustments */
+}
+
+/* For simplicity, the label implementation in TimelineItem.tsx is basic.
+   True AntD label positioning, especially in 'left'/'right' modes, is more involved.
+   This CSS provides a starting point.
+*/

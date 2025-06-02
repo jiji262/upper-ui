@@ -1,0 +1,87 @@
+/* src/components/ui/layout/Space/Space.css */
+/* Based on antd/es/space/style/index.css */
+
+.ant-space {
+  display: inline-flex; /* Default for horizontal, changes for vertical */
+  /* gap: 8px; Default gap, will be overridden by size props */
+}
+
+.ant-space-vertical {
+  flex-direction: column;
+}
+
+/* Align items */
+/* Default (horizontal) */
+.ant-space-align-start {
+  align-items: flex-start;
+}
+.ant-space-align-end {
+  align-items: flex-end;
+}
+.ant-space-align-center {
+  align-items: center;
+}
+.ant-space-align-baseline {
+  align-items: baseline;
+}
+
+/* Vertical align (uses justify-content because flex-direction is column) */
+.ant-space-vertical.ant-space-align-start {
+  justify-content: flex-start; /* For vertical, align-items controls horizontal, justify-content controls vertical */
+  align-items: flex-start; /* Default horizontal alignment for vertical space */
+}
+.ant-space-vertical.ant-space-align-end {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.ant-space-vertical.ant-space-align-center {
+  justify-content: center;
+  align-items: center; /* Center horizontally as well for vertical space */
+}
+.ant-space-vertical.ant-space-align-baseline {
+  /* Baseline for vertical is tricky. AntD might have specific handling.
+     This is a simplified approach. It might not perfectly match AntD for all cases.
+     Usually, for vertical baseline, items are aligned to the start horizontally.
+  */
+  align-items: flex-start; /* Align items to the start of the cross axis */
+  /* True vertical baseline would require complex CSS or JS calculations */
+}
+
+
+.ant-space-wrap {
+  flex-wrap: wrap;
+}
+
+.ant-space-item {
+  display: inline-block; /* Default, but flex context of Space overrides some aspects */
+}
+
+/* When align is baseline for horizontal space, Ant Design wraps items in an inline-flex container */
+/* This is a more complex setup than what can be easily achieved with simple CSS on the item itself */
+/* For a true antd replica, Space.tsx would need to wrap children for baseline alignment. */
+/*
+.ant-space-horizontal.ant-space-align-baseline .ant-space-item {
+  display: inline-flex;
+  align-items: baseline;
+}
+*/
+
+.ant-space-item:empty {
+  display: none;
+}
+
+.ant-space-item-split {
+  display: inline-block;
+  /* margin: auto 0; */ /* Center split vertically if needed */
+}
+
+/* Space component uses CSS `gap` property. 
+   The actual gap values are applied inline via style prop in Space.tsx based on `size` prop.
+   No specific size classes like .ant-space-gap-small are strictly needed here if using inline styles for gap.
+   However, if not using inline styles, they would be defined:
+*/
+/*
+.ant-space-gap-small { gap: 8px; }
+.ant-space-gap-middle { gap: 16px; }
+.ant-space-gap-large { gap: 24px; }
+*/

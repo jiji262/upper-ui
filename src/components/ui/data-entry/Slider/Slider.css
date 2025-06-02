@@ -1,0 +1,231 @@
+/* src/components/ui/data-entry/Slider/Slider.css */
+/* Based on antd/es/slider/style/index.css */
+
+.ant-slider {
+  box-sizing: border-box;
+  position: relative;
+  height: 12px; /* Default height for horizontal slider rail area */
+  margin: 10px 6px; /* Default margin, AntD has specific logic for mark margins */
+  padding: 4px 0; /* Padding for rail and track */
+  cursor: pointer;
+  touch-action: none; /* Prevent scrolling on touch devices when interacting with slider */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+}
+.ant-slider:hover .ant-slider-rail {
+  background-color: #e1e1e1; /* Slightly darker rail on hover */
+}
+
+.ant-slider-rail {
+  position: absolute;
+  width: 100%;
+  height: 4px; /* Rail height */
+  background-color: #f0f0f0; /* Default rail color */
+  border-radius: 2px; /* Rail border radius */
+  transition: background-color 0.3s;
+  top: 50%; /* Center rail */
+  transform: translateY(-50%);
+}
+
+.ant-slider-track {
+  position: absolute;
+  height: 4px; /* Track height, same as rail */
+  background-color: #91caff; /* Default track color (light blue) */
+  border-radius: 2px;
+  transition: background-color 0.3s;
+  top: 50%; /* Center track */
+  transform: translateY(-50%);
+}
+.ant-slider:hover .ant-slider-track {
+  background-color: #69b1ff; /* Darker track on hover */
+}
+
+.ant-slider-handle {
+  position: absolute;
+  width: 14px; /* Handle width */
+  height: 14px; /* Handle height */
+  margin-top: -5px; /* (rail_height - handle_height) / 2 + rail_padding_top roughly */
+  margin-left: -7px; /* -handle_width / 2 */
+  background-color: #fff;
+  border: 2px solid #91caff; /* Default handle border color */
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.05); /* Subtle shadow for handle */
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.6s, transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  z-index: 1; /* Ensure handle is above track/rail */
+  top: 50%; /* Center handle on the rail/track line */
+  /* transform: translateY(-50%); /* Base transform, JS will add translateX/Y */
+}
+.ant-slider-handle:focus {
+  outline: none;
+  /* box-shadow: 0 0 0 5px rgba(22, 119, 255, 0.2); /* AntD focus shadow */
+}
+.ant-slider-handle:hover,
+.ant-slider-handle:active { /* Active is often when dragging */
+  border-color: #1677ff; /* Primary color border on hover/active */
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2); /* Focus shadow on hover/active */
+  transform: scale(1.2); /* Slightly enlarge handle */
+}
+
+
+/* Tooltip (simplified) */
+.ant-slider-tooltip {
+  position: absolute;
+  /* top: -32px; /* Position above handle, adjust as needed */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  background-color: rgba(0,0,0,0.75); /* Dark tooltip background */
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 2; /* Above handle */
+  pointer-events: none; /* Tooltip should not interfere with mouse events */
+}
+/* Arrow for tooltip (optional, CSS only) */
+.ant-slider-tooltip::after {
+  content: '';
+  position: absolute;
+  /* top: 100%; /* Bottom of tooltip */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* border-width: 4px; */
+  /* border-style: solid; */
+  /* border-color: rgba(0,0,0,0.75) transparent transparent transparent; */
+}
+
+
+/* Dots */
+.ant-slider-dot {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: -4px; /* Half of dot width */
+  width: 8px;
+  height: 8px;
+  background-color: #fff;
+  border: 2px solid #f0f0f0; /* Border color same as rail */
+  border-radius: 50%;
+  transition: border-color 0.3s;
+}
+.ant-slider-dot-active {
+  border-color: #8dcff8; /* Active dot border color (track color related) */
+}
+
+
+/* Marks */
+.ant-slider-mark {
+  position: absolute;
+  top: 18px; /* Position below slider */
+  left: 0;
+  width: 100%;
+  font-size: 14px;
+}
+.ant-slider-mark-text {
+  position: absolute;
+  display: inline-block;
+  color: rgba(0,0,0,0.45);
+  text-align: center;
+  word-break: keep-all;
+  transform: translateX(-50%); /* Center mark text */
+  cursor: pointer; /* Allow clicking on marks */
+}
+.ant-slider-mark-text-active {
+  color: rgba(0,0,0,0.88); /* Active mark text color */
+}
+
+
+/* Vertical Slider */
+.ant-slider-vertical {
+  width: 12px; /* Default width for vertical slider */
+  height: 100%; /* Takes parent height */
+  margin: 6px 10px;
+  padding: 0 4px;
+}
+.ant-slider-vertical .ant-slider-rail {
+  width: 4px;
+  height: 100%;
+  top: 0; left: 50%; transform: translateX(-50%);
+}
+.ant-slider-vertical .ant-slider-track {
+  width: 4px;
+  left: 50%; transform: translateX(-50%);
+  /* bottom/height set by JS */
+}
+.ant-slider-vertical .ant-slider-handle {
+  margin-top: -7px; /* -handle_height / 2 */
+  margin-left: -5px; /* (rail_width - handle_width) / 2 + rail_padding_left roughly */
+  left: 50%; /* Center handle on the rail/track line */
+  /* top/bottom set by JS */
+}
+.ant-slider-vertical .ant-slider-dot {
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: -4px; /* Half of dot height */
+  /* top/bottom set by JS */
+}
+.ant-slider-vertical .ant-slider-mark {
+  top: 0;
+  left: 18px; /* Position right of slider */
+  width: auto; /* Auto width for vertical marks */
+  height: 100%;
+}
+.ant-slider-vertical .ant-slider-mark-text {
+  transform: translateY(-50%); /* Center mark text vertically */
+  /* left/right set by JS */
+}
+.ant-slider-vertical .ant-slider-tooltip {
+    /* Adjust tooltip position for vertical slider */
+    /* top: 50%; left: calc(100% + 5px); transform: translateY(-50%); */
+}
+/* .ant-slider-vertical .ant-slider-tooltip::after { */
+    /* Adjust arrow for vertical */
+    /* top: 50%; left: -8px; transform: translateY(-50%) rotate(-90deg); */
+/* } */
+
+
+/* Disabled State */
+.ant-slider-disabled {
+  cursor: not-allowed;
+}
+.ant-slider-disabled .ant-slider-rail {
+  background-color: #f0f0f0 !important; /* Keep rail color */
+}
+.ant-slider-disabled .ant-slider-track {
+  background-color: rgba(0,0,0,0.25) !important; /* Disabled track color */
+}
+.ant-slider-disabled .ant-slider-handle {
+  border-color: rgba(0,0,0,0.25) !important;
+  background-color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none !important; /* No scale effect */
+}
+.ant-slider-disabled .ant-slider-handle:hover,
+.ant-slider-disabled .ant-slider-handle:active {
+    transform: none; /* No scale on hover/active for disabled */
+    box-shadow: none;
+}
+.ant-slider-disabled .ant-slider-dot {
+  border-color: rgba(0,0,0,0.25) !important;
+  background-color: #fff;
+  cursor: not-allowed;
+}
+.ant-slider-disabled .ant-slider-mark-text,
+.ant-slider-disabled .ant-slider-dot-active {
+  color: rgba(0,0,0,0.25) !important;
+  cursor: not-allowed;
+}
+
+/* Reverse styles */
+/* When reverse is true, track logic is inverted. Handles might need specific styles if appearance changes. */
+/* For simplicity, assuming reverse mainly affects track calculation and value interpretation. */
+/* Visual changes for reverse (e.g., track from other side) are handled by JS style updates. */
+
+/* Included=false styles */
+.ant-slider:not(.ant-slider-included) .ant-slider-track {
+    /* If included is false, track might be hidden or styled differently */
+    /* background-color: transparent; /* Example: hide track */
+}

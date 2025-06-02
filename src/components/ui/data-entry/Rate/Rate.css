@@ -1,0 +1,93 @@
+/* src/components/ui/data-entry/Rate/Rate.css */
+/* Based on antd/es/rate/style/index.css */
+
+.ant-rate {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-size: 20px; /* Default star size */
+  line-height: unset; /* Reset line-height */
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  display: inline-block;
+  outline: none; /* For keyboard navigation focus */
+}
+
+.ant-rate-star {
+  position: relative;
+  display: inline-block;
+  margin-right: 8px; /* Space between stars */
+  color: #f0f0f0; /* Default color for empty star */
+  cursor: pointer;
+  transition: transform 0.15s ease; /* For focus/hover effect */
+}
+.ant-rate-star:last-child {
+  margin-right: 0;
+}
+
+.ant-rate-star:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+}
+.ant-rate-star:focus { /* For keyboard navigation */
+  /* outline: 1px dotted #1677ff; Or other focus indicator */
+  /* transform: scale(1.1); */ /* May conflict with hover */
+}
+
+
+.ant-rate-star-first,
+.ant-rate-star-second {
+  color: inherit; /* Inherit color from .ant-rate-star or its active states */
+  transition: all 0.3s;
+  user-select: none; /* Prevent text selection of star character */
+}
+
+.ant-rate-star-first { /* Background part of star (for half star) */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0; /* Hidden by default, shown for half star */
+}
+
+/* Active states */
+.ant-rate-star-full .ant-rate-star-second, /* Full star */
+.ant-rate-star-half .ant-rate-star-first /* Half star - first part (left half) is colored */
+{
+  color: #fadb14; /* AntD default gold color for filled star */
+  opacity: 1;
+}
+
+.ant-rate-star-half .ant-rate-star-second {
+  /* For half star, the second part (right half) remains the empty star color */
+  /* It's visually "behind" the first part if color is same, or shows through if different */
+  /* opacity: 0.5; /* Or some other way to show it's half */
+  color: inherit; /* Keep default empty color */
+}
+
+
+/* Disabled state */
+.ant-rate-disabled .ant-rate-star {
+  cursor: not-allowed;
+  color: rgba(0,0,0,0.25) !important; /* Override active colors */
+}
+.ant-rate-disabled .ant-rate-star:hover {
+  transform: none; /* No hover effect when disabled */
+}
+.ant-rate-disabled .ant-rate-star-full .ant-rate-star-second,
+.ant-rate-disabled .ant-rate-star-half .ant-rate-star-first {
+    color: rgba(0,0,0,0.25) !important; /* Ensure filled parts are also disabled color */
+    opacity: 1; /* Ensure they are visible but in disabled color */
+}
+
+/* Tooltip related styling (if Rate itself handles tooltip display) */
+/* Usually, Tooltip component is used separately and provides its own styling */
+
+/* Character specific styling (if character is an Icon) */
+.ant-rate-star .anticon { /* If character is an Ant Design Icon component */
+  vertical-align: middle; /* Align icon nicely */
+}
