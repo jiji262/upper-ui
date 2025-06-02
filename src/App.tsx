@@ -158,13 +158,13 @@ function App() {
                 {selectedTab === "general" && (
                   <div>
                     <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">General Components</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Buttons */}
+                    <div className="space-y-8">
+                      {/* Buttons */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
-                    <CardTitle>Buttons</CardTitle>
-                    <CardDescription>Various button styles and variants</CardDescription>
-                  </CardHeader>
+                          <CardTitle>Buttons</CardTitle>
+                          <CardDescription>Various button styles and variants</CardDescription>
+                        </CardHeader>
                         <CardContent className="p-6">
                           <div className="space-y-6">
                             <div>
@@ -174,35 +174,35 @@ function App() {
                                 <Button>Primary</Button>
                                 <Button variant="outline" className="border-dashed">Dashed</Button>
                                 <Button variant="ghost">Text</Button>
-                        <Button variant="link">Link</Button>
-                      </div>
+                                <Button variant="link">Link</Button>
+                              </div>
                             </div>
                             <div>
                               <h5 className="text-sm font-medium mb-3 text-gray-700">Button Sizes</h5>
                               <div className="flex flex-wrap gap-3">
-                        <Button size="sm">Small</Button>
-                        <Button>Default</Button>
-                        <Button size="lg">Large</Button>
-                      </div>
+                                <Button size="sm">Small</Button>
+                                <Button>Default</Button>
+                                <Button size="lg">Large</Button>
+                              </div>
                             </div>
                             <div>
                               <h5 className="text-sm font-medium mb-3 text-gray-700">Button States</h5>
                               <div className="flex flex-wrap gap-3">
-                        <Button disabled>Disabled</Button>
-                        <Button loading>Loading</Button>
+                                <Button disabled>Disabled</Button>
+                                <Button loading>Loading</Button>
                                 <Button variant="destructive">Danger</Button>
                               </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
 
                       {/* Icons */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
                           <CardTitle>Icons</CardTitle>
                           <CardDescription>Simple icon components</CardDescription>
-                  </CardHeader>
+                        </CardHeader>
                         <CardContent className="p-6">
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                             <div className="flex flex-col items-center justify-center p-4 border rounded-lg hover:border-purple-400 transition-colors">
@@ -232,7 +232,7 @@ function App() {
                 {selectedTab === "data-entry" && (
                   <div>
                     <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Data Entry Components</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-8">
                       {/* Inputs */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
@@ -248,9 +248,9 @@ function App() {
                             <div>
                               <h5 className="text-sm font-medium mb-3 text-gray-700">Input Sizes</h5>
                               <div className="space-y-3">
-                                <InputAnt size="small" placeholder="Small size" />
+                                <InputAnt size={"small" as const} placeholder="Small size" />
                                 <InputAnt placeholder="Default size" />
-                                <InputAnt size="large" placeholder="Large size" />
+                                <InputAnt size={"large" as const} placeholder="Large size" />
                               </div>
                             </div>
                             <div>
@@ -268,9 +268,9 @@ function App() {
                                 <span className="ml-2 px-2 py-1 bg-gray-100 border rounded-r">.com</span>
                               </div>
                             </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                          </div>
+                        </CardContent>
+                      </Card>
 
                       {/* TextArea */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
@@ -382,13 +382,13 @@ function App() {
                 {selectedTab === "data-display" && (
                   <div>
                     <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Data Display Components</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-8">
                       {/* Empty Component */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
                           <CardTitle>Empty</CardTitle>
                           <CardDescription>Empty state placeholder</CardDescription>
-                  </CardHeader>
+                        </CardHeader>
                         <CardContent className="p-6">
                           <div className="space-y-6">
                             <div>
@@ -400,15 +400,15 @@ function App() {
                               <Empty description="No items found. Try a different search." />
                             </div>
                           </div>
-                  </CardContent>
-                </Card>
+                        </CardContent>
+                      </Card>
 
                       {/* Descriptions Component */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
                           <CardTitle>Descriptions</CardTitle>
                           <CardDescription>Display detailed information</CardDescription>
-                  </CardHeader>
+                        </CardHeader>
                         <CardContent className="p-6">
                           <div className="space-y-6">
                             <div>
@@ -418,7 +418,7 @@ function App() {
                                 <DescriptionsItem label="Email">john.doe@example.com</DescriptionsItem>
                                 <DescriptionsItem label="Status">Active</DescriptionsItem>
                               </Descriptions>
-                      </div>
+                            </div>
                             <div>
                               <h5 className="text-sm font-medium mb-3 text-gray-700">Bordered Descriptions</h5>
                               <Descriptions title="Product Details" bordered>
@@ -427,10 +427,10 @@ function App() {
                                 <DescriptionsItem label="License">MIT</DescriptionsItem>
                                 <DescriptionsItem label="Description">A React UI component library</DescriptionsItem>
                               </Descriptions>
-                      </div>
+                            </div>
                           </div>
-                          </CardContent>
-                        </Card>
+                        </CardContent>
+                      </Card>
                     </div>
                   </div>
                 )}
@@ -439,7 +439,7 @@ function App() {
                 {selectedTab === "feedback" && (
                   <div>
                     <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Feedback Components</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-8">
                       {/* Dialog Component */}
                       <Card className="shadow-md hover:shadow-lg transition-shadow">
                         <CardHeader className="border-b bg-gray-50">
