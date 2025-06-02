@@ -18,18 +18,18 @@ import {
 export const DataDisplayComponents: React.FC = () => {
   return (
     <div>
-      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">数据展示组件</h3>
+      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8 dark:text-gray-200">数据展示组件</h3>
       <div className="space-y-8">
         {/* Avatar */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Avatar 头像</CardTitle>
-            <CardDescription>展示用户或事物头像的组件</CardDescription>
+            <CardDescription className="dark:text-gray-300">展示用户或事物头像的组件</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-6">
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">基础头像</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">基础头像</h5>
                 <div className="flex flex-wrap gap-4 items-center">
                   <Avatar src="https://i.pravatar.cc/150?img=1" size="sm" />
                   <Avatar src="https://i.pravatar.cc/150?img=2" />
@@ -38,7 +38,7 @@ export const DataDisplayComponents: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">带徽标的头像</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">带徽标的头像</h5>
                 <div className="flex flex-wrap gap-6 items-center">
                   <div className="relative">
                     <Avatar src="https://i.pravatar.cc/150?img=5" />
@@ -56,14 +56,14 @@ export const DataDisplayComponents: React.FC = () => {
 
         {/* Badge */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Badge 徽标</CardTitle>
-            <CardDescription>在元素旁边显示数字或状态的小标签</CardDescription>
+            <CardDescription className="dark:text-gray-300">在元素旁边显示数字或状态的小标签</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">基础徽标</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">基础徽标</h5>
                 <div className="flex flex-wrap gap-4">
                   <Badge>Default</Badge>
                   <Badge variant="secondary">Secondary</Badge>
@@ -72,7 +72,7 @@ export const DataDisplayComponents: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">带数字的徽标</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">带数字的徽标</h5>
                 <div className="flex flex-wrap gap-4">
                   <Badge>1</Badge>
                   <Badge>25</Badge>
@@ -85,9 +85,9 @@ export const DataDisplayComponents: React.FC = () => {
 
         {/* Table */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Table 表格</CardTitle>
-            <CardDescription>用于展示结构化数据的表格组件</CardDescription>
+            <CardDescription className="dark:text-gray-300">用于展示结构化数据的表格组件</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <Table>
@@ -125,25 +125,25 @@ export const DataDisplayComponents: React.FC = () => {
 
         {/* Card */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Card 卡片</CardTitle>
-            <CardDescription>一个用于展示内容的容器组件</CardDescription>
+            <CardDescription className="dark:text-gray-300">一个用于展示内容的容器组件</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card>
                 <CardHeader>
                   <CardTitle>卡片标题</CardTitle>
-                  <CardDescription>卡片的简短描述</CardDescription>
+                  <CardDescription className="dark:text-gray-300">卡片的简短描述</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p>卡片内容区域，可以放置各种元素</p>
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader className="bg-gray-50 border-b">
+                <CardHeader className="bg-gray-50 border-b dark:bg-gray-800 dark:border-gray-700">
                   <CardTitle>带背景的卡片</CardTitle>
-                  <CardDescription>卡片标题区域带背景</CardDescription>
+                  <CardDescription className="dark:text-gray-300">卡片标题区域带背景</CardDescription>
                 </CardHeader>
                 <CardContent className="p-4">
                   <p>卡片内容区域，可以放置各种元素</p>

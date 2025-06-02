@@ -13,18 +13,18 @@ import Icon from '../../components/ui/general/Icon/Icon';
 export const GeneralComponents: React.FC = () => {
   return (
     <div>
-      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">General Components</h3>
+      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8 dark:text-gray-200">General Components</h3>
       <div className="space-y-8">
         {/* Buttons */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Buttons</CardTitle>
-            <CardDescription>Various button styles and variants</CardDescription>
+            <CardDescription className="dark:text-gray-300">Various button styles and variants</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-6">
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">Button Variants</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Button Variants</h5>
                 <div className="flex flex-wrap gap-3">
                   <Button variant="outline">Default</Button>
                   <Button>Primary</Button>
@@ -34,7 +34,7 @@ export const GeneralComponents: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">Button Sizes</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Button Sizes</h5>
                 <div className="flex flex-wrap gap-3">
                   <Button size="sm">Small</Button>
                   <Button>Default</Button>
@@ -42,7 +42,7 @@ export const GeneralComponents: React.FC = () => {
                 </div>
               </div>
               <div>
-                <h5 className="text-sm font-medium mb-3 text-gray-700">Button States</h5>
+                <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Button States</h5>
                 <div className="flex flex-wrap gap-3">
                   <Button disabled>Disabled</Button>
                   <Button loading>Loading</Button>
@@ -55,13 +55,13 @@ export const GeneralComponents: React.FC = () => {
 
         {/* Icons */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Icons</CardTitle>
-            <CardDescription>Visual symbols and glyphs</CardDescription>
+            <CardDescription className="dark:text-gray-300">Visual symbols and glyphs</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div>
-              <h5 className="text-sm font-medium mb-3 text-gray-700">Icon Examples</h5>
+              <h5 className="text-sm font-medium mb-3 text-gray-700 dark:text-gray-300">Icon Examples</h5>
               <div className="flex flex-wrap gap-5">
                 <div className="flex flex-col items-center">
                   <Icon name="UploadOutlined" className="text-2xl" />
@@ -90,9 +90,9 @@ export const GeneralComponents: React.FC = () => {
 
         {/* Typography */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Typography</CardTitle>
-            <CardDescription>Text styles and formats</CardDescription>
+            <CardDescription className="dark:text-gray-300">Text styles and formats</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">

@@ -1,12 +1,17 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   label?: React.ReactNode;
+  onCheckedChange?: (checked: boolean) => void;
 }
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, ...props }, ref) => {
+  ({ className, label, onCheckedChange = () => {}, checked, ...props }, ref) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onCheckedChange(event.target.checked);
+    };
+
     return (
       <div className="flex items-center space-x-2">
         <input
@@ -16,6 +21,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             className
           )}
           ref={ref}
+          checked={checked}
+          onChange={handleChange}
           {...props}
         />
         {label && <label className="text-sm">{label}</label>}
@@ -29,11 +36,11 @@ Checkbox.displayName = "Checkbox";
 export interface CheckboxAntProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'indeterminate'> {
   label?: React.ReactNode;
   indeterminate?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCheckedChange?: (checked: boolean) => void;
 }
 
 export const CheckboxAnt = React.forwardRef<HTMLInputElement, CheckboxAntProps>(
-  ({ className = '', label, indeterminate, onChange, ...props }, ref) => {
+  ({ className = '', label, indeterminate, onCheckedChange = () => {}, checked, ...props }, ref) => {
     // Use a callback ref to set indeterminate property
     const checkboxRef = React.useRef<HTMLInputElement>(null);
     
@@ -47,13 +54,18 @@ export const CheckboxAnt = React.forwardRef<HTMLInputElement, CheckboxAntProps>(
       }
     }, [indeterminate, inputRef]);
 
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      onCheckedChange(event.target.checked);
+    };
+
   return (
       <div className="upper-checkbox-wrapper flex items-center space-x-2">
         <span className="upper-checkbox relative inline-block">
       <input
         type="checkbox"
             ref={inputRef as React.RefObject<HTMLInputElement>}
-            onChange={onChange}
+            onChange={handleChange}
+            checked={checked}
             className={cn(
               "peer sr-only",
               className

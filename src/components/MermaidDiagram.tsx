@@ -15,42 +15,42 @@ const MermaidDiagram = ({ chart, zoomingEnabled = true }: MermaidDiagramProps) =
 
   // Memoize configuration to prevent unnecessary re-initialization
   const mermaidConfig = useMemo(() => ({
-    startOnLoad: true,
-    theme: "neutral",
-    htmlLabels: true,
-    flowchart: {
+      startOnLoad: true,
+      theme: "neutral",
       htmlLabels: true,
-      curve: "basis",
-      nodeSpacing: 50,
-      rankSpacing: 50,
-      padding: 15,
-    },
-    themeCSS: `
-      .node rect, .node circle, .node ellipse, .node polygon {
-        fill: #e6d5ff;
-        stroke: #000000;
-        stroke-width: 2px;
-      }
-      .edgePath path {
-        stroke: #000000;
-        stroke-width: 2px;
-      }
-      .label {
-        color: #000000;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      }
-      .label foreignObject {
-        font-size: 14px;
-        font-weight: 500;
-      }
-      #flowchart-pointEnd, #flowchart-pointStart {
-        fill: #000000;
-      }
-      .edgeLabel {
-        background-color: #ffffff;
-        padding: 4px;
-      }
-    `,
+      flowchart: {
+        htmlLabels: true,
+        curve: "basis",
+        nodeSpacing: 50,
+        rankSpacing: 50,
+        padding: 15,
+      },
+      themeCSS: `
+        .node rect, .node circle, .node ellipse, .node polygon {
+          fill: #e6d5ff;
+          stroke: #000000;
+          stroke-width: 2px;
+        }
+        .edgePath path {
+          stroke: #000000;
+          stroke-width: 2px;
+        }
+        .label {
+          color: #000000;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .label foreignObject {
+          font-size: 14px;
+          font-weight: 500;
+        }
+        #flowchart-pointEnd, #flowchart-pointStart {
+          fill: #000000;
+        }
+        .edgeLabel {
+          background-color: #ffffff;
+          padding: 4px;
+        }
+      `,
   }), []);
 
   // Initialize mermaid once on mount
@@ -101,12 +101,12 @@ const MermaidDiagram = ({ chart, zoomingEnabled = true }: MermaidDiagramProps) =
   // Initialize pan-zoom after diagram is rendered
   useEffect(() => {
     if (isRendered && zoomingEnabled && containerRef.current) {
-      const initializePanZoom = async () => {
-        const svgElement = containerRef.current?.querySelector("svg");
+    const initializePanZoom = async () => {
+      const svgElement = containerRef.current?.querySelector("svg");
         if (svgElement) {
-          svgElement.style.maxWidth = "none";
-          svgElement.style.width = "100%";
-          svgElement.style.height = "100%";
+        svgElement.style.maxWidth = "none";
+        svgElement.style.width = "100%";
+        svgElement.style.height = "100%";
 
           try {
             const svgPanZoom = (await import("svg-pan-zoom")).default;
@@ -123,8 +123,8 @@ const MermaidDiagram = ({ chart, zoomingEnabled = true }: MermaidDiagramProps) =
           } catch (error) {
             console.error("Failed to load svg-pan-zoom:", error);
           }
-        }
-      };
+      }
+    };
 
       initializePanZoom();
     }

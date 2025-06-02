@@ -25,7 +25,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
       <div
         ref={ref}
         className={cn(
-          'relative inline-flex items-center justify-center bg-gray-100 overflow-hidden',
+          'relative inline-flex items-center justify-center bg-muted overflow-hidden border-2 border-transparent dark:bg-gray-700 dark:border-gray-600',
           sizeClasses[size],
           shapeClasses[shape],
           className
@@ -39,7 +39,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
             className="w-full h-full object-cover"
           />
         ) : (
-          <span className="text-gray-600 font-medium">
+          <span className="text-foreground font-medium dark:text-gray-200">
             {alt?.[0]?.toUpperCase()}
           </span>
         )}

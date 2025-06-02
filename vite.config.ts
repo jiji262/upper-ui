@@ -18,15 +18,15 @@ export default defineConfig(({ mode }) => {
         filename: 'dist/stats.html'
       })
     ].filter(Boolean),
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
         '@components': path.resolve(__dirname, './src/components'),
         '@features': path.resolve(__dirname, './src/features'),
         '@lib': path.resolve(__dirname, './src/lib'),
         '@assets': path.resolve(__dirname, './src/assets'),
-      },
     },
+  },
     build: {
       // 代码分割策略
       rollupOptions: {

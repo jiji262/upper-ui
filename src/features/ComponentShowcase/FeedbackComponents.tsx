@@ -36,20 +36,20 @@ export const FeedbackComponents: React.FC = () => {
 
   return (
     <div>
-      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8">Feedback Components</h3>
+      <h3 className="text-2xl font-semibold text-center text-gray-800 mb-8 dark:text-gray-200">Feedback Components</h3>
       <div className="space-y-8">
         {/* Progress */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Progress</CardTitle>
-            <CardDescription>Show task or operation progress</CardDescription>
+            <CardDescription className="dark:text-gray-300">Show task or operation progress</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
               <div>
-                <h5 className="text-sm font-medium mb-2 text-gray-700">Basic Progress</h5>
+                <h5 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">Basic Progress</h5>
                 <Progress value={progress} className="w-full" />
-                <p className="text-sm text-gray-500 mt-2">Current progress: {progress}%</p>
+                <p className="text-sm text-gray-500 mt-2 dark:text-gray-400">Current progress: {progress}%</p>
               </div>
             </div>
           </CardContent>
@@ -57,9 +57,9 @@ export const FeedbackComponents: React.FC = () => {
 
         {/* Tooltips */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Tooltips</CardTitle>
-            <CardDescription>Display informative text when users hover over an element</CardDescription>
+            <CardDescription className="dark:text-gray-300">Display informative text when users hover over an element</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="flex justify-center">
@@ -74,9 +74,9 @@ export const FeedbackComponents: React.FC = () => {
 
         {/* Dialog */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Dialog</CardTitle>
-            <CardDescription>Modal dialogs for important interactions</CardDescription>
+            <CardDescription className="dark:text-gray-300">Modal dialogs for important interactions</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="flex justify-center">
@@ -114,9 +114,9 @@ export const FeedbackComponents: React.FC = () => {
 
         {/* Alert */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Alert</CardTitle>
-            <CardDescription>Feedback messages for various states</CardDescription>
+            <CardDescription className="dark:text-gray-300">Feedback messages for various states</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
@@ -142,9 +142,9 @@ export const FeedbackComponents: React.FC = () => {
 
         {/* Skeleton */}
         <Card className="shadow-md hover:shadow-lg transition-shadow">
-          <CardHeader className="border-b bg-gray-50">
+          <CardHeader className="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <CardTitle>Skeleton</CardTitle>
-            <CardDescription>Loading placeholders</CardDescription>
+            <CardDescription className="dark:text-gray-300">Loading placeholders</CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="space-y-4">
