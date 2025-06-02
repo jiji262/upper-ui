@@ -1,277 +1,153 @@
 /* src/components/ui/layout/Grid/Grid.css */
-/* Based on antd/es/grid/style/index.css */
+/* Basic grid system for Upper UI style layout */
 
-.ant-row {
+.upper-row {
   display: flex;
   flex-flow: row wrap;
 }
 
-.ant-row-no-wrap {
+.upper-row-no-wrap {
   flex-wrap: nowrap;
 }
 
 /* Align */
-.ant-row-top {
+.upper-row-top {
   align-items: flex-start;
 }
-.ant-row-middle {
+.upper-row-middle {
   align-items: center;
 }
-.ant-row-bottom {
+.upper-row-bottom {
   align-items: flex-end;
 }
-.ant-row-stretch {
+.upper-row-stretch {
   align-items: stretch;
 }
 
 /* Justify */
-.ant-row-start {
+.upper-row-start {
   justify-content: flex-start;
 }
-.ant-row-end {
+.upper-row-end {
   justify-content: flex-end;
 }
-.ant-row-center {
+.upper-row-center {
   justify-content: center;
 }
-.ant-row-space-around {
+.upper-row-space-around {
   justify-content: space-around;
 }
-.ant-row-space-between {
+.upper-row-space-between {
   justify-content: space-between;
 }
-.ant-row-space-evenly {
+.upper-row-space-evenly {
   justify-content: space-evenly;
 }
 
 /* Column base */
-.ant-col {
+.upper-col {
   position: relative;
-  max-width: 100%; /* Prevent columns from exceeding row width */
-  min-height: 1px; /* Prevent collapsing */
+  max-width: 100%;
+  min-height: 1px;
 }
 
-/* Generate span, offset, order, push, pull classes for default and responsive sizes */
-/* Example for span, others follow similar pattern */
-.ant-col-0 { display: none; }
-.ant-col-1 { flex: 0 0 calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-.ant-col-2 { flex: 0 0 calc(100% / 24 * 2); max-width: calc(100% / 24 * 2); }
-/* ... up to ant-col-24 */
-.ant-col-24 { flex: 0 0 100%; max-width: 100%; }
-
-
-/* Helper loop for generating grid classes (conceptual) */
-/* This would typically be done with a CSS preprocessor or generated script */
-/* For brevity, only a few examples are shown. Assume all 24 columns are defined. */
-
-/* Spans */
-.ant-col-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-.ant-col-2 { flex-basis: calc(100% / 24 * 2); max-width: calc(100% / 24 * 2); }
-/* ... */
-.ant-col-24 { flex-basis: 100%; max-width: 100%; }
+/* Basic columns */
+.upper-col-0 { display: none; }
+.upper-col-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+.upper-col-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+.upper-col-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+.upper-col-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+.upper-col-5 { flex: 0 0 20.83333333%; max-width: 20.83333333%; }
+.upper-col-6 { flex: 0 0 25%; max-width: 25%; }
+.upper-col-7 { flex: 0 0 29.16666667%; max-width: 29.16666667%; }
+.upper-col-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+.upper-col-9 { flex: 0 0 37.5%; max-width: 37.5%; }
+.upper-col-10 { flex: 0 0 41.66666667%; max-width: 41.66666667%; }
+.upper-col-11 { flex: 0 0 45.83333333%; max-width: 45.83333333%; }
+.upper-col-12 { flex: 0 0 50%; max-width: 50%; }
+.upper-col-13 { flex: 0 0 54.16666667%; max-width: 54.16666667%; }
+.upper-col-14 { flex: 0 0 58.33333333%; max-width: 58.33333333%; }
+.upper-col-15 { flex: 0 0 62.5%; max-width: 62.5%; }
+.upper-col-16 { flex: 0 0 66.66666667%; max-width: 66.66666667%; }
+.upper-col-17 { flex: 0 0 70.83333333%; max-width: 70.83333333%; }
+.upper-col-18 { flex: 0 0 75%; max-width: 75%; }
+.upper-col-19 { flex: 0 0 79.16666667%; max-width: 79.16666667%; }
+.upper-col-20 { flex: 0 0 83.33333333%; max-width: 83.33333333%; }
+.upper-col-21 { flex: 0 0 87.5%; max-width: 87.5%; }
+.upper-col-22 { flex: 0 0 91.66666667%; max-width: 91.66666667%; }
+.upper-col-23 { flex: 0 0 95.83333333%; max-width: 95.83333333%; }
+.upper-col-24 { flex: 0 0 100%; max-width: 100%; }
 
 /* Offsets */
-.ant-col-offset-1 { margin-left: calc(100% / 24 * 1); }
-.ant-col-offset-2 { margin-left: calc(100% / 24 * 2); }
-/* ... */
-.ant-col-offset-24 { margin-left: 100%; }
+.upper-col-offset-1 { margin-left: 4.16666667%; }
+.upper-col-offset-2 { margin-left: 8.33333333%; }
+.upper-col-offset-3 { margin-left: 12.5%; }
+.upper-col-offset-4 { margin-left: 16.66666667%; }
+.upper-col-offset-5 { margin-left: 20.83333333%; }
+.upper-col-offset-6 { margin-left: 25%; }
+.upper-col-offset-7 { margin-left: 29.16666667%; }
+.upper-col-offset-8 { margin-left: 33.33333333%; }
+.upper-col-offset-9 { margin-left: 37.5%; }
+.upper-col-offset-10 { margin-left: 41.66666667%; }
+.upper-col-offset-11 { margin-left: 45.83333333%; }
+.upper-col-offset-12 { margin-left: 50%; }
 
-
-/* Order */
-.ant-col-order-1 { order: 1; }
-/* ... */
-.ant-col-order-24 { order: 24; }
-
-
-/* Push */
-.ant-col-push-1 { left: calc(100% / 24 * 1); }
-/* ... */
-.ant-col-push-24 { left: 100%; }
-
-/* Pull */
-.ant-col-pull-1 { right: calc(100% / 24 * 1); }
-/* ... */
-.ant-col-pull-24 { right: 100%; }
-
-
-/* Responsive Breakpoints (xs, sm, md, lg, xl, xxl) */
-/* Extra Small devices (phones, less than 576px) */
-/* No media query for xs, as it's the default */
-.ant-col-xs-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-/* ... up to ant-col-xs-24 */
-.ant-col-xs-offset-1 { margin-left: calc(100% / 24 * 1); }
-/* ... */
-
-/* Small devices (tablets, 576px and up) */
+/* Small screen (sm) */
 @media (min-width: 576px) {
-  .ant-col-sm-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-  /* ... up to ant-col-sm-24 */
-  .ant-col-sm-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
+  .upper-col-sm-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+  .upper-col-sm-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+  .upper-col-sm-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+  .upper-col-sm-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+  .upper-col-sm-6 { flex: 0 0 25%; max-width: 25%; }
+  .upper-col-sm-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+  .upper-col-sm-12 { flex: 0 0 50%; max-width: 50%; }
+  .upper-col-sm-24 { flex: 0 0 100%; max-width: 100%; }
 }
 
-/* Medium devices (desktops, 768px and up) */
+/* Medium screen (md) */
 @media (min-width: 768px) {
-  .ant-col-md-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-  /* ... */
+  .upper-col-md-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+  .upper-col-md-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+  .upper-col-md-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+  .upper-col-md-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+  .upper-col-md-6 { flex: 0 0 25%; max-width: 25%; }
+  .upper-col-md-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+  .upper-col-md-12 { flex: 0 0 50%; max-width: 50%; }
+  .upper-col-md-24 { flex: 0 0 100%; max-width: 100%; }
 }
 
-/* Large devices (large desktops, 992px and up) */
+/* Large screen (lg) */
 @media (min-width: 992px) {
-  .ant-col-lg-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-  /* ... */
+  .upper-col-lg-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+  .upper-col-lg-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+  .upper-col-lg-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+  .upper-col-lg-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+  .upper-col-lg-6 { flex: 0 0 25%; max-width: 25%; }
+  .upper-col-lg-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+  .upper-col-lg-12 { flex: 0 0 50%; max-width: 50%; }
+  .upper-col-lg-24 { flex: 0 0 100%; max-width: 100%; }
 }
 
-/* Extra large devices (larger desktops, 1200px and up) */
+/* Extra large screen (xl) */
 @media (min-width: 1200px) {
-  .ant-col-xl-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-  /* ... */
+  .upper-col-xl-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+  .upper-col-xl-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+  .upper-col-xl-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+  .upper-col-xl-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+  .upper-col-xl-6 { flex: 0 0 25%; max-width: 25%; }
+  .upper-col-xl-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+  .upper-col-xl-12 { flex: 0 0 50%; max-width: 50%; }
+  .upper-col-xl-24 { flex: 0 0 100%; max-width: 100%; }
 }
 
-/* Extra extra large devices (even larger desktops, 1600px and up) */
+/* XXL screen */
 @media (min-width: 1600px) {
-  .ant-col-xxl-1 { flex-basis: calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-  /* ... */
-}
-
-/* Full grid generation (conceptual - this would be very long) */
-/* Repeat for all 24 columns and all responsive prefixes (xs, sm, md, lg, xl, xxl) and all properties (span, offset, order, push, pull) */
-
-/* Example for span = 1 through 24 */
-/* .ant-col-1, .ant-col-xs-1, .ant-col-sm-1, ... */
-/* .ant-col-24, .ant-col-xs-24, .ant-col-sm-24, ... */
-
-/* This is a simplified version. A full AntD grid CSS is much more comprehensive */
-/* and often generated by a preprocessor like Less. */
-
-/* Manually define all 24 columns for each property (span, offset, order, push, pull) and for each breakpoint. */
-/* This is tedious but necessary without a preprocessor. */
-
-/* Spans */
-each(index in 1..24) {
-  .ant-col-@{index} { flex: 0 0 (100% / 24 * @index); max-width: (100% / 24 * @index); }
-  .ant-col-xs-@{index} { flex: 0 0 (100% / 24 * @index); max-width: (100% / 24 * @index); }
-  /* ... and so on for sm, md, lg, xl, xxl */
-}
-
-/* Offsets */
-each(index in 0..23) { /* offset can be 0 */
-  .ant-col-offset-@{index} { margin-left: (100% / 24 * @index); }
-  .ant-col-xs-offset-@{index} { margin-left: (100% / 24 * @index); }
-  /* ... */
-}
-
-/* Order */
-each(index in 0..24) { /* order can be 0 or negative, but antd usually means 1-24 */
-  .ant-col-order-@{index} { order: @index; }
-  .ant-col-xs-order-@{index} { order: @index; }
-  /* ... */
-}
-
-/* Push */
-each(index in 0..24) {
-  .ant-col-push-@{index} { left: (100% / 24 * @index); }
-  .ant-col-xs-push-@{index} { left: (100% / 24 * @index); }
-  /* ... */
-}
-
-/* Pull */
-each(index in 0..24) {
-  .ant-col-pull-@{index} { right: (100% / 24 * @index); }
-  .ant-col-xs-pull-@{index} { right: (100% / 24 * @index); }
-  /* ... */
-}
-
-/* For brevity, I will not write out all 24 * 5 * 6 = 720 classes. 
-   The above conceptual Less-like loops show the pattern.
-   In a real scenario without a preprocessor, these would be manually written or generated.
-   The Col.tsx applies classes like `ant-col-${span}` and `ant-col-${breakpoint}-${span}` etc.
-   These CSS classes need to be defined here.
-*/
-
-/* Minimal set for stories to work */
-.ant-col-1, .ant-col-xs-1, .ant-col-sm-1, .ant-col-md-1, .ant-col-lg-1, .ant-col-xl-1, .ant-col-xxl-1 { flex: 0 0 calc(100% / 24 * 1); max-width: calc(100% / 24 * 1); }
-.ant-col-2, .ant-col-xs-2, .ant-col-sm-2, .ant-col-md-2, .ant-col-lg-2, .ant-col-xl-2, .ant-col-xxl-2 { flex: 0 0 calc(100% / 24 * 2); max-width: calc(100% / 24 * 2); }
-.ant-col-3, .ant-col-xs-3, .ant-col-sm-3, .ant-col-md-3, .ant-col-lg-3, .ant-col-xl-3, .ant-col-xxl-3 { flex: 0 0 calc(100% / 24 * 3); max-width: calc(100% / 24 * 3); }
-.ant-col-4, .ant-col-xs-4, .ant-col-sm-4, .ant-col-md-4, .ant-col-lg-4, .ant-col-xl-4, .ant-col-xxl-4 { flex: 0 0 calc(100% / 24 * 4); max-width: calc(100% / 24 * 4); }
-.ant-col-5, .ant-col-xs-5, .ant-col-sm-5, .ant-col-md-5, .ant-col-lg-5, .ant-col-xl-5, .ant-col-xxl-5 { flex: 0 0 calc(100% / 24 * 5); max-width: calc(100% / 24 * 5); }
-.ant-col-6, .ant-col-xs-6, .ant-col-sm-6, .ant-col-md-6, .ant-col-lg-6, .ant-col-xl-6, .ant-col-xxl-6 { flex: 0 0 calc(100% / 24 * 6); max-width: calc(100% / 24 * 6); }
-.ant-col-7, .ant-col-xs-7, .ant-col-sm-7, .ant-col-md-7, .ant-col-lg-7, .ant-col-xl-7, .ant-col-xxl-7 { flex: 0 0 calc(100% / 24 * 7); max-width: calc(100% / 24 * 7); }
-.ant-col-8, .ant-col-xs-8, .ant-col-sm-8, .ant-col-md-8, .ant-col-lg-8, .ant-col-xl-8, .ant-col-xxl-8 { flex: 0 0 calc(100% / 24 * 8); max-width: calc(100% / 24 * 8); }
-.ant-col-9, .ant-col-xs-9, .ant-col-sm-9, .ant-col-md-9, .ant-col-lg-9, .ant-col-xl-9, .ant-col-xxl-9 { flex: 0 0 calc(100% / 24 * 9); max-width: calc(100% / 24 * 9); }
-.ant-col-10, .ant-col-xs-10, .ant-col-sm-10, .ant-col-md-10, .ant-col-lg-10, .ant-col-xl-10, .ant-col-xxl-10 { flex: 0 0 calc(100% / 24 * 10); max-width: calc(100% / 24 * 10); }
-.ant-col-11, .ant-col-xs-11, .ant-col-sm-11, .ant-col-md-11, .ant-col-lg-11, .ant-col-xl-11, .ant-col-xxl-11 { flex: 0 0 calc(100% / 24 * 11); max-width: calc(100% / 24 * 11); }
-.ant-col-12, .ant-col-xs-12, .ant-col-sm-12, .ant-col-md-12, .ant-col-lg-12, .ant-col-xl-12, .ant-col-xxl-12 { flex: 0 0 calc(100% / 24 * 12); max-width: calc(100% / 24 * 12); }
-.ant-col-13, .ant-col-xs-13, .ant-col-sm-13, .ant-col-md-13, .ant-col-lg-13, .ant-col-xl-13, .ant-col-xxl-13 { flex: 0 0 calc(100% / 24 * 13); max-width: calc(100% / 24 * 13); }
-.ant-col-14, .ant-col-xs-14, .ant-col-sm-14, .ant-col-md-14, .ant-col-lg-14, .ant-col-xl-14, .ant-col-xxl-14 { flex: 0 0 calc(100% / 24 * 14); max-width: calc(100% / 24 * 14); }
-.ant-col-15, .ant-col-xs-15, .ant-col-sm-15, .ant-col-md-15, .ant-col-lg-15, .ant-col-xl-15, .ant-col-xxl-15 { flex: 0 0 calc(100% / 24 * 15); max-width: calc(100% / 24 * 15); }
-.ant-col-16, .ant-col-xs-16, .ant-col-sm-16, .ant-col-md-16, .ant-col-lg-16, .ant-col-xl-16, .ant-col-xxl-16 { flex: 0 0 calc(100% / 24 * 16); max-width: calc(100% / 24 * 16); }
-.ant-col-17, .ant-col-xs-17, .ant-col-sm-17, .ant-col-md-17, .ant-col-lg-17, .ant-col-xl-17, .ant-col-xxl-17 { flex: 0 0 calc(100% / 24 * 17); max-width: calc(100% / 24 * 17); }
-.ant-col-18, .ant-col-xs-18, .ant-col-sm-18, .ant-col-md-18, .ant-col-lg-18, .ant-col-xl-18, .ant-col-xxl-18 { flex: 0 0 calc(100% / 24 * 18); max-width: calc(100% / 24 * 18); }
-.ant-col-19, .ant-col-xs-19, .ant-col-sm-19, .ant-col-md-19, .ant-col-lg-19, .ant-col-xl-19, .ant-col-xxl-19 { flex: 0 0 calc(100% / 24 * 19); max-width: calc(100% / 24 * 19); }
-.ant-col-20, .ant-col-xs-20, .ant-col-sm-20, .ant-col-md-20, .ant-col-lg-20, .ant-col-xl-20, .ant-col-xxl-20 { flex: 0 0 calc(100% / 24 * 20); max-width: calc(100% / 24 * 20); }
-.ant-col-21, .ant-col-xs-21, .ant-col-sm-21, .ant-col-md-21, .ant-col-lg-21, .ant-col-xl-21, .ant-col-xxl-21 { flex: 0 0 calc(100% / 24 * 21); max-width: calc(100% / 24 * 21); }
-.ant-col-22, .ant-col-xs-22, .ant-col-sm-22, .ant-col-md-22, .ant-col-lg-22, .ant-col-xl-22, .ant-col-xxl-22 { flex: 0 0 calc(100% / 24 * 22); max-width: calc(100% / 24 * 22); }
-.ant-col-23, .ant-col-xs-23, .ant-col-sm-23, .ant-col-md-23, .ant-col-lg-23, .ant-col-xl-23, .ant-col-xxl-23 { flex: 0 0 calc(100% / 24 * 23); max-width: calc(100% / 24 * 23); }
-.ant-col-24, .ant-col-xs-24, .ant-col-sm-24, .ant-col-md-24, .ant-col-lg-24, .ant-col-xl-24, .ant-col-xxl-24 { flex: 0 0 100%; max-width: 100%; }
-
-.ant-col-offset-0 { margin-left: 0; }
-.ant-col-offset-1 { margin-left: calc(100% / 24 * 1); }
-/* ... up to 23 ... */
-.ant-col-offset-23 { margin-left: calc(100% / 24 * 23); }
-.ant-col-offset-24 { margin-left: 100%; }
-
-
-.ant-col-push-0 { left: auto; }
-.ant-col-push-1 { left: calc(100% / 24 * 1); }
-/* ... up to 24 ... */
-.ant-col-push-24 { left: 100%; }
-
-.ant-col-pull-0 { right: auto; }
-.ant-col-pull-1 { right: calc(100% / 24 * 1); }
-/* ... up to 24 ... */
-.ant-col-pull-24 { right: 100%; }
-
-/* order classes for default and responsive sizes */
-.ant-col-order-0 { order: 0; }
-.ant-col-order-1 { order: 1; }
-/* ... up to 24 ... */
-.ant-col-order-24 { order: 24; }
-
-/* TODO: Add responsive versions for offset, push, pull, order for sm, md, lg, xl, xxl breakpoints */
-/* Example for sm offset */
-@media (min-width: 576px) {
-  .ant-col-sm-offset-0 { margin-left: 0; }
-  .ant-col-sm-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
-  .ant-col-sm-push-0 {left: auto; }
-  .ant-col-sm-push-1 {left: calc(100% / 24 * 1); }
-  /* ... */
-  .ant-col-sm-pull-0 {right: auto; }
-  .ant-col-sm-pull-1 {right: calc(100% / 24 * 1); }
-  /* ... */
-   .ant-col-sm-order-0 { order: 0; }
-  .ant-col-sm-order-1 { order: 1; }
-  /* ... */
-}
-/* Repeat for md, lg, xl, xxl */
-@media (min-width: 768px) {
-  .ant-col-md-offset-0 { margin-left: 0; }
-  .ant-col-md-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
-}
-@media (min-width: 992px) {
-  .ant-col-lg-offset-0 { margin-left: 0; }
-  .ant-col-lg-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
-}
-@media (min-width: 1200px) {
-  .ant-col-xl-offset-0 { margin-left: 0; }
-  .ant-col-xl-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
-}
-@media (min-width: 1600px) {
-  .ant-col-xxl-offset-0 { margin-left: 0; }
-  .ant-col-xxl-offset-1 { margin-left: calc(100% / 24 * 1); }
-  /* ... */
+  .upper-col-xxl-1 { flex: 0 0 4.16666667%; max-width: 4.16666667%; }
+  .upper-col-xxl-2 { flex: 0 0 8.33333333%; max-width: 8.33333333%; }
+  .upper-col-xxl-3 { flex: 0 0 12.5%; max-width: 12.5%; }
+  .upper-col-xxl-4 { flex: 0 0 16.66666667%; max-width: 16.66666667%; }
+  .upper-col-xxl-6 { flex: 0 0 25%; max-width: 25%; }
+  .upper-col-xxl-8 { flex: 0 0 33.33333333%; max-width: 33.33333333%; }
+  .upper-col-xxl-12 { flex: 0 0 50%; max-width: 50%; }
+  .upper-col-xxl-24 { flex: 0 0 100%; max-width: 100%; }
 }
